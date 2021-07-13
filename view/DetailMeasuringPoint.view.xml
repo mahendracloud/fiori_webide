@@ -1,0 +1,207 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.DetailMeasuringPoint"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page id="msptPage" title="{mainView>/titleName}" busy="{mainView>/viewBusy}" enableScrolling="true" showFooter="true"
+				backgroundDesign="Standard" busyIndicatorDelay="0">
+				<content>
+					<!--<ObjectHeader title="{i18n>newMsptTitle}" titleActive="false" condensed="false"></ObjectHeader>-->
+					<IconTabBar selectedKey="__filter0" expanded="{device>/isNoPhone}">
+						<items>
+							<IconTabFilter icon="sap-icon://form" text="Form" design="Horizontal">
+								<content>
+									<VBox class="sapUiSmallMargin">
+										<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+											emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+											<f:content>
+												<core:Title text="{i18n>BASIC}"></core:Title>
+												<Label text="{i18n>MEASPOINT_TXT}"/>
+												<Input value="{AIWMSPT>/Mspoint}" type="Text" enabled="false"></Input>
+												<Label text="{i18n>MEAS_POS}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMSPT>/Psort}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>MSPT_DESC}" required="true"></Label>
+												<Input value="{AIWMSPT>/Pttxt}" valueState="{AIWMSPT>/PttxtVS}" valueStateText="{AIWMSPT>/PttxtVST}" enabled="{mainView>/enabled}"
+													change="onLiveChange" maxLength="40"></Input>
+												<Label text="{i18n>MEASPOINT_OBJ_TXT}" required="true"/>
+												<Input value="{AIWMSPT>/ObtypMs}" valueState="{AIWMSPT>/ObtypMsVS}" valueStateText="{AIWMSPT>/ObtypMsVST}" type="Text"
+													enabled="{AIWMSPT>/ObtypMsEnabled}" editable="true" showValueHelp="true" liveChange="measPointObjChange" change="onMeasPointObjChange"
+													valueHelpRequest="valueHelpFunSelect" maxLength="3">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWMSPT>/Txt}" enabled="false"></Input>
+												<Label text="{i18n>EQUIP_TXT}" required="true" visible="{AIWMSPT>/EqunrLblVis}"/>
+												<Input value="{AIWMSPT>/Equnr}" valueState="{AIWMSPT>/EqunrVS}" valueStateText="{AIWMSPT>/EqunrVST}" type="Text"
+													enabled="{AIWMSPT>/EqunrEnabled}" editable="true" showValueHelp="true" change="onEquipmentChange" valueHelpRequest="valueHelpFunSelect"
+													visible="{AIWMSPT>/EqunrInpVis}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWMSPT>/Eqktx}" enabled="false" visible="{AIWMSPT>/EqktxInpVis}"></Input>
+												<Label text="{i18n>FLOC_TXT}" required="true" visible="{AIWMSPT>/TplnrLblVis}"/>
+												<Input value="{AIWMSPT>/Tplnr}" valueState="{AIWMSPT>/TplnrVS}" valueStateText="{AIWMSPT>/TplnrVST}" type="Text"
+													enabled="{AIWMSPT>/TplnrEnabled}" editable="true" showValueHelp="true" liveChange="flocChange" change="onFlocChange"
+													valueHelpRequest="valueHelpFunSelect" visible="{AIWMSPT>/TplnrInpVis}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWMSPT>/Pltxt}" enabled="false" visible="{AIWMSPT>/PltxtInpVis}"></Input>
+												<Label text="{i18n>MP_CAT_TXT}" required="true"/>
+												<Input value="{AIWMSPT>/Mptyp}" valueState="{AIWMSPT>/MptypVS}" valueStateText="{AIWMSPT>/MptypVST}" type="Text"
+													enabled="{AIWMSPT>/MptypEnabled}" editable="true" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="measPontCatChange"
+													change="onmeasPointCatChange" maxLength="1" submit="onmeasPointCatChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWMSPT>/Mpttx}" enabled="false"></Input>
+												<Label text="{i18n>MSPT_IN}"></Label>
+												<CheckBox enabled="{AIWMSPT>/DeactEnable}" select="onInactiveSelect" selected="{path:'AIWMSPT>/Inact', formatter:'.formatter.typeCheck'}"></CheckBox>
+												<core:Title text="{i18n>GEN_DATA}"></core:Title>
+												<Label text="{i18n>CHAR_NAME_TXT}"/>
+												<Input value="{AIWMSPT>/AtnamMs}" valueState="{AIWMSPT>/AtnamMsVS}" valueStateText="{AIWMSPT>/AtnamMsVST}"
+													enabled="{AIWMSPT>/AtnamMsEnabled}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="charNameChange"
+													change="onCharNameChange" maxLength="30">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWMSPT>/Atbez}" enabled="false"></Input>
+												<Label text="{i18n>CHAR_UNIT}"></Label>
+												<!-- visible="{ApproveModel>/approveVisible}"-->
+												<Input enabled="false" value="{AIWMSPT>/Mseh6}">
+													<!-- visible="{ApproveModel>/approveVisible}" -->
+													<layoutData>
+														<l:GridData span="L2 M2 S2"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWMSPT>/Msehl}"></Input>
+												<!-- visible="{ApproveModel>/approveVisible}" -->
+												<Label text="{i18n>DEC_PLACE}"></Label>
+												<!-- visible="{ApproveModel>/approveVisible}" -->
+												<Input enabled="{mainView>/enabled}" value="{AIWMSPT>/Decim}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"
+													change="onDeciPlaceChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<!-- visible="{ApproveModel>/approveVisible}" -->
+												<Label text="{i18n>CODE_GRP_TXT}"/>
+												<Input value="{AIWMSPT>/Codgr}" valueState="{AIWMSPT>/CodgrVS}" valueStateText="{AIWMSPT>/CodgrVST}" showValueHelp="true"
+													valueHelpRequest="valueHelpFunSelect" liveChange="codeGrpChange" enabled="{mainView>/enabled}" maxLength="8" change="onCodeGrpChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWMSPT>/Codgrtxt}" enabled="false"></Input>
+												<Label text="{i18n>ASSEMBLY}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMSPT>/Locas}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S2"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWMSPT>/Maktx}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>AUTH_GRP}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" editable="true" value="{AIWMSPT>/Begru}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S2"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWMSPT>/Begtx}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>MEAS_PT}"></Label>
+												<CheckBox selected="{AIWMSPT>/Indct}" enabled="{mainView>/enabled}" select="onCounterSelect"></CheckBox>
+												<Label text="{i18n>FLOATEXP}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input value="{AIWMSPT>/Expon}" enabled="false" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>VALCODE}" ></Label>
+												<CheckBox selected="{AIWMSPT>/Cdsuf}" enabled="{mainView>/enabled}" select="onValCodeSelect"></CheckBox>
+												<!--visible="{AIWMSPT>/tEnable}"  visible="{AIWMSPT>/tEnable}"-->
+												<Label text="{i18n>MEASREADTRANSF}"></Label>
+												<CheckBox selected="{AIWMSPT>/readTransfSel}" enabled="{mainView>/enabled}"></CheckBox>
+												<Label text="{i18n>TRANSOF}"></Label>
+												<Input value="{AIWMSPT>/readTransf}" enabled="false">
+													<layoutData>
+														<l:GridData span="L2 M2 S2"/>
+													</layoutData>
+												</Input>
+												<Button text="Details" press="onMeasReadTransPress" enabled="{mainView>/enabled}">
+													<layoutData>
+														<l:GridData span="L1 M2 S2"/>
+													</layoutData>
+												</Button>
+												<!--<CheckBox selected="{AIWMSPT>/Cdsuf}" enabled="{mainView>/enabled}" select="onValCodeSelect" visible="{AIWMSPT>/tEnable}"></CheckBox>-->
+												<core:Title text="{i18n>TARGET_LINITS}"></core:Title>
+												<!--visible="{AIWMSPT>/countEnable}"-->
+												<Label text="{i18n>CTR_FLW}"></Label>
+												<Input type="Number" value="{AIWMSPT>/Cjumc}" enabled="{mainView>/enabled}" visible="{AIWMSPT>/countEnable}"></Input>
+												<Label text="{i18n>ANNUAL_EST}"></Label>
+												<Input type="Number" value="{AIWMSPT>/Pyeac}" enabled="{mainView>/enabled}" visible="{AIWMSPT>/countEnable}"></Input>
+												<!-- visible="{AIWMSPT>/tEnable}"-->
+												<Label text="{i18n>TARGET_VAL}"></Label>
+												<Input type="Number" value="{AIWMSPT>/Desir}" valueState="{AIWMSPT>/DesirVS}" valueStateText="{AIWMSPT>/DesirVST}"
+													enabled="{mainView>/enabled}" change="onTargetValueChange" visible="{AIWMSPT>/tEnable}"></Input>
+												<Label text="{i18n>EXT_UNIT}" visible="{enable>/externalEnable}"></Label>
+												<!--<Input id="externalUnit" visible="{enable>/externalEnable}" enabled="false" editable="true" change="onValidFrmChange"
+						value="{AIWMSPT>/Mseh6}"/>-->
+												<Input enabled="false" editable="true" change="onValidFrmChange" value="{AIWMSPT>/Mrngu}" visible="{ApproveModel>/approveVisible}"/>
+												<Label text="{i18n>TEXT}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMSPT>/Dstxt}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>CNT_BCKWRDS}" visible="{ApproveModel>/approveVisible}"></Label>
+												<CheckBox selected="{path:'AIWMSPT>/Indrv', formatter:'.formatter.typeCheck'}" enabled="false" visible="{ApproveModel>/approveVisible}"></CheckBox>
+												<core:Title text="{i18n>ADD_DATA}"></core:Title>
+												<Label text="{i18n>UP_LIMIT}"></Label>
+												<Input type="Number" value="{AIWMSPT>/Mrmax}" enabled="{mainView>/enabled}" change="onTargetValueChange"></Input>
+												<Label text="{i18n>LOW_LIMIT}"></Label>
+												<Input type="Number" value="{AIWMSPT>/Mrmin}" enabled="{mainView>/enabled}" change="onTargetValueChange"></Input>
+												<Label text="{i18n>MEAS_RANGE}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMSPT>/Mrngu}" visible="{ApproveModel>/approveVisible}"></Input>
+											</f:content>
+										</f:SimpleForm>
+										<core:Fragment id="lamFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.lam.LinearData" type="XML"/>
+										<core:Fragment id="clsFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.ClassAssignment" type="XML"/>
+										<core:Fragment id="charFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.Characteristics" type="XML"/>
+									</VBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisibleLin}" text="{i18n>LINEAR_DATA}"
+								tooltip="{i18n>LINEAR_DATA}">
+								<content>
+									<core:Fragment id="lamAprvFrag" fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.LinearDataAprv" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>assignment}"
+								tooltip="{i18n>assignment}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.ClassAssignments" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>characteristics}"
+								tooltip="{i18n>characteristics}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Characteristics" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<!--<IconTabFilter key="onAttach" icon="sap-icon://attachment" text="{i18n>ATTACHMENT_TITLE}" tooltip="{i18n>ATTACHMENT_TITLE}"-->
+							<!--	design="Horizontal">-->
+							<!--	<content>-->
+							<!--		<core:Fragment id="attach" fragmentName="ugiaiwui.mdg.aiw.library.fragments.Attachments.Attachments" type="XML"/>-->
+							<!--	</content>-->
+							<!--</IconTabFilter>-->
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Toolbar id="tabletoolbar">
+						<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+						<ToolbarSpacer/>
+						<Button id="idBtnCheck" text="Check" press="onDonePress"/>
+						<Button text="Done" type="Accept" press="onDonePress"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

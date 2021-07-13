@@ -1,0 +1,765 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "ugiaiwui.mdg.aiw.request",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/ugiod07/AIW_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": ""
+                }
+            },
+            "F4_HELPS_SRV": {
+                "uri": "/sap/opu/odata/UGIOD07/F4_HELP_SRV",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": ""
+                }
+            },
+            "F4_HELPS_SRV2": {
+                "uri": "/sap/opu/odata/ugiod01/F4_HELPS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/F4_HELPS_SRV/metadata.xml"
+                }
+            },
+            "AIW_APPROVE_SRV": {
+                "uri": "/sap/opu/odata/ugiod07/AIW_APPROVE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/AIW_APPROVE_SRV/metadata.xml"
+                }
+            },
+            "objectKey": {
+                "uri": "model/Objects.json",
+                "type": "JSON"
+            },
+            "EQUI_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/EQUI_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "EQUI_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/EQUI_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/EQUI_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "FUNCLOC_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/FUNCLOC_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "FUNCLOC_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/FUNCLOC_HA_SRCH_SRV",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/FUNCLOC_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "WORKCNTR_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/WORKCNTR_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "WORKCNTR_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/WORKCNTR_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "MSPOINT_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/MSPOINT_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "MSPOINT_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/MSPOINT_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "MPLAN_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/MPLAN_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "MPLAN_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/MPLAN_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "OBJLINK_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/OBJLINK_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/OBJLINK_DB_SRCH_SRV/metadata.xml"
+                }
+            },
+            "OBJLINK_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/OBJLINK_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/OBJLINK_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "OBJNETWRK_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/OBJNETWRK_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "OBJNETWRK_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/OBJNETWRK_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "TASKLIST_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/TASKLIST_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "TASKLIST_HA_SEARCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/TASKLIST_HA_SEARCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/TASKLIST_HA_SEARCH_SRV/metadata.xml"
+                }
+            },
+            "PMBOMHDR_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/PMBOMHDR_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "PMBOMHDR_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/PMBOMHDR_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/PMBOMHDR_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "EQBOMHDR_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/EQBOMHDR_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "EQBOMHDR_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/EQBOMHDR_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/EQBOMHDR_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "FLBOMHDR_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/FLBOMHDR_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "FLBOMHDR_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/FLBOMHDR_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/FLBOMHDR_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "WBSBOMHDR_DB_SEARCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/WBSBOMHDR_DB_SEARCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "WBSBOMHDR_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/WBSBOMHDR_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/WBSBOMHDR_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "TLGNHDR_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/TLGNHDR_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "TLGNHDR_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/TLGNHDR_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/TLGNHDR_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "TLEQHDR_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/TLEQHDR_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "TLEQHDR_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/TLEQHDR_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/TLEQHDR_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "TLFLHDR_DB_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/TLFLHDR_DB_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "TLFLHDR_HA_SRCH_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/TLFLHDR_HA_SRCH_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/TLFLHDR_HA_SRCH_SRV/metadata.xml"
+                }
+            },
+            "MDG_EAM_EQUIPMENT_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/MDG_EAM_EQUIPMENT_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/MDG_EAM_EQUIPMENT_SRV/metadata.xml"
+                }
+            },
+            "MDG_EAM_MROBOM_SRV": {
+                "uri": "/sap/opu/odata/ugiod01/MDG_EAM_MROBOM_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.1worklist",
+            "version": "1.71.26"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ugiaiwui.mdg.aiw.request.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {
+                    "lazy": true
+                },
+                "sap.ushell": {
+                    "lazy": true
+                },
+                "sap.ui.table": {
+                    "lazy": true
+                },
+                "sap.ui.commons": {
+                    "lazy": true
+                },
+                "sap.ui.unified": {
+                    "lazy": true
+                },
+                "sap.collaboration": {
+                    "lazy": true
+                },
+                "ugiaiwui.mdg.aiw.library": {},
+                "ugieamui.mdg.eam.lib": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ugiaiwui.mdg.aiw.request.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "useBatch": false,
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request",
+                    "refreshAfterChange": false,
+                    "defaultOperationMode": "sap.ui.model.odata.OperationMode.Client"
+                },
+                "dataSource": "mainService",
+                "preload": true
+            },
+            "NewModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "useBatch": false,
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "F4_HELPS_SRV",
+                "preload": true
+            },
+            "NewModel2": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request",
+                    "useBatch": false,
+                    "refreshAfterChange": false
+                },
+                "dataSource": "F4_HELPS_SRV2",
+                "preload": true
+            },
+            "ApprovalModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "useBatch": false,
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "AIW_APPROVE_SRV",
+                "preload": false
+            },
+            "objects": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "objectKey"
+            },
+            "eamMbomModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "MDG_EAM_MROBOM_SRV",
+                "preload": false
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ugiaiwui.mdg.aiw.request.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "main",
+                    "name": "main",
+                    "target": [
+                        "main"
+                    ]
+                },
+                {
+                    "pattern": "request",
+                    "name": "request",
+                    "target": [
+                        "request"
+                    ]
+                },
+                {
+                    "pattern": "mainDetail/{cReqNo}/{itemPath}/{crType}/{crDesc}/{Action}/{Model}",
+                    "name": "mainDetail",
+                    "target": [
+                        "mainDetail"
+                    ]
+                },
+                {
+                    "pattern": "detail/{FragmentName}/{itemPath}/{e}/{p}/{u}/{cr}/{w}/{mode}/:mat:/:uid:/:case:",
+                    "name": "detail",
+                    "target": [
+                        "detail"
+                    ]
+                },
+                {
+                    "pattern": "search/{action}",
+                    "name": "search",
+                    "target": [
+                        "search"
+                    ]
+                },
+                {
+                    "pattern": "itmDetail/{itemPath}/{sFragmentName}/{sCrStatus}/{mode}",
+                    "name": "itmDetail",
+                    "target": [
+                        "itmDetail"
+                    ]
+                },
+                {
+                    "pattern": "ONdetail/{itemPath}/{action}/{netId}/{objType}/{status}/{mode}",
+                    "name": "ONdetail",
+                    "target": [
+                        "ONdetail"
+                    ]
+                },
+                {
+                    "pattern": "detailEqui/{Path}/{ViewName}/{Equi}/{CrStatus}",
+                    "name": "detailEqui",
+                    "target": [
+                        "detailEqui"
+                    ]
+                },
+                {
+                    "pattern": "detailFloc/{Path}/{ViewName}/{Floc}/{CrStatus}",
+                    "name": "detailFloc",
+                    "target": [
+                        "detailFloc"
+                    ]
+                },
+                {
+                    "pattern": "detailMspt/{Path}/{ViewName}/{Mspt}/{CrStatus}",
+                    "name": "detailMspt",
+                    "target": [
+                        "detailMspt"
+                    ]
+                },
+                {
+                    "pattern": "detailMpmi/{Path}/{ViewName}/{Mplan}/{CrStatus}",
+                    "name": "detailMpmi",
+                    "target": [
+                        "detailMpmi"
+                    ]
+                },
+                {
+                    "pattern": "itemMpmi/{itemPath}/{CrStatus}/{maintCat}/{multiCycle}/{sys}/{strategy}/{cUnit}/{mainRowIndex}/{viewName}",
+                    "name": "itemMpmi",
+                    "target": [
+                        "itemMpmi"
+                    ]
+                },
+                {
+                    "pattern": "request",
+                    "name": "request",
+                    "target": [
+                        "request"
+                    ]
+                },
+                {
+                    "pattern": "approve/{itemPath}/{crNo}/{status}",
+                    "name": "approve",
+                    "target": [
+                        "approve"
+                    ]
+                },
+                {
+                    "pattern": "linkLamDetail/{itemPath}",
+                    "name": "linkLamDetail",
+                    "target": [
+                        "object",
+                        "linkLamDetail"
+                    ]
+                },
+                {
+                    "pattern": "wcDetail/{itemPath}/{action}/{wc}/{status}/{plant}/{mode}",
+                    "name": "wcDetail",
+                    "target": [
+                        "wcDetail"
+                    ]
+                },
+                {
+                    "pattern": "wccosting/{itemPath}",
+                    "name": "wccosting",
+                    "target": [
+                        "object",
+                        "wccosting"
+                    ]
+                },
+                {
+                    "pattern": "wccapacity/{itemPath}",
+                    "name": "wccapacity",
+                    "target": [
+                        "object",
+                        "wccapacity"
+                    ]
+                },
+                {
+                    "pattern": "tlDetail/{itemPath}/{action}/{group}/{tlType}/{status}/{mode}",
+                    "name": "tlDetail",
+                    "target": [
+                        "tlDetail"
+                    ]
+                },
+                {
+                    "pattern": "olDetail/{itemPath}/{action}/{link}/{status}/{mode}",
+                    "name": "olDetail",
+                    "target": [
+                        "olDetail"
+                    ]
+                },
+                {
+                    "pattern": "tlHdrDetail/{action}/{mainPath}/{itemPath}/{pPlant}/{mainWc}/{mainWcPlant}/{pPlantDesc}/{wcDesc}/{mode}",
+                    "name": "tlHdrDetail",
+                    "target": [
+                        "tlHdrDetail"
+                    ]
+                },
+                {
+                    "pattern": "tlOprDetail/{action}/{basicPath}/{mainPath}/{itemPath}/{wc}/{wcPlant}/{ctrlKey}/{mode}",
+                    "name": "tlOprDetail",
+                    "target": [
+                        "tlOprDetail"
+                    ]
+                },
+                {
+                    "pattern": "tlComponent/{itemPath}/{mode}",
+                    "name": "tlComponent",
+                    "target": [
+                        "object",
+                        "tlComponent"
+                    ]
+                },
+                {
+                    "pattern": "tlSrvPckge/{itemPath}/{mode}",
+                    "name": "tlSrvPckge",
+                    "target": [
+                        "object",
+                        "tlSrvPckge"
+                    ]
+                },
+                {
+                    "pattern": "tlMaintPckg/{itemPath}/{mode}",
+                    "name": "tlMaintPckg",
+                    "target": [
+                        "object",
+                        "tlMaintPckg"
+                    ]
+                },
+                {
+                    "pattern": "tlPRT/{itemPath}/{mode}",
+                    "name": "tlPRT",
+                    "target": [
+                        "object",
+                        "tlPRT"
+                    ]
+                },
+                {
+                    "pattern": "tlInspChar/{itemPath}/{mode}",
+                    "name": "tlInspChar",
+                    "target": [
+                        "object",
+                        "tlInspChar"
+                    ]
+                },
+                {
+                    "pattern": "intlAddr/{modelName}/{sCrStatus}/{itemPath}/{viewName}/{rowIndex}/{addrEnable}",
+                    "name": "intlAddr",
+                    "target": [
+                        "intlAddr"
+                    ]
+                }
+            ],
+            "targets": {
+                "main": {
+                    "viewName": "Main",
+                    "viewId": "main",
+                    "viewLevel": 1
+                },
+                "mainDetail": {
+                    "viewName": "Main",
+                    "viewId": "mainDetail",
+                    "viewLevel": 1
+                },
+                "request": {
+                    "viewName": "MyChangeRequest",
+                    "viewId": "request",
+                    "viewLevel": 1
+                },
+                "detail": {
+                    "viewName": "DetailBOM",
+                    "viewId": "detail",
+                    "viewLevel": 1
+                },
+                "search": {
+                    "viewName": "Search",
+                    "viewId": "search",
+                    "viewLevel": 1
+                },
+                "detailEqui": {
+                    "viewName": "DetailEquipment",
+                    "viewId": "detailEqui",
+                    "viewLevel": 1
+                },
+                "detailFloc": {
+                    "viewName": "DetailFunctionalLocation",
+                    "viewId": "detailFloc",
+                    "viewLevel": 1
+                },
+                "detailMspt": {
+                    "viewName": "DetailMeasuringPoint",
+                    "viewId": "detailMspt",
+                    "viewLevel": 1
+                },
+                "detailMpmi": {
+                    "viewName": "DetailMaintenancePlan",
+                    "viewId": "detailMpmi",
+                    "viewLevel": 1
+                },
+                "itemMpmi": {
+                    "viewName": "ItemMaintenancePlan",
+                    "viewId": "itemMpmi",
+                    "viewLevel": 2
+                },
+                "itmDetail": {
+                    "viewName": "ItemBOM",
+                    "viewId": "itemDetail",
+                    "viewLevel": 2
+                },
+                "ONdetail": {
+                    "viewName": "DetailObjectNetwork",
+                    "viewId": "ONdetail",
+                    "viewLevel": 1
+                },
+                "linkLamDetail": {
+                    "viewName": "OLLamDetail",
+                    "viewId": "objectLinkLamDetail"
+                },
+                "wcDetail": {
+                    "viewName": "DetailWorkCenter",
+                    "viewId": "wcDetail",
+                    "viewLevel": 1
+                },
+                "wccosting": {
+                    "viewName": "WCCostingDetail",
+                    "viewId": "wcCostingDetail"
+                },
+                "wccapacity": {
+                    "viewName": "WCCapacityDetail",
+                    "viewId": "wcCapacityDetail"
+                },
+                "tlDetail": {
+                    "viewName": "DetailTaskList",
+                    "viewId": "tlDetail",
+                    "viewLevel": 1
+                },
+                "olDetail": {
+                    "viewName": "DetailObjectLink",
+                    "viewId": "olDetail",
+                    "viewLevel": 1
+                },
+                "tlHdrDetail": {
+                    "viewName": "TLHeaderDetail",
+                    "viewId": "tlHeaderDetail",
+                    "viewLevel": 2
+                },
+                "tlOprDetail": {
+                    "viewName": "TLOperationDetail",
+                    "viewId": "tlOperationDetail",
+                    "viewLevel": 2
+                },
+                "tlComponent": {
+                    "viewName": "TLComponentDetail",
+                    "viewId": "tlComponentDetail"
+                },
+                "tlSrvPckge": {
+                    "viewName": "TLSrvPckgeDetail",
+                    "viewId": "TLSrvPckgeDetail"
+                },
+                "tlMaintPckg": {
+                    "viewName": "TLMaintPckgDetail",
+                    "viewId": "TLMaintPckgDetail"
+                },
+                "tlPRT": {
+                    "viewName": "TLPRTDetail",
+                    "viewId": "TLPRTDetail"
+                },
+                "tlInspChar": {
+                    "viewName": "TLInspCharDetail",
+                    "viewId": "TLInspCharDetail"
+                },
+                "intlAddr": {
+                    "viewName": "InternationalAddress",
+                    "viewId": "intlAddr",
+                    "viewLevel": 1
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/ugiaiwui/aiw/webapp",
+        "_version": "1.1.0"
+    }
+}

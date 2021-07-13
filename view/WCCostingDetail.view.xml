@@ -1,0 +1,145 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.WCCostingDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<semantic:FullscreenPage id="wcCostingDetailPage" navButtonPress="onNavBack" showNavButton="true" title="Costing Details">
+		<semantic:content>
+			<Panel expandable="true" expanded="true" headerText="{i18n>ACT_OVERVIEW}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<l:HorizontalLayout>
+						<l:content>
+							<l:VerticalLayout id="vertical1">
+								<l:content>
+									<Label text="{i18n>ALT_ACT_DESC}"></Label>
+									<Input id="altActDesc1" enabled="false" value="{wcCosting>/Cotxt01}"></Input>
+									<Input id="altActDesc2" enabled="false" value="{wcCosting>/Cotxt02}"></Input>
+									<Input id="altActDesc3" enabled="false" value="{wcCosting>/Cotxt03}"></Input>
+									<Input id="altActDesc4" enabled="false" value="{wcCosting>/Cotxt04}"></Input>
+									<Input id="altActDesc5" enabled="false" value="{wcCosting>/Cotxt05}"></Input>
+									<Input id="altActDesc6" enabled="false" value="{wcCosting>/Cotxt06}"></Input>
+								</l:content>
+							</l:VerticalLayout>
+							<l:VerticalLayout id="vertical2">
+								<l:content>
+									<Label text="{i18n>ACT_TYP}"></Label>
+									<Input id="activityType1" enabled="false" value="{wcCosting>/CoLar01}"></Input>
+									<Input id="activityType2" enabled="false" value="{wcCosting>/CoLar02}"></Input>
+									<Input id="activityType3" enabled="false" value="{wcCosting>/CoLar03}"></Input>
+									<Input id="activityType4" enabled="false" value="{wcCosting>/CoLar04}"></Input>
+									<Input id="activityType5" enabled="false" value="{wcCosting>/CoLar05}"></Input>
+									<Input id="activityType6" enabled="false" value="{wcCosting>/CoLar06}"></Input>
+								</l:content>
+							</l:VerticalLayout>
+							<l:VerticalLayout id="vertical3">
+								<l:content>
+									<Label text="{i18n>ACT_UNIT}"></Label>
+									<Input id="activityUnit1" enabled="false" value="{wcCosting>/Leinh1}"></Input>
+									<Input id="activityUnit2" enabled="false" value="{wcCosting>/Leinh2}"></Input>
+									<Input id="activityUnit3" enabled="false" value="{wcCosting>/Leinh3}"></Input>
+									<Input id="activityUnit4" enabled="false" value="{wcCosting>/Leinh4}"></Input>
+									<Input id="activityUnit5" enabled="false" value="{wcCosting>/Leinh5}"></Input>
+									<Input id="activityUnit6" enabled="false" value="{wcCosting>/Leinh6}"></Input>
+								</l:content>
+							</l:VerticalLayout>
+							<l:VerticalLayout>
+								<l:content>
+									<Label text="{i18n>REF_IND}"></Label>
+									<CheckBox id="refInd1" enabled="false" selected="{path:'wcCosting>/FlgRef1', formatter:'.typeCheck'}"></CheckBox>
+									<CheckBox id="refInd2" enabled="false" selected="{path:'wcCosting>/FlgRef2', formatter:'.typeCheck'}"></CheckBox>
+									<CheckBox id="refInd3" enabled="false" selected="{path:'wcCosting>/FlgRef3', formatter:'.typeCheck'}"></CheckBox>
+									<CheckBox id="refInd4" enabled="false" selected="{path:'wcCosting>/FlgRef4', formatter:'.typeCheck'}"></CheckBox>
+									<CheckBox id="refInd5" enabled="false" selected="{path:'wcCosting>/FlgRef5', formatter:'.typeCheck'}"></CheckBox>
+									<CheckBox id="refInd6" enabled="false" selected="{path:'wcCosting>/FlgRef6', formatter:'.typeCheck'}"></CheckBox>
+								</l:content>
+							</l:VerticalLayout>
+							<l:VerticalLayout id="vertical5">
+								<l:content>
+									<Label text="{i18n>FOR_KEY}"></Label>
+									<Input id="formulaKey1" enabled="false" value="{wcCosting>/For01}"></Input>
+									<Input id="formulaKey2" enabled="false" value="{wcCosting>/For02}"></Input>
+									<Input id="formulaKey3" enabled="false" value="{wcCosting>/For03}"></Input>
+									<Input id="formulaKey4" enabled="false" value="{wcCosting>/For04}"></Input>
+									<Input id="formulaKey5" enabled="false" value="{wcCosting>/For05}"></Input>
+									<Input id="formulaKey6" enabled="false" value="{wcCosting>/For06}"></Input>
+								</l:content>
+							</l:VerticalLayout>
+							<l:VerticalLayout id="vertical6">
+								<l:content>
+									<Label text="{i18n>FOR_DESC}"></Label>
+									<Input id="formulaDesc1" enabled="false" value="{wcCosting>/Frmltxt1}"></Input>
+									<Input id="formulaDesc2" enabled="false" value="{wcCosting>/Frmltxt2}"></Input>
+									<Input id="formulaDesc3" enabled="false" value="{wcCosting>/Frmltxt3}"></Input>
+									<Input id="formulaDesc4" enabled="false" value="{wcCosting>/Frmltxt4}"></Input>
+									<Input id="formulaDesc5" enabled="false" value="{wcCosting>/Frmltxt5}"></Input>
+									<Input id="formulaDesc6" enabled="false" value="{wcCosting>/Frmltxt6}"></Input>
+								</l:content>
+							</l:VerticalLayout>
+							<l:VerticalLayout id="vertical7">
+								<l:content>
+									<Label text="{i18n>INC_WAGES}"></Label>
+									<Input id="incWagesInd1" enabled="false" value="{wcCosting>/Bde01txt}"></Input>
+									<Input id="incWagesInd2" enabled="false" value="{wcCosting>/Bde02txt}"></Input>
+									<Input id="incWagesInd3" enabled="false" value="{wcCosting>/Bde03txt}"></Input>
+									<Input id="incWagesInd4" enabled="false" value="{wcCosting>/Bde04txt}"></Input>
+									<Input id="incWagesInd5" enabled="false" value="{wcCosting>/Bde05txt}"></Input>
+									<Input id="incWagesInd6" enabled="false" value="{wcCosting>/Bde06txt}"></Input>
+								</l:content>
+							</l:VerticalLayout>
+							<l:VerticalLayout id="vertical8">
+								<l:content>
+									<Label text="{i18n>REC_TYP_GRP}"></Label>
+									<Input id="recTypeGroup1" enabled="false" value="{wcCosting>/Sakl01txt}"></Input>
+									<Input id="recTypeGroup2" enabled="false" value="{wcCosting>/Sakl02txt}"></Input>
+									<Input id="recTypeGroup3" enabled="false" value="{wcCosting>/Sakl03txt}"></Input>
+									<Input id="recTypeGroup4" enabled="false" value="{wcCosting>/Sakl04txt}"></Input>
+									<Input id="recTypeGroup5" enabled="false" value="{wcCosting>/Sakl05txt}"></Input>
+									<Input id="recTypeGroup6" enabled="false" value="{wcCosting>/Sakl06txt}"></Input>
+								</l:content>
+							</l:VerticalLayout>
+						</l:content>
+					</l:HorizontalLayout>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>ACT_TYP_INT}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="wcActivityTypeForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>ACT_TYP}"></Label>
+							<Input id="activityType_1" enabled="false" value="{wcCosting>/CrLstar}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="activityType_2" enabled="false" value="{wcCosting>/ActvttypeTxt}"></Input>
+							<CheckBox id="activity" enabled="false" selected="{path:'wcCosting>/LstarRef', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>FOR_KEY_COST}"></Label>
+							<Input id="formulaKeyCost" enabled="false" value="{wcCosting>/Forn1}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="formulaKeyCost1" enabled="false" value="{wcCosting>/Frmltxt}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>LINK_BP}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="wcLinkToBusForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>BUS_PRC}"></Label>
+							<Input id="busProcess" enabled="false" value="{wcCosting>/CrPrznr}"></Input>
+							<CheckBox id="capPlanGrpDesc" enabled="false" selected="{path:'wcCosting>/Prz01Ref', formatter:'.typeCheck'}"></CheckBox>
+							<Input id="busProcess1" enabled="false" value="{wcCosting>/Forp1}"></Input>
+							<Input id="busProcess2" enabled="false" value="{wcCosting>/Forp1txt}"></Input>
+							<Label text="{i18n>INC_WAGES_HDR}"></Label>
+							<Input id="incentiveWages" enabled="false" value="{wcCosting>/Bde}"></Input>
+							<Label text="{i18n>REC_TYP_GRP}"></Label>
+							<Input id="recTypeGroup" enabled="false" value="{wcCosting>/Sakl}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</core:FragmentDefinition>

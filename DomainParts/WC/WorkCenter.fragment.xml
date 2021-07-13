@@ -1,0 +1,86 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="WCTab" text="WC" icon="sap-icon://offsite-work" tooltip="{i18n>wcTl}" visible="{EnableModel>/Work Center}"
+		count="{CountModel>/WCCount}" iconColor="Contrast">
+		<content>
+			<Table growing="true" growingScrollToLoad="true" mode="{EnableModel>/tableType}" width="auto" noDataText="{i18n>tableNoDataText}"
+				items="{AIWListWCModel>/}" selectionChange="onWCRowSelect">
+				<headerToolbar>
+					<Toolbar visible="{EnableModel>/actionEnable}">
+						<MenuButton text="{i18n>selectAction}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+							<menu>
+								<Menu itemSelected="onMenuAction">
+									<items>
+										<MenuItem key="createWC" text="{i18n>createWC}" icon="sap-icon://create"/>
+										<MenuItem key="copyWC" text="{i18n>copyWC}" icon="sap-icon://copy"/>
+										<MenuItem key="changeWC" text="{i18n>changeWC}" icon="sap-icon://write-new"/>
+										<!--<MenuItem key="approveWC" text="{i18n>approveWC}" icon="sap-icon://write-new"/>-->
+									</items>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" type="Reject" press="onMulDltTab" enabled="{EnableDELModel>/deleteWC}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>wcItemTableColumn1}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>wcItemTableColumn2}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>wcItemTableColumn3}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>wcItemTableColumn4}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>wcItemTableColumn5}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>wcItemTableColumn6}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>wcItemTableColumn7}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>wcItemTableColumn8}" wrapping="true"/>
+					</Column>
+					<!--<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>delete}" wrapping="true"/>
+					</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onItemPress">
+						<cells>
+							<Input type="Text" value="{AIWListWCModel>wc}" enabled="{AIWListWCModel>wcEnable}" showValueHelp="true" liveChange="onLiveChange"
+								valueHelpRequest="onWcVH" maxLength="8" valueState="{AIWListWCModel>wcValueState}" valueStateText="{AIWListWCModel>wcValueStateTxt}"
+								change="onChange" submit="onChange"></Input>
+							<Input type="Text" value="{AIWListWCModel>plant}" enabled="{AIWListWCModel>plEnable}" showValueHelp="true" valueHelpRequest="onPlantVH"
+								liveChange="onLiveChange" change="onChange" maxLength="4" submit="onChange" valueState="{AIWListWCModel>plantValueState}"
+								valueStateText="{AIWListWCModel>plantValueStateTxt}"></Input>
+							<Input type="Text" value="{AIWListWCModel>wcDesc}" enabled="{AIWListWCModel>enable}" maxLength="40" showValueHelp="false"></Input>
+							<Input type="Text" value="{AIWListWCModel>wcCat}" enabled="{AIWListWCModel>wcatEnable}" maxLength="4" showValueHelp="true"
+								valueHelpRequest="onWcCatVH" liveChange="onLiveChange" change="onChange" submit="onChange" valueState="{AIWListWCModel>wcCatValueState}"
+								valueStateText="{AIWListWCModel>wcCatValueStateTxt}"></Input>
+							<Input type="Text" value="{AIWListWCModel>person}" enabled="{AIWListWCModel>enable}" showValueHelp="true" liveChange="onLiveChange"
+								change="onChange" valueHelpRequest="onPerRespVH" maxLength="3" submit="onChange" valueState="{AIWListWCModel>personResValueState}"
+								valueStateText="{AIWListWCModel>personResValueStateTxt}"></Input>
+							<Input type="Text" value="{AIWListWCModel>usg}" enabled="{AIWListWCModel>enable}" showValueHelp="true" valueHelpRequest="onWCUsageVH"
+								liveChange="onLiveChange" change="onChange" maxLength="3" submit="onChange" valueState="{AIWListWCModel>usgValueState}"
+								valueStateText="{AIWListWCModel>usgValueStateTxt}"></Input>
+							<Input type="Text" value="{AIWListWCModel>stdVal}" enabled="{AIWListWCModel>enable}" showValueHelp="true" liveChange="onLiveChange"
+								change="onChange" valueHelpRequest="onStdValVH" submit="onChange" valueState="{AIWListWCModel>stdValueState}"
+								valueStateText="{AIWListWCModel>stdValueStateTxt}"></Input>
+							<Input type="Text" value="{AIWListWCModel>ctrlKey}" enabled="{AIWListWCModel>enable}" showValueHelp="true" liveChange="onLiveChange"
+								change="onChange" valueHelpRequest="onCtrlKeyVH" submit="onChange" valueState="{AIWListWCModel>cntrlKeyValueState}"
+								valueStateText="{AIWListWCModel>cntrlKeyValueStateTxt}"></Input>
+							<!--<core:Icon src="sap-icon://sys-cancel" size="20px" press="handleDelete" tooltip="{i18n>delete}" visible="{AIWListWCModel>enable}"></core:Icon>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

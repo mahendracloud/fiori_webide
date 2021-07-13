@@ -1,0 +1,317 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.TLOperationDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<Page id="tlOpDetailPage" navButtonPress="onNavBack" showNavButton="false" title="Operation Detail">
+		<content>
+			<Panel expandable="true" expanded="true" headerText="{i18n>OP_DET}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="hdrDetailsForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>OP_NUM}"></Label>
+							<Input id="opNumDt" maxLength="4" enabled="{tlOpDetailModel>/VornrEnable}" value="{tlOpDetailModel>/Vornr}"
+								valueState="{tlOpDetailModel>/opNumDtValueState}" valueStateText="{tlOpDetailModel>/opNumDtValueStateTxt}" change="onOprNumChange"></Input>
+							<Label text="{i18n>SOP_LONG}"></Label>
+							<Input id="opSubOp" type="Number" maxLength="4" enabled="{tlOpDetailModel>/UvornEnable}" value="{tlOpDetailModel>/Uvorn}"
+								valueState="{tlOpDetailModel>/UvornVS}" change="onSubOpChange"></Input>
+							<!-- Approve -->
+							<Label text="{i18n>OP_DESC}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="operationDesc" enabled="false" value="{tlOpDetailModel>/Ltxa1}" visible="{tlOpDetailModel>/visible}"></Input>
+							<!-- shortText -->
+							<!--<Label text="{i18n>SUB_OP}" visible="{tlOpDetailModel>/visible}"></Label>-->
+							<!--<Input id="subOp" enabled="false" value="{tlOpDetailModel>/subOp}" visible="{tlOpDetailModel>/visible}"></Input>-->
+							<!-- -->
+							<Label text="{i18n>WC}"></Label>
+							<Input id="opWcDt" enabled="{tlOpDetailModel>/enable}" value="{tlOpDetailModel>/Arbpl}" maxLength="8" showValueHelp="true"
+								valueHelpRequest="onWCOpVH" change="onChange" submit="onChange" valueState="{tlOpDetailModel>/wcDtValueState}"
+								valueStateText="{tlOpDetailModel>/wcDtValueStateTxt}"></Input>
+							<!--<Label text="{i18n>PLANT}"></Label>-->
+							<Input id="opPlantDt" showValueHelp="true" enabled="{tlOpDetailModel>/enable}" maxLength="4" value="{tlOpDetailModel>/Werks}"
+								valueHelpRequest="onPlantOpVH" liveChange="onLiveChange" change="onChange" valueState="{tlOpDetailModel>/opPlantValueState}"
+								valueStateText="{tlOpDetailModel>/opPlantValueStateTxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<!--<Input id="opPlantDescDt" enabled="false" value="{tlOpDetailModel>/plantDesc}"></Input>-->
+							<Label text="{i18n>OP_CTRL_KEY}"></Label>
+							<Input id="opCtrlKeyDt" enabled="{tlOpDetailModel>/enable}" value="{tlOpDetailModel>/Steus}" maxLength="4" showValueHelp="true"
+								valueHelpRequest="onCtrlKeyVH" liveChange="onLiveChange" change="onChange" valueState="{tlOpDetailModel>/opCtrlKeyValueState}"
+								valueStateText="{tlOpDetailModel>/opCtrlKeyValueStateTxt}"></Input>
+							<!--<Input id="opCtrlKeyDescDt" enabled="false" value="{tlOpDetailModel>/ctrlkeyDesc}"></Input>-->
+							<Label text="{i18n>OP_DESC}"></Label>
+							<Input id="opDescDt" maxLength="40" enabled="{tlOpDetailModel>/enable}" value="{tlOpDetailModel>/Ltxa1}" liveChange="onLiveChange"
+								valueState="{tlOpDetailModel>/opDescValueState}" valueStateText="{tlOpDetailModel>/opDescValueStateTxt}"></Input>
+							<Label text="{i18n>OP_WORK}"></Label>
+							<Input id="opWorkDt" type="Number" value="{tlOpDetailModel>/Arbei}" valueState="{tlOpDetailModel>/ArbeiVS}"
+								enabled="{tlOpDetailModel>/WorkEnable}" change="onCalculate" liveChange="onLiveChange"></Input>
+							<!-- change="onCalculate" value="{path:'tlOpDetailModel>/Arbei', formatter:'.formatter.numberCheck'}" -->
+							<Label text="{i18n>OP_UWORK}"></Label>
+							<Input id="opWorkUnitDt" value="{tlOpDetailModel>/Arbeh}" enabled="{tlOpDetailModel>/WorkEnable}" change="onChange" maxLength="3"
+								liveChange="onLiveChange" showValueHelp="true" valueHelpRequest="onWorkUOMVH" valueState="{tlOpDetailModel>/wrkUntValueState}"
+								valueStateText="{tlOpDetailModel>/wrkUntValueStateTxt}"></Input>
+							<!-- submit="onCalculate"-->
+							<Label text="{i18n>OP_NO}"></Label>
+							<Input id="opNumberDt" type="Number" enabled="{tlOpDetailModel>/enable}" change="onCalculate" liveChange="onLiveChange"
+								value="{tlOpDetailModel>/Anzzl}" valueState="{tlOpDetailModel>/AnzzlVS}"></Input>
+							<Label text="{i18n>OP_DURATION}"></Label>
+							<Input id="opDurtnDt" type="Number" enabled="{tlOpDetailModel>/enable}" change="onCalculate" liveChange="onLiveChange"
+								value="{tlOpDetailModel>/Dauno}" valueState="{tlOpDetailModel>/DaunoVS}"></Input>
+							<!-- value="{path:'tlOpDetailModel>/Dauno', formatter:'.formatter.numberCheck'}" -->
+							<Label text="{i18n>OP_UDURATION}"></Label>
+							<Input id="opDuratnUnitDt" change="onChange" liveChange="onLiveChange" value="{tlOpDetailModel>/Daune}" maxLength="3" showValueHelp="true"
+								valueHelpRequest="onDuratnUOMVH" enabled="{tlOpDetailModel>/enable}" valueState="{tlOpDetailModel>/durUntValueState}"
+								valueStateText="{tlOpDetailModel>/durUntValueStateTxt}"></Input>
+							<!-- submit="onCalculate"  -->
+							<Label text="{i18n>OP_CALC_KEY}"></Label>
+							<Input id="opCalcKeyDt" enabled="{tlOpDetailModel>/enable}" showValueHelp="true" maxLength="1" valueHelpRequest="onCalcKeyVH"
+								liveChange="onLiveChange" change="onChange" value="{tlOpDetailModel>/Indet}" valueState="{tlOpDetailModel>/calcKeyValueState}"
+								valueStateText="{tlOpDetailModel>/calcKeyValueStateTxt}">
+								<!-- submit="onCalculate" -->
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="opCalcDescDt" enabled="false" value="{tlOpDetailModel>/calcKeyDesc}" maxLength="40"></Input>
+							<Label text="{i18n>ACT_TYP}"></Label>
+							<Input id="opActTypeDt" enabled="{tlOpDetailModel>/enable}" showValueHelp="true" valueHelpRequest="onActivityTypVH"
+								liveChange="onLiveChange" change="onChange" value="{tlOpDetailModel>/Larnt}" maxLength="6"
+								valueState="{tlOpDetailModel>/opActTypValueState}" valueStateText="{tlOpDetailModel>/opActTypValueStateTxt}">
+								<!--<layoutData>-->
+								<!--	<l:GridData span="L2 M2 S4"/>-->
+								<!--</layoutData>-->
+							</Input>
+							<!--<Input id="opActTypeDescDt" enabled="false" value="{tlOpDetailModel>/actTypDesc}" maxLength="40"></Input>-->
+							<!-- Approve -->
+							<Label text="{i18n>NORM_DUR}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="normalDuration" enabled="false" value="{tlOpDetailModel>/normDuration}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>UOM_DUR}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="uomDuration" enabled="false" value="{tlOpDetailModel>/uomDuration}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>WRK_PERC}"></Label>
+							<Input id="workPerc" value="{tlOpDetailModel>/workPerc}" valueState="{tlOpDetailModel>/workPercVS}" enabled="{tlOpDetailModel>/enable}"
+								liveChange="onLiveChange"></Input>
+							<Label text="{i18n>EXE_FACT}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="executionFac" enabled="false" value="{tlOpDetailModel>/exeFactor}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>ACT_TYP}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="activityType" enabled="false" value="{tlOpDetailModel>/actType}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>STD_TXT_KEY}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="stdTxtKey" enabled="false" value="{tlOpDetailModel>/stdTextKey}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>ASSEMBLY}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="assembly" enabled="false" value="{tlOpDetailModel>/assembly}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>NO_TICKETS}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="noOfTime" enabled="false" value="{tlOpDetailModel>/noOfTime}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>SUIT}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="suitability" enabled="false" value="{tlOpDetailModel>/sutability}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>WAGE_GRP}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="wageGroup" enabled="false" value="{tlOpDetailModel>/wageGroup}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>WAGE_TYP}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="wageType" enabled="false" value="{tlOpDetailModel>/wageType}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>SYS_COND}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="sysCondition" enabled="false" value="{tlOpDetailModel>/sysCondition}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>ORD_QTY}"></Label>
+							<Input id="orderQty" type="Number" value="{tlOpDetailModel>/orderQty}" valueState="{tlOpDetailModel>/orderQtyVS}"
+								enabled="{tlOpDetailModel>/enable}" liveChange="onLiveChange"></Input>
+							<Label text="{i18n>ORD_QTY_UNIT}"></Label>
+							<Input id="ordQuantityUnit" value="{tlOpDetailModel>/ordQtyUnit}" valueState="{tlOpDetailModel>/ordQtyUnitVS}"
+								enabled="{tlOpDetailModel>/enable}" showValueHelp="true" valueHelpRequest="onOrdQtyUnitVH" liveChange="onLiveChange"
+								change="onOrdQtyUnitChange"></Input>
+							<Label text="{i18n>NET_PRICE}"></Label>
+							<Input id="netPrice" type="Number" value="{tlOpDetailModel>/netPrice}" valueState="{tlOpDetailModel>/netPriceVS}"
+								enabled="{tlOpDetailModel>/enable}" liveChange="onLiveChange"></Input>
+							<Label text="{i18n>CURR}"></Label>
+							<Input id="currencyval" value="{tlOpDetailModel>/currency}" valueState="{tlOpDetailModel>/currencyVS}" enabled="{tlOpDetailModel>/enable}"
+								showValueHelp="true" valueHelpRequest="onCurrencyVH" liveChange="onLiveChange" change="onCurrencyChange"></Input>
+							<Label text="{i18n>PR_UNIT}"></Label>
+							<Input id="priceUnit" type="Number" value="{tlOpDetailModel>/priceUnit}" valueState="{tlOpDetailModel>/priceUnitVS}"
+								enabled="{tlOpDetailModel>/enable}" liveChange="onLiveChange"></Input>
+							<Label text="{i18n>PLAN_DEL_TIME}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="planDelTime" enabled="false" value="{tlOpDetailModel>/planDelTime}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>COST_ELE}"></Label>
+							<Input id="costElement" value="{tlOpDetailModel>/costElement}" valueState="{tlOpDetailModel>/costElementVS}"
+								enabled="{tlOpDetailModel>/enable}" showValueHelp="true" valueHelpRequest="onCostEleVH" liveChange="onLiveChange" change="onCostEleChange"></Input>
+							<Label text="{i18n>MAT_GRP}"></Label>
+							<Input id="matGrp" value="{tlOpDetailModel>/materialGrp}" valueState="{tlOpDetailModel>/materialGrpVS}" enabled="{tlOpDetailModel>/enable}"
+								showValueHelp="true" valueHelpRequest="onMatGrpVH" liveChange="onLiveChange" change="onMatGrpChange"></Input>
+							<Label text="{i18n>PURCH_GRP}"></Label>
+							<Input id="purchGroup" value="{tlOpDetailModel>/puchGroup}" valueState="{tlOpDetailModel>/puchGroupVS}" enabled="{tlOpDetailModel>/enable}"
+								showValueHelp="true" valueHelpRequest="onpuchGroupVH" liveChange="onLiveChange" change="onpuchGroupChange"></Input>
+							<Label text="{i18n>VEND}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="vendor" enabled="false" value="{tlOpDetailModel>/vendor}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>PURCH_ORG}"></Label>
+							<Input id="purchOrg" value="{tlOpDetailModel>/purchOrg}" valueState="{tlOpDetailModel>/purchOrgVS}" enabled="{tlOpDetailModel>/enable}"
+								showValueHelp="true" valueHelpRequest="onpurchOrgVH" liveChange="onLiveChange" change="onpurchOrgChange"></Input>
+							<Label text="{i18n>SRT_TERM}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="sortTerm" enabled="false" value="{tlOpDetailModel>/shortTerm}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>PURCH_INFO}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="purcInfo" enabled="false" value="{tlOpDetailModel>/purchInfo}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>FLD_KEY}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="fieldKey" enabled="false" value="{tlOpDetailModel>/fieldKey}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>PUCH_DOC}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="purchDoc" enabled="false" value="{tlOpDetailModel>/purchDoc}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>PURCH_DOC_IT}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="purchasingDocItem" enabled="false" value="{tlOpDetailModel>/purchDocItem}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label text="{i18n>EQUI}"></Label>
+							<Input maxLength="18" value="{tlOpDetailModel>/equi}" valueState="{tlOpDetailModel>/equiVS}" showValueHelp="true"
+								enabled="{tlOpDetailModel>/enable}" valueHelpRequest="onOprEquiVH" liveChange="onLiveChange" change="onOprEquiChange">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{tlOpDetailModel>/equiDesc}"></Input>
+							<Label text="{i18n>FLOC}"></Label>
+							<Input maxLength="40" value="{tlOpDetailModel>/floc}" valueState="{tlOpDetailModel>/flocVS}" enabled="{tlOpDetailModel>/enable}"
+								showValueHelp="true" valueHelpRequest="onOprFlocVH" liveChange="onLiveChange" change="onOprFlocChange">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{tlOpDetailModel>/flocDesc}"></Input>
+							<Label></Label>
+							<Text visible="false"></Text>
+							<!--<core:Title text="{i18n>USR_FL}"></core:Title>-->
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>USR_FL}" visible="{tlOpDetailModel>/visible}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Label text="{i18n>FL_KEY}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="usrFlds" enabled="false" value="{tlOpDetailModel>/userFld}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>GEN_FL}" visible="{tlOpDetailModel>/visible}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<!--<core:Title text="{i18n>GEN_FL}"></core:Title>-->
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Label text="{tlOpDetailModel>/Usrtxtname1}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="text1" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/text1}"></Input>
+							<Label text="{tlOpDetailModel>/Usrtxtname2}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="text2" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/text2}"></Input>
+							<Label text="{tlOpDetailModel>/Usrtxtname3}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="text3" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/text3}"></Input>
+							<Label text="{tlOpDetailModel>/Usrtxtname4}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="text4" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/text4}"></Input>
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>NUM_FL}" visible="{tlOpDetailModel>/visible}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<!--<core:Title text="{i18n>NUM_FL}"></core:Title>-->
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Label text="{tlOpDetailModel>/Usrqtyname1}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="quantity1" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/quantity1}"></Input>
+							<Input id="quantity1_" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/quantity1_}">
+								<layoutData>
+									<l:GridData span="L1 M1 S4"/>
+								</layoutData>
+							</Input>
+							<Label text="{tlOpDetailModel>/Usrqtyname2}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="quantity2" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/quantity2}"></Input>
+							<Input id="quantity2_" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/quantity2_}">
+								<layoutData>
+									<l:GridData span="L1 M1 S4"/>
+								</layoutData>
+							</Input>
+							<Label text="{tlOpDetailModel>/Usrvalname1}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="value3" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/value3}"></Input>
+							<Input id="value3_" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/value3_}">
+								<layoutData>
+									<l:GridData span="L1 M1 S4"/>
+								</layoutData>
+							</Input>
+							<Label text="{tlOpDetailModel>/Usrvalname2}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="value4" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/value4}"></Input>
+							<Input id="value4_" enabled="false" visible="{path:'tlOpDetailModel>/visible'}" value="{tlOpDetailModel>/value4_}">
+								<layoutData>
+									<l:GridData span="L1 M1 S4"/>
+								</layoutData>
+							</Input>
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>DATES}" visible="{tlOpDetailModel>/visible}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<!--<core:Title text="{i18n>DATES}"></core:Title>-->
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Label text="{tlOpDetailModel>/Usrdatename1}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="userDate1" enabled="false" visible="{path:'tlOpDetailModel>/visible'}"
+								value="{path:'tlOpDetailModel>/date1', formatter:'.formatter.dateFormat'}"></Input>
+							<Label text="{tlOpDetailModel>/Usrdatename2}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<Input id="userDate2" enabled="false" visible="{path:'tlOpDetailModel>/visible'}"
+								value="{path:'tlOpDetailModel>/date2', formatter:'.formatter.dateFormat'}"></Input>
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>CHKBX}" visible="{tlOpDetailModel>/visible}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<!--<core:Title text="{i18n>CHKBX}"></core:Title>-->
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Label text="{tlOpDetailModel>/Usrindname1}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<CheckBox id="indicator1" enabled="false" visible="{path:'tlOpDetailModel>/visible'}"
+								selected="{path:'tlOpDetailModel>/indicator1', formatter:'.formatter.parseType'}"></CheckBox>
+							<Label text="{tlOpDetailModel>/Usrindname2}" visible="{path:'tlOpDetailModel>/visible'}"></Label>
+							<CheckBox id="indicator2" enabled="false" visible="{path:'tlOpDetailModel>/visible'}"
+								selected="{path:'tlOpDetailModel>/indicator2', formatter:'.formatter.parseType'}"></CheckBox>
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>QUAL}" visible="{tlOpDetailModel>/visible}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<!--<core:Title text="{i18n>QUAL}"></core:Title>-->
+							<Label></Label>
+							<Text visible="false"></Text>
+							<RadioButtonGroup columns="3" visible="{tlOpDetailModel>/visible}" width="100%" class="sapUiMediumMarginBottom" selectedIndex="3">
+								<RadioButton id="job" text="{i18n>JOB}" visible="{tlOpDetailModel>/visible}" enabled="false"
+									selected="{path:'tlOpDetailModel>/qual', formatter:'.parseQualification'}"></RadioButton>
+								<RadioButton id="reqProf" text="{i18n>REQ_PROF}" visible="{tlOpDetailModel>/visible}" enabled="false"
+									selected="{path:'tlOpDetailModel>/qual', formatter:'.parseQualification'}"></RadioButton>
+								<RadioButton id="position" text="{i18n>POS}" visible="{tlOpDetailModel>/visible}" enabled="false"
+									selected="{path:'tlOpDetailModel>/qual', formatter:'.parseQualification'}"></RadioButton>
+							</RadioButtonGroup>
+							<Label text="{i18n>SEARCH_TRM}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="searchTerm" enabled="false" value="{tlOpDetailModel>/search}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>QUAL_RGD}" visible="{tlOpDetailModel>/visible}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<!--<core:Title text="{i18n>QUAL_RGD}"></core:Title>-->
+							<Label></Label>
+							<Text visible="false"></Text>
+							<Label text="{i18n>CAP_CAT}" visible="{tlOpDetailModel>/visible}"></Label>
+							<Input id="capacityCat" enabled="false" value="{tlOpDetailModel>/capCat}" visible="{tlOpDetailModel>/visible}"></Input>
+							<Input id="capCatDesc" enabled="false" value="{tlOpDetailModel>/capCatDesc}" visible="{tlOpDetailModel>/visible}"></Input>
+							<!-- -->
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar id="tabletoolbar">
+				<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+				<ToolbarSpacer/>
+				<Button id="idBtnCheck" text="Check" press="onOprDonePress"/>
+				<Button text="Done" type="Accept" press="onOprDonePress"/>
+				<!--<Button text="Cancel" type="Reject" press="onCancelPress"/>-->
+			</Toolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

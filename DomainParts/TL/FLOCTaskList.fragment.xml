@@ -1,0 +1,128 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="FLOCTLTab" text="FTL" icon="sap-icon://task" tooltip="{i18n>fltsklTl}"
+		count="{CountModel>/FTLCount}" iconColor="Contrast">
+		<content>
+			<VBox>
+				<Title text="Basic Data" level="H1"></Title>
+				<Table visible="{device>/isNoPhone}" growing="true" growingScrollToLoad="true" mode="MultiSelect" items="{AIWListFTLModel>/}"
+					noDataText="{i18n>tableNoDataText}" selectionChange="onTLBasicSelect">
+					<headerToolbar>
+						<Toolbar visible="{EnableModel>/actionEnable}">
+							<MenuButton text="{i18n>selectAction}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+								<menu>
+									<Menu itemSelected="onMenuAction">
+										<items>
+											<MenuItem key="createFTL" text="{i18n>createFTL}" icon="sap-icon://create"/>
+											<MenuItem key="copyFTL" text="{i18n>copyFTL}" icon="sap-icon://copy"/>
+											<MenuItem key="changeFTL" text="{i18n>changeFTL}" icon="sap-icon://write-new"/>
+											<MenuItem key="copyGTL" text="{i18n>copyGTL}" icon="sap-icon://copy"/>
+											<MenuItem key="copyETL" text="{i18n>copyETL}" icon="sap-icon://copy"/>
+											<!--<MenuItem key="approveFTL" text="{i18n>approveFTL}" icon="sap-icon://write-new"/>-->
+										</items>
+									</Menu>
+								</menu>
+							</MenuButton>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://delete" type="Reject" press="onMulDltTab" enabled="{EnableDELModel>/deleteFTL}"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>GROUP_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>FLOC}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>VALID_FRM}" textAlign="Left"></Text>
+						</Column>
+						<!--<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>delete}" wrapping="true"/>
+						</Column>-->
+					</columns>
+					<items>
+						<ColumnListItem type="None">
+							<cells>
+								<Input value="{AIWListFTLModel>grp}" enabled="{AIWListFTLModel>enable}" editable="true" liveChange="onTLLiveChange" maxLength="8"/>
+								<Input value="{AIWListFTLModel>floc}" valueState="{AIWListFTLModel>flocVS}" showValueHelp="true" valueHelpRequest="onTLFlocVH"
+									liveChange="onLiveChange" change="onTLFlocChange" maxLength="40" enabled="{AIWListFTLModel>enable}"></Input>
+								<DatePicker value="{AIWListFTLModel>validFrm}" enabled="{AIWListFTLModel>KDenable}" editable="true" valueFormat="MM/dd/yyyy"
+									displayFormat="MM/dd/yyyy" change="onValidFrmChange"/>
+								<!--<core:Icon src="sap-icon://sys-cancel" size="20px" press="handleDelete" tooltip="{i18n>delete}" visible="{AIWListFTLModel>enable}"></core:Icon>-->
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+			<Label></Label>
+			<Text visible="false"></Text>
+			<VBox>
+				<Title text="Header Overview" level="H1"></Title>
+				<Table visible="{device>/isNoPhone}" mode="None" items="{FTLHeaderModel>/0/}" noDataText="{i18n>tableNoDataText}" growingScrollToLoad="true"
+					growing="true">
+					<headerToolbar>
+						<Toolbar>
+							<Button id="addFTLCntr" icon="sap-icon://add" text="New Counter" tooltip="New Counter" press="onAddCounter"
+								enabled="{aCounterModel>/addFTLCounter}" visible="{EnableModel>/actionEnable}"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>FLOC}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>GRP_COUNTER_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>TL_DESC}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>PLAN_PLANT_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>WC}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>PLANT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>USAGE}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>STATUS}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet" visible="{EnableModel>/actionEnable}">
+							<Text text="{i18n>delete}" wrapping="true"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onItemPress" type="Navigation">
+							<cells>
+								<Input value="{FTLHeaderModel>floc}" maxLength="40" enabled="false"></Input>
+								<Input value="{FTLHeaderModel>Plnal}" enabled="{FTLHeaderModel>Grpenable}" editable="true" liveChange="onLiveChange" maxLength="2"/>
+								<Input value="{FTLHeaderModel>Ktext}" enabled="{FTLHeaderModel>enable}" editable="true" liveChange="onLiveChange" maxLength="40"/>
+								<Input value="{FTLHeaderModel>Iwerk}" enabled="false" showValueHelp="true" valueHelpRequest="onPplantVH"
+									valueState="{FTLHeaderModel>planningPlantValueState}" change="onChange" maxLength="4" submit="onChange" liveChange="onLiveChange"
+									valueStateText="{FTLHeaderModel>planningPlantValueStateTxt}"></Input>
+								<Input value="{FTLHeaderModel>wc}" enabled="{FTLHeaderModel>enable}" valueHelpRequest="onTLWcVH" showValueHelp="true" change="onChange"
+									liveChange="onLiveChange" valueState="{FTLHeaderModel>wcValueState}" valueStateText="{FTLHeaderModel>wcValueStateTxt}" maxLength="8"
+									submit="onChange"></Input>
+								<Input value="{FTLHeaderModel>plant}" maxLength="4" showValueHelp="true" valueHelpRequest="onTLPlantVH"
+									valueState="{FTLHeaderModel>plantValueState}" valueStateText="{FTLHeaderModel>plantValueStateTxt}" liveChange="onLiveChange"
+									enabled="{FTLHeaderModel>enable}" change="onChange" submit="onChange"></Input>
+								<Input showValueHelp="true" valueHelpRequest="onTLUsageVH" value="{FTLHeaderModel>tlusg}" liveChange="onLiveChange" change="onChange"
+									maxLength="3" submit="onChange" valueState="{FTLHeaderModel>usgValueState}" enabled="{FTLHeaderModel>enable}"
+									valueStateText="{FTLHeaderModel>usgValueStateTxt}"></Input>
+								<Input showValueHelp="true" valueHelpRequest="onStatusVH" liveChange="onLiveChange" value="{FTLHeaderModel>Statu}"
+									valueState="{FTLHeaderModel>statusVS}" valueStateText="{FTLHeaderModel>statusVST}" change="onChange" maxLength="3" submit="onChange"
+									enabled="{FTLHeaderModel>enable}"></Input>
+								<core:Icon src="sap-icon://sys-cancel" size="20px" press="onHeaderDlt" tooltip="{i18n>delete}" enabled="{FTLHeaderModel>enable}"></core:Icon>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

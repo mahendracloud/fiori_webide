@@ -1,0 +1,123 @@
+<core:FragmentDefinition xmlns:m="sap.m" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:dnd="sap.ui.core.dnd" xmlns:t="sap.ui.table">
+	<t:TreeTable id="hierarchyTab" rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}}" selectionMode="MultiToggle"
+		enableSelectAll="false" ariaLabelledBy="title" fixedColumnCount="1">
+		<t:extension>
+			<m:Toolbar>
+				<m:Title id="title" text="{i18n>hierarchy}"/>
+				<m:Button text="{i18n>expand}" icon="sap-icon://expand" press="onExpandFirstLevel"/>
+				<m:Button text="{i18n>collapse}" icon="sap-icon://collapse" press="onCollapseAll"/>
+				<m:Button text="{i18n>manageHierarchies}" icon="sap-icon://customer" press="onManageHierPress"/>
+				<m:Button text="{i18n>filterObjectsHierarchy}" icon="sap-icon://filter" press="onFilterObjDialogPress"/>
+				<m:ToolbarSpacer/>
+			</m:Toolbar>
+		</t:extension>
+		<t:dragDropConfig>
+			<dnd:DragDropInfo sourceAggregation="rows" targetAggregation="rows" dragStart="onDragStart" drop="onDrop"/>
+		</t:dragDropConfig>
+		<t:columns>
+			<t:Column width="13rem">
+				<m:Label text="{i18n>flocHierarchy}" wrapping="true"/>
+				<t:template>
+					<m:Text text="{name}" wrapping="false"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>pendingCR}" wrapping="true"/>
+				<t:template>
+					<m:Text/>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>description}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>category}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>deletionInd}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>inactiveInd}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>companyCode}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>maintenancePlant}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>planningPlant}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>mainWorkCenter}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>linkFromEquip}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>linkToEquip}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>linkObject}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>linkFromFloc}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>linkToFloc}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>linkObjectFloc}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+			<t:Column width="9rem">
+				<m:Label text="{i18n>networkId}" wrapping="true"/>
+				<t:template>
+					<m:Text></m:Text>
+				</t:template>
+			</t:Column>
+		</t:columns>
+	</t:TreeTable>
+</core:FragmentDefinition>

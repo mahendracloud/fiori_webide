@@ -1,0 +1,106 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc">
+	<Dialog title="Measurement Reading Transfer: History" stretch="true">
+		<beginButton>
+			<Button text="Close" press="onHistoryClosePress"></Button>
+		</beginButton>
+		<content>
+			<f:SimpleForm id="headerForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="Header Details"></core:Title>
+					<Label text="MeasPoint Object"></Label>
+					<Text id="measPointObject"></Text>
+					<Label text="Measuring Point"></Label>
+					<Text id="mspt"></Text>
+					<Label text="Measurement Position"></Label>
+					<Text id="measPos"></Text>
+					<Label text="Deletion Flag"></Label>
+					<Text id="delFlag"></Text>
+					<Label text="Characteristic Name"></Label>
+					<Text id="charName"></Text>
+					<Label text="MeasPoint Inactive"></Label>
+					<Text id="mpInactive"></Text>
+				</f:content>
+			</f:SimpleForm>
+			<Table id="itemDetails" items="{/}">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Item Details" level="H2"></Title>
+						<ToolbarSpacer/>
+						<!---->
+						<Button id="export" icon="sap-icon://download" tooltip="Export to Spreadsheet" press="OnExportPress" enabled="false"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Valid From"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Time"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Valid To"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Time"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Reversal Indicator"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="MeasPoint Object"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Description"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Measurment Position"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Reading Transfer"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Description"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="MeasPoint Inactive"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Deletion Flag"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Characteristic Name"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Created On"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Created By"></Text>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{path:'Datlo', formatter:'.formatter.dateFormat'}"></Text>
+							<Text text="{path:'Timlo', formatter:'.formatter.getTime'}"></Text>
+							<Text text="{path:'Dathi', formatter:'.formatter.dateFormat'}"></Text>
+							<Text text="{path:'Timhi', formatter:'.formatter.getTime'}"></Text>
+							<Text text="{Cancl}"></Text>
+							<Text text="{Mpobk}"></Text>
+							<Text text="{Mpobt}"></Text>
+							<Text text="{Psort}"></Text>
+							<Text text="{Trans}"></Text>
+							<Text text="{Pttxt}"></Text>
+							<Text text="{Inact}"></Text>
+							<Text text="{Lvorm}"></Text>
+							<Text text="{Atnam}"></Text>
+							<Text text="{path:'Datlo', formatter:'.formatter.dateFormat'}"></Text>
+							<Text text="{Namcr}"></Text>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

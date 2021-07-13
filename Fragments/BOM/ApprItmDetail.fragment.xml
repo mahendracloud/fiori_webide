@@ -1,0 +1,197 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid>
+		<l:content>
+			<Panel headerText="{VisibleModel>/ItmDtlTxt}" expandable="true" expanded="true" visible="{VisibleModel>/ItmDtlVisible}">
+				<f:SimpleForm id="bomItemDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>IT_NUM}"></Label>
+						<Text id="itemNumber" text="{itemOverview>/Bomitmpos}"></Text>
+						<Label text="{i18n>IT_CAT}"></Label>
+						<Input id="itemCategory" enabled="false" value="{itemOverview>/Itmcatref}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="itemCategoryDesc" enabled="false" value="{itemOverview>/Itmcattxt}"></Input>
+						<Label text="{i18n>COMPO}"></Label>
+						<Input enabled="false" value="{eqItemOverview>/Itemcompn}" visible="{VisibleModel>/ItmCompVisible}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input enabled="false" value="{eqItemOverview>/Itmcmpdesc}" visible="{VisibleModel>/ItmCompVisible}"></Input>
+						<Label text="{i18n>CO_PROD}"></Label>
+						<CheckBox id="coProduct" enabled="false" selected="" visible="{VisibleModel>/CoProdVisible}"></CheckBox>
+						<Label text="{i18n>RECRS}"></Label>
+						<CheckBox id="recurs" enabled="false" selected=""></CheckBox>
+					</f:content>
+				</f:SimpleForm>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>QTY_DATA}" visible="{VisibleModel>/QtyDataVisible}">
+				<f:SimpleForm id="bomQtyDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>COMP_QTY}"></Label>
+						<Input id="componentQty" enabled="false" value="{itemOverview>/Itmqty}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="componentQtyDesc" enabled="false" value="{itemOverview>/Itmuom}"></Input>
+						<Label text="{i18n>QTY_FIX}"></Label>
+						<CheckBox id="qtyFixed" enabled="false" selected=""></CheckBox>
+						<Label text="{i18n>COMP_SCRAP}"></Label>
+						<Input id="compScrapPerc" enabled="false" value="{itemOverview>/Compscrap}"></Input>
+						<Label text="{i18n>OP_SCRAP}"></Label>
+						<Input id="operationScrapPerc" enabled="false" value="{itemOverview>/Operscrap}"></Input>
+						<Label text="{i18n>NET_ID}"></Label>
+						<CheckBox id="netId" enabled="false" selected=""></CheckBox>
+					</f:content>
+				</f:SimpleForm>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>ADTNL_DATA}" visible="{VisibleModel>/AddnlDataVisible}">
+				<f:SimpleForm id="bomAddDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>MAT_PROV_IND}"></Label>
+						<Input id="matProvisionInd" enabled="false" value="{itemOverview>/Matproind}"></Input>
+						<Label text="{i18n>ST_LOC}"></Label>
+						<Input enabled="false" value="{eqItemOverview>/Ebomlgort}" visible="{VisibleModel>/StrLocVisible}"></Input>
+						<Label text="{i18n>BULK_MAT}"></Label>
+						<CheckBox id="bulkMat" enabled="false" selected=""></CheckBox>
+						<Label text="{i18n>BULK_MAT_MST}"></Label>
+						<CheckBox id="BulkMatIndMatMst" enabled="false" selected=""></CheckBox>
+						<Label text="{i18n>PM_ASSEMBLY}"></Label>
+						<CheckBox id="pmAssembly" enabled="false" selected=""></CheckBox>
+						<Label text="{i18n>PROD_SUPPLY}"></Label>
+						<Input enabled="false" value="{eqItemOverview>/EqbomPr}" visible="{VisibleModel>/ProdSuplyVisible}"></Input>
+					</f:content>
+				</f:SimpleForm>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>MRP_DATA}" visible="{VisibleModel>/MrpDataVisible}">
+				<f:SimpleForm id="bomMrpDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>LEAD_OFF}"></Label>
+						<Input id="leadTimeOffset" enabled="false" value="{itemOverview>/Leadtimeo}"></Input>
+						<Label text="{i18n>PHANTOM_IT}"></Label>
+						<CheckBox id="phantomItem" enabled="false" selected=""></CheckBox>
+						<Label text="{i18n>OPER_LT_OFFSET}"></Label>
+						<Input id="operLtOffset" enabled="false" value="{itemOverview>/Operltofs}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="operLtOffsetDesc" enabled="false" value="{itemOverview>/Operltuni}"></Input>
+						<Label text="{i18n>SPL_PROCURE}"></Label>
+						<Input id="splProcurement" enabled="false" value="{itemOverview>/Itsobbom}"></Input>
+						<Label text="{i18n>DIST_KEY}"></Label>
+						<Input id="distKey" enabled="false" value="{itemOverview>/Vertlbom}"></Input>
+						<Label text="{i18n>EXPL_KEY}"></Label>
+						<Input id="explosionType" enabled="false" value="{itemOverview>/Expltyp}"></Input>
+					</f:content>
+				</f:SimpleForm>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Panel>
+			<!--visible="{= ${itemOverview>/Itmcatref} === 'N' ? true : false}"-->
+			<Panel visible="{VisibleModel>/PurDataVisible}" expandable="true" expanded="true" headerText="{i18n>PUR_DATA}">
+				<f:SimpleForm id="bomPurchDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>PURCH_ORG}"></Label>
+						<Input id="purchOrg" enabled="false" value="{itemOverview>/Ekorg}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="purchOrgDesc" enabled="false" value="{itemOverview>/Ekotx}"></Input>
+						<Label text="{i18n>PURCH_GRP}"></Label>
+						<Input id="purchasingGrp" enabled="false" value="{itemOverview>/Ekgrp}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="purchasingGrpDesc" enabled="false" value="{itemOverview>/Eknam}"></Input>
+						<Label text="{i18n>VEND}"></Label>
+						<Input id="vendor" enabled="false" value="{itemOverview>/Vendor}"></Input>
+						<Label text="{i18n>DEL_TIME}"></Label>
+						<Input id="delTimeDays" enabled="false" value="{itemOverview>/Lifzt}"></Input>
+						<Label text="{i18n>PRICE}"></Label>
+						<Input id="price" enabled="false" value="{itemOverview>/Preis}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="priceDesc" enabled="false" value="{itemOverview>/Waers}"></Input>
+						<Label text="{i18n>PRICE_UNIT}"></Label>
+						<Input id="priceUnit" enabled="false" value="{itemOverview>/Peinh}"></Input>
+						<Label text="{i18n>COST_ELE}"></Label>
+						<Input id="costElement" enabled="false" value="{itemOverview>/ItmSakto}"></Input>
+						<Label text="{i18n>GR_PROCESS_TIME}"></Label>
+						<Input id="grProcessTime" enabled="false" value="{itemOverview>/Webaz}"></Input>
+						<Label text="{i18n>MAT_GRP}"></Label>
+						<Input id="materialGrp" enabled="false" value="{itemOverview>/Matkl}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="materialGrpDesc" enabled="false" value="{itemOverview>/Wgbez}"></Input>
+					</f:content>
+				</f:SimpleForm>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>ITM_TXT}" visible="{VisibleModel>/ItmTxtVisible}">
+				<f:SimpleForm id="bomItemTextForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>IT_TEXT1}"></Label>
+						<Input id="itemTextLine1" enabled="false" value="{itemOverview>/Potx1}"></Input>
+						<Label text="{i18n>IT_TEXT2}"></Label>
+						<Input id="itemTextLine2" enabled="false" value="{itemOverview>/Potx2}"></Input>
+					</f:content>
+				</f:SimpleForm>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Panel>
+			<!--visible="{= ${wbsItemOverview>/Itmcatgry} === 'D' ? true : false}"-->
+			<Panel visible="{VisibleModel>/DocAssgnVisible}" expandable="true" expanded="true" headerText="{i18n>BOM_DOC_ASSGN}">
+				<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+					emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>DOC}"></Label>
+						<Input enabled="false" value="{wbsItemOverview>/Bomdocitm}"></Input>
+						<Label text="{i18n>DOC_TYP}"></Label>
+						<Input enabled="false" value="{wbsItemOverview>/Bomitmdkr}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input enabled="false" value="{wbsItemOverview>/BomitmdkrTxt}"></Input>
+						<Label text="{i18n>DOC_PART}"></Label>
+						<Input enabled="false" value="{wbsItemOverview>/Bomitmdtl}"></Input>
+						<Label text="{i18n>DOC_VER}"></Label>
+						<Input enabled="false" value="{wbsItemOverview>/Bomitmdvr}"></Input>
+					</f:content>
+				</f:SimpleForm>
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Panel>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

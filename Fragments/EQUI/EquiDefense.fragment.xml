@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto">
+		<l:content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+				emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="{i18n>IDENT_LOCALICZATION}"></core:Title>
+					<Label text="{i18n>OWNER}"></Label>
+					<Text text="{AIWEQUI>/DFPS/MeOwner}"></Text>
+					<Label text="{i18n>UTILIZER}"></Label>
+					<Text text="{AIWEQUI>/DFPS/MeUser}"></Text>
+					<Label text="{i18n>TAIL_NO}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/DeviceId}"></Input>
+					<Label text="{i18n>AREA}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/Topsiteid}"></Input>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/Topsitede}"></Input>
+					<Label text="{i18n>SITE}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/SiteId}"></Input>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/SiteDesc}"></Input>
+					<core:Title text="{i18n>Classification}"></core:Title>
+					<Label text="MPO"></Label>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/MpoId}"></Input>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/MpoDescr}"></Input>
+					<Label text="RIC"></Label>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/RicId}"></Input>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/RicDescr}"></Input>
+					<Label text="Model ID/WS"></Label>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/ModelId}"></Input>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/ModelDes}"></Input>
+					<Label text="Foreign Equip"></Label>
+					<CheckBox enabled="false" selected="{path:'AIWEQUI>/DFPS/Foreignob', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<core:Title text="{i18n>STATUS}"></core:Title>
+					<Label text="Technical Sts"></Label>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/TecState}"></Input>
+					<Label text="Operational Sts"></Label>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/DepState}"></Input>
+					<Label text="Remark"></Label>
+					<Input enabled="false" value="{AIWEQUI>/DFPS/DfpsRmrk}"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

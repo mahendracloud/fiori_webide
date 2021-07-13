@@ -1,0 +1,70 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table width="auto" mode="SingleSelectLeft" fixedLayout="false" class="sapUiResponsiveMargin"
+		items="{ path : 'AIWEQUI>/Permits', sorter : { path : 'Countereq', descending : false } }" select="onEquiPermitSelect">
+		<headerToolbar>
+			<Toolbar >
+				<Title text="{i18n>PERMITS}"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>COUNTER}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>PERM}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<!--<Column demandPopin="true" minScreenWidth="Tablet">-->
+			<!--	<Text text="{i18n>TXT}" wrapping="true"/>-->
+			<!--</Column>-->
+			<!--<Column demandPopin="true" minScreenWidth="Tablet">-->
+			<!--	<Text text="{i18n>CAT}" wrapping="true"/>-->
+			<!--</Column>-->
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>ORD_COMPL}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>ORD_REL}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>PR_PERM}" wrapping="true" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>PRO_PERM}" wrapping="true" textAlign="Center"></Text>
+			</Column>
+			<!--<Column demandPopin="true" minScreenWidth="Tablet">-->
+			<!--	<Text text="{i18n>MOR_TXT}" wrapping="true"></Text>-->
+			<!--</Column>-->
+			<!--<Column demandPopin="true" minScreenWidth="Tablet">-->
+			<!--	<Text text="{i18n>NOT_MODF}" wrapping="true"></Text>-->
+			<!--</Column>-->
+		</columns>
+		<items>
+			<ColumnListItem type="Active">
+				<cells>
+					<Text text="{AIWEQUI>Countereq}" wrapping="true"></Text>
+					<Text text="{AIWEQUI>Pmsog}" wrapping="true"></Text>
+					<!--<Text text="{AIWEQUI>Gntxt}" wrapping="true"></Text>-->
+					<!--<Text text="{AIWEQUI>Gntyp}" wrapping="true"></Text>-->
+					<Text text="{AIWEQUI>KAa}" wrapping="true"></Text>
+					<Text text="{AIWEQUI>KAa}" wrapping="true"></Text>
+					<CheckBox selected="{path:'AIWEQUI>KDruck', formatter:'.formatter.typeCheck'}" enabled="false"></CheckBox>
+					<CheckBox selected="{path:'AIWEQUI>KPro', formatter:'.formatter.typeCheck'}" enabled="false"></CheckBox>
+					<!--<CheckBox selected="{path:'AIWEQUI>KzltxPmt', formatter:'.formatter.typeCheck'}"></CheckBox>-->
+					<!--<CheckBox selected="{path:'AIWEQUI>KNodel', formatter:'.formatter.typeCheck'}"></CheckBox>-->
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+		emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+		<f:content>
+			<VBox>
+				<Label text="{i18n>LNG_TXT}"></Label>
+				<HBox>
+					<TextArea placeholder="Permit Long Text..." value="{AIWEQUI>/PmtLtext}" cols="1000" growing="true" height="100%" enabled="false"></TextArea>
+					<!--<TextArea placeholder="Permit Long Text..." value="{AIWEQUI>/0/PmtLtext}" cols="1000" growing="true" height="100%" enabled="false"></TextArea>-->
+				</HBox>
+			</VBox>
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

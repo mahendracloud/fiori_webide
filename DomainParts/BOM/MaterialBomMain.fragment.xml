@@ -1,0 +1,67 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="MBOMTab" text="MBOM" icon="sap-icon://checklist" tooltip="{i18n>mbomTl}" count="{CountModel>/MatBomCount}"
+		iconColor="Contrast">
+		<content>
+			<Table mode="{EnableModel>/tableType}" growing="true" growingScrollToLoad="true" items="{AIWListMatModel>/}"
+				noDataText="{i18n>tableNoDataText}" busy="{BusyModel>/AiwTblBusy}" selectionChange="onMatRowSelect">
+				<headerToolbar>
+					<Toolbar visible="{EnableModel>/actionEnable}">
+						<MenuButton text="{i18n>selectAction}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+							<menu>
+								<Menu itemSelected="onMenuAction">
+									<items>
+										<MenuItem key="createMbom" text="{i18n>createMbom}" icon="sap-icon://create"/>
+										<MenuItem key="copyMbom" text="{i18n>copyMbom}" icon="sap-icon://copy"/>
+										<MenuItem key="changeMbom" text="{i18n>changeMbom}" icon="sap-icon://write-new"/>
+									</items>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" type="Reject" press="onRemoveMATPress" enabled="{EnableModel>/deleteMAT}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>material}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>plant}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>bomUsage}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>ALT_BOM_TXT}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>description}" textAlign="Left"></Text>
+					</Column>
+					<!--<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>BASE_QTY}" textAlign="Left"></Text>
+						</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem press="onMatNavigation" type="Navigation">
+						<cells>
+							<Input type="Text" maxLength="{maxLengthModel>/maxlengthMat}" value="{AIWListMatModel>Matnr}" enabled="{AIWListMatModel>matEnable}"
+								valueState="{AIWListMatModel>matValueState}" editable="true" showValueHelp="true" liveChange="onLiveChange" change="materialChange"
+								valueHelpRequest="onMaterialVH" submit="materialChange" showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListMatModel>Werks}" enabled="{AIWListMatModel>plantEnable}" valueState="{AIWListMatModel>plantValueState}"
+								editable="true" showValueHelp="true" valueHelpRequest="onPlantInBomVH" liveChange="onLiveChange" change="plantChange" submit="plantChange"
+								showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListMatModel>Stlan}" enabled="{AIWListMatModel>usageEnable}" valueState="{AIWListMatModel>usageValueState}"
+								editable="true" showValueHelp="true" liveChange="onLiveChange" change="bomUsageChange" valueHelpRequest="omBomUsageVH"
+								submit="bomUsageChange" showValueStateMessage="false"></Input>
+							<Input maxLength="2" value="{AIWListMatModel>Stalt}" enabled="{AIWListMatModel>altbomEnable}"
+								valueState="{AIWListMatModel>altbomValueState}" editable="true" liveChange="onLiveChange" showValueStateMessage="false"
+								change="onAltBomChange"></Input>
+							<Input type="Text" value="{AIWListMatModel>Lngtxt}" enabled="{AIWListMatModel>LngtxtEnable}" editable="true"></Input>
+							<!--<Input type="Number" value="{AIWListMatModel>BaseQty}" enabled="true" valueState="{AIWListMatModel>BaseQtyValueState}" editable="true" liveChange="onLiveChange" ></Input>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

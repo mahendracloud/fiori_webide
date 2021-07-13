@@ -1,0 +1,55 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.TLInspCharDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<Page showNavButton="false" title="Inspection Characteristics">
+		<content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+				emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="General Task List Inspection Characterstic Header"></core:Title>
+					<Label text="{i18n>GRP}"></Label>
+					<Input enabled="false" value="{icModel>/grp}"></Input>
+					<Label text="{i18n>GRP_C}"></Label>
+					<Input enabled="false" value="{icModel>/Plnal}"></Input>
+					<Label text="{i18n>ACT}"></Label>
+					<Input enabled="false" value="{icModel>/Vornr}"></Input>
+					<Label text="{i18n>INSPCHAR}"></Label>
+					<Input enabled="false" value="{icModel>/InspChar}"></Input>
+					<core:Title text="General data"></core:Title>
+					<Label text="{i18n>MSTR_INSPCHAR}"></Label>
+					<Input value="{icModel>/MastInspChar}" valueState="{icModel>/MastInspCharVS}" showValueHelp="true" valueHelpRequest="onMastInspCharVH"
+						change="onMastInspCharChange" enabled="{icModel>/InspEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input value="{icModel>/ShrtTxt}" enabled="{icModel>/InspEnable}"></Input>
+					<Label text="{i18n>PLANT}"></Label>
+					<Input showValueHelp="true" value="{icModel>/Plant}" valueHelpRequest="onMastInspCharVH" valueState="{icModel>/PlantVS}"
+						change="onICPlantChange" enabled="{icModel>/InspEnable}"></Input>
+					<Label text="{i18n>VERSION}"></Label>
+					<Input value="{icModel>/Version}" valueState="{icModel>/VersionVS}" showValueHelp="true" valueHelpRequest="onMastInspCharVH"
+						change="onICVersionChange" enabled="{icModel>/InspEnable}"></Input>
+					<Label text="{i18n>INSP_MTHD}"></Label>
+					<Input value="{icModel>/InspMthd}" valueState="{icModel>/InspMthdVS}" showValueHelp="true" valueHelpRequest="onInspMthdVH"
+						change="onInspMthdChange" enabled="{icModel>/InspEnable}"></Input>
+					<Label text="{i18n>INSP_MTHD_VER}"></Label>
+					<Input value="{icModel>/VrsnInspMthd}" enabled="false"></Input>
+					<Label text="{i18n>QUAN_CHAR}"></Label>
+					<CheckBox selected="{icModel>/QuanChar}" enabled="false"></CheckBox>
+					<Label text="{i18n>QUAN_CHAR}"></Label>
+					<CheckBox selected="{icModel>/QualChar}" enabled="false"></CheckBox>
+					<Label text="{i18n>SAMP_PROC}"></Label>
+					<Input value="{icModel>/SampProc}" valueState="{icModel>/SampProcVS}" showValueHelp="true" valueHelpRequest="onSampProcVH"
+						change="onSampProcChange" enabled="{icModel>/InspEnable}"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<Toolbar>
+				<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+				<ToolbarSpacer/>
+				<Button text="Done" type="Accept" press="onInspCharDonePress"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

@@ -1,0 +1,415 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar" xmlns:f="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.DetailWorkCenter"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<Page id="wcDetailPage" title="{i18n&gt;wcMasterTitle}" enableScrolling="true" showFooter="true" busyIndicatorDelay="0">
+			<content>
+				<!--<ObjectHeader id="Header" title="{i18n&gt;wcHeaderTitle}" titleActive="false" condensed="false"></ObjectHeader>-->
+				<IconTabBar selectedKey="__filter0" expanded="{device&gt;/isNoPhone}">
+					<items>
+						<IconTabFilter icon="sap-icon://form" text="Form" design="Horizontal">
+							<content>
+								<VBox class="sapUiSmallMargin">
+									<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+										emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+										<f:content>
+											<!--	<core:Title text="{i18n>CR_DATA}"></core:Title>
+											<Label text="{i18n>REASON_TXT}"/>
+											<Select/>
+											<Label text="{i18n>DESC_TXT}" required="true"/>
+											<Input type="Text" enabled="true" editable="true" liveChange="DescChange" change="onDescChange" maxLength="60"/>-->
+											<core:Title text="{i18n>WORK_CENTER}"></core:Title>
+											<Label text="{i18n>PLANT}" required="true"/>
+											<Input enabled="{aEnModel>/plEnable}" value="{wcDetailModel>/plant}" editable="true" change="onWCChange" showValueHelp="true"
+												liveChange="onLiveChange" valueHelpRequest="onPlantVH" maxLength="4" valueState="{wcDetailModel>/plantValueState}"
+												valueStateText="{wcDetailModel>/plantValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input enabled="false" value="{wcDetailModel>/plantDesc}"></Input>
+											<Label text="{i18n>WORK_CENTER}" required="true"></Label>
+											<Input enabled="{aEnModel>/wcEnable}" value="{wcDetailModel>/wc}" showValueHelp="true" valueHelpRequest="onWcVH" liveChange="onLiveChange"
+												maxLength="8" valueState="{wcDetailModel>/wcValueState}" valueStateText="{wcDetailModel>/wcValueStateTxt}"></Input>
+											<Label text="{i18n>WC_DESC}" required="true"></Label>
+											<Input enabled="{aEnModel>/enable}" value="{wcDetailModel>/wcDesc}" change="onWCDescChange" valueState="{wcDetailModel>/wcDescValueState}"
+												valueStateText="{wcDetailModel>/wcDescValueStateTxt}" maxLength="40"></Input>
+											<Label text="{i18n>WORK_CENTER_CAT}" required="true"></Label>
+											<Input enabled="{aEnModel>/wcatEnable}" value="{wcDetailModel>/wcCat}" showValueHelp="true" valueHelpRequest="onWcCatVH"
+												liveChange="onLiveChange" change="onWCChange" maxLength="4" valueState="{wcDetailModel>/wcCatValueState}"
+												valueStateText="{wcDetailModel>/wcCatValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input enabled="false" value="{wcDetailModel>/wcCatDesc}"></Input>
+											<!-- Approve -->
+											<Label text="{i18n>DEL_FLAG}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="deletionFlag" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/Crlvorm', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<Label text="{i18n>LOCK}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="locked" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/Xsprr', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<!-- -->
+											<!--<Label text="{i18n>PER_RESP}" visible="{aVisModel>/visible}"></Label>
+											<Input id="personresp" enabled="false" visible="{aVisModel>/visible}" value="{crReadData>/Workcenters/results/0/Crveran}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="personRespDesc" enabled="false" visible="{aVisModel>/visible}" value="{crReadData>/Workcenters/results/0/Persresptxt}"></Input>-->
+											<core:Title text="{i18n>BASIC}"></core:Title>
+											<Label text="{i18n>PERSON_RESP}" required="true"></Label>
+											<Input enabled="{aEnModel>/enable}" value="{wcDetailModel>/person}" showValueHelp="true" liveChange="onLiveChange" change="onWCChange"
+												valueHelpRequest="onPerRespVH" maxLength="3" valueState="{wcDetailModel>/personResValueState}"
+												valueStateText="{wcDetailModel>/personResValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input enabled="false" value="{wcDetailModel>/personDesc}"></Input>
+											<!-- Approve -->
+											<Label text="{i18n>LOCATION}" visible="{aVisModel>/visible}"></Label>
+											<Input id="location" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Crstand}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="locationDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Locationtxt}"></Input>
+											<Label text="{i18n>QDR_SYS}" visible="{aVisModel>/visible}"></Label>
+											<Input id="qdrSystem" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Subsys}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="qdrSysDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Qdrsystemtxt}"></Input>
+											<Label text="{i18n>PROD_SUPPLY}" visible="{aVisModel>/visible}"></Label>
+											<Input id="prodSupArea" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Crprvbe}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="prodSupAreaDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Pvbtx}"></Input>
+											<!-- -->
+											<Label text="{i18n>USAGE}" required="true"></Label>
+											<Input enabled="{aEnModel>/enable}" value="{wcDetailModel>/usg}" showValueHelp="true" liveChange="onLiveChange" change="onWCChange"
+												valueHelpRequest="onWCUsageVH" maxLength="3" valueState="{wcDetailModel>/usgValueState}" valueStateText="{wcDetailModel>/usgValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input enabled="false" value="{wcDetailModel>/usgDesc}"></Input>
+											<!-- Approve -->
+											<Label text="{i18n>BCK_FLSH}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="backFlush" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/Rgekz', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<!-- -->
+											<core:Title text="{i18n>DEF_VAL}"></core:Title>
+											<Label text="{i18n>CTRL_KEY}"></Label>
+											<Input enabled="{aEnModel>/enable}" showValueHelp="true" value="{wcDetailModel>/ctrlKey}" valueHelpRequest="onCtrlKeyVH"
+												liveChange="onLiveChange" change="onWCChange" valueState="{wcDetailModel>/cntrlKeyValueState}"
+												valueStateText="{wcDetailModel>/cntrlKeyValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input enabled="false" value="{wcDetailModel>/ctrlKeyDesc}"></Input>
+											<!-- Approve -->
+											<Label text="{i18n>REF_IND}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="refInd1" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/SteusRef', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<Input id="value1" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Steutxt}"></Input>
+											<Label text="{i18n>STD_TXT}" visible="{aVisModel>/visible}"></Label>
+											<Input id="stdTxtKey" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Ktsch}"></Input>
+											<Label text="{i18n>REF_IND}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="refInd2" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/KtschRef', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<Input id="value2" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/VlschTxt}"></Input>
+											<Label text="{i18n>SUIT}" visible="{aVisModel>/visible}"></Label>
+											<Input id="suitability" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Crqualf}"></Input>
+											<Label text="{i18n>REF_IND}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="refInd3" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/QualfRef', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<Input id="value3" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/QulfText}"></Input>
+											<Label text="{i18n>SETUP_KEY}" visible="{aVisModel>/visible}"></Label>
+											<Input id="setupType" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Crrasch}"></Input>
+											<Label text="{i18n>REF_IND}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="refInd4" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/RaschRef', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<Input id="value4" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/RaschTxt}"></Input>
+											<Label text="{i18n>WAGE_TYP}" visible="{aVisModel>/visible}"></Label>
+											<Input id="wageType" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Loart}"></Input>
+											<Label text="{i18n>REF_IND}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="refInd5" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/LoartRef', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<Input id="value5" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Lgtxt}"></Input>
+											<Label text="{i18n>WAGE_GRP}" visible="{aVisModel>/visible}"></Label>
+											<Input id="wageGrp" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Crlogrp}"></Input>
+											<Label text="{i18n>REF_IND}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="refInd6" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/LogrpRef', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<Input id="value6" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/LgrpTxt}"></Input>
+											<Label text="{i18n>NO_TICKETS}" visible="{aVisModel>/visible}"></Label>
+											<Input id="noOfTime" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Loanz}"></Input>
+											<Label text="{i18n>REF_IND}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="refInd7" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/LoanzRef', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<Label text="{i18n>NO_CONFIRM}" visible="{aVisModel>/visible}"></Label>
+											<Input id="noConfirm" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Rsanz}"></Input>
+											<Label text="{i18n>REF_IND}" visible="{aVisModel>/visible}"></Label>
+											<CheckBox id="refInd8" enabled="false" visible="{aVisModel>/visible}"
+												selected="{path:'wcDetailModel>/RsanzRef', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<Label text="{i18n>PRINTER}" visible="{aVisModel>/visible}"></Label>
+											<Input id="printerVal" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Pdest}"></Input>
+											<!-- -->
+											<core:Title text="{i18n>STD_VAL_OVERVIEW}"></core:Title>
+											<Label text="{i18n>STD_VALUE_KEY}" required="true"></Label>
+											<Input enabled="{aEnModel>/enable}" showValueHelp="true" value="{wcDetailModel>/stdVal}" liveChange="onLiveChange" change="onWCChange"
+												valueHelpRequest="onStdValVH" maxLength="4" valueState="{wcDetailModel>/stdValueState}" valueStateText="{wcDetailModel>/stdValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input enabled="false" value="{wcDetailModel>/stdValDesc}"></Input>
+											<!-- Approve -->
+											<Label text="{i18n>KEY_01}" visible="{aVisModel>/visible}"></Label>
+											<Input id="Keyword01" visible="{aVisModel>/visible}" enabled="false" value="{wcDetailModel>/Txt01}"></Input>
+											<Label text="{i18n>RULE}" visible="{aVisModel>/visible}"></Label>
+											<Input id="rule1" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgm01t}"></Input>
+											<Label text="{i18n>KEY}" visible="{aVisModel>/visible}"></Label>
+											<Input id="key1" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zgr01}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="keyDesc1" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/KeyTxt1}"></Input>
+											<Label text="{i18n>UNIT}" visible="{aVisModel>/visible}"></Label>
+											<Input id="unit1" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vge01}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="unitDesc1" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/EfUnit1}"></Input>
+											<Label text="{i18n>KEY_02}" visible="{aVisModel>/visible}"></Label>
+											<Input id="Keyword02" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Txt02}"></Input>
+											<Label text="{i18n>RULE}" visible="{aVisModel>/visible}"></Label>
+											<Input id="rule2" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgm02t}"></Input>
+											<Label text="{i18n>KEY}" visible="{aVisModel>/visible}"></Label>
+											<Input id="key2" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zgr02}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="keyDesc2" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/KeyTxt2}"></Input>
+											<Label text="{i18n>UNIT}" visible="{aVisModel>/visible}"></Label>
+											<Input id="unit2" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vge02}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="unitDesc2" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/EfUnit2}"></Input>
+											<Label text="{i18n>KEY_03}" visible="{aVisModel>/visible}"></Label>
+											<Input id="Keyword03" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Txt03}"></Input>
+											<Label text="{i18n>RULE}" visible="{aVisModel>/visible}"></Label>
+											<Input id="rule3" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgm03t}"></Input>
+											<Label text="{i18n>KEY}" visible="{aVisModel>/visible}"></Label>
+											<Input id="key3" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zgr03}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="keyDesc3" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/KeyTxt3}"></Input>
+											<Label text="{i18n>UNIT}" visible="{aVisModel>/visible}"></Label>
+											<Input id="unit3" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vge03}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="unitDesc3" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/EfUnit3}"></Input>
+											<Label text="{i18n>KEY_04}" visible="{aVisModel>/visible}"></Label>
+											<Input id="Keyword04" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Txt04}"></Input>
+											<Label text="{i18n>RULE}" visible="{aVisModel>/visible}"></Label>
+											<Input id="rule4" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgm04t}"></Input>
+											<Label text="{i18n>KEY}" visible="{aVisModel>/visible}"></Label>
+											<Input id="key4" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zgr04}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="keyDesc4" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/KeyTxt4}"></Input>
+											<Label text="{i18n>UNIT}" visible="{aVisModel>/visible}"></Label>
+											<Input id="unit4" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vge04}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="unitDesc4" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/EfUnit4}"></Input>
+											<Label text="{i18n>KEY_05}" visible="{aVisModel>/visible}"></Label>
+											<Input id="Keyword05" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Txt05}"></Input>
+											<Label text="{i18n>RULE}" visible="{aVisModel>/visible}"></Label>
+											<Input id="rule5" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgm05t}"></Input>
+											<Label text="{i18n>KEY}" visible="{aVisModel>/visible}"></Label>
+											<Input id="key5" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zgr05}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="keyDesc5" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/KeyTxt5}"></Input>
+											<Label text="{i18n>UNIT}" visible="{aVisModel>/visible}"></Label>
+											<Input id="unit5" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vge05}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="unitDesc5" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/EfUnit5}"></Input>
+											<Label text="{i18n>KEY_06}" visible="{aVisModel>/visible}"></Label>
+											<Input id="Keyword06" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Txt06}"></Input>
+											<Label text="{i18n>RULE}" visible="{aVisModel>/visible}"></Label>
+											<Input id="rule6" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgm06t}"></Input>
+											<Label text="{i18n>Key}" visible="{aVisModel>/visible}"></Label>
+											<Input id="key6" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zgr06}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="keyDesc6" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/KeyTxt6}"></Input>
+											<Label text="{i18n>UNIT}" visible="{aVisModel>/visible}"></Label>
+											<Input id="unit6" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vge06}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="unitDesc6" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/EfUnit6}"></Input>
+											<!-- -->
+											<!-- -->
+										</f:content>
+									</f:SimpleForm>
+									<Panel class="sapUiSmallMargin" id="frag"></Panel>
+									<Table id="cosCenterTable" mode="Delete" items="{wcDetailModel>/cost}" delete="handleCostRowDelete">
+										<headerToolbar>
+											<Toolbar>
+												<Title text="{i18n>CC_ASSIGN}" level="H2"></Title>
+												<ToolbarSpacer/>
+												<Button id="newCost" icon="sap-icon://add" tooltip="New Cost" press="handleCostRowAdd"/>
+											</Toolbar>
+										</headerToolbar>
+										<columns>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="Start Date" wrapping="true" textAlign="Center"></Text>
+											</Column>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="{i18n>CTRL_AREA}" wrapping="true" textAlign="Center"></Text>
+											</Column>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="{i18n>CTRL_AREA_DESC}" wrapping="true" textAlign="Center"></Text>
+											</Column>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="End Date" wrapping="true" textAlign="Center"></Text>
+											</Column>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="{i18n>CC}" wrapping="true" textAlign="Center"></Text>
+											</Column>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="{i18n>CC_DESC}" wrapping="true" textAlign="Center"></Text>
+											</Column>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="{i18n>ACT_TYPE}" wrapping="true" textAlign="Center"></Text>
+											</Column>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="{i18n>ACT_TYPE_DESC}" wrapping="true" textAlign="Center"></Text>
+											</Column>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="{i18n>FORM_KEY}" wrapping="true" textAlign="Center"></Text>
+											</Column>
+											<Column demandPopin="true" minScreenWidth="Tablet">
+												<Text text="{i18n>FORM_KEY_DESC}" wrapping="true" textAlign="Center"></Text>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem id="costItems" type="Active">
+												<cells>
+													<DatePicker valueFormat="MM/dd/yyyy" displayFormat="MM/dd/yyyy" dateValue="{wcDetailModel>Begda}" change="onCCStartDateChange"></DatePicker>
+													<Input id="ctrlArea" maxLength="4" value="{wcDetailModel>CrKokrs}" enabled="{aEnModel>/enable}" showValueHelp="true"
+														valueHelpRequest="onControlAreaVH" change="onControlAreaChange"></Input>
+													<Input id="ctrlAreaDesc" value="{wcDetailModel>Bezei}" enabled="false"></Input>
+													<DatePicker valueFormat="MM/dd/yyyy" displayFormat="MM/dd/yyyy" dateValue="{wcDetailModel>Endda}" change="onCCEndDateChange"></DatePicker>
+													<Input id="costCenter" enabled="{aEnModel>/enable}" maxLength="18" showValueHelp="true" value="{wcDetailModel>CrKostl}"
+														valueHelpRequest="onCostCenterVH" valueState="{wcDetailModel>ccState}" change="onCostChange" submit="onCostChange"></Input>
+													<Input id="costCenterDesc" showValueHelp="true" value="{wcDetailModel>Costcentxt}" change="onClassChange" enabled="false"></Input>
+													<Input id="actType" enabled="{aEnModel>/enable}" showValueHelp="true" valueHelpRequest="onActTypeVH" value="{wcDetailModel>CrLstar}"
+														change="onCostChange" submit="onCostChange" valueState="{wcDetailModel>aState}"></Input>
+													<Input id="actTypeDesc" enabled="false" value="{wcDetailModel>ActvttypeTxt}"></Input>
+													<Input id="formKey" enabled="{aEnModel>/enable}" showValueHelp="true" valueHelpRequest="onFormulaKeyVH" value="{wcDetailModel>Forn1}"
+														change="onCostChange" submit="onCostChange" valueState="{wcDetailModel>fState}"></Input>
+													<Input id="formKeyDesc" enabled="false" value="{wcDetailModel>Frmltxt}"></Input>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+									<core:Fragment id="clsFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.ClassAssignment" type="XML"/>
+									<core:Fragment id="charFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.Characteristics" type="XML"/>
+								</VBox>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter id="WCACap" icon="sap-icon://form" text="WorkCenter Capacity" design="Horizontal" tooltip="WorkCenter Capacity"
+							visible="{aVisModel>/visible}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.WC.WorkCenterCapacity" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter id="WCASche" icon="sap-icon://form" text="WorkCenter Scheduling" design="Horizontal" tooltip="WorkCenter Scheduling"
+							visible="{aVisModel>/visible}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.WC.WorkCenterScheduling" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter id="WCACost" icon="sap-icon://form" text="WorkCenter Costing" design="Horizontal" tooltip="WorkCenter Costing"
+							visible="{aVisModel>/visible}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.WC.WorkCenterCosting" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter id="WCATech" icon="sap-icon://form" text="WorkCenter Technology" design="Horizontal" tooltip="WorkCenter Technology"
+							visible="{aVisModel>/visible}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.WC.WorkCenterTechnology" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{aVisModel>/visible}" text="{i18n>assignment}"
+							tooltip="{i18n>assignment}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.ClassAssignments" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{aVisModel>/visible}" text="{i18n>characteristics}"
+							tooltip="{i18n>characteristics}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Characteristics" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<!--<IconTabFilter id="attachments" key="onAttach" icon="sap-icon://attachment" text="{i18n>ATTACHMENT_TITLE}" tooltip="{i18n>ATTACHMENT_TITLE}"
+				design="Horizontal">
+				<content>
+					<UploadCollection id="fileupload" uploadUrl="/sap/opu/odata/UGIOD01/MDG_EAM_WORKCENTER_SRV/Attachments" maximumFilenameLength="200"
+						multiple="true" showSeparators="None" items="{json>/dataitems}" uploadComplete="onUploadFile" change="onBeforeUploadFile"
+						fileDeleted="onFileDeleted" uploadTerminated="uploadTerminated">
+						<UploadCollectionItem contributor="{json>contributor}" enableEdit="{json>enableEdit}" enableDelete="{json>enableDelete}"
+							fileName="{json>filename}" mimeType="{json>mimeType}" documentId="{json>documentId}" visibleDelete="true" visibleEdit="false"
+							uploadedDate="{json>uploaded}" url="{json>url}"/>
+					</UploadCollection>
+				</content>
+			</IconTabFilter>-->
+					</items>
+				</IconTabBar>
+			</content>
+			<footer>
+				<Toolbar id="tabletoolbar">
+					<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+					<ToolbarSpacer/>
+					<Button id="idBtnCheck" text="Check" press="onDonePress"/>
+					<Button text="Done" type="Accept" press="onDonePress"/>
+				</Toolbar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

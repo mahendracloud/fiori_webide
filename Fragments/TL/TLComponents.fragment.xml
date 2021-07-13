@@ -1,0 +1,302 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabBar>
+		<items>
+			<IconTabFilter id="idTabApprMaintPckg" text="Maintainence Package">
+				<content>
+					<Table id="idTblApprMaintPckg" mode="SingleSelectLeft" growing="true" growingScrollToLoad="true">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Maintainence Package" level="H2"></Title>
+								<ToolbarSpacer/>
+								<Button text="Maintainence Package" press="navMaintPckgeDetail"/>
+							</Toolbar>
+						</headerToolbar>
+						<!--<columns>-->
+						<!--	<Column>-->
+						<!--		<Text text="Op"></Text>-->
+						<!--	</Column>-->
+						<!--	<Column demandPopin="true" minScreenWidth="Tablet">-->
+						<!--		<Text text="SOp"></Text>-->
+						<!--	</Column>-->
+						<!--	<Column demandPopin="true" minScreenWidth="Tablet">-->
+						<!--		<Text text="Op Short Text"></Text>-->
+						<!--	</Column>-->
+						<!--</columns>-->
+					</Table>
+				</content>
+			</IconTabFilter>
+			<IconTabFilter text="Components" tooltip="Components">
+				<content>
+					<Table id="TLCompTable" growing="true" growingScrollToLoad="true" width="auto" updateFinished="onListUpdateFinished"
+						busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+						items="{ path : 'tlDetailModel>/lComponent', sorter : { path : 'groupCounter', descending : false } }">
+						<headerToolbar>
+							<Toolbar >
+								<Title text="{i18n>COMP}"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="{i18n>GRP}" wrapping="true" textAlign="Center"/>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>GRP_C}" wrapping="true" textAlign="Center"/>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>COMPO}" wrapping="true" textAlign="Center"/>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>COMP_DESC}" wrapping="true" textAlign="Center"/>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>COMP_QTY}" wrapping="true" textAlign="Center"/>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>COMP_UNIT}" wrapping="true" textAlign="Center"/>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>BCK_FL}" wrapping="true" textAlign="Center"/>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>RESV}" wrapping="true" textAlign="Center"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation" press="tlComponentPress">
+								<cells>
+									<Text text="{tlDetailModel>group}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>groupCounter}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>Idnrk}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>matDesc}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>Menge}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>compUnit}" wrapping="true"></Text>
+									<CheckBox selected="{path:'tlDetailModel>backFlush', formatter:'.formatter.typeCheck'}" enabled="false"></CheckBox>
+									<Text text="{tlDetailModel>resv}" wrapping="true"></Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabFilter>
+			<IconTabFilter text="{i18n>OPRREL}">
+				<content>
+					<Table items="{tlDetailModel>/lOprRel}" growing="true" growingScrollToLoad="true">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>OPRREL}" level="H2"></Title>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>OPERATION}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>OFFSET}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>OFFSET_UNIT_S}" tooltip="{i18n>OFFSET_UNIT}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>REL_TYPE_S}" tooltip="{i18n>REL_TYPE}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>PRCNTGE_OFFSET_S}" tooltip="{i18n>PRCNTGE_OFFSET}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>OFFSET_INTRP_S}" tooltip="{i18n>OFFSET_INTRP}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>FACTORY_ID_S}" tooltip="{i18n>FACTORY_ID}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>WC_S}" tooltip="{i18n>WC}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>PLANT_S}" tooltip="{i18n>PLANT}"></Text>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem press="tlOprRelPress">
+								<cells>
+									<Text text="{tlDetailModel>OperationOR}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>Offset}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>OUn}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>RelType}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>PO}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>OI}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>ID}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>WrkCtrOR}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>PlantOR}" wrapping="true"></Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabFilter>
+			<IconTabFilter text="Production Resource/Tools" tooltip="Production Resource/Tools">
+				<content>
+					<Table id="TLPRTTable" growing="true" growingScrollToLoad="true" width="auto" updateFinished="onListUpdateFinished"
+						busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+						items="{ path : 'tlDetailModel>/lPRT', sorter : { path : 'groupCounter', descending : false } }">
+						<headerToolbar>
+							<Toolbar >
+								<Title text="{i18n>PRT}"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="PRT Item Number"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="Category"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="PRT"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="Plant"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="Control Key"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="Quantity"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="Unit for Quantity"></Text>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation" press="tlPRTPress">
+								<cells>
+									<Text text="{tlDetailModel>ItmNum}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>ItmCat}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>PRT}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>Plant}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>PRTCtrl}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>Qty}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>UOM}" wrapping="true"></Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabFilter>
+			<IconTabFilter text="{i18n>SRV_PCKG_OVRW}">
+				<content>
+					<Table items="{tlDetailModel>/lSrvPckgOvrw}" growing="true" growingScrollToLoad="true">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>SRV_PCKG_OVRW}" level="H2"></Title>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>LINE_NUM}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>DEL_IND}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>SRV_NUM}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>SHRT_TXT}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>QTY}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>BASE_UOM}"></Text>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem press="tlSrvPckgOvrwDetailPress" type="Navigation">
+								<cells>
+									<Text text="{tlDetailModel>LineNum}" wrapping="true"></Text>
+									<CheckBox selected="{tlDetailModel>DelIndSP}" enabled="false"/>
+									<Text text="{tlDetailModel>ActNum}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>ShrtTxt}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>Qty}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>BUomSP}" wrapping="true"></Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabFilter>
+			<IconTabFilter text="{i18n>INSPCHAR_OVRW}">
+				<content>
+					<Table items="{tlDetailModel>/lInspChar}" growing="true" growingScrollToLoad="true">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>INSPCHAR_OVRW}" level="H2"></Title>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>INSPCHAR}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>PRST_IND}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>QUAN_CHAR}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>QUAN_CHAR}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>MSTR_INSPCHAR}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>PLANT}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>VERSION}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>SHRT_TXT_CHAR}"></Text>
+							</Column>
+							<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+							<!--	<Text text="{i18n>INSP_MTHD_PLNT}"></Text>-->
+							<!--</Column>-->
+							<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+							<!--	<Text text="{i18n>TOLRNC_KEY}"></Text>-->
+							<!--</Column>-->
+							<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+							<!--	<Text text="{i18n>VER_INSP_MTHD}"></Text>-->
+							<!--</Column>-->
+							<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+							<!--	<Text text="{i18n>SAMP_PROC}"></Text>-->
+							<!--</Column>-->
+							<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+							<!--	<Text text="{i18n>SAMP_UNIT_MEAS}"></Text>-->
+							<!--</Column>-->
+							<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+							<!--	<Text text="{i18n>BASE_SAMP_QTY}"></Text>-->
+							<!--</Column>-->
+							<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+							<!--	<Text text="{i18n>CODE_GRP_SET}"></Text>-->
+							<!--</Column>-->
+						</columns>
+						<items>
+							<ColumnListItem press="tlInspCharDetailPress" type="Navigation">
+								<cells>
+									<Text text="{tlDetailModel>InspChar}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>PrstInd}" wrapping="true"></Text>
+									<CheckBox selected="{tlDetailModel>QuanChar}" enabled="false"/>
+									<CheckBox selected="{tlDetailModel>QualChar}" enabled="false"/>
+									<Text text="{tlDetailModel>MastInspChar}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>Plant}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>Version}" wrapping="true"></Text>
+									<Text text="{tlDetailModel>ShrtTxt}" wrapping="true"></Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+</core:FragmentDefinition>

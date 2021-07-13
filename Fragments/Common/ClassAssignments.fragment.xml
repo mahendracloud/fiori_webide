@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table width="auto" updateFinished="onListUpdateFinished" busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+		class="sapUiResponsiveMargin" items="{AIWAPPROVE>/classItems}">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>assignment}"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>classType}"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>classTypDesc}"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>class}"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>status}"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<Text text="{AIWAPPROVE>Classtype}"></Text>
+				<Text text="{AIWAPPROVE>ClassTypeDesc}"></Text>
+				<Text text="{AIWAPPROVE>Class}"></Text>
+				<Text text="{AIWAPPROVE>Clstatus1}"></Text>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

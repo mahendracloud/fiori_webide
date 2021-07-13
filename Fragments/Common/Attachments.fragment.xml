@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<!--<UploadCollection id="_fileUpload" maximumFilenameLength="200" multiple="true" showSeparators="None" items="{json>/dataitems}"-->
+	<!--	uploadEnabled="false" uploadComplete="onUploadFile" change="onBeforeUploadFile" fileDeleted="onFileDeleted"-->
+	<!--	uploadTerminated="uploadTerminated">-->
+	<!--	<UploadCollectionItem contributor="{json>CreatedBy}" enableEdit="false" enableDelete="false" fileName="{json>FileName}"-->
+	<!--		mimeType="{json>MimeType}" documentId="{json>documentId}" visibleDelete="true" visibleEdit="false"-->
+	<!--		uploadedDate="{path:'json>CreatedAt', formatter:'.formatter.dateFormat'}" url="{json>url}"/>-->
+	<!--</UploadCollection>-->
+	<UploadCollection id="_fileUpload" maximumFilenameLength="200"
+		multiple="true" showSeparators="None" items="{/dataitems}" uploadComplete="onUploadFile" change="onBeforeUploadFile"
+		fileDeleted="onFileDeleted" uploadTerminated="uploadTerminated">
+		<UploadCollectionItem enableEdit="{enableEdit}" enableDelete="{enableDelete}" fileName="{filename}" mimeType="{mimeType}"
+			attributes="{path : 'attributes', templateShareable : false}" documentId="{documentId}" visibleDelete="true" visibleEdit="false" url="{url}">
+			<attributes>
+				<ObjectAttribute title="{title}" text="{text}" active="{active}" press="onAttributePress"/>
+			</attributes>
+		</UploadCollectionItem>
+	</UploadCollection>
+</core:FragmentDefinition>

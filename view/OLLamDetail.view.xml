@@ -1,0 +1,77 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.OLLamDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<semantic:FullscreenPage id="olLamDetailPage" navButtonPress="onNavBack" showNavButton="true" title="{i18n>OL_DET}">
+		<semantic:content>
+			<Panel expandable="true" expanded="true" headerText="{i18n>OL_LAM_DET}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="on_olLamForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>LRP}"></Label>
+							<Input enabled="false" value="{lamDetail>/LrpidO}"></Input>
+							<Label text="{i18n>STRT_POINT}"></Label>
+							<Input enabled="false" value="{lamDetail>/Strtptato}"></Input>
+							<Label text="{i18n>END_POINT}"></Label>
+							<Input enabled="false" value="{lamDetail>/EndptatO}"></Input>
+							<Label text="{i18n>LENGTH}"></Label>
+							<Input enabled="false" value="{lamDetail>/LengthO}"></Input>
+							<Label text="{i18n>UOM}"></Label>
+							<Input enabled="false" value="{lamDetail>/LinUnito}"></Input>
+							<Label text="{i18n>STRT_MARKR}"></Label>
+							<Input enabled="false" value="{lamDetail>/StartMrko}"></Input>
+							<Label text="{i18n>END_MARKR}"></Label>
+							<Input enabled="false" value="{lamDetail>/Endmrkro}"></Input>
+							<Label text="{i18n>DIST_START}"></Label>
+							<Input enabled="false" value="{lamDetail>/Startmrko}"></Input>
+							<Label text="{i18n>DIST_END}"></Label>
+							<Input enabled="false" value="{lamDetail>/EndmrkrO}"></Input>
+							<Label text="{i18n>MRKR_DIST_UOM}"></Label>
+							<Input enabled="false" value="{lamDetail>/Mrkrunito}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>GEO_INFO}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="on_olGeoForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Text text=""></Text>
+							<Text text=""></Text>
+							<Text text="{i18n>DEG}"></Text>
+							<Text text="{i18n>MIN}"></Text>
+							<Text text="{i18n>SEC}"></Text>
+							<Text text="{i18n>DIR}"></Text>
+							<Label text="{i18n>STRT_LAT}"></Label>
+							<Input enabled="false" value="{lamDetail>/Stlatdego}"></Input>
+							<Input enabled="false" value="{lamDetail>/Stlatmino}"></Input>
+							<Input enabled="false" value="{lamDetail>/Stlatseco}"></Input>
+							<Input enabled="false" value="{lamDetail>/Stlatdiro}"></Input>
+							<Label text="{i18n>STRT_LONG}"></Label>
+							<Input enabled="false" value="{lamDetail>/Stlondego}"></Input>
+							<Input enabled="false" value="{lamDetail>/Stlonmino}"></Input>
+							<Input enabled="false" value="{lamDetail>/Stlonseco}"></Input>
+							<Input enabled="false" value="{lamDetail>/Stlondiro}"></Input>
+							<Label text="{i18n>END_LAT}"></Label>
+							<Input enabled="false" value="{lamDetail>/EndlatdO}"></Input>
+							<Input enabled="false" value="{lamDetail>/EndlatmO}"></Input>
+							<Input enabled="false" value="{lamDetail>/EndlatsO}"></Input>
+							<Input enabled="false" value="{lamDetail>/Endlatdro}"></Input>
+							<Label text="{i18n>END_LONG}"></Label>
+							<Input enabled="false" value="{lamDetail>/EndlondO}"></Input>
+							<Input enabled="false" value="{lamDetail>/EndlonmO}"></Input>
+							<Input enabled="false" value="{lamDetail>/EndlonsO}"></Input>
+							<Input enabled="false" value="{lamDetail>/Endlondro}"></Input>
+							<Label text="{i18n>TIME_ZONE}"></Label>
+							<Input enabled="false" value="{lamDetail>/TzoneO}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</core:FragmentDefinition>

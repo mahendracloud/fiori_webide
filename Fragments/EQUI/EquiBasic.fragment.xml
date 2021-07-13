@@ -1,0 +1,203 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Label text=""></Label>
+	<Text visible="{ApproveModel>/approveVisible}"></Text>
+	<Title textAlign="Left" level="H2" wrapping="false" text="Configuration Data" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L12 M12 S12"/>
+		</layoutData>
+	</Title>
+	<Label text="{i18n>CONFIG_MAT}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input value="{AIWEQUI>/Kmatn}" enabled="false" visible="{ApproveModel>/approveVisible}" showValueHelp="true"></Input>
+	<Label text=""></Label>
+	<Text visible="{ApproveModel>/approveVisible}"></Text>
+	<Title textAlign="Left" level="H2" wrapping="false" text="Serialization Data" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L12 M12 S12"/>
+		</layoutData>
+	</Title>
+	<Label text="{i18n>MATERIAL}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/MatEqu}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L2 M2 S4"/>
+		</layoutData>
+	</Input>
+	<Input enabled="false" value="{AIWEQUI>/Materialdesc}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>MAT_SER_NO}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Sernr}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>LAST_SER_NO}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Text text="{AIWEQUI>/Lsernr}" visible="{ApproveModel>/approveVisible}"></Text>
+	<Label text=""></Label>
+	<Text visible="{ApproveModel>/approveVisible}"></Text>
+	<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>STCK_INFO}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L12 M12 S12"/>
+		</layoutData>
+	</Title>
+	<Label text="{i18n>STCK_TYP}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/Equilbbsa}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>PLANT}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/BWerk}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>COMPCODE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/BukrrsSk}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>ST_LOC}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/Sloc2equi}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>STCK_BATCH}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/Chrg2stk}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>MASTER_BATCH}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>STCK_IND}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/Sobk2stk}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>DATEL}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/Datlwb}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>CUSTOMER}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/Kunnr}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>VEND}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/LifnrStc}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>SALES_ORD}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/Kdauf}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>SALES_IT}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/Kdpos}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>STOCK_OWNER}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>WBS_ELE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Stock/PsPspPn}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text=""></Label>
+	<Text visible="{ApproveModel>/approveVisible}"></Text>
+	<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>SALES_DIST}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L12 M12 S12"/>
+		</layoutData>
+	</Title>
+	<Label text="{i18n>SALES_ORG}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Vkorg}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L2 M2 S4"/>
+		</layoutData>
+	</Input>
+	<Input enabled="false" value="{AIWEQUI>/Vkorgtxt}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>DIST_CHANNEL}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Vtweg}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L2 M2 S4"/>
+		</layoutData>
+	</Input>
+	<Input enabled="false" value="{AIWEQUI>/Vtwegtxt}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>DIV}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Spart}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L2 M2 S4"/>
+		</layoutData>
+	</Input>
+	<Input enabled="false" value="{AIWEQUI>/Sparttxt}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>SALES_OFC}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Vkbur}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L2 M2 S4"/>
+		</layoutData>
+	</Input>
+	<Input enabled="false" value="{AIWEQUI>/Vkburtxt}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>SALES_GRP}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Vkgrp}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L2 M2 S4"/>
+		</layoutData>
+	</Input>
+	<Input enabled="false" value="{AIWEQUI>/Vkgrptxt}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>LICENSE_NO}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Liznr}" visible="{ApproveModel>/approveVisible}"></Input>
+	<!-- commented below field as it is removed from MDG. 15/10-->
+	<!--<Label text="{i18n>LIC_NUM}"></Label>
+					<Input id="licNum" enabled="false" value="{AIWEQUI>/Liznr}"></Input>-->
+	<Label text=""></Label>
+	<Text visible="{ApproveModel>/approveVisible}"></Text>
+	<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>CUST_WAR}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L12 M12 S12"/>
+		</layoutData>
+	</Title>
+	<Label text="{i18n>GUARANTEE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{path:'AIWEQUI>/CgwldtEq', formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>WAR_ED}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{path:'AIWEQUI>/CgwlenEq', formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>MAST_WAT}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/CmganrEq}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>WAR_INH_POS}" visible="{ApproveModel>/approveVisible}"></Label>
+	<CheckBox enabled="false" selected="{path:'AIWEQUI>/CwagetEq', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+	<Label text="{i18n>IND_PASS_WAR}" visible="{ApproveModel>/approveVisible}"></Label>
+	<CheckBox enabled="false" selected="{path:'AIWEQUI>/CgaerbEq', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+	<Label text=""></Label>
+	<Text visible="{ApproveModel>/approveVisible}"></Text>
+	<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>VEND_WAR}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L12 M12 S12"/>
+		</layoutData>
+	</Title>
+	<Label text="{i18n>GUARANTEE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{path:'AIWEQUI>/VgwldtEq', formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>WAR_ED}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{path:'AIWEQUI>/VgwlenEq', formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>MAST_WAT}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/VmganrEq}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>WAR_INH_POS}" visible="{ApproveModel>/approveVisible}"></Label>
+	<CheckBox enabled="false" selected="{path:'AIWEQUI>/VwagetEq', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+	<Label text="{i18n>IND_PASS_WAR}" visible="{ApproveModel>/approveVisible}"></Label>
+	<CheckBox enabled="false" selected="{path:'AIWEQUI>/VgaerbEq', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+	<Label text=""></Label>
+	<Text visible="{ApproveModel>/approveVisible}"></Text>
+	<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>CUST_VEND_INFO}" visible="{ApproveModel>/approveVisible}">
+		<layoutData>
+			<l:GridData span="L12 M12 S12"/>
+		</layoutData>
+	</Title>
+	<Label text="{i18n>VEND}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/EliefEqi}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>CUSTOMER}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Kun1Eeqz}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>POST_CODE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Pstlz1}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>CITY}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/City1}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>ED_CUST}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Kun2Eeqz}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>POST_CODE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Pstlz2}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>CITY}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/City2}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>CURRENT_CUST}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/KundeEq}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>POST_CODE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/PstcdCcust}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>CITY}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/LocatCcust}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>DELV_DATE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Label text="{i18n>OPERATOR}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Kun3Eeqz}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>POST_CODE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/Pstlz3}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>CITY}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{AIWEQUI>/City3}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text="{i18n>DELV_DATE}" visible="{ApproveModel>/approveVisible}"></Label>
+	<Input enabled="false" value="{path:'AIWEQUI>/AuldtEqi',formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"></Input>
+	<Label text=""></Label>
+	<Text visible="{ApproveModel>/approveVisible}"></Text>
+	<!--<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>CONFIG_MAINT_OBJ}" visible="{ApproveModel>/approveVisible}">-->
+	<!--	<layoutData>-->
+	<!--		<l:GridData span="L12 M12 S12"/>-->
+	<!--	</layoutData>-->
+	<!--</Title>-->
+	<!--<Label text="{i18n>FUNCTION_IND}" visible="{ApproveModel>/approveVisible}"></Label>-->
+	<!--<Input enabled="false" value="{AIWEQUI>/Funcid}" visible="{ApproveModel>/approveVisible}"></Input>-->
+	<!--<Label text="{i18n>FORCE_INST}" visible="{ApproveModel>/approveVisible}"></Label>-->
+	<!--<CheckBox enabled="false" selected="{AIWEQUI>/Frcfit}" visible="{ApproveModel>/approveVisible}"></CheckBox>-->
+	<!--<Label text="{i18n>FORCE_DISMNT}" visible="{ApproveModel>/approveVisible}"></Label>-->
+	<!--<CheckBox enabled="false" selected="{AIWEQUI>/Frcrmv}" visible="{ApproveModel>/approveVisible}"></CheckBox>-->
+	<!--<Label text=""></Label>-->
+	<!--<Text visible="{ApproveModel>/approveVisible}"></Text>-->
+	<!--<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>CONFIG_CONT_OBH}" visible="{ApproveModel>/approveVisible}">-->
+	<!--	<layoutData>-->
+	<!--		<l:GridData span="L12 M12 S12"/>-->
+	<!--	</layoutData>-->
+	<!--</Title>-->
+	<!--<Label text="{i18n>CONSTTYPE}" visible="{ApproveModel>/approveVisible}"></Label>-->
+	<!--<Text text="{AIWEQUI>/Kmatn}" visible="{ApproveModel>/approveVisible}"></Text>-->
+</core:FragmentDefinition>

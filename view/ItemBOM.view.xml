@@ -1,0 +1,318 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.ItemBOM" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<Page navButtonPress="onNavBack" showNavButton="false" title="{applicationModel>/titleName}">
+		<content>
+			<!--<l:VerticalLayout id="idForAppr"></l:VerticalLayout>-->
+			<!--<l:Grid id="idForAppr"></l:Grid>-->
+			<Panel headerText="{VisibleModel>/ItmDtlTxt}" expandable="true" expanded="true" visible="{VisibleModel>/ItmDtlVisible}">
+				<f:SimpleForm id="bomItemDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>IT_NUM}"></Label>
+						<Text id="itemNumber" text="{itemDetailModel>/Bomitmpos}"></Text>
+						<Label text="{i18n>IT_CAT}"></Label>
+						<Input id="itemCategory" enabled="false" value="{itemDetailModel>/Itemcat}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="itemCategoryDesc" enabled="false" value="{itemDetailModel>/Itmcattxt}"></Input>
+						<Label text="{i18n>COMPO}"></Label>
+						<Input enabled="false" value="{itemDetailModel>/Itemcomp}" visible="{VisibleModel>/ItmCompVisible}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input enabled="false" value="{itemDetailModel>/Itmcmpdesc}" visible="{VisibleModel>/ItmCompVisible}"></Input>
+						<Label text="{i18n>REF_PT}"></Label>
+						<Input id="refPoint" enabled="false" value="{itemDetailModel>/Rfpnt}" visible="{VisibleModel>/RfpntVisible}"></Input>
+						<Label text="{i18n>CO_PROD}"></Label>
+						<CheckBox id="coProduct" enabled="false" selected="{path:'itemDetailModel>/Coprod', formatter:'.typeCheck2'}"
+							visible="{VisibleModel>/CoProdVisible}"></CheckBox>
+						<Label text="{i18n>RECRS}"></Label>
+						<CheckBox id="recurs" enabled="false" selected="{path:'itemDetailModel>/Recurallo', formatter:'.typeCheck2'}"></CheckBox>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>QTY_DATA}" visible="{VisibleModel>/QtyDataVisible}">
+				<f:SimpleForm id="bomQtyDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>COMP_QTY}"></Label>
+						<Input id="componentQty" enabled="false" value="{itemDetailModel>/Itmqty}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="componentQtyDesc" enabled="false" value="{itemDetailModel>/Itmuom}"></Input>
+						<Label text="{i18n>QTY_FIX}"></Label>
+						<CheckBox id="qtyFixed" enabled="false" selected="{path:'itemDetailModel>/Fixedqty', formatter:'.typeCheck2'}"></CheckBox>
+						<Label text="{i18n>COMP_SCRAP}"></Label>
+						<Input id="compScrapPerc" enabled="false" value="{itemDetailModel>/Compscrap}"></Input>
+						<Label text="{i18n>OP_SCRAP}"></Label>
+						<Input id="operationScrapPerc" enabled="false" value="{itemDetailModel>/Operscrap}"></Input>
+						<Label text="{i18n>NET_ID}"></Label>
+						<CheckBox id="netId" enabled="false" selected="{path:'itemDetailModel>/Compnet', formatter:'.typeCheck2'}"></CheckBox>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>ADTNL_DATA}" visible="{VisibleModel>/AddnlDataVisible}">
+				<f:SimpleForm id="bomAddDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>MAT_PROV_IND}"></Label>
+						<Input id="matProvisionInd" enabled="false" value="{itemDetailModel>/Matproind}"></Input>
+						<Label text="{i18n>ST_LOC}"></Label>
+						<Input enabled="false" value="{itemDetailModel>/Ebomlgort}" visible="{VisibleModel>/StrLocVisible}"></Input>
+						<Label text="{i18n>BULK_MAT}"></Label>
+						<CheckBox id="bulkMat" enabled="false" selected="{path:'itemDetailModel>/Itmbulmat', formatter:'.typeCheck2'}"></CheckBox>
+						<Label text="{i18n>BULK_MAT_MST}"></Label>
+						<CheckBox id="BulkMatIndMatMst" enabled="false" selected="{path:'itemDetailModel>/Schkz', formatter:'.typeCheck2'}"></CheckBox>
+						<Label text="{i18n>PM_ASSEMBLY}"></Label>
+						<CheckBox id="pmAssembly" enabled="false" selected="{path:'itemDetailModel>/Pmassmbly', formatter:'.typeCheck2'}"
+							visible="{VisibleModel>/PmassmblyVisible}"></CheckBox>
+						<Label text="{i18n>PROD_SUPPLY}"></Label>
+						<Input enabled="false" value="{itemDetailModel>/EqbomPr}" visible="{VisibleModel>/ProdSuplyVisible}"></Input>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>MRP_DATA}" visible="{VisibleModel>/MrpDataVisible}">
+				<f:SimpleForm id="bomMrpDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>LEAD_OFF}"></Label>
+						<Input id="leadTimeOffset" enabled="false" value="{itemDetailModel>/Leadtimeo}"></Input>
+						<Label text="{i18n>PHANTOM_IT}"></Label>
+						<CheckBox id="phantomItem" enabled="false" selected="{path:'itemDetailModel>/Phantomin', formatter:'.typeCheck2'}"></CheckBox>
+						<Label text="{i18n>OPER_LT_OFFSET}"></Label>
+						<Input id="operLtOffset" enabled="false" value="{itemDetailModel>/Operltofs}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="operLtOffsetDesc" enabled="false" value="{itemDetailModel>/Operltuni}"></Input>
+						<Label text="{i18n>SPL_PROCURE}"></Label>
+						<Input id="splProcurement" enabled="false" value="{itemDetailModel>/Itsobbom}"></Input>
+						<Label text="{i18n>DIST_KEY}"></Label>
+						<Input id="distKey" enabled="false" value="{itemDetailModel>/Vertlbom}"></Input>
+						<Label text="{i18n>EXPL_KEY}"></Label>
+						<Input id="explosionType" enabled="false" value="{itemDetailModel>/Expltyp}"></Input>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<!--visible="{= ${itemOverview>/Itmcatref} === 'N' ? true : false}"-->
+			<Panel visible="{VisibleModel>/PurDataVisible}" expandable="true" expanded="true" headerText="{i18n>PUR_DATA}">
+				<f:SimpleForm id="bomPurchDataForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>PURCH_ORG}"></Label>
+						<Input id="purchOrg" maxLength="4" value="{itemDetailModel>/Ekorg}" valueState="{itemDetailModel>/POrgVS}" editable="true"
+							showValueHelp="true" valueHelpRequest="onPrchseOrgVH" change="onPrchseOrgChange" liveChange="onLiveChange">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="purchOrgDesc" enabled="false" value="{itemDetailModel>/Ekotx}"></Input>
+						<Label text="{i18n>PURCH_GRP}" required="{itemDetailModel>/PGrpReq}"></Label>
+						<Input id="purchasingGrp" maxLength="3" value="{itemDetailModel>/Ekgrp}" valueState="{itemDetailModel>/PGrpVS}" editable="true"
+							showValueHelp="true" valueHelpRequest="onPrchseGrpVH" change="onPrchseGrpChange" liveChange="onLiveChange">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="purchasingGrpDesc" enabled="false" value="{itemDetailModel>/Eknam}"></Input>
+						<Label text="{i18n>VEND}"></Label>
+						<Input id="vendor" enabled="false" value="{itemDetailModel>/Vendor}" visible="{VisibleModel>/PurDataApprFieldsVis}"></Input>
+						<Label text="{i18n>DEL_TIME}"></Label>
+						<Input id="delTimeDays" enabled="false" value="{itemDetailModel>/Lifzt}" visible="{VisibleModel>/PurDataApprFieldsVis}"></Input>
+						<Label text="{i18n>PRICE}" required="{itemDetailModel>/PrcReq}"></Label>
+						<Input id="price" value="{itemDetailModel>/Preis}" valueState="{itemDetailModel>/PriceVS}" change="onChangeSimple">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="priceDesc" maxLength="5" value="{itemDetailModel>/Waers}" valueState="{itemDetailModel>/CrncyVS}" editable="true"
+							showValueHelp="true" valueHelpRequest="onCrncyVH" change="onCrncyChange" liveChange="onLiveChange"></Input>
+						<Label text="{i18n>PRICE_UNIT}" required="{itemDetailModel>/PrcUnitReq}"></Label>
+						<Input id="priceUnit" value="{itemDetailModel>/Peinh}" valueState="{itemDetailModel>/PrcUnitVS}" change="onChangeSimple"></Input>
+						<Label text="{i18n>COST_ELE}"></Label>
+						<Input id="costElement" enabled="false" value="{itemDetailModel>/ItmSakto}" visible="{VisibleModel>/PurDataApprFieldsVis}"></Input>
+						<Label text="{i18n>GR_PROCESS_TIME}"></Label>
+						<Input id="grProcessTime" enabled="false" value="{itemDetailModel>/Webaz}" visible="{VisibleModel>/PurDataApprFieldsVis}"></Input>
+						<Label text="{i18n>MAT_GRP}" required="{itemDetailModel>/MatGrpReq}"></Label>
+						<Input id="materialGrp" maxLength="9" value="{itemDetailModel>/Matkl}" valueState="{itemDetailModel>/MatGrpVS}" editable="true"
+							showValueHelp="true" valueHelpRequest="onMatGrpVH" change="onMatGrpChange" liveChange="onLiveChange">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input id="materialGrpDesc" enabled="false" value="{itemDetailModel>/Wgbez}"></Input>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>ITM_TXT}" visible="{VisibleModel>/ItmTxtVisible}">
+				<f:SimpleForm id="bomItemTextForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+					labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>IT_TEXT1}" required="{itemDetailModel>/ItmTxt1Req}"></Label>
+						<Input maxLength="40" id="itemTextLine1" value="{itemDetailModel>/Potx1}" valueState="{itemDetailModel>/ItmTxt1VS}" change="onChangeSimple"></Input>
+						<Label text="{i18n>IT_TEXT2}"></Label>
+						<Input id="itemTextLine2" enabled="false" value="{itemDetailModel>/Potx2}" visible="{VisibleModel>/ItmTxtApprFieldsVis}"></Input>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<!--visible="{= ${wbsItemOverview>/Itmcatgry} === 'D' ? true : false}"-->
+			<Panel visible="{VisibleModel>/DocAssgnVisible}" expandable="true" expanded="true" headerText="{i18n>BOM_DOC_ASSGN}">
+				<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+					emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>DOC}" required="{itemDetailModel>/DocReq}"></Label>
+						<Input value="{itemDetailModel>/Bomdocitm}" valueState="{itemDetailModel>/DocVS}" editable="true" showValueHelp="true"
+							valueHelpRequest="onDocumentVH" change="onDocumentChange" liveChange="onLiveChange"></Input>
+						<Label text="{i18n>DOC_TYP}"></Label>
+						<Input enabled="false" value="{itemDetailModel>/Bomitmdkr}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input enabled="false" value="{itemDetailModel>/BomitmdkrTxt}"></Input>
+						<Label text="{i18n>DOC_PART}"></Label>
+						<Input enabled="false" value="{itemDetailModel>/Bomitmdtl}"></Input>
+						<Label text="{i18n>DOC_VER}"></Label>
+						<Input enabled="false" value="{itemDetailModel>/Bomitmdvr}"></Input>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel visible="{VisibleModel>/varsizeitmdataVisible}" expandable="true" expanded="true" headerText="{i18n>VAR_SIZE_ITM_DATA}">
+				<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+					emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>SIZE_1}" required="{itemDetailModel>/Size1Req}"></Label>
+						<Input type="Number" value="{itemDetailModel>/Roms1}" change="onSizeChange" liveChange="onLiveChange">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input value="{itemDetailModel>/Romei}" valueState="{itemDetailModel>/sizeunitVS}" editable="true" showValueHelp="true"
+							valueHelpRequest="onSizeUnitVH" change="onSizeUnitChange" liveChange="onLiveChange"></Input>
+						<Label text="{i18n>SIZE_2}"></Label>
+						<Input type="Number" value="{itemDetailModel>/Roms2}" change="onSizeChange" liveChange="onLiveChange"></Input>
+						<Label text="{i18n>SIZE_3}"></Label>
+						<Input type="Number" value="{itemDetailModel>/Roms3}" change="onSizeChange" liveChange="onLiveChange"></Input>
+						<Label text="{i18n>FORMULA_KEY}"></Label>
+						<Input value="{itemDetailModel>/Rform}" valueState="{itemDetailModel>/FrmlaKeyVS}" editable="true" showValueHelp="true"
+							valueHelpRequest="onFormaulaKeyVH" change="onFormaulaKeyChange" liveChange="onLiveChange">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input enabled="false" value="{itemDetailModel>/FrmlaKeyDesc}"></Input>
+						<Label text="{i18n>NUM_VAR_SIZE_ITMS}" required="{itemDetailModel>/NumVarSizReq}"></Label>
+						<Input type="Number" value="{itemDetailModel>/Roanz}" change="onSizeChange" liveChange="onLiveChange">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input enabled="false" value="{itemDetailModel>/numVarSizeDesc}"></Input>
+						<Label text="{i18n>QTY_VAR_SIZE_ITM}"></Label>
+						<Input type="Number" value="{itemDetailModel>/Romen}" change="onSizeChange" liveChange="onLiveChange">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input value="{itemDetailModel>/Rokme}" valueState="{itemDetailModel>/QtyVarUnitVS}" editable="true" showValueHelp="true"
+							valueHelpRequest="onQtyVarUnitVH" change="onQtyVarUnitChange" liveChange="onLiveChange"></Input>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel headerText="{i18n>ITEM_STATUS}" expandable="true" expanded="true">
+				<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+					emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="{i18n>SPARE_PART}" required="{path:'itemDetailModel>/Pmper', formatter:'.formatter.statusCheckLBL'}"></Label>
+						<Input type="Text" value="{itemDetailModel>/Erskz}" enabled="{path:'itemDetailModel>/Pmper',formatter:'.formatter.statusCheck'}"
+							editable="true" showValueHelp="true" change="onStatusChange" liveChange="onLiveChange" valueHelpRequest="onSpareVH" maxLength="1"
+							visible="{itemDetailModel>/SparePartVis}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input enabled="false" value="{itemDetailModel>/Etext}" visible="{itemDetailModel>/SparePartVis}"></Input>
+						<Label text="{i18n>REL_COST}" required="{path:'itemDetailModel>/Pmpka', formatter:'.formatter.statusCheckLBL'}"></Label>
+						<Input type="Text" value="{itemDetailModel>/Costgrelv}" enabled="{path:'itemDetailModel>/Pmpka',formatter:'.formatter.statusCheck'}"
+							editable="true" showValueHelp="true" change="onStatusChange" liveChange="onLiveChange" valueHelpRequest="onRelVH" maxLength="1"
+							visible="{itemDetailModel>/RelCostVis}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input enabled="false" value="{itemDetailModel>/Stext}" visible="{itemDetailModel>/RelCostVis}"></Input>
+						<Label text="{i18n>REL_SALES}" required="{path:'itemDetailModel>/Pmprv', formatter:'.formatter.statusCheckLBL'}"></Label>
+						<Input type="Text" value="{itemDetailModel>/Rvrel}" enabled="{path:'itemDetailModel>/Pmprv',formatter:'.formatter.statusCheck'}"
+							editable="true" showValueHelp="true" change="onStatusChange" liveChange="onLiveChange" valueHelpRequest="onRelSaleVH" maxLength="1"
+							visible="{itemDetailModel>/RelSalesVis}">
+							<layoutData>
+								<l:GridData span="L2 M2 S4"/>
+							</layoutData>
+						</Input>
+						<Input enabled="false" value="{itemDetailModel>/Bezei}" visible="{itemDetailModel>/RelSalesVis}"></Input>
+						<Label text="{i18n>PROD_REL}"></Label>
+						<CheckBox selected="{itemDetailModel>/Sanfe}" enabled="{path:'itemDetailModel>/Pmpfe',formatter:'.formatter.statusCheck'}" editable="true"></CheckBox>
+						<Label text="{i18n>PLANT_MAIN}"></Label>
+						<CheckBox selected="{itemDetailModel>/Sanin}" enabled="{path:'itemDetailModel>/Pmpin',formatter:'.formatter.statusCheck'}" editable="true"></CheckBox>
+						<Label text="{i18n>ENG_DES}"></Label>
+						<CheckBox selected="{itemDetailModel>/Sanko}" enabled="{path:'itemDetailModel>/Pmpko',formatter:'.formatter.statusCheck'}" editable="true"></CheckBox>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel id="idPanelSubItm" headerText="{i18n>SUBITEM}" expandable="true" expanded="true">
+				<content>
+					<Table mode="{BOMModel>/modeFlag}" items="{tableModel>/}" width="100%" noDataText="{i18n>ITEM_NODATA_TEXT}" delete="handleSubItemDlt">
+						<headerToolbar>
+							<Toolbar>
+								<ToolbarSpacer/>
+								<Button press="addSubItem" enabled="{itemDetailModel>/addSubItmEnable}" icon="sap-icon://add" tooltip="{i18n>NEW_SUBITEM}"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="{i18n>IT_NO}" textAlign="Center"></Text>
+							</Column>
+							<Column>
+								<Text text="{i18n>SUBITM_NUM}" textAlign="Center"></Text>
+							</Column>
+							<Column>
+								<Text text="{i18n>INST_POINT}" textAlign="Center"></Text>
+							</Column>
+							<Column>
+								<Text text="{i18n>SUBITM_QTY}" textAlign="Center"></Text>
+							</Column>
+							<Column>
+								<Text text="{i18n>SUBITM_TXT}" textAlign="Center"></Text>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem id="subitemTemplate">
+								<cells>
+									<Input value="{tableModel>Bomitmnod}" enabled="false"></Input>
+									<Input value="{tableModel>Bomsubno}" enabled="false"></Input>
+									<Input maxLength="20" value="{tableModel>Ebort}" change="onSubItemChange" enabled="{tableModel>intPointEnable}"></Input>
+									<Input maxLength="13" value="{tableModel>Upmng}" valueState="{tableModel>subqtyState}" enabled="{tableModel>subQtyEnable}" change="onSubItemChange"></Input>
+									<Input maxLength="40" value="{tableModel>Uptxt}" change="onSubItemChange" enabled="{tableModel>subTextEnable}"></Input>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar id="tabletoolbar">
+				<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+				<ToolbarSpacer/>
+				<Button id="idBtnCheck" text="Check" press="onItmDonePress"/>
+				<Button text="{i18n>BTN_DONE}" type="Accept" press="onItmDonePress"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

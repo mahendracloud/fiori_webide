@@ -1,0 +1,106 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto">
+		<l:content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+				emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="{i18n>VEHICLE_ID_MEAS_IDENT}"></core:Title>
+					<Label text="{i18n>FLEET_OBJ_TYPE}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/FleetCat}"></Input>
+					<Label text="{i18n>FLEET_OBJ_NO}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/FleetNum}"></Input>
+					<Label text="{i18n>LICENSE_PLATE_NO}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/LicenseN}"></Input>
+					<Label text="{i18n>VALIDITY_END_DATE}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/ValidityEndDate}"></Input>
+					<Label text="{i18n>MANUFACTURE_VIN}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/FleetVin}"></Input>
+					<Label text="{i18n>CHASSIS_NO}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Chasisnum}"></Input>
+					<core:Title text="{i18n>DIMENSIONS}"></core:Title>
+					<Label text="{i18n>FLEET_OBJ_HEIGHT}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/FleetHgt}"></Input>
+					<Label text="{i18n>UNIT_OF_LENGTH}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/DimUnit}"></Input>
+					<Label text="{i18n>FLEET_OBJ_WIDTH}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/FleetWid}"></Input>
+					<Label text="{i18n>OBJECT_LENGTH}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/FleetLen}"></Input>
+					<core:Title text="{i18n>TRANSPORT_REV_DATA}"></core:Title>
+					<Label text="{i18n>GROSS_WEIGHT}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/BrgewFt}"></Input>
+					<Label text="{i18n>UNIT_WEIGHT}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/GeweiFt}"></Input>
+					<Label text="{i18n>TOTAL_WEIGHT_ALLOWED}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/GrossWgt}"></Input>
+					<Label text="{i18n>MAXIMUM_LOAD_WEIGHT}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/LoadWgt}"></Input>
+					<Label text="{i18n>LOAD_VOLUME}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/LoadVol}"></Input>
+					<Label text="{i18n>VOLUME_UNIT}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/VolUnit}"></Input>
+					<Label text="{i18n>LOAD_HEIGHT}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/LoadHgt}"></Input>
+					<Label text="{i18n>DIMENSION_UNIT_LOAD}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Lddimunit}"></Input>
+					<Label text="{i18n>LOAD_WIDTH}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/LoadWid}"></Input>
+					<Label text="{i18n>LOAD_LENGTH}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/LoadLen}"></Input>
+					<Label text="{i18n>NO_OF_COMPARTMENTS}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Nocompart}"></Input>
+					<core:Title text="{i18n>VEHICLE_TECH_OTHER_ATTR}"></core:Title>
+					<Label text="{i18n>USAGE_INDICATOR}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/FleetUse}"></Input>
+					<Label text="{i18n>FUEL_CARD_NUMBER}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/CardNum}"></Input>
+					<Label text="{i18n>MAX_NO_OCCUPANTS}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Maxoccupa}"></Input>
+					<Label text="{i18n>KEY_NO_VEHICLE}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/KeyNum}"></Input>
+					<Label text="{i18n>NUMBER_OF_AXLES}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/NumAxle}"></Input>
+					<core:Title text="{i18n>FUEL_AND_LUBRICANTS}"></core:Title>
+					<Label text="{i18n>PRIMARY_FUEL}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/FuelPri}"></Input>
+					<Label text="{i18n>SECONDARY_DUEL}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/FuelSec}"></Input>
+					<Label text="{i18n>OIL_TYPE}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/OilType}"></Input>
+					<Label text="{i18n>MATERIAL_CONSUMPTION}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Consumpmv}"></Input>
+					<Label text="{i18n>CONSUMPTION_TOLERANCE}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Consumptl}"></Input>
+					<Label text="{i18n>CALC_METHOD_CONSUMPTION}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/PriCalc}"></Input>
+					<core:Title text="{i18n>ENGINE_DATA}"></core:Title>
+					<Label text="{i18n>ENGINE_TYPE}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Enginetyp}"></Input>
+					<Label text="{i18n>ENGINE_SRNO}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Enginesnr}"></Input>
+					<Label text="{i18n>MAXIMUM_SPEED}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/SpeedMax}"></Input>
+					<Label text="{i18n>ENGINE_POWER}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Enginepow}"></Input>
+					<Label text="{i18n>REVOLUTIONS_MIN}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Revlutons}"></Input>
+					<Label text="{i18n>ENGINE_CAPACITY}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Enginecap}"></Input>
+					<Label text="{i18n>NO_OF_CYLINDERS}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Enginecyl}"></Input>
+					<core:Title text="{i18n>REPLACEMENT_DATA}"></core:Title>
+					<Label text="{i18n>REPLACEMENT_DATE}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/ReplaDt}"></Input>
+					<!--<Label text="{i18n>MEASRGPOS}"></Label>-->
+					<!--<Text text="{AIWEQUI>/FLEET/Topsiteid}"></Text>-->
+					<!--<Label text="{i18n>PRIMARY_COUNTER}"></Label>-->
+					<!--<Text text="{AIWEQUI>/FLEET/Topsiteid}"></Text>-->
+					<Label text="{i18n>ODOMETER_READ_REPL}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/Replaodom}"></Input>
+					<Label text="{i18n>HOURMETER_READ_REPL}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/FLEET/ReplaOph}"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

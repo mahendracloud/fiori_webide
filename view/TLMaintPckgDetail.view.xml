@@ -1,0 +1,60 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.TLMaintPckgDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<Page id="tlMaintPckgPage" navButtonPress="onNavBack" showNavButton="false" title="Maintainence Package">
+		<content>
+			<Panel expandable="false" expanded="true" headerText="Maintainence Package Overview" width="auto" class="sapUiSmallMargin">
+				<Table id="idTblMaintPckgDetail" mode="Delete" items="{mtlMaintPckg>/MPArr/}" delete="deleteMaintPckg">
+					<headerToolbar>
+						<Toolbar>
+							<!--<Title text="" level="H2"></Title>-->
+							<ToolbarSpacer/>
+							<Button id="idAddMaintPckg" icon="sap-icon://add" tooltip="Add" press="addMaintPckg"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column>
+							<Text text="Activity"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="Maintainence Strategy"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="Cycle short text"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="Cycle text"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="Package"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="Hierarchy short text"></Text>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem type="Active">
+							<cells>
+								<Input enabled="false" value="{mtlMaintPckg>Vornr}"></Input>
+								<Input enabled="false" value="{mtlMaintPckg>Strat}"></Input>
+								<Input showValueHelp="true" valueHelpRequest="onCycleShrtTxtVH" value="{mtlMaintPckg>Kzyk1}" valueState="{mtlMaintPckg>Kzyk1VS}"
+									change="onCycleShrtTxtChange" enabled="{mtlMaintPckg>MPEnable}"></Input>
+								<Input enabled="false" value="{mtlMaintPckg>Ktex1}"></Input>
+								<Input enabled="false" value="{mtlMaintPckg>Paket}"></Input>
+								<Input enabled="false" value="{mtlMaintPckg>Ktxhi}"></Input>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar id="tabletoolbar">
+				<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+				<ToolbarSpacer/>
+				<!--<Button id="idBtnCheck" text="Check" press="onMPDonePress"/>-->
+				<Button text="Done" type="Accept" press="onNavBack"/>
+				<!--<Button text="Cancel" type="Reject" press="onCancelPress"/>-->
+			</Toolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

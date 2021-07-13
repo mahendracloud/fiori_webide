@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="TLTab" text="TL" tooltip="{i18n>tsklTl}" icon="sap-icon://master-task-triangle-2" visible="{EnableModel>/Task List}"
+		count="{CountModel>/TotalTLCount}" iconColor="Contrast">
+		<content>
+			<IconTabBar id="_iconTabBarTL" select="onTLIconTabBarSelect" selectedKey="generalTL">
+				<items>
+					<core:Fragment id="generalTL" key="generalTL" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.TL.GeneralTaskList" type="XML"/>
+					<core:Fragment id="eqTL" key="eqTL" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.TL.EquipmentTaskList" type="XML"/>
+					<core:Fragment id="flocTL" key="flocTL" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.TL.FLOCTaskList" type="XML"/>
+				</items>
+			</IconTabBar>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

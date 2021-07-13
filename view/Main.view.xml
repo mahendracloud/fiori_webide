@@ -1,0 +1,174 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:u="sap.ui.unified"
+	xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.Main" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<pages>
+			<Page id="mainPage" busy="{mainView>/viewBusy}" title="{i18n>title}" enableScrolling="true" showFooter="true" backgroundDesign="Standard">
+				<!--<subHeader>-->
+				<!--	<Toolbar>-->
+				<!--		<Button icon="sap-icon://tree" tooltip="{i18n>hierarchy}" press="onHierarchyPress"></Button>-->
+				<!--		<ToolbarSpacer></ToolbarSpacer>-->
+				<!--		<Button icon="sap-icon://action-settings" press="onSettingsPressed" tooltip="{i18n>settings}"></Button>-->
+				<!--	</Toolbar>-->
+				<!--</subHeader>-->
+				<content>
+					<ObjectHeader id="crObjHeader" backgroundDesign="Transparent" visible="{mode>/isHeader}"
+						title="{parts:[{path:'crDetail>/CrDescription'}, {path:'crDetail>/ChangeRequestId'} ], formatter: '.formatter.title'}"
+						numberUnit="{crDetail>/CreatedAt}" icon="{path:'crDetail>/Action',formatter:'.formatter.iconFormatter'}">
+						<attributes>
+							<ObjectAttribute id="s3Attr1" text="{path:'crDetail>/WiText'}"/>
+							<ObjectAttribute id="s3Attr2"
+								text="{parts:[{path:'crDetail>/Edition/UsmdVdateFrom'}, {path:'crDetail>/Edition/UsmdVdateTo'}],formatter:'.validityFormatter'}"
+								visible="{parts:[{path:'crDetail>/Edition/UsmdVdateFrom'}, {path:'crDetail>/Edition/UsmdVdateTo'}],formatter:'.formatter.visibility'}"/>
+							<ObjectAttribute id="crId" active="true" press="onOpenPopover"/>
+							<ObjectAttribute id="s3Attr3" text="{path:'crDetail>/CreatedBy',formatter:'.formatter.requestedBy'}"/>
+						</attributes>
+						<statuses>
+							<ObjectStatus id="s3Status1" text="{crDetail>/StatusDesc}"/>
+						</statuses>
+					</ObjectHeader>
+					<OverflowToolbar id="otb1" design="Solid">
+						<Button text="Hierarchy" tooltip="{i18n>hierarchy}" press="onHierarchyPress" type="Transparent"></Button>
+						<ToolbarSpacer/>
+						<Button text="Settings" press="onSettingsPressed" tooltip="{i18n>settings}" type="Transparent"></Button>
+					</OverflowToolbar>
+					<IconTabBar id="_iconTabBar1" select="handleTabSelect" class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
+						<items>
+							<IconTabFilter id="changeReqFilter" text="General" key="General" visible="{mode>/isChangeRequest}">
+								<content>
+									<l:Grid id="eqGrid" defaultSpan="L12 M12 S12" width="auto">
+										<l:content>
+											<f:SimpleForm id="simpleform" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+												labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+												<f:content>
+													<VBox>
+														<layoutData >
+															<l:GridData span="L12 M12 S12"/>
+														</layoutData>
+													</VBox>
+													<Label text="{i18n>reason}"/>
+													<Select id="reasonForRequest"/>
+													<Label text="{i18n>desc}" required="true"/>
+													<Input id="Description" type="Text" editable="true" change="onCRDescChange" maxLength="60"/>
+													<Label text="{i18n>priority}"/>
+													<Select id="idPriority" forceSelection="false" change="onGenDataChange"></Select>
+													<Label text="{i18n>dueDate}"/>
+													<DatePicker id="idDueDate" change="onGenDataChange"></DatePicker>
+												</f:content>
+											</f:SimpleForm>
+										</l:content>
+									</l:Grid>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter key="notes" text="Notes" tooltip="Notes" visible="{mode>/isChangeRequest}">
+								<content>
+									<core:Fragment fragmentName="ugieamui.mdg.eam.lib.search.Notes" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Notes" tooltip="Notes" visible="{EnableModel>/notes}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Notes" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Attachments" tooltip="Attachments" visible="{EnableModel>/attach}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Attachments" type="XML"></core:Fragment>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Attachments" tooltip="Attachments" visible="{mode>/isChangeRequest}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.library.fragments.Attachments.Attachments" type="XML"></core:Fragment>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="AIW General Data" tooltip="AIW General Data" visible="{EnableModel>/notes}">
+								<content>
+									<!--<core:Fragment fragmentName="ugiaiwui.mdg.aiw.library.fragments.Attachments.Attachments" type="XML"></core:Fragment>-->
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="AIW Model Details" tooltip="AIW Model Details" visible="{EnableModel>/AIWModeVis}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.AIWModel" type="XML"></core:Fragment>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter id="idDraftTab" key="onDraft" text="{i18n>drafts}" tooltip="{i18n>drafts}" visible="{mode>/isChangeRequest}">
+								<!-- id="draft" -->
+								<content>
+									<core:Fragment fragmentName="ugieamui.mdg.eam.lib.search.Draft" type="XML"/>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+					<IconTabBar id="_iconTabBar" select="handleTabSelect" class="sapUiResponsiveContentPadding">
+						<items>
+							<!--<IconTabFilter id="changeReqFilter" icon="sap-icon://form" text="{i18n>general}" design="Horizontal" visible="{mode>/isChangeRequest}"-->
+							<!--	key="general">-->
+							<!--	<content>-->
+							<!--		<l:Grid id="eqGrid" defaultSpan="L12 M12 S12" width="auto">-->
+							<!--			<l:content>-->
+							<!--				<f:SimpleForm id="simpleform" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"-->
+							<!--					labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">-->
+							<!--					<f:content>-->
+							<!--						<VBox>-->
+							<!--							<layoutData >-->
+							<!--								<l:GridData span="L12 M12 S12"/>-->
+							<!--							</layoutData>-->
+							<!--						</VBox>-->
+							<!--						<Label text="{i18n>reason}"/>-->
+							<!--						<Select id="reasonForRequest"/>-->
+							<!--						<Label text="{i18n>desc}" required="true"/>-->
+							<!--						<Input id="Description" type="Text" editable="true" liveChange="DescChange" maxLength="60"/>-->
+							<!--					</f:content>-->
+							<!--				</f:SimpleForm>-->
+							<!--			</l:content>-->
+							<!--		</l:Grid>-->
+							<!--	</content>-->
+							<!--</IconTabFilter>-->
+							<core:Fragment id="flocMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.FLOC.FunctionalLocationMain" type="XML"/>
+							<core:Fragment id="equiMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.EQUI.EquipmentMain" type="XML"/>
+							<core:Fragment id="bomMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.BOM.BomMain" type="XML"/>
+							<core:Fragment id="msptMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.MSPT.MeasuringPointMain" type="XML"/>
+							<core:Fragment id="wcMain" key="wcMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.WC.WorkCenter" type="XML"/>
+							<core:Fragment id="tlMain" key="tlMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.TL.TaskListMain" type="XML"/>
+							<core:Fragment id="mpmiMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.MPMI.MaintenancePlanMain" type="XML"/>
+							<core:Fragment id="olMain" key="olMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.OL.ObjectLink" type="XML"/>
+							<core:Fragment id="ON" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.ON.ONMain" type="XML"/>
+							<!--<IconTabFilter icon="sap-icon://attachment" text="{i18n>attachments}" design="Horizontal" visible="{EnableModel>/attach}">-->
+							<!--	<content>-->
+							<!--		<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Attachments" type="XML"></core:Fragment>-->
+							<!--	</content>-->
+							<!--</IconTabFilter>-->
+							<!--<IconTabFilter icon="sap-icon://notes" text="{i18n>notes}" design="Horizontal" visible="{EnableModel>/notes}">-->
+							<!--	<content>-->
+							<!--		<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Notes" type="XML"/>-->
+							<!--	</content>-->
+							<!--</IconTabFilter>-->
+							<!--<IconTabFilter icon="sap-icon://attachment" text="{i18n>attachments}" design="Horizontal" visible="{mode>/isChangeRequest}">-->
+							<!--	<content>-->
+							<!--		<core:Fragment fragmentName="ugiaiwui.mdg.aiw.library.fragments.Attachments.Attachments" type="XML"></core:Fragment>-->
+							<!--	</content>-->
+							<!--</IconTabFilter>-->
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Toolbar id="tabletoolbar">
+						<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+						<ToolbarSpacer/>
+						<Button id="idBtnCheck" text="Check" press="onSubmit" enabled="{mainView>/enable}" visible="{EnableModel>/submitcancelEnable}"/>
+						<Button id="idBtnSave" text="{i18n>save}" press="onSave" enabled="{mainView>/enable}" visible="{EnableModel>/submitcancelEnable}"/>
+						<Button text="{i18n>submit}" type="Accept" press="onSubmit" enabled="{mainView>/enable}" visible="{EnableModel>/submitcancelEnable}"/>
+						<Button text="{i18n>cancel}" type="Reject" press="onCancel" visible="{EnableModel>/submitcancelEnable}"/>
+						<Button id="approve" text="{i18n>approve}" type="Accept" press="onApprovePress" enabled="{EnableModel>/isEnable}"
+							visible="{EnableModel>/approverejectEnable}"/>
+						<Button id="reject" text="{i18n>reject}" type="Reject" press="onRejectPress" visible="{EnableModel>/approverejectEnable}"
+							enabled="{EnableModel>/isEnable}"/>
+						<!--<Button text="{i18n>activate}" type="Accept" press="onActivatePress" enabled="{EnableModel>/isActivateEnable}"-->
+						<!--	visible="{EnableModel>/activateEnable}"></Button>-->
+						<!--<Button text="{i18n>sendForRevision}" type="Reject" press="onRevisionPress" enabled="{EnableModel>/isActivateEnable}"-->
+						<!--	visible="{EnableModel>/activateEnable}"></Button>-->
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

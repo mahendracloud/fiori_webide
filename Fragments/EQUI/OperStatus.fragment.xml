@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>OPSTSTITLE}">
+		<content>
+			<Table items="{mStsWitNum>/}" mode="SingleSelectLeft" noDataText="No Data">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>OPSTSTITLEW}" level="H2"></Title>
+						<ToolbarSpacer/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>STSPRFL}"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>STSNUM}"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>STSOBJ}"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>STATUS}"></Text>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{mStsWitNum>StsmaDfps}"></Text>
+							<Text text="{mStsWitNum>StonrDfps}"></Text>
+							<Text text="{mStsWitNum>Txt04Dfps}"></Text>
+							<Text text="{mStsWitNum>Txt30Dfps}"></Text>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<Table items="{mStsWitoutNum>/}" mode="MultiSelect" noDataText="No Data">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>OPSTSTITLEWO}" level="H2"></Title>
+						<ToolbarSpacer/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>STSPRFL}"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>STSOBJ}"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>STATUS}"></Text>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{mStsWitoutNum>StsmaDfps}"></Text>
+							<Text text="{mStsWitoutNum>Txt04Dfps}"></Text>
+							<Text text="{mStsWitoutNum>Txt30Dfps}"></Text>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<beginButton >
+			<Button text="{i18n>ok}" press="onOperStatusEditOKpress"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>cancel}" press="onOperStatusEditCancelclose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

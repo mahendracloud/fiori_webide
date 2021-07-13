@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table width="auto" mode="None" fixedLayout="false" class="sapUiResponsiveMargin"
+		items="{ path : 'AIWEQUI>/Partners', sorter : { path : 'Partnrfun', descending : false } }">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>PARTNERS}"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>PF}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>PATNR}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>NAME}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>ADDIND}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>ADDRESS}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>NAME}" wrapping="true" textAlign="Center"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Active">
+				<cells>
+					<Text text="{AIWEQUI>Partnrfun}" wrapping="true"></Text>
+					<Text text="{AIWEQUI>Partnereq}" wrapping="true"></Text>
+					<Text text="{AIWEQUI>NameList}" wrapping="true"></Text>
+					<Text text="{AIWEQUI>Aadind}" wrapping="true"></Text>
+					<Text text="{AIWEQUI>Address}" wrapping="true"></Text>
+					<Text text="{AIWEQUI>Partnrfuntxt}" wrapping="true"></Text>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

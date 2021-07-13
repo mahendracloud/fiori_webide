@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<List id="CNoteAprl" showSeparators="Inner" items="{notes>/items}">
+		<!--id="CNote" id="Notefeed"-->
+		<FeedListItem sender="{notes>CreatedBy}" icon="sap-icon://notes" iconDensityAware="false" senderActive="false"
+			iconActive="false" info="{json>info}" timestamp="{path:'notes>CreatedAt', formatter:'.formatter.dateFormat'}" text="{notes>Text}"/>
+	</List>
+</core:FragmentDefinition>

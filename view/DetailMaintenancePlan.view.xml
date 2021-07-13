@@ -1,0 +1,364 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.DetailMaintenancePlan"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page id="maintenancePage" title="{mainView>/titleName}" busy="{mainView>/viewBusy}" enableScrolling="true" showFooter="true"
+				backgroundDesign="Standard" busyIndicatorDelay="0">
+				<content>
+					<IconTabBar selectedKey="__filter0" expanded="{device&gt;/isNoPhone}">
+						<items>
+							<IconTabFilter icon="sap-icon://form" text="Form" design="Horizontal">
+								<content>
+									<VBox class="sapUiSmallMargin">
+										<f:SimpleForm id="simpleform" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+											labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+											<f:content>
+												<core:Title text="{i18n>BASIC}"></core:Title>
+												<Label text="{i18n>MAINTPLAN_TXT}"/>
+												<Input value="{AIWMPMI>/Warpl}" valueState="{AIWMPMI>/WarplVS}" valueStateText="{AIWMPMI>/WarplVST}" enabled="{AIWMPMI>/WarplEnabled}"
+													editable="true" change="onLiveChange" maxLength="12"></Input>
+												<Label text="{i18n>MPLAN_DESC}" required="true"></Label>
+												<Input value="{AIWMPMI>/Wptxt}" valueState="{AIWMPMI>/WptxtVS}" valueStateText="{AIWMPMI>/WptxtVST}" enabled="{mainView>/enabled}"
+													change="onMaintPlanDescChange" maxLength="40"></Input>
+												<Label text="{i18n>MAINTPLAN_CAT_TXT}" required="true"></Label>
+												<Select id="maintPlanCat" selectedKey="{AIWMPMI>/Mptyp}" forceSelection="false" enabled="{AIWMPMI>/MptypEnabled}"
+													valueState="{AIWMPMI>/MptypVS}" showSecondaryValues="true" items="{ path: 'MainPlanCatModel>/', sorter: { path: 'Mptyp' } }"
+													change="onMaintPlanCatChange">
+													<core:Item key="{MainPlanCatModel>Mptyp}" text="{MainPlanCatModel>Txt}"/>
+												</Select>
+												<Label text="{i18n>CYC_TYP}"></Label>
+												<RadioButtonGroup columns="3" selectedIndex="{AIWMPMI>/cycleType}" enabled="{mainView>/enabled}" select="cycleIndicatorSelected">
+													<buttons>
+														<RadioButton id="RBSC" text="{i18n>SINGLE_CYC}" selected="{AIWMPMI>/cycleIndSingle}" enabled="{AIWMPMI>/cycleIndSingleEnabled}"/>
+														<RadioButton id="RBST" text="{i18n>STRATEGY}" selected="{AIWMPMI>/cycleIndStrategy}" enabled="{AIWMPMI>/cycleIndStrategyEnabled}"/>
+														<RadioButton id="RBMC" text="{i18n>MULTI_CNTR}" selected="{AIWMPMI>/cycleIndMultCntr}" enabled="{AIWMPMI>/cycleIndMultCntrEnabled}"/>
+													</buttons>
+												</RadioButtonGroup>
+												<Label id="maintStrLbl" text="{i18n>MAINT_STR}" visible="{AIWMPMI>/StratLBL}"></Label>
+												<Input id="maintStrategy" value="{AIWMPMI>/Strat}" valueState="{AIWMPMI>/StratVS}" valueStateText="{AIWMPMI>/StratVST}" showValueHelp="true"
+													visible="{AIWMPMI>/StratVis}" enabled="{AIWMPMI>/StratEnabled}" valueHelpRequest="valueHelpFunSelect" liveChange="maintStrategyChange"
+													change="onMaintStrategyChange" maxLength="6">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="maintStrDesc" value="{AIWMPMI>/StratDesc}" enabled="false" visible="{AIWMPMI>/StratDescVis}"></Input>
+												<Label id="multiCntrLbl" text="{i18n>MULTI_CNTR}" visible="{AIWMPMI>/MehrfachLBL}"></Label>
+												<CheckBox id="multiCntr" visible="{AIWMPMI>/MehrfachVis}" selected="{AIWMPMI>/Mehrfach}" enabled="{AIWMPMI>/MehrfachEnabled}"
+													select="onMultiCounterSelect"></CheckBox>
+												<Label id="cyclSetLbl" text="{i18n>CYC_SET}" visible="{AIWMPMI>/WsetLBL}"></Label>
+												<Input id="cycleSet" value="{AIWMPMI>/Wset}" enabled="{AIWMPMI>/WsetEnabled}" valueState="{AIWMPMI>/WsetVS}"
+													valueStateText="{AIWMPMI>/WsetVST}" showValueHelp="true" visible="{AIWMPMI>/WsetVis}" valueHelpRequest="valueHelpFunSelect"
+													change="onCycleSetChange" liveChange="cycleSetChange" maxLength="6">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="cycleSetDesc" enabled="false" value="{AIWMPMI>/Ktext}" visible="{AIWMPMI>/KtextVis}"></Input>
+												<Label text="{i18n>INACT}"></Label>
+												<CheckBox enabled="{AIWMPMI>/DeactEnable}" select="onInactiveSelect" selected="{path:'AIWMPMI>/Deact', formatter:'.formatter.typeCheck'}"></CheckBox>
+												<Label text="Mark for Deletion" visible="{ApproveModel>/approveVisible}"></Label>
+												<CheckBox enabled="false" selected="{path:'AIWMPMI>/LvormEqi', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+												<Label text=""></Label>
+												<Text visible="{AIWMPMI>/ScheIndText}"></Text>
+												<Title textAlign="Left" level="H2" wrapping="false" text="Scheduling Indicator" visible="{AIWMPMI>/ScheIndTitle}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label id="schindLbl" text="{i18n>SCHE_IND_TXT}" visible="{AIWMPMI>/ScheIndLBL}"/>
+												<RadioButtonGroup selectedIndex="{AIWMPMI>/Stich}" columns="2" enabled="{mainView>/enabled}" select="indicatorSelected">
+													<buttons>
+														<RadioButton id="RB-1" text="{i18n>TIME}" visible="{AIWMPMI>/ScheIndRbTimeVis}" selected="{AIWMPMI>/ScheIndRbTime}"
+															enabled="{AIWMPMI>/ScheIndRbTimeEnabled}"/>
+														<RadioButton id="RB-2" text="{i18n>TIME_KEY}" visible="{AIWMPMI>/ScheIndRbTimeKeyDateVis}" selected="{AIWMPMI>/ScheIndRbTimeKeyDate}"
+															enabled="{AIWMPMI>/ScheIndRbTimeKeyDateEnabled}"/>
+														<RadioButton id="RB-3" text="{i18n>TIME_FC}" visible="{AIWMPMI>/ScheIndRbTimeFactCalVis}" selected="{AIWMPMI>/ScheIndRbTimeFactCal}"
+															enabled="{AIWMPMI>/ScheIndRbTimeFactCalEnabled}"/>
+														<RadioButton id="RB-4" text="{i18n>PERF}" visible="{AIWMPMI>/ScheIndRbPerformanceVis}" selected="{AIWMPMI>/ScheIndRbPerformance}"
+															enabled="{AIWMPMI>/ScheIndRbPerformanceEnabled}"/>
+													</buttons>
+												</RadioButtonGroup>
+												<core:Title text="Scheduling Parameter - Date Determination"></core:Title>
+												<Label text="{i18n>SHIFT_FACTOR}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" showValueHelp="true" value="{AIWMPMI>/Vspos}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Text text="%" visible="{ApproveModel>/approveVisible}"></Text>
+												<Label text="{i18n>TOLPLUS}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMPMI>/Topos}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Text text="%" visible="{ApproveModel>/approveVisible}"></Text>
+												<Label text="{i18n>SHIFT_FACT}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" showValueHelp="true" value="{AIWMPMI>/Vsneg}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Text text="%" visible="{ApproveModel>/approveVisible}"></Text>
+												<Label text="{i18n>TOLMINUS}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMPMI>/Toneg}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Text text="%" visible="{ApproveModel>/approveVisible}"></Text>
+												<Label text="{i18n>CYCLE_MOD_FAC_TXT}"/>
+												<Input id="cycleModificFactor" type="Text" enabled="{mainView>/enabled}" editable="true" value="{AIWMPMI>/Sfakt}" change="cyclicChange"
+													maxLength="6"></Input>
+												<Label text="Lead float (days)" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMPMI>/Puffp}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label id="factCalendarLbl" visible="{AIWMPMI>/FabklLBL}" text="{i18n>FACT_CAL}" required="{AIWMPMI>/FabklLBLReq}"></Label>
+												<Input id="factoryCalendar" value="{AIWMPMI>/Fabkl}" valueState="{AIWMPMI>/FabklVS}" valueStateText="{AIWMPMI>/FabklVST}" maxLength="2"
+													showValueHelp="true" enabled="{AIWMPMI>/FabklEnabled}" change="onFactCalendarChange" valueHelpRequest="valueHelpFunSelect"
+													liveChange="factCalendarChange" submit="onFactCalendarChange" visible="{AIWMPMI>/FabklVis}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="factoryCalendarDesc" visible="{AIWMPMI>/FabklDescVis}" value="{AIWMPMI>/FabklDesc}" valueState="{AIWMPMI>/FabklDescVS}"
+													valueStateText="{AIWMPMI>/FabklDescVST}" enabled="false"></Input>
+												<core:Title text="Start Scheduling"></core:Title>
+												<Label id="startCycleLbl" text="{AIWMPMI>/StadtLBLText}" visible="{AIWMPMI>/StadtLBL}"/>
+												<DatePicker id="startOfCycle" value="{AIWMPMI>/Stadt}" valueState="{AIWMPMI>/StadtVS}" visible="{AIWMPMI>/StadtVis}"
+													enabled="{mainView>/enabled}" editable="true" valueFormat="MM/dd/yyyy" displayFormat="MM/dd/yyyy" change="onStartChange"/>
+												<Label id="stCounterReadLbl" text="{i18n>STRT_CNTR}" visible="{AIWMPMI>/SzaehLBL}"></Label>
+												<Input id="strtCountRead" value="{AIWMPMI>/Szaeh}" enabled="{mainView>/enabled}" visible="{AIWMPMI>/SzaehVis}" maxLength="22">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="strtCntrUnit" value="{AIWMPMI>/Unitc}" enabled="false" visible="{AIWMPMI>/UnitcVis}"></Input>
+												<Label id="strCounterLbl" text="{i18n>COUNTER_TXT}" visible="{AIWMPMI>/MpcyclenoLBL}"></Label>
+												<Input id="strCounter" visible="{AIWMPMI>/MpcyclenoVis}" value="{AIWMPMI>/Mpcycleno}" valueState="{AIWMPMI>/MpcyclenoVS}"
+													valueStateText="{AIWMPMI>/MpcyclenoVST}" valueHelpRequest="valueHelpFunSelect" showValueHelp="true" maxLength="12" change="onCounterChange"
+													liveChange="onLiveChange" submit="onCounterChange" enabled="{mainView>/enabled}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Label text=""></Label>
+												<Text visible="{ApproveModel>/approveVisible}"></Text>
+												<Title textAlign="Left" level="H2" wrapping="false" text="Maintenance Plan Additional Data" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label text="{i18n>MPLAN_SF}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMPMI>/PlanSort}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>AUTH_GRP}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMPMI>/Begru}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text=""></Label>
+												<Text visible="{ApproveModel>/approveVisible}"></Text>
+												<Title textAlign="Left" level="H2" wrapping="false" text="Call Control Parameter" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label text="{i18n>CALL_HOR}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWMPMI>/Horiz}" visible="{AIWMPMI>/HorizVisible}"></Input>
+												<Label id="schPeriodLbl" text="{i18n>SCHE_PERIOD_TXT}" visible="{AIWMPMI>/AbrhoLBL}"/>
+												<Input id="schedulePeriod" value="{AIWMPMI>/Abrho}" visible="{AIWMPMI>/AbrhoVis}" maxLength="3" enabled="{mainView>/enabled}"
+													change="schPeriodChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="schedulePeriod_" value="{AIWMPMI>/Hunit}" valueState="{AIWMPMI>/HunitVS}" valueStateText="{AIWMPMI>/HunitVST}"
+													visible="{AIWMPMI>/HunitVis}" maxLength="3" enabled="{mainView>/enabled}" showValueHelp="true" liveChange="onLiveChange" change="onSchedulePeriodUnitChange"
+													valueHelpRequest="valueHelpFunSelect"></Input>
+												<Label text="{i18n>COMP_REQ}" visible="{ApproveModel>/approveVisible}"></Label>
+												<CheckBox enabled="false" selected="{path:'AIWMPMI>/CallConf', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+												<Label text=""></Label>
+												<Text visible="{AIWMPMI>/OPText}"></Text>
+												<Title textAlign="Left" level="H2" wrapping="false" text="Operation Type" visible="{AIWMPMI>/OPTitle}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label id="opLbl" text="{i18n>OP_TYP}" visible="{AIWMPMI>/OPLBL}"></Label>
+												<RadioButtonGroup columns="2" class="sapUiMediumMarginBottom" enabled="{mainView>/enabled}">
+													<buttons>
+														<RadioButton id="orOp" text="{i18n>OR_OP}" selected="{AIWMPMI>/OROP}" visible="{AIWMPMI>/OROPVis}"/>
+														<RadioButton id="andOp" text="{i18n>AND_OP}" selected="{AIWMPMI>/AndOP}" visible="{AIWMPMI>/AndOPvis}"/>
+													</buttons>
+												</RadioButtonGroup>
+											</f:content>
+										</f:SimpleForm>
+										<Table id="maintenanceCycles" visible="{ApproveModel>/createVisible}" mode="{AIWMPMI>/MaintenanceCycleMode}" items="{AIWMPMI>/cycleModel}"
+											selectionMode="SingleSelectLeft" delete="handleCycleDelete">
+											<headerToolbar>
+												<Toolbar>
+													<Title text="Maintenance Cycles" level="H2"></Title>
+													<ToolbarSpacer/>
+													<Button id="NewCycle" press="addMaintCycleRow" enabled="{AIWMPMI>/ButtonNewCycleEnabled}" icon="sap-icon://add" tooltip="New"/>
+												</Toolbar>
+											</headerToolbar>
+											<columns>
+												<Column>
+													<Text text="{i18n>CYCLE_NO_TXT}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>CYCLE_TXT}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>CYCLE_UNIT_TXT}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>CYCLE_TEXT}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>OFFSET_TXT}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>OFFSET_UNIT_TXT}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>COUNTER_TXT}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>COUNTER_DESC}"></Text>
+												</Column>
+												<Column id="cycleSetSeqCol" demandPopin="true" minScreenWidth="Tablet" visible="{AIWMPMI>/cycleSetSeqColVis}">
+													<Text text="{i18n>CYCLE_SET_SEQ}"></Text>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem id="maintCyclesTab" type="Active">
+													<cells>
+														<Input id="cycleNo" enabled="false" value="{AIWMPMI>Mpcycleno}" maxLength="2"></Input>
+														<Input id="cycle" type="Number" enabled="{AIWMPMI>Zykl1Enabled}" value="{AIWMPMI>Zykl1}" valueState="{AIWMPMI>Zykl1VS}"
+															change="onChangeCycle" maxLength="22"></Input>
+														<Input id="cUnit" enabled="{AIWMPMI>ZeiehEnabled}" showValueHelp="true" value="{AIWMPMI>Zeieh}" valueState="{AIWMPMI>ZeiehVS}"
+															valueHelpRequest="valueItemHelpSelect" change="onChangeCycle" liveChange="cycleChange" maxLength="3"></Input>
+														<Input id="cycleText" enabled="{AIWMPMI>PakTextEnabled}" value="{AIWMPMI>PakText}" maxLength="30"></Input>
+														<Input id="offset" enabled="{AIWMPMI>OffsetEnabled}" value="{AIWMPMI>Offset}" change="onOffsetChange" maxLength="22"></Input>
+														<Input id="offsetUnit" value="{AIWMPMI>Ofsetunit}" enabled="false" maxLength="3"></Input>
+														<Input id="counter" enabled="{AIWMPMI>PointEnabled}" showValueHelp="true" valueState="{AIWMPMI>PointVS}"
+															valueHelpRequest="valueItemHelpSelect" value="{AIWMPMI>Point}" change="onChangeCycle" maxLength="12"></Input>
+														<Input id="counterDesc" enabled="false" value="{AIWMPMI>Psort}" maxLength="40"></Input>
+														<Input id="cycleSetSeq" enabled="{AIWMPMI>CycleseqiEnabled}" maxLength="2" value="{AIWMPMI>Cycleseqi}" valueState="{AIWMPMI>CycleseqiVS}"
+															change="onChangeCycle"></Input>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+										<Table id="maintenanceItems" visible="{ApproveModel>/createVisible}" mode="{AIWMPMI>/MaintenanceItemMode}" items="{AIWMPMI>/itemModel}"
+											selectionMode="SingleSelectLeft" delete="handleItemDelete">
+											<headerToolbar>
+												<Toolbar>
+													<Title text="Maintenance Items" level="H2"></Title>
+													<ToolbarSpacer/>
+													<Button id="newItem" icon="sap-icon://add" press="addItemRow" enabled="{AIWMPMI>/ButtonNewItemEnabled}" tooltip="New"/>
+													<Button id="assignItem" icon="sap-icon://activity-items" tooltip="Assign Item" enabled="{AIWMPMI>/ButtonAssignItemEnabled}"
+														press="onAssignItemPress"/>
+												</Toolbar>
+											</headerToolbar>
+											<columns>
+												<Column>
+													<Text text="{i18n>MAINT_ITEM_TXT}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>MAINT_ITEM_TEXT}"></Text>
+												</Column>
+												<Column id="itCycSetSeq" visible="{AIWMPMI>/CycleSetSeqVis}" demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>CYCLE_SET_SEQ}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>FLOC}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>EQUI}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>ASSEMBLY}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>SER_NUM}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>MATERIAL}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>UII}"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="{i18n>SER_NUM}"></Text>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem id="maintItemsTab" type="Navigation" press="onItemPress">
+													<cells>
+														<Input id="maintItem" enabled="false" value="{AIWMPMI>Mitemnumb}" maxLength="16"></Input>
+														<Input id="maintItemText" enabled="{AIWMPMI>maintItemE}" value="{AIWMPMI>Pstxt}" maxLength="40"></Input>
+														<Input id="cycleSetSeqIt" enabled="{AIWMPMI>cycleSetE}" value="{AIWMPMI>Cycleseq}" maxLength="2"></Input>
+														<Input id="floc" enabled="{AIWMPMI>TplnrEnabled}" showValueHelp="true" value="{AIWMPMI>Tplnr}" valueHelpRequest="onFlocVH"
+															change="onObjectChange" maxLength="40"></Input>
+														<Input id="equipment" enabled="{AIWMPMI>equiE}" showValueHelp="true" value="{AIWMPMI>Equnr}" valueHelpRequest="onEquiVH"
+															change="onObjectChange" maxLength="18"></Input>
+														<Input id="assembly" enabled="{AIWMPMI>assemblyE}" maxLength="{AIWMPMI>AsmblyObMaxLength}" showValueHelp="true" value="{AIWMPMI>AsmblyOb}"
+															change="onObjectChange" valueHelpRequest="onAssemblyVH"></Input>
+														<Input enabled="false" value="{AIWMPMI>Serialnr}"></Input>
+														<Input enabled="false" value="{AIWMPMI>Sermat}"></Input>
+														<Input enabled="false" value="{AIWMPMI>UiiMitem}"></Input>
+														<Input enabled="false" value="{AIWMPMI>Deviceid}"></Input>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+										<core:Fragment id="clsFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.ClassAssignment" type="XML"/>
+										<core:Fragment id="charFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.Characteristics" type="XML"/>
+									</VBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="Maintenance Cycles"
+								tooltip="Maintenance Cycles">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.MPMI.MaintenanceCycles" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="Maintenance Items"
+								tooltip="Maintenance Items">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.MPMI.MaintenanceItems" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>assignment}"
+								tooltip="{i18n>assignment}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.ClassAssignments" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>characteristics}"
+								tooltip="{i18n>characteristics}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Characteristics" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<!--<IconTabFilter key="onAttach" count="{AIWMPMI>/attachmentCount}" icon="sap-icon://attachment" text="{i18n>ATTACHMENT_TITLE}"-->
+							<!--	tooltip="{i18n>ATTACHMENT_TITLE}" design="Horizontal">-->
+							<!--	<content>-->
+							<!--		<core:Fragment id="attach" fragmentName="ugiaiwui.mdg.aiw.library.fragments.Attachments.Attachments" type="XML"/>-->
+							<!--	</content>-->
+							<!--</IconTabFilter>-->
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Toolbar id="tabletoolbar">
+						<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+						<ToolbarSpacer/>
+						<Button id="idBtnCheck" text="Check" press="onDonePress"/>
+						<Button text="Done" type="Accept" press="onDonePress"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

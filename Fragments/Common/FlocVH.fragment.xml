@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog noDataText="No Results Found" title="{i18n>FLOC_TXT}" search="handleSearch" confirm="handleClose" cancel="handleClose"
+		items="{ path: '/FunctionLocationSet' }">
+		<StandardListItem title="{Tplnr}" description="{Pltxt}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>

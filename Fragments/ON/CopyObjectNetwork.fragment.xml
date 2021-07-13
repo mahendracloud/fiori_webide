@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="Copy Object Networks">
+		<content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+				emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="Source Network"></core:Title>
+					<Label text="Network ID" required="true"/>
+					<Input id="idSrcNetwork" type="Text" enabled="true" editable="true" liveChange="onLiveChange" change="srcnetIdChange" showValueHelp="true"
+						valueHelpRequest="onNetworkIdVH" maxLength="40" submit="srcnetIdChange" showValueStateMessage="true">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<core:Title text="Target Network"></core:Title>
+					<Label text="Network ID" required="true"/>
+					<Input id="idTarNetwork" type="Text" enabled="true" editable="true" liveChange="onLiveChange" change="tarnetIdChange" maxLength="40"
+						submit="tarnetIdChange" showValueStateMessage="true">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton >
+			<Button text="Copy" press="onCopyONpress"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="onCopyONclose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

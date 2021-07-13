@@ -1,0 +1,1 @@
+sap.ui.define(["ugiaiwui/mdg/aiw/request/controller/BaseController"],function(e){"use strict";return e.extend("ugiaiwui.mdg.aiw.request.controller.NotFound",{onLinkPressed:function(){window.history.back()}})});

@@ -1,0 +1,638 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar" xmlns:f="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.DetailTaskList"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<Page id="tlDetailPage" title="{titleModelTL>/sTitle}" enableScrolling="true" showFooter="true" busyIndicatorDelay="0">
+			<content>
+				<!--<ObjectHeader id="Header" title="{i18n&gt;tlHeaderTitle}" titleActive="false" condensed="false"></ObjectHeader>-->
+				<IconTabBar selectedKey="__filter0" expanded="{device&gt;/isNoPhone}">
+					<items>
+						<IconTabFilter icon="sap-icon://form" text="Form" design="Horizontal">
+							<content>
+								<VBox class="sapUiSmallMargin">
+									<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+										emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+										<f:content>
+											<!--<core:Title text="{i18n>GEN}"></core:Title>
+											<Label text="{i18n>REASON_TXT}"/>
+								<Select></Select>
+								<Label text="{i18n>DESC_TXT}" required="true"/>
+								<Input type="Text" enabled="true" editable="true" liveChange="DescChange" change="onDescChange" maxLength="60"/>-->
+											<core:Title text="{i18n>detailTLIconTabFilterMaster}"></core:Title>
+											<Label text="{i18n>GROUP_TXT}"/>
+											<Input enabled="false" value="{tlDetailModel>/grp}" editable="true" liveChange="onLiveChange" maxLength="8"/>
+											<Label text="{i18n>KEY_DATE_TXT}" required="true"></Label>
+											<DatePicker enabled="{tlDetailModel>/KDenable}" value="{tlDetailModel>/validFrm}" editable="true" valueFormat="MM/dd/yyyy"
+												displayFormat="MM/dd/yyyy" change="onDateChange" valueState="{tlDetailModel>/validFrmState}"/>
+											<!-- enabled="{aEnModel>/enable}" -->
+											<Label text="{i18n>CATEGORY_TXT}" required="true"></Label>
+											<!--<RadioButtonGroup id="idCatRB" columns="3" class="sapUiMediumMarginBottom" selectedIndex="3" select="onCatSelect">
+												<buttons>
+													<RadioButton id="RB-1" text="{i18n>GEN}" enabled="{tlDetailModel>/rbGen}" select="categorySelected" selected="{tlDetailModel>/rbGenSel}"/>
+													<RadioButton id="RB-2" text="{i18n>EQUIPMENT}" enabled="{tlDetailModel>/rbEqui}" select="categorySelected" selected="{tlDetailModel>/rbEquiSel}"/>
+													<RadioButton id="RB-3" text="{i18n>FLOC}" enabled="{tlDetailModel>/rbFloc}" select="categorySelected" selected="{tlDetailModel>/rbFlocSel}"/>
+												</buttons>
+											</RadioButtonGroup>-->
+											<Label text="{i18n>EQUIPMENT}" required="true" visible="{tlDetailModel>/lHeader/vEquiLbl}"></Label>
+											<Input id="equipment" enabled="{tlDetailModel>/lHeader/equiEnb}" value="{tlDetailModel>/lHeader/equipment}" showValueHelp="true"
+												visible="{tlDetailModel>/lHeader/vEqui}" valueHelpRequest="onEquipVH" valueState="{tlDetailModel>/lHeader/equiValueState}"
+												valueStateText="{tlDetailModel>/lHeader/equiValueStateTxt}" liveChange="onLiveChange" change="onTLChange" maxLength="18">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input enabled="false" value="{tlDetailModel>/lHeader/equipmentDesc}" visible="{tlDetailModel>/lHeader/vEquiDesc}"></Input>
+											<Label text="{i18n>FLOC}" required="true" visible="{tlDetailModel>/lHeader/vFlocLbl}"></Label>
+											<Input id="floc" enabled="{tlDetailModel>/lHeader/flocEnb}" value="{tlDetailModel>/lHeader/floc}" visible="{tlDetailModel>/lHeader/vFloc}"
+												showValueHelp="true" valueHelpRequest="onFlocVH" liveChange="onLiveChange" valueState="{tlDetailModel>/lHeader/flocValueState}"
+												valueStateText="{tlDetailModel>/lHeader/flocValueStateTxt}" change="onTLChange" maxLength="40">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input enabled="false" value="{tlDetailModel>/lHeader/flocDesc}" visible="{tlDetailModel>/lHeader/vFlocDesc}"></Input>
+											<core:Title text="{i18n>TL_HDR_DET}"></core:Title>
+											<Label id="grpDetLbl" text="{i18n>GROUP_GEN_TXT}"></Label>
+											<Input id="groupDt" enabled="false" value="{tlDetailModel>/grp}"></Input>
+											<Label text="{i18n>GRP_COUNT}"></Label>
+											<Input id="grpCounterDt" enabled="false" value="{tlDetailModel>/lHeader/Plnal}" maxLength="2"
+												valueState="{tlDetailModel>/lHeader/grpCntrValueState}" valueStateText="{tlDetailModel>/lHeader/grpCntrValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L1 M1 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="descDt" enabled="{tlDetailModel>/lHeader/enable}" value="{tlDetailModel>/lHeader/Ktext}" change="onTLChange"
+												valueState="{tlDetailModel>/lHeader/descDtValueState}" maxLength="40"></Input>
+											<Label text="{i18n>PLAN_PLANT_TXT}"></Label>
+											<Input id="planPlantDt" liveChange="onLiveChange" change="onTLChange" value="{tlDetailModel>/lHeader/Iwerk}" maxLength="4"
+												enabled="{tlDetailModel>/lHeader/PPenable}" showValueHelp="true" valueHelpRequest="onPplantVH" submit="onTLChange"
+												valueState="{tlDetailModel>/lHeader/planningPlantValueState}" valueStateText="{tlDetailModel>/lHeader/planningPlantValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="planPlantDescDt" enabled="false" value="{tlDetailModel>/lHeader/pPlantDesc}" maxLength="40"></Input>
+											<core:Title text="{i18n>ASSIGN_HDR}"></core:Title>
+											<Label text="{i18n>WC}"></Label>
+											<Input id="wcDt" showValueHelp="true" enabled="{tlDetailModel>/lHeader/enable}" valueHelpRequest="onHWCVH" maxLength="8"
+												value="{tlDetailModel>/lHeader/wc}" liveChange="onLiveChange" change="onTLChange" submit="onTLChange"
+												valueState="{tlDetailModel>/lHeader/wcValueState}" valueStateText="{tlDetailModel>/lHeader/wcDtValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="wcPlantDt" showValueHelp="true" enabled="{tlDetailModel>/lHeader/enable}" valueHelpRequest="onPlantWcVH"
+												liveChange="onLiveChange" change="onTLChange" value="{tlDetailModel>/lHeader/plant}" maxLength="4" submit="onTLChange"
+												valueState="{tlDetailModel>/lHeader/plantValueState}" valueStateText="{tlDetailModel>/lHeader/plantValueStateTxt}"></Input>
+											<Label text="{i18n>USAGE}"></Label>
+											<Input id="usageDt" showValueHelp="true" enabled="{tlDetailModel>/lHeader/enable}" maxLength="3" valueHelpRequest="onUsageVH"
+												value="{tlDetailModel>/lHeader/tlusg}" liveChange="onLiveChange" change="onTLChange" submit="onTLChange"
+												valueState="{tlDetailModel>/lHeader/usgValueState}" valueStateText="{tlDetailModel>/lHeader/usgValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="usageDescDt" enabled="false" value="{tlDetailModel>/lHeader/usageDesc}" maxLength="40"></Input>
+											<Label text="{i18n>PL_GRP}"></Label>
+											<Input id="plGrpDt" enabled="{tlDetailModel>/lHeader/enable}" showValueHelp="true" valueHelpRequest="onPlannerGrpVH"
+												value="{tlDetailModel>/lHeader/Vagrp}" liveChange="onLiveChange" change="onTLChange" maxLength="3" submit="onTLChange"
+												valueState="{tlDetailModel>/lHeader/plGrpValueState}" valueStateText="{tlDetailModel>/lHeader/plGrpValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="plGrpDescDt" enabled="false" value="{tlDetailModel>/lHeader/plGrpDesc}" maxLength="40"></Input>
+											<Label text="{i18n>STATUS}"></Label>
+											<Input id="statusDt" enabled="{tlDetailModel>/lHeader/enable}" showValueHelp="true" valueHelpRequest="onStatusVH" liveChange="onLiveChange"
+												maxLength="3" change="onTLChange" value="{tlDetailModel>/lHeader/Statu}" submit="onTLChange" valueState="{tlDetailModel>/lHeader/statusVS}"
+												valueStateText="{tlDetailModel>/lHeader/statusVST}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="statusDescDt" enabled="false" value="{tlDetailModel>/lHeader/statusDesc}" maxLength="40"></Input>
+											<Label text="{i18n>SYS_CONDITION}"></Label>
+											<Input id="sysCondDt" enabled="{tlDetailModel>/lHeader/enable}" showValueHelp="true" valueHelpRequest="onSysCondDtVH"
+												liveChange="onLiveChange" change="onTLChange" value="{tlDetailModel>/lHeader/Anlzu}" maxLength="1" submit="onTLChange"
+												valueState="{tlDetailModel>/lHeader/sysCondValueState}" valueStateText="{tlDetailModel>/lHeader/sysCondValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="sysCondDescDt" enabled="false" value="{tlDetailModel>/lHeader/sysCondDesc}" maxLength="40"></Input>
+											<Label text="{i18n>STRAT}"></Label>
+											<Input id="maintStrDt" enabled="{tlDetailModel>/lHeader/enable}" showValueHelp="true" valueHelpRequest="onStrategyVH"
+												liveChange="onLiveChange" change="onTLChange" value="{tlDetailModel>/lHeader/Strat}" maxLength="6"
+												valueState="{tlDetailModel>/lHeader/maintStrValueState}" valueStateText="{tlDetailModel>/lHeader/maintStrValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="maintStrDescDt" enabled="false" value="{tlDetailModel>/lHeader/stratDesc}" maxLength="40"></Input>
+											<Label text="{i18n>Assembly}"></Label>
+											<Input id="assmblyDt" enabled="{tlDetailModel>/lHeader/enable}" showValueHelp="true" valueHelpRequest="onAssemblyVH"
+												liveChange="onLiveChange" change="onTLChange" value="{tlDetailModel>/lHeader/assmbly}" maxLength="40" submit="onTLChange"
+												valueState="{tlDetailModel>/lHeader/assemblyValueState}" valueStateText="{tlDetailModel>/lHeader/assemblyValueStateTxt}">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="assmblyDescDt" enabled="false" value="{tlDetailModel>/lHeader/assmblyDesc}" maxLength="40"></Input>
+											<Label text="{i18n>DEL_FLAG}"></Label>
+											<!-- visible="{aVisModel>/visible}" -->
+											<CheckBox id="deletionFlag" enabled="false" selected="{path:'lHeaderOverview>/deletion', formatter:'.formatter.typeCheck'}"></CheckBox>
+											<!-- visible="{aVisModel>/visible}" -->
+											<!--<Label></Label>-->
+											<!--<Text visible="false"></Text>-->
+											<!--<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>QM_DATA}" visible="{aVisModel>/visible}">-->
+											<!--	<layoutData>-->
+											<!--		<l:GridData span="L12 M12 S12"/>-->
+											<!--	</layoutData>-->
+											<!--</Title>-->
+											<core:Title text="{i18n>QM_DATA}"></core:Title>
+											<!--<Label></Label>-->
+											<!--<Text visible="false"></Text>-->
+											<Label text="{i18n>INS_PT}"></Label>
+											<!-- visible="{aVisModel>/visible}" -->
+											<Input id="inspectnPoint" enabled="{tlDetailModel>/lHeader/enable}" value="{tlDetailModel>/lHeader/insPt}" showValueHelp="true"
+												valueHelpRequest="onInspPointVH" change="onInspPointChange" valueState="{tlDetailModel>/lHeader/insPtVS}">
+												<!--visible="{aVisModel>/visible}" enabled="false"-->
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+											</Input>
+											<Input id="insPtDesc" enabled="false" value="{tlDetailModel>/lHeader/insPtDesc}"></Input>
+											<!-- visible="{aVisModel>/visible}" -->
+											<Label text="{i18n>EXT_NUM}" visible="{aVisModel>/visible}"></Label>
+											<Input id="extNum" enabled="false" value="{tlDetailModel>/lHeader/extNum}" visible="{aVisModel>/visible}"></Input>
+										</f:content>
+									</f:SimpleForm>
+									<IconTabBar id="idTABFormSections">
+										<items>
+											<IconTabFilter text="Operation Overview">
+												<content>
+													<Table mode="SingleSelectLeft" id="operationTab" items="{path:'tlDetailModel>/lOperation'}" selectionChange="onOperationSelect">
+														<headerToolbar>
+															<Toolbar>
+																<Title text="{i18n>OP_HEADER}" level="H2"></Title>
+																<ToolbarSpacer/>
+																<!---->
+																<Button icon="sap-icon://add" tooltip="New Operation" press="addOperation" enabled="{tlDetailModel>/bAddOperation}"/>
+															</Toolbar>
+														</headerToolbar>
+														<columns>
+															<Column>
+																<Text text="{i18n>OP_NUM}"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>SOP_SHRT}" textAlign="Center"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>OP_DESC}" textAlign="Center"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>OP_WC}" textAlign="Center"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>PLAN_PLANT_TXT}" textAlign="Center"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>OP_CTRL_KEY}" textAlign="Center"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet"></Column>
+														</columns>
+														<items>
+															<ColumnListItem press="onOpItemPress" type="Navigation">
+																<cells>
+																	<Input maxLength="4" value="{tlDetailModel>Vornr}" valueState="{tlDetailModel>opState}" change="onOperationChange"></Input>
+																	<Input maxLength="4" value="{tlDetailModel>Uvorn}" enabled="{tlDetailModel>UvornEnable}"></Input>
+																	<Input value="{tlDetailModel>Ltxa1}" valueState="{tlDetailModel>opDescState}" change="onOperationChange" maxLength="40"></Input>
+																	<Input value="{tlDetailModel>Arbpl}" valueHelpRequest="onWCVH" showValueHelp="true" change="onOperationChange"
+																		valueState="{tlDetailModel>wcState}" maxLength="8"></Input>
+																	<Input maxLength="4" showValueHelp="true" value="{tlDetailModel>Werks}" valueHelpRequest="onOpPlantVH"
+																		valueState="{tlDetailModel>plantState}" change="onOperationChange"></Input>
+																	<Input showValueHelp="true" enabled="{tlDetailModel>SteusEnable}" value="{tlDetailModel>Steus}" valueHelpRequest="onCtrlKeyVH"
+																		valueState="{tlDetailModel>ctrlKeyState}" change="onOperationChange" maxLength="4"></Input>
+																	<core:Icon src="sap-icon://sys-cancel" size="20px" press="deleteOperation" tooltip="Delete Operation"></core:Icon>
+																</cells>
+															</ColumnListItem>
+														</items>
+													</Table>
+													<IconTabBar>
+														<items>
+															<IconTabFilter id="idTabMaintPckg" text="Maintainence Package">
+																<content>
+																	<Table id="idTblMaintPckge" mode="SingleSelectLeft">
+																		<headerToolbar>
+																			<Toolbar>
+																				<Title text="Maintainence Package" level="H2"></Title>
+																				<ToolbarSpacer/>
+																				<Button text="Maintainence Package" press="navMaintPckgeDetail"/>
+																			</Toolbar>
+																		</headerToolbar>
+																		<columns>
+																			<Column>
+																				<Text text="Op"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="SOp"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="Op Short Text"></Text>
+																			</Column>
+																		</columns>
+																	</Table>
+																</content>
+															</IconTabFilter>
+															<IconTabFilter text="Components">
+																<content>
+																	<Table id="components" mode="Delete" items="{tlDetailModel>/lComponent}" delete="deleteComponent">
+																		<headerToolbar>
+																			<Toolbar>
+																				<Title text="Components" level="H2"></Title>
+																				<ToolbarSpacer/>
+																				<Button icon="sap-icon://tree" tooltip="Component Selection" press="onCompSelectionpress" enabled="{tlDetailModel>/lHeader/bAddComponent}"/>
+																				<Button icon="sap-icon://add" tooltip="New Component" press="addComponent" enabled="{tlDetailModel>/lHeader/bAddComponent}"/>
+																			</Toolbar>
+																		</headerToolbar>
+																		<columns>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>GRP_COUNT}" textAlign="Center"></Text>
+																			</Column>
+																			<Column>
+																				<Text text="{i18n>COMPO}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>COMP_DESC}" textAlign="Center"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>COMP_QTY}" textAlign="Center"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>COMP_UOM}" textAlign="Center"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>IT_CAT}" textAlign="Center"></Text>
+																			</Column>
+																		</columns>
+																		<items>
+																			<ColumnListItem press="tlComponentPress" type="Navigation">
+																				<!--  press="handleClassItemPress" type="Active" -->
+																				<cells>
+																					<Input enabled="false" value="{tlDetailModel>/lHeader/Plnal}"></Input>
+																					<Input id="material" maxLength="18" showValueHelp="true" value="{tlDetailModel>Idnrk}" valueHelpRequest="onMaterialVH"
+																						valueState="{tlDetailModel>matState}" change="onComponentChange"></Input>
+																					<Input enabled="false" value="{tlDetailModel>matDesc}" maxLength="40"></Input>
+																					<Input type="Number" value="{tlDetailModel>Menge}" valueState="{tlDetailModel>qtyState}" change="onComponentChange"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>MeinsGcp}" valueHelpRequest="onQtyUnitVH" valueState="{tlDetailModel>qtyUnitState}"
+																						change="onComponentChange" maxLength="3"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>Postp}" valueHelpRequest="onItCatVH" valueState="{tlDetailModel>categoryState}"
+																						change="onComponentChange" enabled="false"></Input>
+																				</cells>
+																			</ColumnListItem>
+																		</items>
+																	</Table>
+																</content>
+															</IconTabFilter>
+															<IconTabFilter text="{i18n>OPRREL}">
+																<content>
+																	<Table mode="Delete" id="idTblOprRel" delete="deleteOprRel" items="{tlDetailModel>/lOprRel}">
+																		<headerToolbar>
+																			<Toolbar>
+																				<Title text="{i18n>OPRREL}" level="H2"></Title>
+																				<ToolbarSpacer/>
+																				<Button icon="sap-icon://add" tooltip="{i18n>NEWOPRREL}" press="addOprRel" enabled="{tlDetailModel>/lHeader/bAddOprRel}"/>
+																			</Toolbar>
+																		</headerToolbar>
+																		<columns>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>OPERATION}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>OFFSET}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>OFFSET_UNIT_S}" tooltip="{i18n>OFFSET_UNIT}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>REL_TYPE_S}" tooltip="{i18n>REL_TYPE}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>PRCNTGE_OFFSET_S}" tooltip="{i18n>PRCNTGE_OFFSET}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>OFFSET_INTRP_S}" tooltip="{i18n>OFFSET_INTRP}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>FACTORY_ID_S}" tooltip="{i18n>FACTORY_ID}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>WC_S}" tooltip="{i18n>WC}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>PLANT_S}" tooltip="{i18n>PLANT}"></Text>
+																			</Column>
+																		</columns>
+																		<items>
+																			<ColumnListItem press="tlOprRelPress">
+																				<cells>
+																					<Input value="{tlDetailModel>OperationOR}" valueState="{tlDetailModel>OperationORVS}" change="onOperationORChange"></Input>
+																					<Input value="{tlDetailModel>Offset}" valueState="{tlDetailModel>OffsetVS}"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>OUn}" valueHelpRequest="onOffUnitVH" valueState="{tlDetailModel>OUnVS}"
+																						change="onOffUnitChange"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>RelType}" valueHelpRequest="onRelTypeVH" valueState="{tlDetailModel>RelTypeVS}"
+																						change="onRelTypeChange"></Input>
+																					<Input value="{tlDetailModel>PO}" valueState="{tlDetailModel>POVS}"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>OI}" valueHelpRequest="onOffIntrpVH" valueState="{tlDetailModel>OIVS}"
+																						change="onOffIntrpChange"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>ID}" valueHelpRequest="onFactryIdVH" valueState="{tlDetailModel>IDVS}"
+																						change="onFactryIdChange"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>WrkCtrOR}" valueHelpRequest="onWrkCtrORVH" valueState="{tlDetailModel>WrkCtrORVS}"
+																						change="onWrkCtrORChange"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>PlantOR}" valueHelpRequest="onPlantORVH" valueState="{tlDetailModel>PlantORVS}"
+																						change="onPlantORChange"></Input>
+																				</cells>
+																			</ColumnListItem>
+																		</items>
+																	</Table>
+																</content>
+															</IconTabFilter>
+															<IconTabFilter text="Product Resources/Tools">
+																<content>
+																	<Table id="idTblTLPRT" mode="Delete" delete="deleteTLPRT" items="{tlDetailModel>/lPRT}">
+																		<headerToolbar>
+																			<Toolbar>
+																				<MenuButton text="Select Category" buttonMode="Split" defaultAction="onDefaultAction" width="auto"
+																					enabled="{tlDetailModel>/lHeader/bAddPRT}">
+																					<menu>
+																						<Menu itemSelected="onPRTMenuAction">
+																							<items>
+																								<MenuItem key="mat" text="Material"/>
+																								<MenuItem key="eq" text="Equipment"/>
+																								<MenuItem key="mspt" text="Measuring Point"/>
+																								<MenuItem key="doc" text="Document"/>
+																								<MenuItem key="oth" text="Others"/>
+																							</items>
+																						</Menu>
+																					</menu>
+																				</MenuButton>
+																				<ToolbarSpacer/>
+																				<!--<Button text="Material"></Button>-->
+																				<!--<Button text="Equipment"></Button>-->
+																				<!--<Button text="Measuring Point"></Button>-->
+																				<!--<Button text="Document"></Button>-->
+																				<!--<Button text="Others"></Button>-->
+																			</Toolbar>
+																		</headerToolbar>
+																		<columns>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="PRT Item Number"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="Category"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="PRT"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="Plant"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="Control Key"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="Quantity"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="Unit for Quantity"></Text>
+																			</Column>
+																		</columns>
+																		<items>
+																			<ColumnListItem type="Navigation" press="tlPRTPress">
+																				<cells>
+																					<Input enabled="false" value="{tlDetailModel>ItmNum}"></Input>
+																					<Input enabled="false" value="{tlDetailModel>ItmCat}"></Input>
+																					<Input enabled="false" value="{tlDetailModel>PRT}" valueState="{tlDetailModel>PRTVS}"></Input>
+																					<Input enabled="false" value="{tlDetailModel>Plant}"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>PRTCtrl}" valueState="{tlDetailModel>PRTCtrlVS}" valueHelpRequest="onprtCtrlKeyVH"
+																						change="onprtCtrlKeyChange"></Input>
+																					<Input type="Number" value="{tlDetailModel>Qty}" change="onprtQtyChange"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>UOM}" valueState="{tlDetailModel>UOMVS}" valueHelpRequest="onprtUOMVH"
+																						change="onprtUOMChange"></Input>
+																				</cells>
+																			</ColumnListItem>
+																		</items>
+																	</Table>
+																</content>
+															</IconTabFilter>
+															<IconTabFilter text="{i18n>SRV_PCKG_OVRW}">
+																<content>
+																	<Table mode="Delete" id="idTblSrvPckgOvrw" items="{tlDetailModel>/lSrvPckgOvrw}" delete="deleteSrvPckgOvrw">
+																		<headerToolbar>
+																			<Toolbar>
+																				<Title text="{i18n>SRV_PCKG_OVRW}" level="H2"></Title>
+																				<ToolbarSpacer/>
+																				<Button icon="sap-icon://add" tooltip="{i18n>NEW_SRV_PCKG_OVRW}" press="addSrvPckgOvrw" enabled="{tlDetailModel>/lHeader/bAddSrvOpOrvw}"/>
+																			</Toolbar>
+																		</headerToolbar>
+																		<columns>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>LINE_NUM}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>DEL_IND}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>SRV_NUM}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>SHRT_TXT}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>QTY}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>BASE_UOM}"></Text>
+																			</Column>
+																		</columns>
+																		<items>
+																			<ColumnListItem press="tlSrvPckgOvrwDetailPress" type="Navigation">
+																				<cells>
+																					<Input value="{tlDetailModel>LineNum}" enabled="false"></Input>
+																					<CheckBox selected="{tlDetailModel>DelIndSP}" enabled="{tlDetailModel>DelIndSPEnabled}"></CheckBox>
+																					<Input showValueHelp="true" value="{tlDetailModel>ActNum}" valueHelpRequest="onActNumVH" valueState="{tlDetailModel>ActNumVS}"
+																						change="onActNumChange"></Input>
+																					<Input value="{tlDetailModel>ShrtTxt}" valueState="{tlDetailModel>ShrtTxtVS}" change="onShrtTxtchange"></Input>
+																					<Input type="Number" value="{tlDetailModel>Qty}" valueState="{tlDetailModel>QtyVS}" change="onQtySPOchange"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>BUomSP}" valueHelpRequest="onBUomSPVH" valueState="{tlDetailModel>BUomSPVS}"
+																						change="onBUomSPChange"></Input>
+																				</cells>
+																			</ColumnListItem>
+																		</items>
+																	</Table>
+																</content>
+															</IconTabFilter>
+															<IconTabFilter text="{i18n>INSPCHAR_OVRW}">
+																<content>
+																	<Table mode="Delete" id="idTblInspCharOvrw" delete="deleteInspChar" items="{tlDetailModel>/lInspChar}">
+																		<!--contextualWidth="500px" popinLayout="GridSmall"-->
+																		<headerToolbar>
+																			<Toolbar>
+																				<Title text="{i18n>INSPCHAR_OVRW}" level="H2"></Title>
+																				<ToolbarSpacer/>
+																				<Button icon="sap-icon://add" tooltip="New" press="addInspChar" enabled="{tlDetailModel>/lHeader/bAddInspChar}"/>
+																			</Toolbar>
+																		</headerToolbar>
+																		<columns>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>INSPCHAR}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>PRST_IND}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>QUAN_CHAR}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>QUAN_CHAR}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>MSTR_INSPCHAR}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>PLANT}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>VERSION}"></Text>
+																			</Column>
+																			<Column demandPopin="true" minScreenWidth="Tablet">
+																				<Text text="{i18n>SHRT_TXT_CHAR}"></Text>
+																			</Column>
+																			<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+																			<!--	<Text text="{i18n>INSP_MTHD_PLNT}"></Text>-->
+																			<!--</Column>-->
+																			<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+																			<!--	<Text text="{i18n>TOLRNC_KEY}"></Text>-->
+																			<!--</Column>-->
+																			<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+																			<!--	<Text text="{i18n>VER_INSP_MTHD}"></Text>-->
+																			<!--</Column>-->
+																			<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+																			<!--	<Text text="{i18n>SAMP_PROC}"></Text>-->
+																			<!--</Column>-->
+																			<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+																			<!--	<Text text="{i18n>SAMP_UNIT_MEAS}"></Text>-->
+																			<!--</Column>-->
+																			<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+																			<!--	<Text text="{i18n>BASE_SAMP_QTY}"></Text>-->
+																			<!--</Column>-->
+																			<!--<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">-->
+																			<!--	<Text text="{i18n>CODE_GRP_SET}"></Text>-->
+																			<!--</Column>-->
+																		</columns>
+																		<items>
+																			<ColumnListItem press="tlInspCharDetailPress" type="Navigation">
+																				<cells>
+																					<Input value="{tlDetailModel>InspChar}" enabled="false"></Input>
+																					<Input value="{tlDetailModel>PrstInd}"></Input>
+																					<CheckBox selected="{tlDetailModel>QuanChar}" enabled="false"></CheckBox>
+																					<CheckBox selected="{tlDetailModel>QualChar}" enabled="false"></CheckBox>
+																					<Input value="{tlDetailModel>MastInspChar}" valueState="{tlDetailModel>MastInspCharVS}" showValueHelp="true"
+																						valueHelpRequest="onMastInspCharVH" change="onMastInspCharChange"></Input>
+																					<Input showValueHelp="true" value="{tlDetailModel>Plant}" valueHelpRequest="onMastInspCharVH" valueState="{tlDetailModel>PlantVS}"
+																						change="onICPlantChange"></Input>
+																					<Input value="{tlDetailModel>Version}" valueState="{tlDetailModel>VersionVS}" showValueHelp="true" valueHelpRequest="onMastInspCharVH"
+																						change="onICVersionChange"></Input>
+																					<Input value="{tlDetailModel>ShrtTxt}"></Input>
+																					<!--<Input value="{tlDetailModel>InspMthdPlnt}" valueState="{tlDetailModel>InspMthdPlntVS}" showValueHelp="true" valueHelpRequest="onInspMthdPlntVH"-->
+																					<!--	change="onInspMthdPlntChange"></Input>-->
+																					<!--<Input value="{tlDetailModel>TolKey}" enabled="false"></Input>-->
+																					<!--<Input value="{tlDetailModel>VrsnInspMthd}" enabled="false"></Input>-->
+																					<!--<Input value="{tlDetailModel>SampProc}" valueState="{tlDetailModel>SampProcVS}" showValueHelp="true" valueHelpRequest="onSampProcVH"-->
+																					<!--	change="onSampProcChange"></Input>-->
+																					<!--<Input value="{tlDetailModel>SampUOM}" enabled="false"></Input>-->
+																					<!--<Input value="{tlDetailModel>BaseSampQty}"></Input>-->
+																					<!--<Input value="{tlDetailModel>CodeGrp}"></Input>-->
+																				</cells>
+																			</ColumnListItem>
+																		</items>
+																	</Table>
+																</content>
+															</IconTabFilter>
+														</items>
+													</IconTabBar>
+												</content>
+											</IconTabFilter>
+											<!--<IconTabFilter text="Components">-->
+											<!--	<content>-->
+											<!--	</content>-->
+											<!--</IconTabFilter>-->
+											<IconTabFilter text="Classification">
+												<content>
+													<core:Fragment id="clsFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.ClassAssignment" type="XML"/>
+												</content>
+											</IconTabFilter>
+											<IconTabFilter text="Characteristics">
+												<content>
+													<core:Fragment id="charFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.Characteristics" type="XML"/>
+												</content>
+											</IconTabFilter>
+										</items>
+									</IconTabBar>
+								</VBox>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter id="TLAOperation" icon="sap-icon://form" text="Task List Operation Overview" design="Horizontal"
+							tooltip="Task List Operation Overview" visible="{aVisModel>/visible}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.TL.TLOpOverView" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<!--<IconTabFilter id="TLAComponent" icon="sap-icon://form" text="Task List Components" design="Horizontal" tooltip="Task List Components"-->
+						<!--	visible="{aVisModel>/visible}">-->
+						<!--	<content></content>-->
+						<!--</IconTabFilter>-->
+						<!--<IconTabFilter id="TLAPRT" icon="sap-icon://form" text="Production Resource/Tools" design="Horizontal" tooltip="Production Resource/Tools"-->
+						<!--	visible="{aVisModel>/visible}">-->
+						<!--	<content>-->
+						<!--		<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.TL.TLPRT" type="XML"/>-->
+						<!--	</content>-->
+						<!--</IconTabFilter>-->
+						<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{aVisModel>/visible}" text="{i18n>assignment}"
+							tooltip="{i18n>assignment}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.ClassAssignments" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{aVisModel>/visible}" text="{i18n>characteristics}"
+							tooltip="{i18n>characteristics}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Characteristics" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<!--<IconTabFilter id="attachments" key="onAttach" icon="sap-icon://attachment" text="{i18n>ATTACHMENT_TITLE}" tooltip="{i18n>ATTACHMENT_TITLE}"
+				design="Horizontal">
+				<content>
+					<UploadCollection id="fileupload" uploadUrl="/sap/opu/odata/UGIOD01/MDG_EAM_TASKLIST_SRV/Attachments" maximumFilenameLength="200"
+						multiple="true" showSeparators="None" items="{json>/dataitems}" uploadComplete="onUploadFile" change="onBeforeUploadFile"
+						fileDeleted="onFileDeleted" uploadTerminated="uploadTerminated">
+						<UploadCollectionItem contributor="{json>contributor}" enableEdit="{json>enableEdit}" enableDelete="{json>enableDelete}"
+							fileName="{json>filename}" mimeType="{json>mimeType}" documentId="{json>documentId}" visibleDelete="true" visibleEdit="false"
+							uploadedDate="{json>uploaded}" url="{json>url}"/>
+					</UploadCollection>
+				</content>
+			</IconTabFilter>-->
+					</items>
+				</IconTabBar>
+			</content>
+			<footer>
+				<Toolbar id="tabletoolbar">
+					<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+					<ToolbarSpacer/>
+					<Button id="idBtnCheck" text="Check" press="onDonePress"/>
+					<Button text="Done" type="Accept" press="onDonePress"/>
+				</Toolbar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

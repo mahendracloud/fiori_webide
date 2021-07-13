@@ -1,0 +1,803 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.DetailFunctionalLocation"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page id="flocPage" title="{mainView>/titleName}" busy="{mainView>/viewBusy}" enableScrolling="true" showFooter="true"
+				backgroundDesign="Standard" busyIndicatorDelay="0">
+				<content>
+					<!--<ObjectHeader title="{i18n>newFlocTitle}" titleActive="false" condensed="false"></ObjectHeader>-->
+					<IconTabBar selectedKey="__filter0" expanded="{device>/isNoPhone}">
+						<items>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" text="Form" tooltip="Form">
+								<content>
+									<VBox class="sapUiSmallMargin">
+										<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+											emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+											<f:content>
+												<!--<core:Title text="{i18n>BASIC}"/>-->
+												<Toolbar height="3rem">
+													<Title text="{i18n>BASIC}"/>
+													<Button icon="sap-icon://checklist-2" text="{i18n>DATA_ORGIN}" tooltip="{i18n>DATA_ORGIN}" press="onDOIDisplayPress"
+														enabled="{mainView>/enabled}"/>
+													<ToolbarSpacer/>
+												</Toolbar>
+												<Label text="{i18n>FLOC_TXT}" required="true"/>
+												<Input type="Text" value="{AIWFLOC>/Functionallocation}" valueState="{AIWFLOC>/FunctionallocationVS}"
+													valueStateText="{AIWFLOC>/FunctionallocationVST}" enabled="{AIWFLOC>/FunctionalLocEnabled}" liveChange="onLiveChange"
+													change="onFunctionalLocChange" editable="true" maxLength="40"/>
+												<Label text="{i18n>FUNLOC_DESC}" required="true"/>
+												<Input type="Text" value="{AIWFLOC>/Flocdescription}" valueState="{AIWFLOC>/FlocdescriptionVS}"
+													valueStateText="{AIWFLOC>/FlocdescriptionVST}" enabled="{mainView>/enabled}" editable="true" liveChange="onLiveChange" maxLength="40"/>
+												<Label text="{i18n>EDIT_MASK}"></Label>
+												<Input value="{AIWFLOC>/EditMask}" enabled="false"></Input>
+												<Label text="{i18n>HEIR_LEVEL}"></Label>
+												<Input value="{AIWFLOC>/Hierarchy}" enabled="false"></Input>
+												<Label text="{i18n>LBL_SYS}"></Label>
+												<Input value="{AIWFLOC>/Alkey}" enabled="false" visible="{mainView>/AltLblVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Altxt}" enabled="false" visible="{mainView>/AltLblVisible}"></Input>
+												<Label text="{i18n>STR_IND}" required="true"/>
+												<Input type="Text" value="{AIWFLOC>/Strucindicator}" valueState="{AIWFLOC>/StrucindicatorVS}" valueStateText="{AIWFLOC>/StrucindicatorVST}"
+													enabled="{AIWFLOC>/StrucIndEnabled}" change="onStrChange" editable="true" showValueHelp="true" liveChange="StructureIndicatorChange"
+													valueHelpRequest="valueHelpFunSelect" maxLength="5">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/StrucIndicatorDesc}" enabled="false"></Input>
+												<Label text="{i18n>FUNLOC_CAT}" required="true"/>
+												<Input type="Text" value="{AIWFLOC>/Floccategory}" valueState="{AIWFLOC>/FloccategoryVS}" valueStateText="{AIWFLOC>/FloccategoryVST}"
+													enabled="{AIWFLOC>/FlocCatEnabled}" editable="true" showValueHelp="true" liveChange="flocCatChange" valueHelpRequest="valueHelpFunSelect"
+													change="onFlocCatChange" maxLength="1">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/FlocCategoryDesc}" enabled="false"></Input>
+												<Label text="{i18n>MARK_DEL}"></Label>
+												<CheckBox enabled="false" visible="{ApproveModel>/approveVisible}" selected="{path:'AIWFLOC>/Lvorm', formatter:'.formatter.typeCheck'}"></CheckBox>
+												<Label text="{i18n>INACT}"></Label>
+												<CheckBox enabled="{AIWFLOC>/DeactEnable}" select="onInactiveSelect" selected="{path:'AIWFLOC>/Deact', formatter:'.formatter.typeCheck'}"></CheckBox>
+												<Label text=""></Label>
+												<Text visible="{ApproveModel>/approveVisible}"></Text>
+												<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>COPY_FRM}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label text="{i18n>REF_LOC}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Trpnr}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>DESC_TXT}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Text text="{AIWFLOC>/Refflocdesc}" visible="{ApproveModel>/approveVisible}"></Text>
+												<!--title changed from DEF_VAL-->
+												<core:Title text="{i18n>STR}"/>
+												<Label text="{i18n>SUP_FLOC}"></Label>
+												<Input id="superFloc" enabled="{mainView>/enabled}" showValueHelp="true" value="{AIWFLOC>/SupFunctionallocation}"
+													valueState="{AIWFLOC>/SupFunctionallocationVS}" valueStateText="{AIWFLOC>/SupFunctionallocationVST}" valueHelpRequest="valueHelpFunSelect"
+													liveChange="SupflocChange" change="onSupFlocChange" maxLength="40">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/SupFlocdescription}" enabled="false"></Input>
+												<Label text="{i18n>SUP_FL_CR}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Tplma}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Supflocdesc}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>xtxt.POSITION}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Posnr}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>REF_FL_CR}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Trpnr}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Refflocdesc}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>INST_ALLOWED}"></Label>
+												<CheckBox enabled="false" selected="{path:'AIWFLOC>/Iequi', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+												<Label text="{i18n>SING_ALLOWD}" visible="{ApproveModel>/approveVisible}"></Label>
+												<CheckBox enabled="false" selected="{path:'AIWFLOC>/Einzl', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+												<Label text="{i18n>xtxt.CONSTRUCTION_TYPE}"/>
+												<Input value="{AIWFLOC>/ConstrType}" valueState="{AIWFLOC>/ConstrTypeVS}" valueStateText="{AIWFLOC>/ConstrTypeVST}" type="Text"
+													enabled="{mainView>/enabled}" editable="true" showValueHelp="true" liveChange="constTypeChange" change="onConstTypeChange"
+													valueHelpRequest="valueHelpFunSelect" submit="onConstTypeChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/ConstructionDesc}" enabled="false"></Input>
+												<core:Title text="{i18n>xtxt.SYS_USER_STS}"/>
+												<Label text="{i18n>xtxt.SYS_STS}"/>
+												<Input value="{AIWFLOC>/Stattext}" enabled="false"></Input>
+												<Label text="{i18n>xtxt.USER_STS}"></Label>
+												<Input value="{AIWFLOC>/UstaEqui}" enabled="false"></Input>
+												<Label text="{i18n>xtxt.STS_PROF}" visible="{mainView>/visible}"/>
+												<Input value="{AIWFLOC>/StsmEqui}" valueState="{AIWFLOC>/StsmEquiVS}" valueStateText="{AIWFLOC>/StsmEquiVST}" maxLength="30" type="Text"
+													enabled="false" visible="{mainView>/visible}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="statProfChange"
+													change="onStatProfChange" submit="onStatProfChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/StsmEquiDesc}" enabled="false" visible="{mainView>/visible}"></Input>
+												<Label visible="{mainView>/visible}" text="{i18n>xtxt.STS_OBJ}"></Label>
+												<Input value="{AIWFLOC>/UstwEqui}" valueState="{AIWFLOC>/UstwEquiVS}" valueStateText="{AIWFLOC>/UstwEquiVST}" maxLength="30"
+													showValueHelp="true" visible="{mainView>/visible}" valueHelpRequest="valueHelpFunSelect" change="onStatObjChange"
+													liveChange="setValueStateNone" submit="onStatObjChange" enabled="{mainView>/enabled}"></Input>
+												<Label visible="{mainView>/visible}" text="{i18n>xtxt.STS_WO_NO}"></Label>
+												<Input value="{AIWFLOC>/UswoEqui}" valueState="{AIWFLOC>/UswoEquiVS}" valueStateText="{AIWFLOC>/UswoEquiVST}" maxLength="30"
+													visible="{mainView>/visible}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="setValueStateNone"
+													change="onStatWOChange" submit="onStatWOChange" enabled="{mainView>/enabled}"></Input>
+												<core:Title text="{i18n>GEN_DATA}"/>
+												<Label text="{i18n>OBJ_TYPE}"/>
+												<Input value="{AIWFLOC>/TechnicalObjectTyp}" valueState="{AIWFLOC>/TechnicalObjectTypVS}" valueStateText="{AIWFLOC>/TechnicalObjectTypVST}"
+													type="Text" enabled="{mainView>/enabled}" editable="true" showValueHelp="true" liveChange="techObjTypeChange"
+													valueHelpRequest="valueHelpFunSelect" change="onTechObjTypeChange" maxLength="10" submit="onTechObjTypeChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Description}" enabled="false"></Input>
+												<Label text="{i18n>AUTH_GRP}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input visible="{ApproveModel>/approveVisible}" enabled="false" value="{AIWFLOC>/Begru}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Begtx}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>GROSS_WT}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Brgew}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Gewei}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>INV_NUM}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Invnr}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>SIZE_DIM}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Groes}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>START_DATE}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{path:'AIWFLOC>/Inbdt',formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"/>
+												<Label text=""></Label>
+												<Text visible="{ApproveModel>/approveVisible}"></Text>
+												<Title textAlign="Left" level="H2" text="{i18n>GEN_REF_DATA}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label text="{i18n>ACQ_VAL}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Answt}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Waers}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>ACQ_DATE}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{path:'AIWFLOC>/Ansdt',formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"/>
+												<Label text=""></Label>
+												<Text visible="{ApproveModel>/approveVisible}"></Text>
+												<Title textAlign="Left" level="H2" text="{i18n>GEN_MFD_DATA}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label text="{i18n>MANUF}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Herst}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>MOD_NO}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Typbz}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>MANUF_PART}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Mapar}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>MANUF_SER}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Serge}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>MANUF_COUNTRY}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" showValueHelp="true" value="{AIWFLOC>/Herld}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>CON_MANUF}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Baujj}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Input enabled="false" showValueHelp="true" value="{AIWFLOC>/Baumm}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Input enabled="false" value="{AIWFLOC>/MonthName}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<core:Title text="{i18n>LOC_DATA}"/>
+												<Label text="{i18n>MAINT_PLANT}"/>
+												<Input id="idMaintenancePlant" type="Text" value="{AIWFLOC>/Maintplant}" valueState="{AIWFLOC>/MaintplantVS}"
+													valueStateText="{AIWFLOC>/MaintplantVST}" enabled="{AIWFLOC>/MaintplantEnabled}" editable="true" showValueHelp="true"
+													liveChange="maintPlantChange" change="onMaintPlantChange" valueHelpRequest="valueHelpFunSelect" maxLength="4" name="Maintplant">
+													<!-- submit="onMaintPlantChange" -->
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/MaintplantDesc}" enabled="false">
+													<layoutData>
+														<l:GridData span="L3 M3 S4"/>
+													</layoutData>
+												</Input>
+												<Button id="MaintenancePlantBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost"
+													press="onDataOriginPress" enabled="{mainView>/enabled}"></Button>
+												<Label text="{i18n>LOC}"/>
+												<Input id="idLocation" enabled="{mainView>/enabled}" value="{AIWFLOC>/Location}" valueState="{AIWFLOC>/LocationVS}"
+													valueStateText="{AIWFLOC>/LocationVST}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="locationChange"
+													change="onLocationChange" maxLength="10" submit="onLocationChange" name="Location">
+													<!--StorFloc-->
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Locationdesc}" enabled="false">
+													<layoutData>
+														<l:GridData span="L3 M3 S4"/>
+													</layoutData>
+												</Input>
+												<Button id="LocationBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+													enabled="{mainView>/enabled}"></Button>
+												<Label text="{i18n>ROOM}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Msgrp}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>PL_SEC}"/>
+												<Input id="idPlntSec" enabled="{mainView>/enabled}" value="{AIWFLOC>/BeberFl}" valueState="{AIWFLOC>/BeberFlVS}"
+													valueStateText="{AIWFLOC>/BeberFlVST}" showValueHelp="true" maxLength="3" valueHelpRequest="valueHelpFunSelect" liveChange="plantSecChange"
+													change="onPlantSecChange" submit="onPlantSecChange" name="BeberFl">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Fing}" enabled="false">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Tele}" enabled="false">
+													<layoutData>
+														<l:GridData span="L1 M1 S4"/>
+													</layoutData>
+												</Input>
+												<Button id="PlantSecBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+													enabled="{mainView>/enabled}"></Button>
+												<Label text="{i18n>WC}"/>
+												<Input id="idWorkCen" enabled="{mainView>/enabled}" value="{AIWFLOC>/Arbpl}" valueState="{AIWFLOC>/ArbplVS}"
+													valueStateText="{AIWFLOC>/ArbplVST}" showValueHelp="true" maxLength="8" valueHelpRequest="valueHelpFunSelect" liveChange="wcChange"
+													change="onWcChange" submit="onWcChange" name="Arbplfloc">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Ktext}" enabled="false">
+													<layoutData>
+														<l:GridData span="L3 M3 S4"/>
+													</layoutData>
+												</Input>
+												<Button id="WorkCenterBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+													enabled="{mainView>/enabled}"></Button>
+												<!--<Input value="{AIWFLOC>/WcWerks}" enabled="false">-->
+												<!--	<layoutData>-->
+												<!--		<l:GridData span="L1 M1 S4"/>-->
+												<!--	</layoutData>-->
+												<!--</Input>-->
+												<Label text="{i18n>ABC_IND}"/>
+												<Input id="idAbcInd" enabled="{mainView>/enabled}" value="{AIWFLOC>/Abckz}" valueState="{AIWFLOC>/AbckzVS}"
+													valueStateText="{AIWFLOC>/AbckzVST}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="abcIndChange"
+													change="onAbcIndChange" maxLength="1" submit="onAbcIndChange" name="Abckzfloc">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Abctx}" enabled="false">
+													<layoutData>
+														<l:GridData span="L3 M3 S4"/>
+													</layoutData>
+												</Input>
+												<Button id="abcIndicatorBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+													enabled="{mainView>/enabled}"></Button>
+												<Label text="{i18n>SORT_FLD}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Eqfnr}" visible="{ApproveModel>/approveVisible}"></Input>
+												<core:Title text="{i18n>ORG_ASSIGN_DATA}"/>
+												<Label text="{i18n>COMPCODE}"></Label>
+												<Input value="{AIWFLOC>/Bukrs}" valueState="{AIWFLOC>/BukrsVS}" valueStateText="{AIWFLOC>/BukrsVST}" type="Text"
+													enabled="{AIWFLOC>/BukrsEnabled}" editable="true" showValueHelp="true" liveChange="companyCodeChange" change="onCompanyCodeChange"
+													valueHelpRequest="valueHelpFunSelect" maxLength="4" submit="onCompanyCodeChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Butxt}" enabled="false">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/City}" enabled="false">
+													<layoutData>
+														<l:GridData span="L1 M1 S4"/>
+													</layoutData>
+												</Input>
+												<Label text="{i18n>BUS_AREA}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/GsbeFloc}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Gtext}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>ASSET}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Anln1Fl}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/AnlaFl}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Txt50}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>CC}"></Label>
+												<Input id="idCostCtr" enabled="{mainView>/enabled}" value="{AIWFLOC>/Kostl}" valueState="{AIWFLOC>/KostlVS}"
+													valueStateText="{AIWFLOC>/KostlVST}" showValueHelp="true" maxLength="10" valueHelpRequest="valueHelpFunSelect" liveChange="costCenterChange"
+													change="onCostCenterdChange" submit="onCostCenterdChange" name="KostFloc">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Kokrs}" enabled="false">
+													<layoutData>
+														<l:GridData span="L1 M1 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Mctxt}" enabled="false">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Button id="CostCenterBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+													enabled="{mainView>/enabled}"></Button>
+												<Label text="{i18n>WBS_ELE}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Posid}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Post1}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>STD_ORD}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/DaufFloc}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Standorderdesc}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>SETTLE_ORD}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/AufnFloc}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/SettleOrdDesc}" visible="{ApproveModel>/approveVisible}"></Input>
+												<core:Title text="{i18n>ORG_RESP}"/>
+												<Label text="{i18n>PL_PLANT}"></Label>
+												<Input id="idPlnPlnt" enabled="{mainView>/enabled}" value="{AIWFLOC>/Werks}" valueState="{AIWFLOC>/WerksVS}"
+													valueStateText="{AIWFLOC>/WerksVST}" liveChange="plPlantChange" maxLength="4" change="onPlPlantChange" showValueHelp="true"
+													valueHelpRequest="valueHelpFunSelect" submit="onPlPlantChange" name="PlntFloc">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Planningplantdes}" enabled="false">
+													<layoutData>
+														<l:GridData span="L3 M3 S4"/>
+													</layoutData>
+												</Input>
+												<Button id="PlanPlantBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+													enabled="{mainView>/enabled}"></Button>
+												<Label text="{i18n>PL_GRP}"></Label>
+												<Input id="idPlnGrp" enabled="{mainView>/enabled}" value="{AIWFLOC>/Ingrp}" valueState="{AIWFLOC>/IngrpVS}"
+													valueStateText="{AIWFLOC>/IngrpVST}" showValueHelp="true" liveChange="plGrpChange" maxLength="3" change="onPlGrpdChange"
+													valueHelpRequest="valueHelpFunSelect" submit="onPlGrpdChange" name="IngrFloc">
+													<!--Ingrp-->
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/Innam}" enabled="false">
+													<layoutData>
+														<l:GridData span="L3 M3 S4"/>
+													</layoutData>
+												</Input>
+												<Button id="PlanGrpBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+													enabled="{mainView>/enabled}"></Button>
+												<Label text="{i18n>MAIN_WORKCC}"></Label>
+												<Input id="idMainWC" enabled="{mainView>/enabled}" value="{AIWFLOC>/MainArbpl}" valueState="{AIWFLOC>/MainArbplVS}"
+													valueStateText="{AIWFLOC>/MainArbplVST}" showValueHelp="true" maxLength="8" valueHelpRequest="valueHelpFunSelect" liveChange="mainWcChange"
+													change="onMainWcChange" submit="onMainWcChange" name="Gewrkfloc">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/MainKtext}" enabled="false">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input value="{AIWFLOC>/MainWerks}" enabled="false">
+													<layoutData>
+														<l:GridData span="L1 M1 S4"/>
+													</layoutData>
+												</Input>
+												<Button id="MainWCBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+													enabled="{mainView>/enabled}"></Button>
+												<Label text="{i18n>CAT_PROFILE}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/RbnrFloc}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Rbnrx}" visible="{ApproveModel>/approveVisible}"></Input>
+												<!--<core:Title text="{i18n>STR}"/>-->
+												
+												<Label text=""></Label>
+												<Text visible="{ApproveModel>/approveVisible}"></Text>
+												<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>CUST_WAR}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label text="{i18n>GUARANTEE}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{path:'AIWFLOC>/CgwldtFl', formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>WAR_ED}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{path:'AIWFLOC>/CgwlenFl', formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>MAST_WAT}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/CmganrFl}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>WAR_INH_POS}" visible="{ApproveModel>/approveVisible}"></Label>
+												<CheckBox enabled="false" selected="{path:'AIWFLOC>/CwagetFl', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+												<Label text="{i18n>IND_PASS_WAR}" visible="{ApproveModel>/approveVisible}"></Label>
+												<CheckBox enabled="false" selected="{path:'AIWFLOC>/CgaerbFl', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+												<Label text=""></Label>
+												<Text visible="{ApproveModel>/approveVisible}"></Text>
+												<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>VENDOR_WAR}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label text="{i18n>GUARANTEE}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{path:'AIWFLOC>/VgwldtFl', formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>WAR_ED}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{path:'AIWFLOC>/VgwlenFl', formatter:'.formatter.dateFormat'}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>MAST_WAT}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/VmganrFl}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>WAR_INH_POS}" visible="{ApproveModel>/approveVisible}"></Label>
+												<CheckBox enabled="false" selected="{path:'AIWFLOC>/VwagetFl', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+												<Label text="{i18n>IND_PASS_WAR}" visible="{ApproveModel>/approveVisible}"></Label>
+												<CheckBox enabled="false" selected="{path:'AIWFLOC>/VgaerbFl', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+												<Label text=""></Label>
+												<Text visible="{ApproveModel>/approveVisible}"></Text>
+												<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>SALES_DIST}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<Label text="{i18n>SALES_ORG}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Vkorg}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Vkorgtxt}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>DIST_CHANNEL}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Vtweg}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Vtwegtxt}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>DIV}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Spart}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Sparttxt}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>SALES_OFC}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Vkbur}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Vkburtxt}" visible="{ApproveModel>/approveVisible}"></Input>
+												<Label text="{i18n>SALES_GRP}" visible="{ApproveModel>/approveVisible}"></Label>
+												<Input enabled="false" value="{AIWFLOC>/Vkgrp}" visible="{ApproveModel>/approveVisible}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" value="{AIWFLOC>/Vkgrptxt}" visible="{ApproveModel>/approveVisible}"></Input>
+												<!-- EAM 9.2 changes -->
+												<Label text=""></Label>
+												<Text visible="{ApproveModel>/createVisible}"></Text>
+											</f:content>
+										</f:SimpleForm>
+										<core:Fragment id="lamFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.lam.LinearData" type="XML"/>
+										<Panel visible="{ApproveModel>/createVisible}">
+											<headerToolbar>
+												<OverflowToolbar height="3rem">
+													<Title text="{i18n>ADDR}"/>
+												</OverflowToolbar>
+											</headerToolbar>
+											<content>
+												<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4"
+													emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+													<f:content>
+														<!--<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>ADDR}" visible="{ApproveModel>/createVisible}">-->
+														<!--	<layoutData>-->
+														<!--		<l:GridData span="L12 M12 S12"/>-->
+														<!--	</layoutData>-->
+														<!--</Title>-->
+														<Label text="{i18n>ADDTITLE}" visible="{ApproveModel>/createVisible}"></Label>
+														<Select visible="{ApproveModel>/createVisible}" selectedKey="{AIWFLOC>/TitleCode}" enabled="{flocAddressView>/enabled}"
+															valueState="{AIWFLOC>/TitleVS}" items="{ path: 'AddressTitleModel>/', sorter: { path: 'Title' } }" change="onAddressTitleChange">
+															<core:Item key="{AddressTitleModel>TitleCode}" text="{AddressTitleModel>Title}"/>
+														</Select>
+														<Label text="{i18n>ADDNAME}" visible="{ApproveModel>/createVisible}"></Label>
+														<Input value="{AIWFLOC>/Name1}" tooltip="{i18n>Name1}" change="onAddressFieldChange" enabled="{flocAddressView>/enabled}"
+															visible="{ApproveModel>/createVisible}"></Input>
+														<Label visible="{ApproveModel>/createVisible}"></Label>
+														<Input value="{AIWFLOC>/Name2}" tooltip="{i18n>Name2}" change="onAddressFieldChange" enabled="{flocAddressView>/enabled}"
+															visible="{ApproveModel>/createVisible}"></Input>
+														<Label visible="{ApproveModel>/createVisible}"></Label>
+														<Input value="{AIWFLOC>/Name3}" tooltip="{i18n>Name3}" change="onAddressFieldChange" enabled="{flocAddressView>/enabled}"
+															visible="{ApproveModel>/createVisible}"></Input>
+														<Label visible="{ApproveModel>/createVisible}"></Label>
+														<Input value="{AIWFLOC>/Name4}" tooltip="{i18n>Name4}" change="onAddressFieldChange" enabled="{flocAddressView>/enabled}"
+															visible="{ApproveModel>/createVisible}"></Input>
+														<Label text="{i18n>SearchTerm}" visible="{ApproveModel>/createVisible}"/>
+														<Input value="{AIWFLOC>/Sort1}" visible="{ApproveModel>/createVisible}" type="Text" change="onAddressFieldChange"
+															enabled="{flocAddressView>/enabled}" editable="true" showValueHelp="false">
+															<layoutData>
+																<l:GridData span="L2 M2 S4"/>
+															</layoutData>
+														</Input>
+														<Input value="{AIWFLOC>/Sort2}" visible="{ApproveModel>/createVisible}" change="onAddressFieldChange" enabled="{flocAddressView>/enabled}"></Input>
+														<Label text="{i18n>C_O}" visible="{ApproveModel>/createVisible}"></Label>
+														<Input enabled="{flocAddressView>/enabled}" value="{AIWFLOC>/NameCo}" change="onAddressFieldChange" visible="{ApproveModel>/createVisible}"
+															type="Text" showValueHelp="false"></Input>
+														<Label text="{i18n>PIN_Cty}" visible="{ApproveModel>/createVisible}"></Label>
+														<Input enabled="{flocAddressView>/enabled}" value="{AIWFLOC>/PostCod1}" valueState="{AIWFLOC>/PostCod1VS}" change="onPostalCodeChange"
+															visible="{ApproveModel>/createVisible}">
+															<layoutData>
+																<l:GridData span="L2 M2 S4"/>
+															</layoutData>
+														</Input>
+														<Input enabled="{flocAddressView>/enabled}" value="{AIWFLOC>/City1}" valueState="{AIWFLOC>/City1VS}" visible="{ApproveModel>/createVisible}"
+															showValueHelp="true" valueHelpRequest="onCityAddrVH" change="onCityAddrChange" liveChange="onLiveChange"></Input>
+														<!-- change="onAddressFieldChange" -->
+														<Label text="{i18n>BUILD_FLR}" visible="{ApproveModel>/createVisible}"/>
+														<Input value="{AIWFLOC>/Building}" visible="{ApproveModel>/createVisible}" change="onAddressFieldChange" type="Text"
+															enabled="{flocAddressView>/enabled}" editable="true">
+															<layoutData>
+																<l:GridData span="L2 M2 S4"/>
+															</layoutData>
+														</Input>
+														<Input value="{AIWFLOC>/Floor}" visible="{ApproveModel>/createVisible}" change="onAddressFieldChange" enabled="{flocAddressView>/enabled}">
+															<layoutData>
+																<l:GridData span="L1 M1 S2"/>
+															</layoutData>
+														</Input>
+														<Label text="{i18n>ROOM}" visible="{ApproveModel>/createVisible}">
+															<layoutData>
+																<l:GridData span="L1 M1 S2"/>
+															</layoutData>
+														</Label>
+														<Input value="{AIWFLOC>/Roomnum}" visible="{ApproveModel>/createVisible}" change="onAddressFieldChange" type="Text"
+															enabled="{flocAddressView>/enabled}" editable="true">
+															<layoutData>
+																<l:GridData span="L1 M1 S2"/>
+															</layoutData>
+														</Input>
+														<Label text="{i18n>STR2}" visible="{ApproveModel>/createVisible}"></Label>
+														<Input enabled="{flocAddressView>/enabled}" value="{AIWFLOC>/Strsuppl1}" change="onAddressFieldChange"
+															visible="{ApproveModel>/createVisible}" type="Text" showValueHelp="false"></Input>
+														<Label text="{i18n>STR3}" visible="{ApproveModel>/createVisible}"></Label>
+														<Input enabled="{flocAddressView>/enabled}" value="{AIWFLOC>/Strsuppl2}" change="onAddressFieldChange"
+															visible="{ApproveModel>/createVisible}" type="Text" showValueHelp="false"></Input>
+														<Label text="{i18n>STR4}" visible="{ApproveModel>/createVisible}"></Label>
+														<Input enabled="{flocAddressView>/enabled}" value="{AIWFLOC>/Strsuppl3}" change="onAddressFieldChange"
+															visible="{ApproveModel>/createVisible}" type="Text" showValueHelp="false"></Input>
+														<Label text="{i18n>STR5}" visible="{ApproveModel>/createVisible}"></Label>
+														<Input enabled="{flocAddressView>/enabled}" value="{AIWFLOC>/AddrLocation}" change="onAddressFieldChange"
+															visible="{ApproveModel>/createVisible}" type="Text" showValueHelp="false"></Input>
+														<Label text="{i18n>COUNTRY}" visible="{ApproveModel>/createVisible}" required="{AIWFLOC>/RefPostaLblReq}"/>
+														<Input enabled="{flocAddressView>/enabled}" value="{AIWFLOC>/RefPosta}" visible="{ApproveModel>/createVisible}"
+															valueState="{AIWFLOC>/RefPostaVS}" valueStateText="{AIWFLOC>/RefPostaVST}" type="Text" editable="true" showValueHelp="true"
+															liveChange="cntryChange" change="onCntryChange" valueHelpRequest="valueHelpFunSelect" submit="onCntryChange">
+															<layoutData>
+																<l:GridData span="L2 M2 S4"/>
+															</layoutData>
+														</Input>
+														<Input value="{AIWFLOC>/Landx}" visible="{ApproveModel>/createVisible}" enabled="false"></Input>
+														<Label text="{i18n>RGIN}" visible="{ApproveModel>/createVisible}"></Label>
+														<Input enabled="{flocAddressView>/enabled}" value="{AIWFLOC>/Region}" visible="{ApproveModel>/createVisible}"
+															valueState="{AIWFLOC>/RegionVS}" valueStateText="{AIWFLOC>/RegionVST}" type="Text" editable="true" showValueHelp="true"
+															liveChange="regionChange" change="onRegionChange" valueHelpRequest="valueHelpFunSelect" submit="onRegionChange">
+															<layoutData>
+																<l:GridData span="L2 M2 S4"/>
+															</layoutData>
+														</Input>
+														<Input value="{AIWFLOC>/RegionDesc}" visible="{ApproveModel>/createVisible}" enabled="false"></Input>
+														<Label text="{i18n>TIME_ZONE}" visible="{ApproveModel>/createVisible}"></Label>
+														<Input enabled="{flocAddressView>/enabled}" liveChange="onLiveChange" change="onTimeZoneChange" submit="onTimeZoneChange"
+															value="{AIWFLOC>/TimeZone}" visible="{ApproveModel>/createVisible}" valueState="{AIWFLOC>/TimeZoneVS}"
+															valueStateText="{AIWFLOC>/TimeZoneVST}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"/>
+													</f:content>
+												</f:SimpleForm>
+												<Table id="idTBLIntlAddr" mode="Delete" items="{AIWFLOC>/intlAddr}" delete="handleIntlAddrDelete" visible="{ApproveModel>/createVisible}">
+													<headerToolbar>
+														<Toolbar>
+															<Title id="idTTLIntlVersion" text="International Version"/>
+															<ToolbarSpacer/>
+															<Button id="idBTNnewIntlAddr" icon="sap-icon://add" tooltip="New" press="handleIntlAddrAdd" enabled="{flocAddressView>/enabled}"/>
+														</Toolbar>
+													</headerToolbar>
+													<columns>
+														<Column demandPopin="true" minScreenWidth="Tablet">
+															<Text text="Address Version"></Text>
+														</Column>
+														<Column demandPopin="true" minScreenWidth="Tablet">
+															<Text text="Name"></Text>
+														</Column>
+														<Column demandPopin="true" minScreenWidth="Tablet">
+															<Text text="Name 2"></Text>
+														</Column>
+														<Column demandPopin="true" minScreenWidth="Tablet">
+															<Text text="Street"></Text>
+														</Column>
+														<Column demandPopin="true" minScreenWidth="Tablet">
+															<Text text="City"></Text>
+														</Column>
+													</columns>
+													<items>
+														<ColumnListItem press="handleIntlAddrPress" type="Navigation">
+															<cells>
+																<Select forceSelection="false" items="{path: 'AddressVersionModel>/'}" selectedKey="{AIWFLOC>AdNation}" width="100%"
+																	enabled="{AIWFLOC>AdNationEnable}" change="onAddrVersionChange">
+																	<core:Item key="{AddressVersionModel>Nation}" text="{AddressVersionModel>NationTex}"/>
+																</Select>
+																<!-- enabled="{mainView>/enabled}" -->
+																<Input maxLength="40" value="{AIWFLOC>Name1i}" enabled="{flocAddressView>/enabled}"></Input>
+																<Input maxLength="40" value="{AIWFLOC>Name2i}" enabled="{flocAddressView>/enabled}"></Input>
+																<Input showValueHelp="true" value="{AIWFLOC>Streeti}" valueHelpRequest="onStreetVH" change="onStreetIChange" liveChange="onLiveChange"
+																	enabled="{flocAddressView>/enabled}"></Input>
+																<Input showValueHelp="true" value="{AIWFLOC>City1i}" valueHelpRequest="onCityVH" change="onCityIChange" liveChange="onLiveChange"
+																	enabled="{flocAddressView>/enabled}"></Input>
+															</cells>
+														</ColumnListItem>
+													</items>
+												</Table>
+											</content>
+										</Panel>
+										<Table id="idTBLAltLbl" mode="Delete" items="{AIWFLOC>/altlbl}" delete="handleAltLblDelete" visible="{mainView>/AltLblVisible}">
+											<headerToolbar>
+												<Toolbar>
+													<Title text="Functional Location: Alternative Labels"/>
+													<ToolbarSpacer/>
+													<Button id="idAddAltLbl" icon="sap-icon://add" tooltip="New" press="handleAltLblAdd"/>
+												</Toolbar>
+											</headerToolbar>
+											<columns>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="Labeling System"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="Labeling System Descr"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="Alternative Label"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="Structure Indicator"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="Structure Indicator Descr"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="Edit Mask"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="Active Version"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="Primary LabelSystem"></Text>
+												</Column>
+												<Column demandPopin="true" minScreenWidth="Tablet">
+													<Text text="Reusable"></Text>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem>
+													<cells>
+														<Input showValueHelp="true" value="{AIWFLOC>AltAlkey}" valueState="{AIWFLOC>LblSysVS}" valueHelpRequest="onLblSysVH" change="onLblSysChange"
+															liveChange="onLblSysLiveChange" enabled="{AIWFLOC>enableLblSys}"></Input>
+														<Input maxLength="40" value="{AIWFLOC>Altxt}" enabled="false"></Input>
+														<Input maxLength="40" value="{AIWFLOC>AltStrno}" valueState="{AIWFLOC>AltLblVS}" enabled="{AIWFLOC>enableAltLbl}" change="onAltLblChange"></Input>
+														<Input showValueHelp="true" value="{AIWFLOC>AltTplkz}" valueState="{AIWFLOC>StrIndVS}" valueHelpRequest="onStrIndAltLblVH"
+															change="onStrIndAltLblChange" liveChange="onStrIndAltLblLiveChange" enabled="{AIWFLOC>enableStrInd}"></Input>
+														<Input maxLength="40" value="{AIWFLOC>Tplxt}" enabled="false"></Input>
+														<Input maxLength="40" value="{AIWFLOC>Name1i}" enabled="false"></Input>
+														<CheckBox enabled="false" selected="{AIWFLOC>Actvs}"></CheckBox>
+														<CheckBox enabled="false" selected="{AIWFLOC>AltPrkey}"></CheckBox>
+														<CheckBox enabled="false" selected="{AIWFLOC>AltReuse}"></CheckBox>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+										<core:Fragment id="clsFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.ClassAssignment" type="XML"/>
+										<core:Fragment id="charFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.Characteristics" type="XML"/>
+										<core:Fragment id="linearcharFrag" fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.LinearCharacteristics" type="XML"/>
+									</VBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>PARTNERS}"
+								tooltip="{i18n>PARTNERS}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.FLOC.FlocPartners" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>PERMITS_}"
+								tooltip="{i18n>PERMITS_}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.FLOC.FlocPermits" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>ADD_MNTNC}"
+								tooltip="{i18n>ADD_MNTNC}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Address" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisibleLin}" text="{i18n>LINEAR_DATA}"
+								tooltip="{i18n>LINEAR_DATA}">
+								<content>
+									<core:Fragment id="lamAprvFrag" fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.LinearDataAprv" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>assignment}"
+								tooltip="{i18n>assignment}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.ClassAssignments" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>characteristics}"
+								tooltip="{i18n>characteristics}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Characteristics" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisibleLin}" text="{i18n>LIN_CHAR_TITLE}"
+								tooltip="{i18n>LIN_CHAR_TITLE}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.ApprLinearChar" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<!--<IconTabFilter key="onAttach" icon="sap-icon://attachment" text="{i18n>ATTACHMENT_TITLE}" tooltip="{i18n>ATTACHMENT_TITLE}"-->
+							<!--	design="Horizontal">-->
+							<!--	<content>-->
+							<!--		<core:Fragment id="attach" fragmentName="ugiaiwui.mdg.aiw.library.fragments.Attachments.Attachments" type="XML"/>-->
+							<!--	</content>-->
+							<!--</IconTabFilter>-->
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Toolbar id="tabletoolbar">
+						<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+						<ToolbarSpacer/>
+						<Button id="idBtnCheck" text="Check" press="onDonePress" enabled="{mainView>/enabled}"/>
+						<Button text="Done" type="Accept" press="onDonePress"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

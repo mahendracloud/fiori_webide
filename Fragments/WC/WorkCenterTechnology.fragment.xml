@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+		emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+		<f:content>
+			<core:Title id="idTech" text="{i18n>TECH_DATA}" visible="{aVisModel>/visible}"></core:Title>
+			<Label text="{i18n>MACH_TYP}" visible="{aVisModel>/visible}"></Label>
+			<Input id="machType" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Matyp}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="machtypeDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Matyt}"></Input>
+			<Label text="{i18n>SORT_STR}" visible="{aVisModel>/visible}"></Label>
+			<Input id="sortString" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Sortb}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="sortStrindT" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Sortstringtxt}"></Input>
+			<Label text="{i18n>CAP_PLAN_GRP}" visible="{aVisModel>/visible}"></Label>
+			<Input id="cappPlnGrp" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Cplgr}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="cappPlnGrpDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Cpltx}"></Input>
+			<Label text="{i18n>RND_ADD}" visible="{aVisModel>/visible}"></Label>
+			<Input id="rndAddVal" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Ruzus}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="rndAddVal1" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/RndaddvalTxt}"></Input>
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

@@ -1,0 +1,69 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="WBSBOMTab" text="WBSBOM" icon="sap-icon://multiselect-none" tooltip="{i18n>wbomTl}" count="{CountModel>/WbsBomCount}"
+		iconColor="Contrast">
+		<content>
+			<Table mode="{EnableModel>/tableType}" growing="true" growingScrollToLoad="true" items="{AIWListWBSModel>/}"
+				noDataText="{i18n>tableNoDataText}" busy="{BusyModel>/AiwTblBusy}" selectionChange="onWbsRowSelect">
+				<headerToolbar>
+					<Toolbar visible="{EnableModel>/actionEnable}">
+						<MenuButton text="{i18n>selectAction}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+							<menu>
+								<Menu itemSelected="onMenuAction">
+									<items>
+										<MenuItem key="createWbsbom" text="{i18n>createWbsbom}" icon="sap-icon://create"/>
+										<MenuItem key="copyWbsbom" text="{i18n>copyWbsbom}" icon="sap-icon://copy"/>
+										<MenuItem key="copyMtoWbsbom" text="{i18n>copyMtoWbsbom}" icon="sap-icon://copy"/>
+										<MenuItem key="changeWbsbom" text="{i18n>changeWbsbom}" icon="sap-icon://write-new"/>
+									</items>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" type="Reject" press="onRemoveWBSPress" enabled="{EnableModel>/deleteWBS}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>wbsElement}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>material}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>plant}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>bomUsage}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>description}" textAlign="Left"></Text>
+					</Column>
+					<!--<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>BASE_QTY}" textAlign="Left"></Text>
+						</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem press="onWBSNavigation" type="Navigation">
+						<cells>
+							<Input type="Text" value="{AIWListWBSModel>WbsExt}" enabled="{AIWListWBSModel>wbsEnable}" valueState="{AIWListWBSModel>wbsValueState}"
+								editable="true" showValueHelp="true" liveChange="onLiveChange" change="wbsChange" valueHelpRequest="onWbsVH" submit="wbsChange"
+								showValueStateMessage="false"></Input>
+							<Input type="Text" maxLength="{maxLengthModel>/maxlengthMat}" value="{AIWListWBSModel>Matnr}" enabled="{AIWListWBSModel>matEnable}"
+								valueState="{AIWListWBSModel>matValueState}" editable="true" showValueHelp="true" liveChange="onLiveChange" change="materialChange"
+								valueHelpRequest="onMaterialVH" submit="materialChange" showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListWBSModel>Werks}" enabled="{AIWListWBSModel>plantEnable}" valueState="{AIWListWBSModel>plantValueState}"
+								editable="true" showValueHelp="true" valueHelpRequest="onPlantInBomVH" liveChange="onLiveChange" change="plantChange" submit="plantChange"
+								showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListWBSModel>Stlan}" enabled="{AIWListWBSModel>usageEnable}" valueState="{AIWListWBSModel>usageValueState}"
+								editable="true" showValueHelp="true" liveChange="onLiveChange" change="bomUsageChange" valueHelpRequest="omBomUsageVH"
+								submit="bomUsageChange" showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListWBSModel>Lngtxt}" editable="true" enabled="{AIWListWBSModel>LngtxtEnable}"></Input>
+							<!--<Input type="Number" value="{AIWListWBSModel>BaseQty}" enabled="true" valueState="{AIWListWBSModel>BaseQtyValueState}" editable="true"
+									liveChange="onLiveChange"></Input>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

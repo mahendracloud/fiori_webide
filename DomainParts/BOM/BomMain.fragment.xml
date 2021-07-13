@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="BOM" text="BOM" icon="sap-icon://activity-items" tooltip="{i18n>bom}" count="{CountModel>/TotalBomCount}"
+		iconColor="Contrast">
+		<content>
+			<IconTabBar id="_iconTabBarBom" select="handleTabSelect">
+				<items>
+					<core:Fragment id="mbomMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.BOM.MaterialBomMain" type="XML"/>
+					<core:Fragment id="ebomMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.BOM.EquipmentBomMain" type="XML"/>
+					<core:Fragment id="flbomMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.BOM.FunctionalLocationBomMain" type="XML"/>
+					<core:Fragment id="wbsbomMain" fragmentName="ugiaiwui.mdg.aiw.request.DomainParts.BOM.WbsBomMain" type="XML"/>
+				</items>
+			</IconTabBar>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

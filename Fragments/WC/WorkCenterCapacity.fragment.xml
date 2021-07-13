@@ -1,0 +1,37 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table id="WCCapacityTable" growing="true" growingScrollToLoad="true" width="auto" updateFinished="onListUpdateFinished"
+		busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin"
+		items="{ path : 'wcDetailModel>/capacity', sorter : { path : 'Bomitmpos', descending : false } }">
+		<headerToolbar>
+			<Toolbar >
+				<Title text="Capacities"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>detailWCCapacityTableColumn1}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailWCCapacityTableColumn2}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailWCCapacityTableColumn3}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailWCCapacityTableColumn4}" wrapping="true"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Navigation" press="wcCapacityPress">
+				<cells>
+					<!--<ObjectIdentifier title="{ChangeRequestID}" text="{ChangeRequestID}"/>-->
+					<!--<ObjectNumber unit="{CreatedBy}"/>-->
+					<Text text="{wcDetailModel>Cakapar}" wrapping="true"></Text>
+					<Text text="{wcDetailModel>Kaparttext}" wrapping="true"></Text>
+					<Text text="{wcDetailModel>Kapnamep}" wrapping="true"></Text>
+					<Text text="{wcDetailModel>Kaptext}" wrapping="true"></Text>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

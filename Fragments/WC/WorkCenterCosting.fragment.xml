@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table id="WCCostingTable" growing="true" growingScrollToLoad="true" width="auto" updateFinished="onListUpdateFinished"
+		busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin"
+		items="{ path : 'wcDetailModel>/cost', sorter : { path : 'Bomitmpos', descending : false } }">
+		<headerToolbar>
+			<Toolbar >
+				<Title text="Cost Center Assignment"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>detailWCostingTableColumn1}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailWCostingTableColumn2}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailWCostingTableColumn3}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailWCostingTableColumn4}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailWCostingTableColumn5}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailWCostingTableColumn6}" wrapping="true"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Navigation" press="wcCostingPress">
+				<cells>
+					<Text text="{path:'wcDetailModel>Begda',formatter:'.formatter.dateFormat'}" wrapping="true"></Text>
+					<Text text="{wcDetailModel>CrKokrs}" wrapping="true"></Text>
+					<Text text="{wcDetailModel>Bezei}" wrapping="true"></Text>
+					<Text text="{path:'wcDetailModel>Endda',formatter:'.formatter.dateFormat'}" wrapping="true"></Text>
+					<Text text="{wcDetailModel>CrKostl}" wrapping="true"></Text>
+					<Text text="{wcDetailModel>Costcentxt}" wrapping="true"></Text>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

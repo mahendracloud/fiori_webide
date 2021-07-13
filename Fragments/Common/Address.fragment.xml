@@ -1,0 +1,376 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto">
+		<l:content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+				emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="{i18n>ADDNAME}"></core:Title>
+					<Label text="{i18n>ADDTITLE}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Title}"></Input>
+					<Label text="{i18n>ADDNAME}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Name1}" tooltip="{i18n>Name1}"></Input>
+					<Label visible="false"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Name2}" tooltip="{i18n>Name2}"></Input>
+					<Label visible="false"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Name3}" tooltip="{i18n>Name3}"></Input>
+					<Label visible="false"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Name4}" tooltip="{i18n>Name4}"></Input>
+					<Label text="{i18n>SRCHTRM}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Sort1}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/Sort2}">
+						<layoutData>
+							<l:GridData span="L3 M3 S8"/>
+						</layoutData>
+					</Input>
+					<core:Title text="{i18n>STRADD}"></core:Title>
+					<Label text="{i18n>C_O}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/NameCo}"></Input>
+					<Label text="{i18n>BUILD_FLR}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Building}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/Floor}">
+						<layoutData>
+							<l:GridData span="L1 M1 S2"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>ROOM}">
+						<layoutData>
+							<l:GridData span="L1 M1 S2"/>
+						</layoutData>
+					</Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Roomnum}">
+						<layoutData>
+							<l:GridData span="L1 M1 S2"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>STR_HS}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Street}">
+						<layoutData>
+							<l:GridData span="L3 M3 S8"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/HouseNr1}">
+						<layoutData>
+							<l:GridData span="L1 M1 S2"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/HouseNr2}">
+						<layoutData>
+							<l:GridData span="L1 M1 S2"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>STR2}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Strsuppl1}"></Input>
+					<Label text="{i18n>STR3}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Strsuppl2}"></Input>
+					<Label text="{i18n>STR4}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Strsuppl3}"></Input>
+					<Label text="{i18n>STR5}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/AddrLocation}"></Input>
+					<Label text="{i18n>DSTR}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/District}"></Input>
+					<Label text="{i18n>PIN_CTY}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/PostCod1}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/City1}">
+						<layoutData>
+							<l:GridData span="L3 M3 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>CNTRY_KEY}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/RPostafl}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/Landx}">
+						<layoutData>
+							<l:GridData span="L3 M3 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>RGIN}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/RfePost}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/Regiotxt}">
+						<layoutData>
+							<l:GridData span="L3 M3 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>OTH_CTY}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/HomeCity}"></Input>
+					<Label text="{i18n>TIME_ZONE}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/TimeZone}"></Input>
+					<Label text="{i18n>JURSD} "></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Taxjurcod}"></Input>
+					<Label text="{i18n>STRUCT}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Regiogrou}"></Input>
+					<Label text="{i18n>TRNSPORT_ZONE}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/RfePostl}"></Input>
+					<Label text="{i18n>UNDELIVR}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Dontusestxt}"></Input>
+					<core:Title text="{i18n>PO_BOX_ADD}"></core:Title>
+					<Label text="{i18n>PO_BOX}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/PoBox}"></Input>
+					<Label text="{i18n>PO_BOX_W/O}"></Label>
+					<CheckBox enabled="false" selected="{path:'AIWAPPROVE>/PoboxNum', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<Label text="{i18n>DLVRY_SRV}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/DlvsrvTy}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/DlvsrvNr}">
+						<layoutData>
+							<l:GridData span="L3 M3 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>PO_BOX_PIN}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/PostCod2}"></Input>
+					<Label text="{i18n>OTH_CTY}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/PoboxLoc}"></Input>
+					<Label text="{i18n>PO_BOX_LBY}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/PoboxLby}"></Input>
+					<Label text="{i18n>OTH_CNTRY}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/PoboxCty}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/LandxP}">
+						<layoutData>
+							<l:GridData span="L3 M3 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>OTH_REG}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/RfePstal}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{AIWAPPROVE>/RegiotxtP}">
+						<layoutData>
+							<l:GridData span="L3 M3 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>UNDELIVR}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Dontuseptxt}"></Input>
+					<Label text="{i18n>CMPNY_PIN}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/PostCod3}"></Input>
+					<Label text="{i18n>CMNT}"></Label>
+					<Input enabled="false" value="{AIWAPPROVE>/Remark}"></Input>
+				</f:content>
+			</f:SimpleForm>
+			<Title textAlign="Left" level="H2" wrapping="false" text="International Address" class="sapUiSmallMarginBegin"
+				visible="{ApproveModel>/approveVisible}">
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Title>
+			<Table items="{AIWAPPROVE>/intlAddr}" visible="{ApproveModel>/approveVisible}">
+				<!--<headerToolbar>-->
+				<!--	<Toolbar>-->
+				<!--		<Title id="idTTLIntlVersion" text="International Version"/>-->
+				<!--		<ToolbarSpacer/>-->
+				<!--		<Button id="idBTNnewIntlAddr" icon="sap-icon://add" tooltip="New" press="handleIntlAddrAdd" enabled="{AIWAPPROVE>/addIntlBtn}"/>-->
+				<!--	</Toolbar>-->
+				<!--</headerToolbar>-->
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Address Version"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Name"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Name 2"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Street"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="City"></Text>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="handleIntlAddrPress" type="Navigation">
+						<cells>
+							<Select forceSelection="false" items="{path: 'AddressVersionModel>/'}" selectedKey="{AIWAPPROVE>AdNation}" width="100%" enabled="false">
+								<core:Item key="{AddressVersionModel>Nation}" text="{AddressVersionModel>NationTex}"/>
+							</Select>
+							<Input maxLength="40" value="{AIWAPPROVE>Name1i}" enabled="false"></Input>
+							<Input maxLength="40" value="{AIWAPPROVE>Name2i}" enabled="false"></Input>
+							<Input showValueHelp="true" value="{AIWAPPROVE>Streeti}" valueHelpRequest="onStreetVH" change="onStreetIChange" liveChange="onLiveChange"
+								enabled="false"></Input>
+							<Input showValueHelp="true" value="{AIWAPPROVE>City1i}" valueHelpRequest="onCityVH" change="onCityIChange" liveChange="onLiveChange"
+								enabled="false"></Input>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>EMAILTITLE}" class="sapUiSmallMarginBegin"
+				visible="{ApproveModel>/approveVisible}">
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Title>
+			<Table width="auto" updateFinished="onListUpdateFinished" busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+				items="{AIWAPPROVE>/emailAddress}">
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>EMAILADD}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>STNDRD}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>DNUCN}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{AIWAPPROVE>EAddress}"></Text>
+							<CheckBox enabled="false" selected="{path:'AIWAPPROVE>EFlgdeft', formatter:'.formatter.typeCheck'}"></CheckBox>
+							<CheckBox enabled="false" selected="{path:'AIWAPPROVE>EFlgnous', formatter:'.formatter.typeCheck'}"></CheckBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>URLTITLE}" class="sapUiSmallMarginBegin"
+				visible="{ApproveModel>/approveVisible}">
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Title>
+			<Table width="auto" updateFinished="onListUpdateFinished" busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+				items="{AIWAPPROVE>/urlAddress}">
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>URITYP}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>URI}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>STNDRD}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>DNUCN}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{AIWAPPROVE>Uritypetxt}"></Text>
+							<Text text="{AIWAPPROVE>UAddress}"></Text>
+							<CheckBox enabled="false" selected="{path:'AIWAPPROVE>UFlgdeft', formatter:'.formatter.typeCheck'}"></CheckBox>
+							<CheckBox enabled="false" selected="{path:'AIWAPPROVE>UFlgnous', formatter:'.formatter.typeCheck'}"></CheckBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>TL_MB_NUM}" class="sapUiSmallMarginBegin"
+				visible="{ApproveModel>/approveVisible}">
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Title>
+			<Table width="auto" updateFinished="onListUpdateFinished" busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+				items="{AIWAPPROVE>/telephoneData}">
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>TL_TYP}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>CNTRY}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>CNTRY_CODE}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>TLPHN}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>EXTN}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>STNDRD}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>SMS_ENB}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>DNUCN}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{AIWAPPROVE>Teltype}"></Text>
+							<Text text="{AIWAPPROVE>TCountry}"></Text>
+							<Text text="{AIWAPPROVE>Telefto}"></Text>
+							<Text text="{AIWAPPROVE>TNumber}"></Text>
+							<Text text="{AIWAPPROVE>TExtens}"></Text>
+							<Text text="{AIWAPPROVE>TFlgsms}"></Text>
+							<CheckBox enabled="false" selected="{path:'AIWAPPROVE>TFlgdeft', formatter:'.formatter.typeCheck'}"></CheckBox>
+							<CheckBox enabled="false" selected="{path:'AIWAPPROVE>TFlgnous', formatter:'.formatter.typeCheck'}"></CheckBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>FAX}" class="sapUiSmallMarginBegin" visible="{ApproveModel>/approveVisible}">
+				<layoutData>
+					<l:GridData span="L12 M12 S12"/>
+				</layoutData>
+			</Title>
+			<Table width="auto" updateFinished="onListUpdateFinished" busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+				items="{AIWAPPROVE>/faxData}">
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>CNTRY}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>CNTRY_CODE}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>FAX}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>EXTN}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>STNDRD}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>DNUCN}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{AIWAPPROVE>FCountry}"></Text>
+							<Text text="{AIWAPPROVE>Telefto}"></Text>
+							<Text text="{AIWAPPROVE>FNumber}"></Text>
+							<Text text="{AIWAPPROVE>FExtens}"></Text>
+							<CheckBox enabled="false" selected="{path:'AIWAPPROVE>FFlgdeft', formatter:'.formatter.typeCheck'}"></CheckBox>
+							<CheckBox enabled="false" selected="{path:'AIWAPPROVE>FFlgnous', formatter:'.formatter.typeCheck'}"></CheckBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

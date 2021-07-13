@@ -1,0 +1,310 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:u="sap.ui.unified"
+	xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.DetailObjectLink" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<Page id="olDetailPage" title="{i18n>olMasterTitle}" enableScrolling="true" showFooter="true" busyIndicatorDelay="0">
+			<content>
+				<!--<ObjectHeader id="OLHeader" title="{i18n>olheaderTitle}" titleActive="false" condensed="false"></ObjectHeader>-->
+				<IconTabBar selectedKey="__filter0" expanded="{device&gt;/isNoPhone}">
+					<items>
+						<IconTabFilter icon="sap-icon://form" text="Form" design="Horizontal">
+							<content>
+								<l:Grid defaultSpan="L12 M12 S12" width="auto">
+									<l:content>
+										<f:SimpleForm id="simpleform" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+											labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+											<f:content>
+												<!--<core:Title text="{i18n>xtxt.GEN_DATA}"></core:Title>
+												<VBox>
+													<layoutData >
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</VBox>
+												<Label text="{i18n>xtxt.REASON}"/>
+												<Select id="reasonforrequest" editable="true"/>
+												<Label text="{i18n>xtxt.REQ_DESC}" required="true"/>
+												<Input id="Description" type="Text" enabled="true" editable="true" liveChange="onLiveChange" maxLength="60"/>-->
+												<core:Title text="{i18n>xtxt.BASIC}" emphasized="true"></core:Title>
+												<VBox>
+													<layoutData >
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</VBox>
+												<Label text="{i18n>xtxt.LINK}"/>
+												<Input id="link" enabled="{olDetailModel>/lenable}" type="Text" value="{olDetailModel>/link}" maxLength="18" editable="true"
+													liveChange="onLiveChange" valueState="{olDetailModel>/linkVS}" valueStateText="{olDetailModel>/linkVST}" showValueHelp="false"></Input>
+												<Label text="{i18n>xtxt.LINK_CAT}" required="true"></Label>
+												<Select id="linkCategory" selectedKey="{olDetailModel>/linkCat}" showSecondaryValues="true" change="onLinkCatChange" forceSelection="false"
+													items="{linkCatModel>/}" enabled="{olDetailModel>/linkCatEn}" valueState="{olDetailModel>/linkCatVS}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+													<core:ListItem key="{linkCatModel>NETYP}" text="{linkCatModel>TYPTX}" additionalText="{linkCatModel>TYPTX}"></core:ListItem>
+												</Select>
+												<Input id="linkCatDesc" value="{olDetailModel>/linkCatDesc}" enabled="false"></Input>
+												<Label text="{i18n>xtxt.OBJ_CAT}" required="true"/>
+												<!--<ComboBox id="objectCategory" showSecondaryValues="true" forceSelection="false" change="onObjCatChange">
+												<layoutData>
+													<l:GridData span="L2 M2 S4"/>
+												</layoutData>
+												<core:Item key="{Kantyp}" text="{Kantyp_txt}" additionalText="{Kantyp_txt}"></core:Item>
+											</ComboBox>-->
+												<Select id="objectCategory" selectedKey="{olDetailModel>/objCat}" showSecondaryValues="true" forceSelection="false" change="onObjCatChange"
+													items="{objCatModel>/}" enabled="{olDetailModel>/objCatEn}" valueState="{olDetailModel>/objCatVS}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+													<core:ListItem key="{objCatModel>Kantyp}" text="{objCatModel>Kantyp_txt}" additionalText="{objCatModel>Kantyp_txt}"></core:ListItem>
+												</Select>
+												<Input id="ObjCatDesc" value="{olDetailModel>/objCatDesc}" enabled="false"></Input>
+												<Label text="{i18n>xtxt.LINK_DESC}" required="true"/>
+												<Input id="linkDesc" enabled="{olDetailModel>/enable}" value="{olDetailModel>/linkDesc}" liveChange="onLiveChange" maxLength="40"
+													valueState="{olDetailModel>/linkDescVS}" valueStateText="{olDetailModel>/linkDescVST}"></Input>
+												<Label text="{i18n>xtxt.NET_ID}"/>
+												<Input id="networkId" enabled="{olDetailModel>/enable}" maxLength="8" value="{olDetailModel>/netId}" showValueHelp="true"
+													valueHelpRequest="onNetIdVH" liveChange="onLiveChange" change="onVHChange" valueState="{olDetailModel>/netIdVS}"
+													valueStateText="{olDetailModel>/netIdVST}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="networkIdDesc" value="{olDetailModel>/netIdDesc}" enabled="false" valueState="{olDetailModel>/netIdDescVS}"
+													valueStateText="{olDetailModel>/netIdDescVST}"></Input>
+												<!-- Approve -->
+												<Label text="{i18n>DEL_IND}" visible="{aVisModel>/visible}"></Label>
+												<CheckBox enabled="false" selected="{path:'olDetailModel>/LvormOl}',formatter:'.formatter.typeCheck'}" visible="{aVisModel>/visible}"></CheckBox>
+												<!-- -->
+												<core:Title text="{i18n>xtxt.SYS_USER_STS}"></core:Title>
+												<Label text="{i18n>xtxt.SYS_STS}"/>
+												<Input id="systemStatus" value="{olDetailModel>/sysSts}" enabled="false"></Input>
+												<Label text="{i18n>xtxt.USER_STS}"></Label>
+												<Input id="userSts" value="{olDetailModel>/usrSts}" enabled="false"></Input>
+												<Label id="stProfLbl" text="{i18n>xtxt.STS_PROF}" visible="{olDetailModel>/stProfLblV}"/>
+												<Input id="stsProf" value="{olDetailModel>/stsProf}" maxLength="30" type="Text" enabled="{olDetailModel>/enable}"
+													visible="{olDetailModel>/stsProfV}" change="onVHChange" liveChange="onLiveChange" valueHelpRequest="onStatProfVH" showValueHelp="true"
+													valueState="{olDetailModel>/stsProfVS}" valueStateText="{olDetailModel>/stsProfVST}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="stsProfDesc" value="{olDetailModel>/stsProfDesc}" enabled="false" visible="{olDetailModel>/stsProfDescV}"></Input>
+												<Label id="stsObjLbl" visible="{olDetailModel>/stsObjLblV}" text="{i18n>xtxt.STS_OBJ}"></Label>
+												<Input id="stsObj" value="{olDetailModel>/stsObj}" enabled="{olDetailModel>/enable}" maxLength="30" showValueHelp="true"
+													visible="{olDetailModel>/stsObjV}" valueHelpRequest="onStatusVH" valueState="{olDetailModel>/stsObjVS}"
+													valueStateText="{olDetailModel>/stsObjVST}" change="onVHChange" liveChange="onLiveChange"></Input>
+												<Label id="stsWoLbl" visible="{olDetailModel>/stsWoLblV}" text="{i18n>xtxt.STS_WO_NO}"></Label>
+												<Input id="stsWoNo" enabled="{olDetailModel>/enable}" value="{olDetailModel>/stsWoNo}" maxLength="30" visible="{olDetailModel>/stsWoNoV}"
+													showValueHelp="true" valueHelpRequest="onStatusWOVH" valueState="{olDetailModel>/stsWoNoVS}" valueStateText="{olDetailModel>/stsWoNoVST}"
+													liveChange="onLiveChange" change="onVHChange"></Input>
+												<!--<Input id="stsWoNoDesc" enabled="false" visible="false"></Input>-->
+												<core:Title text="{i18n>xtxt.OBJ_LINKED}"></core:Title>
+												<Label id="linkFEqLbl" text="{i18n>xtxt.LINK_FRM_EQ}" required="{olDetailModel>/linkFEqLblRQ}" visible="{olDetailModel>/linkFrmEqLblV}"/>
+												<Input id="linkFromEQ" value="{olDetailModel>/linkFrmEq}" maxLength="18" showValueHelp="true" valueHelpRequest="onEquipVH"
+													valueState="{olDetailModel>/linkFrmEqVS}" valueStateText="{olDetailModel>/linkFrmEqVST}" visible="{olDetailModel>/linkFrmEqV}"
+													liveChange="onLiveChange" change="onVHChange" enabled="{olDetailModel>/linkFromEQEn}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="linkFrmEqDesc" value="{olDetailModel>/linkFrmEqDesc}" visible="{olDetailModel>/linkFrmEqDescV}" enabled="false"></Input>
+												<Label id="linkToEqLbl" text="{i18n>xtxt.LINK_TO_EQ}" visible="{olDetailModel>/linkToEqLblV}" required="{olDetailModel>/linkToEqLblRQ}"></Label>
+												<Input id="linkToEQ" value="{olDetailModel>/linkToEq}" visible="{olDetailModel>/linkToEQV}" maxLength="18" showValueHelp="true"
+													valueHelpRequest="onEquipVH" valueState="{olDetailModel>/linkToEqVS}" valueStateText="{olDetailModel>/linkToEqVST}"
+													liveChange="onLiveChange" change="onVHChange" enabled="{olDetailModel>/linkToEQEn}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="linkToEqDesc" value="{olDetailModel>/linkToEqDesc}" visible="{olDetailModel>/linkToEqDescV}" enabled="false"></Input>
+												<Label id="linkObjLbl" text="{i18n>LINK_OBJ_EQ}" visible="{olDetailModel>/linkObjEqLblV}" required="{olDetailModel>/linkObjEqRQ}"></Label>
+												<Input id="linkEquipment" value="{olDetailModel>/linkObjEq}" maxLength="18" visible="{olDetailModel>/linkObjEqV}" showValueHelp="true"
+													valueHelpRequest="onEquipVH" liveChange="onLiveChange" valueState="{olDetailModel>/linkObjEqVS}"
+													valueStateText="{olDetailModel>/linkObjEqVST}" change="onVHChange" enabled="{olDetailModel>/linkObjEqEn}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="linkObjDesc" value="{olDetailModel>/linkObjEqDesc}" visible="{olDetailModel>/linkObjEqDescV}" enabled="false"></Input>
+												<Label id="linkFrmflLbl" text="{i18n>xtxt.LINK_FRM_FL}" visible="{olDetailModel>/linkFrmflLblV}" required="{olDetailModel>/linkFrmflLblRQ}"></Label>
+												<Input id="linkfrmFl" value="{olDetailModel>/linkFrmFl}" maxLength="40" showValueHelp="true" valueHelpRequest="onFlocVH"
+													valueState="{olDetailModel>/linkFrmFlVS}" valueStateText="{olDetailModel>/linkFrmFlVST}" liveChange="onLiveChange" change="onVHChange"
+													enabled="{olDetailModel>/linkFrmFlEn}" visible="{olDetailModel>/linkFrmFlV}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="linkFrmFlDesc" value="{olDetailModel>/linkFrmFlDesc}" visible="{olDetailModel>/linkFrmFlDescV}" enabled="false"></Input>
+												<Label id="linkToFlLbl" text="{i18n>LINK_TO_FL}" visible="{olDetailModel>/linkToFlLblV}" required="{olDetailModel>/linkToFlLblRQ}"></Label>
+												<Input id="linkToFl" value="{olDetailModel>/linkToFl}" maxLength="40" showValueHelp="true" valueHelpRequest="onFlocVH"
+													valueState="{olDetailModel>/linkToFlVS}" visible="{olDetailModel>/linkToFlV}" valueStateText="{olDetailModel>/linkToFlVST}"
+													liveChange="onLiveChange" change="onVHChange" enabled="{olDetailModel>/linkToFlEn}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="linkToFlDesc" value="{olDetailModel>/linkToFlDesc}" visible="{olDetailModel>/linkToFlDescV}" enabled="false"></Input>
+												<Label id="linkObj1Lbl" text="{i18n>LINK_OBJ_FL}" visible="{olDetailModel>/linkObjFlLblV}" required="{olDetailModel>/linkObjFlLblRQ}"></Label>
+												<Input id="linkObj1" value="{olDetailModel>/linkObjFl}" maxLength="40" showValueHelp="true" valueHelpRequest="onFlocVH"
+													valueState="{olDetailModel>/linkObjFlVS}" visible="{olDetailModel>/linkObjFlV}" valueStateText="{olDetailModel>/linkObjFlVST}"
+													liveChange="onLiveChange" change="onVHChange" enabled="{olDetailModel>/linkObjFlEn}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="linkObj1Desc" value="{olDetailModel>/linkObjFlDesc}" visible="{olDetailModel>/linkObjFlDescV}" enabled="false"></Input>
+												<!-- Approve -->
+												<Label></Label>
+												<Text visible="false"></Text>
+												<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>LIN_ONJ_DATA}" visible="{aVisModel>/visible}">
+													<layoutData>
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</Title>
+												<!--<core:Title id="idObjNodTyp" text=""></core:Title>-->
+												<Label></Label>
+												<Text visible="false"></Text>
+												<Label text="{i18n>FRM_OBJ_NODE}" visible="{aVisModel>/visible}"></Label>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/Nodetypfo}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/Fnodetxt}"></Input>
+												<Label text="{i18n>TO_OBJ_NODE}" visible="{aVisModel>/visible}"></Label>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/Nodetypto}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/Tnodetxt}"></Input>
+												<Label text="{i18n>LINK_POS_FRM}" visible="{aVisModel>/visible}"></Label>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/OlConnpf}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/Linkposf}"></Input>
+												<Label text="{i18n>LINK_POS_TO}" visible="{aVisModel>/visible}"></Label>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/OlConnpt}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/Linkpost}"></Input>
+												<Label text="{i18n>EDGE_TYP}" visible="{aVisModel>/visible}"></Label>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/Edgetyplo}">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input enabled="false" visible="{aVisModel>/visible}" value="{olDetailModel>/Edgetxt}"></Input>
+												<!-- -->
+												<core:Title text="{i18n>xtxt.LINK_DESC}"></core:Title>
+												<VBox>
+													<layoutData >
+														<l:GridData span="L12 M12 S12"/>
+													</layoutData>
+												</VBox>
+												<Label text="{i18n>xtxt.NUM}" required="true"></Label>
+												<Input id="number" value="{olDetailModel>/linkNum}" enabled="{olDetailModel>/enable}" type="Number" change="onNumberChange"
+													valueState="{olDetailModel>/linkNumVS}"></Input>
+												<Label text="{i18n>xtxt.AUTH_GRP}"></Label>
+												<Input id="authGrp" value="{olDetailModel>/autGrp}" enabled="{olDetailModel>/enable}" maxLength="4" showValueHelp="true"
+													valueHelpRequest="onAuthGrpVH" valueState="{olDetailModel>/autGrpVS}" valueStateText="{olDetailModel>/autGrpVST}" liveChange="onLiveChange"
+													change="onVHChange" submit="onAuthGrpChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="aGrpDesc" value="{olDetailModel>/autGrpDesc}" enabled="false"></Input>
+												<Label text="{i18n>xtxt.VALID_FRM}"></Label>
+												<!-- added change event on datepicker controls -->
+												<DatePicker id="validFrm" value="{olDetailModel>/validFrm}" enabled="{olDetailModel>/enable}" change="onDateChange" valueFormat="MM/dd/yyyy"
+													displayFormat="MM/dd/yyyy"></DatePicker>
+												<Label text="{i18n>xtxt.VALID_FRM_TIME}"></Label>
+												<TimePicker id="validFrmTime" value="{olDetailModel>/timeFrm}" enabled="{olDetailModel>/enable}" valueFormat="HH:mm:ss"
+													displayFormat="HH:mm:ss" change="handleChange"></TimePicker>
+												<Label text="{i18n>VALID_TO}"></Label>
+												<DatePicker id="validTo" value="{olDetailModel>/validTo}" enabled="{olDetailModel>/enable}" change="onDateChange" valueFormat="MM/dd/yyyy"
+													displayFormat="MM/dd/yyyy"></DatePicker>
+												<Label text="{i18n>xtxt.VALID_FRM_TIME}"></Label>
+												<TimePicker id="validToTime" value="{olDetailModel>/timeTo}" enabled="{olDetailModel>/enable}" valueFormat="HH:mm:ss"
+													displayFormat="HH:mm:ss" change="handleChange"></TimePicker>
+												<Label text="{i18n>MED}"></Label>
+												<Input id="medium" value="{olDetailModel>/medium}" enabled="{olDetailModel>/enable}" maxLength="6" showValueHelp="true"
+													valueHelpRequest="onMediumVH" valueState="{olDetailModel>/mediumVS}" valueStateText="{olDetailModel>/mediumVST}" liveChange="onLiveChange"
+													change="onVHChange">
+													<layoutData>
+														<l:GridData span="L2 M2 S4"/>
+													</layoutData>
+												</Input>
+												<Input id="mediumDesc" value="{olDetailModel>/mediumDesc}" enabled="false"></Input>
+												<Label text="{i18n>REL_POSS}"></Label>
+												<RadioButtonGroup columns="3" width="100%" class="sapUiMediumMarginBottom" select="relPossSelect" selectedIndex="2">
+													<buttons>
+														<RadioButton id="oneWayRel" enabled="{olDetailModel>/enable}" selected="{olDetailModel>/oneWayRel}" text="{i18n>ONE_WAY}"></RadioButton>
+														<RadioButton id="twoWayRel" enabled="{olDetailModel>/enable}" selected="{olDetailModel>/twoWayRel}" text="{i18n>TWO_WAY}"></RadioButton>
+													</buttons>
+												</RadioButtonGroup>
+												<!--<RadioButton id="oneWayRel" text="{i18n>ONE_WAY}" group="myGroup"></RadioButton>-->
+												<!--<RadioButton id="twoWayRel" text="{i18n>TWO_WAY}" group="mygoup"></RadioButton>-->
+												<Label text="{i18n>REL_USED}"></Label>
+												<RadioButtonGroup columns="3" width="100%" class="sapUiMediumMarginBottom" select="relUsedSelect" selectedIndex="3">
+													<buttons>
+														<RadioButton id="relNotUsd" enabled="{olDetailModel>/enable}" selected="{olDetailModel>/relNotUsd}" text="{i18n>REL_NOT_USE}"></RadioButton>
+														<RadioButton id="oneWayUsd" enabled="{olDetailModel>/enable}" selected="{olDetailModel>/oneWayUsd}" text="{i18n>ONE_WAY}"></RadioButton>
+														<RadioButton id="twoWayUsd" enabled="{olDetailModel>/enable}" selected="{olDetailModel>/twoWayUsd}" text="{i18n>TWO_WAY}"></RadioButton>
+													</buttons>
+												</RadioButtonGroup>
+											</f:content>
+										</f:SimpleForm>
+										<core:Fragment id="clsFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.ClassAssignment" type="XML"/>
+										<core:Fragment id="charFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.Characteristics" type="XML"/>
+									</l:content>
+								</l:Grid>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter id="OLADetails" icon="sap-icon://form" text="Object Link LAM Details" design="Horizontal" tooltip="Object Link LAM Details"
+							visible="{aVisModel>/visible}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.OL.ObjectLinkLam" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{aVisModel>/visible}" text="{i18n>assignment}"
+							tooltip="{i18n>assignment}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.ClassAssignments" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{aVisModel>/visible}" text="{i18n>characteristics}"
+							tooltip="{i18n>characteristics}">
+							<content>
+								<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Characteristics" type="XML"/>
+							</content>
+						</IconTabFilter>
+						<!--<IconTabFilter id="attachments" key="onAttach" icon="sap-icon://attachment" text="{i18n&gt;xtit.ATTACHMENT_TITLE}"
+							tooltip="{i18n&gt;xtit.ATTACHMENT_TITLE}" design="Horizontal">
+							<content>
+								<UploadCollection id="fileupload" uploadUrl="/sap/opu/odata/UGIOD01/MDG_EAM_OBJECT_LINK_SRV/Attachments" maximumFilenameLength="200"
+									multiple="true" showSeparators="None" items="{json>/dataitems}" uploadComplete="onUploadFile" change="onBeforeUploadFile"
+									fileDeleted="onFileDeleted" uploadTerminated="uploadTerminated">
+									<UploadCollectionItem contributor="{json>contributor}" enableEdit="{json>enableEdit}" enableDelete="{json>enableDelete}"
+										fileName="{json>filename}" mimeType="{json>mimeType}" documentId="{json>documentId}" visibleDelete="true" visibleEdit="false"
+										uploadedDate="{json>uploaded}" url="{json>url}"/>
+								</UploadCollection>
+							</content>
+						</IconTabFilter>-->
+					</items>
+				</IconTabBar>
+			</content>
+			<footer>
+				<Toolbar id="tabletoolbar">
+					<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+					<ToolbarSpacer/>
+					<Button id="idBtnCheck" text="Check" press="onDonePress"/>
+					<Button text="Done" type="Accept" press="onDonePress"/>
+				</Toolbar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

@@ -1,0 +1,71 @@
+<core:FragmentDefinition xmlns:m="sap.m" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:dnd="sap.ui.core.dnd" xmlns:t="sap.ui.table">
+	<m:Dialog title="Measurement Reading Transfer Structure" stretch="true">
+		<m:content>
+			<!-- MultiToggle true  rowSelectionChange="onCompSelRowSelect"-->
+			<t:TreeTable id="structure" selectionMode="Single" enableSelectAll="false" ariaLabelledBy="title"
+				rows="{path:'/', parameters: {arrayNames:['children']}}">
+				<t:columns>
+					<t:Column>
+						<m:Label text="Meausring Point Object(Meas. Point)" wrapping="true"/>
+						<t:template>
+							<!--<m:CheckBox text="{Idnrk}" wrapping="false" select="onCompSelRowSelect" selected="{IsSelect}"/>-->
+							<m:Text text="{RowKey}"></m:Text>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<m:Label text="Description" wrapping="true"/>
+						<t:template>
+							<m:Text text="{Mpobt}"></m:Text>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<m:Label text="Measurement Position" wrapping="true"/>
+						<t:template>
+							<m:Text text="{Psort}"></m:Text>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<m:Label text="Measuring Point" wrapping="true"/>
+						<t:template>
+							<m:Text text="{Point}"></m:Text>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<m:Label text="Description" wrapping="true"/>
+						<t:template>
+							<m:Text text="{Pttxt}"></m:Text>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<m:Label text="Valid From" wrapping="true"/>
+						<t:template>
+							<m:Text text="{Datlo}"></m:Text>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<m:Label text="Time" wrapping="true"/>
+						<t:template>
+							<m:Text text="{Timlo}"></m:Text>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<m:Label text="Valid To" wrapping="true"/>
+						<t:template>
+							<m:Text text="{Dathi}"></m:Text>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<m:Label text="Time" wrapping="true"/>
+						<t:template>
+							<m:Text text="{Timhi}"></m:Text>
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:TreeTable>
+		</m:content>
+		<m:endButton>
+			<m:Button text="Close" press="onStructClosePress"/>
+		</m:endButton>
+	</m:Dialog>
+</core:FragmentDefinition>

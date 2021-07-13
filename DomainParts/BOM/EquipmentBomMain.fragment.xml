@@ -1,0 +1,63 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="EBOMTab" text="EBOM" icon="sap-icon://multi-select" tooltip="{i18n>ebomTl}" count="{CountModel>/EqBomCount}"
+		iconColor="Contrast">
+		<content>
+			<Table mode="{EnableModel>/tableType}" growing="true" growingScrollToLoad="true" items="{AIWListEqModel>/}"
+				noDataText="{i18n>tableNoDataText}" busy="{BusyModel>/AiwTblBusy}" selectionChange="onEqRowSelect">
+				<headerToolbar>
+					<Toolbar visible="{EnableModel>/actionEnable}">
+						<MenuButton text="{i18n>selectAction}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+							<menu>
+								<Menu itemSelected="onMenuAction">
+									<items>
+										<MenuItem key="createEbom" text="{i18n>createEbom}" icon="sap-icon://create"/>
+										<MenuItem key="copyEbom" text="{i18n>copyEbom}" icon="sap-icon://copy"/>
+										<MenuItem key="copyMtoEbom" text="{i18n>copyMtoEbom}" icon="sap-icon://copy"/>
+										<MenuItem key="changeEbom" text="{i18n>changeEbom}" icon="sap-icon://write-new"/>
+									</items>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" type="Reject" press="onRemoveEQPress" enabled="{EnableModel>/deleteEQ}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>equipment}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>plant}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>bomUsage}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>description}" textAlign="Left"></Text>
+					</Column>
+					<!--<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>BASE_QTY}" textAlign="Left"></Text>
+						</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem press="onEquiNavigation" type="Navigation">
+						<cells>
+							<Input type="Text" maxLength="{maxLengthModel>/maxlengthMat}" value="{AIWListEqModel>Eqnrbom}" enabled="{AIWListEqModel>equipEnable}"
+								valueState="{AIWListEqModel>equipValueState}" editable="true" showValueHelp="true" liveChange="onLiveChange" change="equipmentChangeBom"
+								valueHelpRequest="onEquipmentVH" submit="equipmentChangeBom" showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListEqModel>Werks}" enabled="{AIWListEqModel>plantEnable}" valueState="{AIWListEqModel>plantValueState}"
+								editable="true" showValueHelp="true" valueHelpRequest="onPlantInBomVH" liveChange="onLiveChange" change="plantChange" submit="plantChange"
+								showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListEqModel>Stlan}" enabled="{AIWListEqModel>usageEnable}" valueState="{AIWListEqModel>usageValueState}"
+								editable="true" showValueHelp="true" liveChange="onLiveChange" change="bomUsageChange" valueHelpRequest="omBomUsageVH"
+								submit="bomUsageChange" showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListEqModel>Lngtxt}" editable="true" enabled="{AIWListEqModel>LngtxtEnable}"></Input>
+							<!--<Input type="Number" value="{AIWListEqModel>BaseQty}" enabled="true" valueState="{AIWListEqModel>BaseQtyValueState}" editable="true"
+									liveChange="onLiveChange"></Input>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

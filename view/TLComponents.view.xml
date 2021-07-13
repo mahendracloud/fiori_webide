@@ -1,0 +1,95 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.TLComponentDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<semantic:FullscreenPage id="tlCompDetailPage" navButtonPress="onNavBack" showNavButton="true">
+		<semantic:content>
+			<Panel expandable="false" expanded="true" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="tlComponentForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>GRP}"></Label>
+							<Input id="grpComp" enabled="false" value="{tlComp>/group}"></Input>
+							<Label text="{i18n>GRP_C}"></Label>
+							<Input id="grpCounterComp" enabled="false" value="{tlComp>/groupCounter}"></Input>
+							<Label text="{i18n>ACT}"></Label>
+							<Input id="activity" enabled="false" value="{tlComp>/activity}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>COMP_ASSIGN}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="tlComponentAssignForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>COMP}"></Label>
+							<Input id="component" enabled="false" value="{tlComp>/component}"></Input>
+							<Label text="{i18n>COMP_DESC}"></Label>
+							<Input id="compDesc" enabled="false" value="{tlComp>/compDesc}"></Input>
+							<Label text="{i18n>COMP_QTY}"></Label>
+							<Input id="compQty" enabled="false" value="{tlComp>/compQty}"></Input>
+							<Label text="{i18n>COMP_UNIT}"></Label>
+							<Input id="compUnit" enabled="false" value="{tlComp>/compUnit}"></Input>
+							<Label text="{i18n>RESV}"></Label>
+							<Input id="reservation" enabled="false" value="{tlComp>/resv}"></Input>
+							<Input id="reservDesc" enabled="false" value="{tlComp>/resvDesc}"></Input>
+							<Label text="{i18n>BCK_FL}"></Label>
+							<CheckBox id="backFlush" enabled="false" selected="{path:'tlComp>/backFlush', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>IT_CAT}"></Label>
+							<Input id="itCat" enabled="false" value="{tlComp>/itCat}"></Input>
+							<Label text="{i18n>ASSEMBLY}"></Label>
+							<Input id="assembly" enabled="false" value="{tlComp>/assembly}"></Input>
+							<Label text="{i18n>SRT_STR}"></Label>
+							<Input id="sortStr" enabled="false" value="{tlComp>/sortStr}"></Input>
+							<Label text="{i18n>IT_NUM}"></Label>
+							<Input id="itemNum" enabled="false" value="{tlComp>/itemNo}"></Input>
+							<Label text="{i18n>REL_COST}"></Label>
+							<CheckBox id="relCost" enabled="false" selected="{path:'tlComp>/relCost', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>PLNT_MAINT}"></Label>
+							<CheckBox id="plantMaint" enabled="false" selected="{path:'tlComp>/plantMaint', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>REL_SALES}"></Label>
+							<CheckBox id="relSales" enabled="false" selected="{path:'tlComp>/relSales', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>PM_ASSEMBLY}"></Label>
+							<CheckBox id="pmAssembly" enabled="false" selected="{path:'tlComp>/pmAssembly', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>SP_PART_IND}"></Label>
+							<Input id="sparePartInd" enabled="false" value="{tlComp>/spare}"></Input>
+							<Label text="{i18n>MAT_PROV_IND}"></Label>
+							<Input id="matProvInd" enabled="false" value="{tlComp>/matProv}"></Input>
+							<Label text="{i18n>ISSUE_PLNT}"></Label>
+							<Input id="issuePlant" enabled="false" value="{tlComp>/isPlant}"></Input>
+							<Label text="{i18n>B_MAT}"></Label>
+							<CheckBox id="bulkMat" enabled="false" selected="{path:'tlComp>/bulkMat', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>PLANT}"></Label>
+							<Input id="plantComp" enabled="false" value="{tlComp>/plant}"></Input>
+							<Label text="{i18n>PURCH_GRP}"></Label>
+							<Input id="purchGroupComp" enabled="false" value="{tlComp>/purchGrp}"></Input>
+							<Label text="{i18n>PRICE}"></Label>
+							<Input id="priceComp" enabled="false" value="{tlcomp>/price}"></Input>
+							<Label text="{i18n>CURR}"></Label>
+							<Input id="currency" enabled="false" value="{tlComp>/currency}"></Input>
+							<Label text="{i18n>PR_UNIT}"></Label>
+							<Input id="prUnitComp" enabled="false" value="{tlComp>/prUnit}"></Input>
+							<Label text="{i18n>DEL_TIME_D}"></Label>
+							<Input id="delTimeD" enabled="false" value="{tlComp>/delTimeD}"></Input>
+							<Label text="{i18n>COST_ELE}"></Label>
+							<Input id="costElementComp" enabled="false" value="{tlComp>/costElement}"></Input>
+							<Label text="{i18n>MAT_GRP}"></Label>
+							<Input id="matGrpComp" enabled="false" value="{tlComp>/matGrp}"></Input>
+							<Label text="{i18n>ST_LOC}"></Label>
+							<Input id="stLocComp" enabled="false" value="{tlComp>/storageLoc}"></Input>
+							<Label text="{i18n>QTY_FIX}"></Label>
+							<CheckBox id="qtyFixdComp" enabled="false" selected="{path:'tlComp>/qtyFix', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>BOM_CAT}"></Label>
+							<Input id="bomCatComp" enabled="false" value="{tlComp>/bomCat}"></Input>
+							<Input id="bomCatDescComp" enabled="false" value="{tlComp>/bomCatDesc}"></Input>
+							<Label text="{i18n>BOM}"></Label>
+							<Input id="bomComp" enabled="false" value="{tlComp>/bom}"></Input>
+							<Label text="{i18n>ALT_BOM}"></Label>
+							<Input id="altBomComp" enabled="false" value="{tlComp>/altBom}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</core:FragmentDefinition>

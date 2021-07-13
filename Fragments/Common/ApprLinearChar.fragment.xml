@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table width="auto" updateFinished="onListUpdateFinished" busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+		class="sapUiResponsiveMargin" items="{AIWAPPROVE>/linearChar}">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>LIN_CHAR_TITLE}"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>xtxt.CHAR_DESC}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>xtxt.CHAR_VALUE}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>STRT_POINT}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>END_POINT}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>LENGTH}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>UOM}"></Text>
+			</Column>
+			<!--<Column demandPopin="true" minScreenWidth="Tablet"></Column>-->
+		</columns>
+		<items>
+			<ColumnListItem>
+				<Text text="{AIWAPPROVE>Charid}"></Text>
+				<Text text="{AIWAPPROVE>Atwrt}"></Text>
+				<Text text="{AIWAPPROVE>StartPtDisp}"></Text>
+				<Text text="{AIWAPPROVE>EndPtDisp}"></Text>
+				<Text text="{AIWAPPROVE>LamLengtDisp}"></Text>
+				<Text text="{AIWAPPROVE>LamUnit}"></Text>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

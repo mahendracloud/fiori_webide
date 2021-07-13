@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:fb="sap.ui.comp.filterbar">
+	<Table id="results" growing="true" items="{/}">
+		<columns>
+			<Column>
+				<Text text="{i18n>SELECTION}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>xtxt.CHAR_VALUE}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>xtxt.CHAR_DESC}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>DEF}"></Text>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem id="resultItems" press="onItemPress" type="Active">
+				<cells>
+					<CheckBox selected="{checkSelected}" select="onSelect" activeState="true" enabled="{checkEnable}"></CheckBox>
+					<Text text="{CharValue}"></Text>
+					<Text text="{CharacteristicDesc}"></Text>
+					<CheckBox selected="{Default}" enabled="false"></CheckBox>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

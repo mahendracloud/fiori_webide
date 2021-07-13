@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+		emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+		<f:content>
+			<Label text="{i18n>AIW_MDL_NAME}"></Label>
+			<Input id="idAMModelName" value="{AIWModel>/modelName}" valueState="{AIWModel>/modelNameVS}" enabled="{AIWModel>/modelEnable}"
+				liveChange="onLiveChange"></Input>
+			<Label text="{i18n>MDL_DESC}"></Label>
+			<Input id="idAMModelDesc" value="{AIWModel>/modelDesc}" valueState="{AIWModel>/modelDescVS}" enabled="{AIWModel>/modelEnable}"
+				liveChange="onLiveChange"></Input>
+			<Label text="{i18n>AIWMDL_VRSN}"></Label>
+			<Input id="idAMVersion" enabled="false" value="{AIWModel>/modelVer}"></Input>
+			<Label text="{i18n>ROOT_FL}"></Label>
+			<Input id="idAMRootFl" value="{AIWModel>/modelParKey}" valueState="{AIWModel>/modelParKeyVS}" enabled="{AIWModel>/modelEnable}"
+				showValueHelp="true" liveChange="onLiveChange" change="onRootFlocChange" valueHelpRequest="onRootFlocVH"></Input>
+			<Label></Label>
+			<Button id="idBtnCrtUpt" text="{i18n>AIW_BTN_CRTUPD}" type="Accept" press="onAIWModelActionPress" enabled="{AIWModel>/crtEnable}">
+				<layoutData>
+					<l:GridData span="L2 M2 S6"/>
+				</layoutData>
+			</Button>
+			<Button id="idBtnDelete" text="{i18n>AIW_BTN_DEL}" type="Reject" press="onAIWModelActionPress" enabled="{AIWModel>/delEnable}">
+				<layoutData>
+					<l:GridData span="L1 M1 S6"/>
+				</layoutData>
+			</Button>
+		</f:content>
+	</f:SimpleForm>
+	<Table items="{AIWModel>/AiwModelRef}">
+		<columns>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>REF_MDL_NAME}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>REF_MDL_VRSN}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>AIWMDL_DESC}"></Text>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text text="{AIWModel>Modelname}"></Text>
+					<Text text="{AIWModel>Version}"></Text>
+					<Text text="{AIWModel>Modeldesc}"></Text>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

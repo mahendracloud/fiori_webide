@@ -1,0 +1,76 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter text="MSPT" key="MSPTTab" icon="sap-icon://measuring-point" visible="{EnableModel>/Measuring Point}" tooltip="{i18n>msptTl}"
+		count="{mainView>/measuringPointMain}" iconColor="Contrast">
+		<content>
+			<VBox>
+				<Table busyIndicatorDelay="0" busy="{mainView>/tableBusy}" visible="{device>/isNoPhone}" mode="{ApproveModel>/mainTableMode}"
+					items="{AIWMSPT>/}" growingScrollToLoad="true" growing="true" noDataText="{i18n>tableNoDataText}" selectionChange="onMainTableRowSelect">
+					<headerToolbar>
+						<Toolbar visible="{ApproveModel>/headerToolbarVis}">
+							<MenuButton text="{i18n>SELECTACTION}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+								<menu>
+									<Menu itemSelected="onMenuAction">
+										<items>
+											<MenuItem key="createMspt" text="{i18n>createMspt}" icon="sap-icon://create"/>
+											<MenuItem key="copyMspt" text="{i18n>copyMspt}" icon="sap-icon://copy"/>
+											<MenuItem key="changeMspt" text="{i18n>changeMspt}" icon="sap-icon://write-new"/>
+										</items>
+									</Menu>
+								</menu>
+							</MenuButton>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://delete" type="Reject" press="onRemoveMainTablePress" enabled="{mainView>/deleteMSPT}"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>MEASPOINT_TXT}" textAlign="Center"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>DESC_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>OBJECTCAT_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>MP_CAT_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>EQUIP_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>FLOC_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>MEASPT_COUNT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>CHAR_NAME_TXT}" textAlign="Left"></Text>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onPress" type="Navigation">
+							<cells>
+								<Input value="{AIWMSPT>Mspoint}" type="Text" enabled="false"></Input>
+								<Input value="{AIWMSPT>Pttxt}" valueState="{AIWMSPT>PttxtVS}" enabled="{ApproveModel>/mainFieldEnabled}" change="onLiveChange"
+									maxLength="40"></Input>
+								<Input value="{AIWMSPT>ObtypMs}" valueState="{AIWMSPT>ObtypMsVS}" type="Text" enabled="{AIWMSPT>ObtypMsEnabled}" editable="true"
+									showValueHelp="true" liveChange="measPointObjChange" change="onMeasPointObjChange" valueHelpRequest="onMeasPointObjVH" maxLength="3"></Input>
+								<Input value="{AIWMSPT>Mptyp}" valueState="{AIWMSPT>MptypVS}" type="Text" enabled="{AIWMSPT>MptypEnabled}" editable="true"
+									showValueHelp="true" valueHelpRequest="onMsptCatVH" liveChange="measPontCatChange" change="onmeasPointCatChange" maxLength="1"
+									submit="onmeasPointCatChange"></Input>
+								<Input value="{AIWMSPT>Equnr}" type="Text" enabled="{AIWMSPT>EqunrEnabled}" editable="true" showValueHelp="true"
+									liveChange="equipmentChange" valueState="{AIWMSPT>EqunrVS}" change="onEquipmentChange" valueHelpRequest="onEquiVH"></Input>
+								<Input value="{AIWMSPT>Tplnr}" type="Text" enabled="{AIWMSPT>TplnrEnabled}" editable="true" showValueHelp="true" liveChange="flocChange"
+									change="onFlocChange" valueState="{AIWMSPT>TplnrVS}" valueHelpRequest="onFlocVH" maxLength="40"></Input>
+								<CheckBox selected="{AIWMSPT>Indct}" enabled="{ApproveModel>/mainFieldEnabled}" select="onCounterSelect"></CheckBox>
+								<Input value="{AIWMSPT>AtnamMs}" valueState="{AIWMSPT>AtnamMsVS}" valueStateText="{AIWMSPT>AtnamMsVST}" enabled="{AIWMSPT>AtnamMsEnabled}"
+									showValueHelp="true" valueHelpRequest="onCharVH" liveChange="charNameChange" change="onCharNameChange" maxLength="30"></Input>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

@@ -1,0 +1,122 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.TLPRTDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<Page showNavButton="false" title="Product Resource/Tools">
+		<content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+				emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text=""></core:Title>
+					<Label text="{i18n>GRP}"></Label>
+					<Input enabled="false" value="{prtModel>/grp}"></Input>
+					<Label text="{i18n>GRP_C}"></Label>
+					<Input enabled="false" value="{prtModel>/Plnal}"></Input>
+					<Label text="{i18n>ACT}"></Label>
+					<Input enabled="false" value="{prtModel>/Vornr}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{prtModel>/Ltxa1}"></Input>
+					<core:Title text="{prtModel>/title}"></core:Title>
+					<Label text="PRT Item Number"></Label>
+					<Input enabled="false" value="{prtModel>/ItmNum}"></Input>
+					<Label required="true" text="Material"></Label>
+					<Input value="{prtModel>/Mat}" valueState="{prtModel>/PRTVS}" visible="{prtModel>/matEnable}" showValueHelp="true"
+						valueHelpRequest="onPRTMaterialVH" change="onPRTMaterialChange" liveChange="onLiveChange" enabled="{prtModel>/prtEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{prtModel>/MatDesc}" visible="{prtModel>/matEnable}"></Input>
+					<Label required="true" text="Equipment"></Label>
+					<Input value="{prtModel>/Equi}" valueState="{prtModel>/PRTVS}" visible="{prtModel>/eqEnable}" showValueHelp="true"
+						valueHelpRequest="onPRTEquipmentVH" change="onPRTEquipmentChange" liveChange="onLiveChange" enabled="{prtModel>/prtEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{prtModel>/EquiDesc}" visible="{prtModel>/eqEnable}"></Input>
+					<Label required="true" text="Measuring Point"></Label>
+					<Input value="{prtModel>/Mspt}" valueState="{prtModel>/PRTVS}" visible="{prtModel>/msptEnable}" showValueHelp="true"
+						valueHelpRequest="onPRTMSPTVH" change="onPRTMSPTChange" liveChange="onLiveChange" enabled="{prtModel>/prtEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{prtModel>/MsptDesc}" visible="{prtModel>/msptEnable}"></Input>
+					<Label required="true" text="Document"></Label>
+					<Input value="{prtModel>/doc}" valueState="{prtModel>/PRTVS}" visible="{prtModel>/docEnable}" showValueHelp="true"
+						valueHelpRequest="onPRTDocumentVH" change="onPRTDocumentChange" liveChange="onLiveChange" enabled="{prtModel>/prtEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{prtModel>/docDesc}" visible="{prtModel>/docEnable}"></Input>
+					<Label text="Document Type"></Label>
+					<Input enabled="false" value="{prtModel>/docType}" visible="{prtModel>/docEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{prtModel>/docTypeDesc}" visible="{prtModel>/docEnable}"></Input>
+					<Label text="Document Part"></Label>
+					<Input enabled="false" value="{prtModel>/docPart}" visible="{prtModel>/docEnable}"></Input>
+					<Label text="Document Version"></Label>
+					<Input enabled="false" value="{prtModel>/docVersion}" visible="{prtModel>/docEnable}"></Input>
+					<Label required="true" text="Product Resource/Tools"></Label>
+					<Input value="{prtModel>/Othr}" valueState="{prtModel>/PRTVS}" visible="{prtModel>/othEnable}" showValueHelp="true"
+						valueHelpRequest="onPRTOthersVH" change="onPRTOthersChange" liveChange="onLiveChange" enabled="{prtModel>/prtEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{prtModel>/OthrDesc}" visible="{prtModel>/othEnable}"></Input>
+					<Label text="Plant"></Label>
+					<Input value="{prtModel>/Plant}" valueState="{prtModel>/PlantVS}" visible="{prtModel>/matEnable}" showValueHelp="true"
+						valueHelpRequest="onPRTPlantVH" change="onPRTPlantChange" liveChange="onLiveChange" enabled="{prtModel>/prtEnable}"></Input>
+					<core:Title text="Basic Data"></core:Title>
+					<Label text="Quantity"></Label>
+					<Input type="Number" value="{prtModel>/Qty}" valueState="{prtModel>/QtyVS}" change="onPRTQtyChange" liveChange="onLiveChange"
+						enabled="{prtModel>/prtEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input value="{prtModel>/UOM}" valueState="{prtModel>/UOMVS}" showValueHelp="true" valueHelpRequest="onPRTUOMVH" change="onPRTUOMChange"
+						liveChange="onLiveChange" enabled="{prtModel>/prtEnable}"></Input>
+					<Label text="Quantity Formula"></Label>
+					<Input value="{prtModel>/QtyFrmla}" valueState="{prtModel>/QtyFrmlaVS}" showValueHelp="true" valueHelpRequest="onQtyFrmlaVH"
+						change="onQtyFrmlaChange" liveChange="onLiveChange" enabled="{prtModel>/prtEnable}"></Input>
+					<Label text="Product Resource Tool Control Profile"></Label>
+					<Input value="{prtModel>/PRTCtrl}" showValueHelp="true" valueHelpRequest="onPRTCtrlVH" change="onPRTCtrlChange" liveChange="onLiveChange"
+						enabled="{prtModel>/prtEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input enabled="false" value="{prtModel>/PRTCtrlDesc}"></Input>
+					<core:Title text="Standard Values"></core:Title>
+					<Label text="Standard Usage Value"></Label>
+					<Input type="Number" value="{prtModel>/StdUsgVal}" valueState="{prtModel>/StdUsgValVS}" change="onPRTQtyChange" liveChange="onLiveChange"
+						enabled="{prtModel>/prtEnable}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input value="{prtModel>/StdUsgUOM}" valueState="{prtModel>/StdUsgUOMVS}" showValueHelp="true" valueHelpRequest="onStdUsgUOMVH"
+						change="onStdUsgUOMChange" liveChange="onLiveChange" enabled="{prtModel>/prtEnable}"></Input>
+					<Label text="Usage Value Formula"></Label>
+					<Input value="{prtModel>/UsgValFrmla}" valueState="{prtModel>/UsgValFrmlaVS}" showValueHelp="true" valueHelpRequest="onUsgValFrmlaVH"
+						change="onUsgValFrmlaChange" liveChange="onLiveChange" enabled="{prtModel>/prtEnable}"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<Toolbar>
+				<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+				<ToolbarSpacer/>
+				<Button text="Done" type="Accept" press="onPRTDonePress"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto">
+		<l:content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+				emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="{i18n>AIN_DATA}"></core:Title>
+					<Label text="{i18n>MODEL_NAME}"></Label>
+					<Text text="{ain>/Name}"/>
+					<!-- text="{AIWEQUI>/Modelname}" -->
+					<Label text="{i18n>DESC_TXT}"></Label>
+					<Text text="{ain>/Description}"/>
+					<!-- text="{AIWEQUI>/ModelDescription}" -->
+					<Label text="{i18n>TEMPLATE}"></Label>
+					<Text text="{ain>/Modeltemplate}"/>
+					<!-- text="{AIWEQUI>/Template}" -->
+					<Label text="{i18n>AIN_MODEL}"></Label>
+					<Text text="{ain>/Modelid}"></Text>
+					<!-- value="{AIWEQUI>/Modelid}" -->
+					<Label text="{i18n>MANUFACTURER}"></Label>
+					<Text text="{ain>/Manufacturer}"/>
+					<!-- text="{AIWEQUI>/Manuf}" -->
+					<Label text="{i18n>GLOBAL_ID}"></Label>
+					<Text text="{ain>/Globalid}"/>
+					<!-- text="{AIWEQUI>/GlobalId}" -->
+					<core:Title text="{i18n>AIW_TEMPLTE}"></core:Title>
+					<Label text="{i18n>AIW_INDICATOR}"></Label>
+					<CheckBox enabled="false"></CheckBox>
+					<!-- selected="{AIWEQUI>/IsModel}" -->
+					<Label text="{i18n>COPIED_FRM_TEMPLATE}"></Label>
+					<Text/>
+					<!-- text="{AIWEQUI>/CopyFrom}" -->
+					<core:Title text="AIN Equipment"></core:Title>
+					<Label text="AIN Equipment Create"></Label>
+					<CheckBox enabled="false"></CheckBox>
+					<!-- selected="{ain>/equiCreate}" -->
+					<Label text="AIN Equipment"></Label>
+					<Text text="{ain>/AinEqunr}"></Text>
+				</f:content>
+			</f:SimpleForm>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

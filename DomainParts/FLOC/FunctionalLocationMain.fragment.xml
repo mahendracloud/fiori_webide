@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter text="FLOC" key="FLOCTab" icon="sap-icon://functional-location" tooltip="{i18n>flocTl}"
+		count="{mainView>/functionalLocationMain}" iconColor="Contrast">
+		<content>
+			<VBox>
+				<Table busyIndicatorDelay="0" busy="{mainView>/tableBusy}" visible="{device>/isNoPhone}" mode="{ApproveModel>/mainTableMode}"
+					items="{AIWFLOC>/}" growingScrollToLoad="true" growing="true" noDataText="{i18n>tableNoDataText}" selectionChange="onMainTableRowSelect">
+					<headerToolbar>
+						<Toolbar visible="{ApproveModel>/headerToolbarVis}">
+							<MenuButton text="{i18n>SELECTACTION}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+								<menu>
+									<Menu itemSelected="onMenuAction">
+										<items>
+											<MenuItem key="createFloc" text="{i18n>createFloc}" icon="sap-icon://create"/>
+											<MenuItem key="copyFloc" text="{i18n>copyFloc}" icon="sap-icon://copy"/>
+											<MenuItem key="changeFloc" text="{i18n>changeFloc}" icon="sap-icon://write-new"/>
+										</items>
+									</Menu>
+								</menu>
+							</MenuButton>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://delete" type="Reject" press="onRemoveMainTablePress" enabled="{mainView>/deleteFLOC}"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>FLOC_TXT}" textAlign="Center"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>DESC_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>STR_IND}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>EDIT_MASK}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>FUNLOCCAT_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>SUPFLOC_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>MAINT_PLANT}" textAlign="Left"></Text>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onPress" type="Navigation">
+							<cells>
+								<Input type="Text" value="{AIWFLOC>Functionallocation}" valueState="{AIWFLOC>FunctionallocationVS}" enabled="{AIWFLOC>FunctionalLocEnabled}"
+									liveChange="setValueStateNone" change="onFunctionalLocChange" editable="true" maxLength="40"/>
+								<Input type="Text" value="{AIWFLOC>Flocdescription}" enabled="{ApproveModel>/mainFieldEnabled}" editable="true"
+									liveChange="setValueStateNone" maxLength="40" valueState="{AIWFLOC>FlocdescriptionVS}"/>
+								<Input type="Text" value="{AIWFLOC>Strucindicator}" enabled="{AIWFLOC>StrucIndEnabled}" change="onStrChange" editable="true"
+									showValueHelp="true" liveChange="StructureIndicatorChange" valueState="{AIWFLOC>StrucindicatorVS}" valueHelpRequest="onStrIndVH"
+									maxLength="5"></Input>
+								<Input value="{AIWFLOC>EditMask}" enabled="false"></Input>
+								<Input type="Text" value="{AIWFLOC>Floccategory}" enabled="{AIWFLOC>FlocCatEnabled}" editable="true" showValueHelp="true"
+									liveChange="flocCatChange" valueHelpRequest="onFlocCatVH" valueState="{AIWFLOC>FloccategoryVS}" change="onFlocCatChange" maxLength="1"
+									submit="onFlocCatChange"></Input>
+								<Input type="Text" value="{AIWFLOC>SupFunctionallocation}" valueState="{AIWFLOC>SupFunctionallocationVS}"
+									valueStateText="{AIWFLOC>SupFunctionallocationVST}" enabled="{ApproveModel>/mainFieldEnabled}" editable="true" showValueHelp="true"
+									liveChange="SupflocChange" change="onSupFlocChange" valueHelpRequest="onSupFlocVH" maxLength="40"></Input>
+								<Input type="Text" value="{AIWFLOC>Maintplant}" enabled="{AIWFLOC>MaintplantEnabled}" editable="true" showValueHelp="true"
+									valueState="{AIWFLOC>MaintplantVS}" valueStateText="{AIWFLOC>MaintplantVST}" liveChange="maintPlantChange" valueHelpRequest="onMaintPlantVH"
+									change="onMaintPlantChange" maxLength="4" name="Maintplant"></Input>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

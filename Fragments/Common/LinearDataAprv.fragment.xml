@@ -1,0 +1,119 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Panel id="idPanelLinDataAprv">
+		<f:SimpleForm id="lamSimpleForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+			labelSpanM="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+			<f:content>
+				<core:Title text="{i18n>LINEAR_DATA}"></core:Title>
+				<Label text="{i18n>LRP}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Lrpid}">
+					<layoutData >
+						<l:GridData span="L2 M2 S4"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/LrpDescr}"></Input>
+				<Label text="{i18n>STRT_POINT}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Strtptatr}"></Input>
+				<Label text="{i18n>END_POINT}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Endptatr}"></Input>
+				<Label text="{i18n>LENGTH}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Length}"></Input>
+				<Label text="{i18n>UOM}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/LinUnit}">
+					<layoutData>
+						<l:GridData span="L2 M2 S4"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/Uomtext}"></Input>
+				<Label text="{i18n>STRT_MARKR}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Startmrkr}"></Input>
+				<Label text="{i18n>END_MARKR}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Endmrkr}"></Input>
+				<Label text="{i18n>DIST_START}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Mrkdisst}"></Input>
+				<Label text="{i18n>DIST_END}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Mrkdisend}"></Input>
+				<Label text="{i18n>MRKR_DIST_UOM}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/MrkrUnit}"></Input>
+				<core:Title text="{i18n>OFFSET_1}"></core:Title>
+				<Label text="{i18n>OFFSET_TYPE}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Ofst1type}"></Input>
+				<Label text="{i18n>OFFSET_1}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Ofst1valu}"></Input>
+				<Label text="{i18n>UOM_OFFSET_1}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Ofst1uom}"></Input>
+				<core:Title text="{i18n>OFFSET_2}"></core:Title>
+				<Label text="{i18n>OFFSET_TYPE}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Ofst2type}"></Input>
+				<Label text="{i18n>OFFSET_2}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Ofst2valu}"></Input>
+				<Label text="{i18n>UOM_OFFSET_2}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Ofst2uom}"></Input>
+				<core:Title text="{i18n>GEO_INFO}"></core:Title>
+				<Label text="{i18n>STRT_LAT}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Stlatdeg}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/Stlatmin}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/Stlatsec}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Label text="{i18n>END_LAT}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Endlatdeg}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/Endlatmin}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/Endlatsec}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Label text="{i18n>STRT_LONG}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Stlondeg}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/Stlonmin}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/Stlonsec}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Label text="{i18n>END_LONG}"></Label>
+				<Input enabled="false" value="{AIWLAM>/lam/Endlondeg}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/Endlonmin}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+				<Input enabled="false" value="{AIWLAM>/lam/Endlonsec}">
+					<layoutData>
+						<l:GridData span="L1 M1 S2"/>
+					</layoutData>
+				</Input>
+			</f:content>
+		</f:SimpleForm>
+	</Panel>
+</core:FragmentDefinition>

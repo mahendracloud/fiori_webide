@@ -1,0 +1,25 @@
+<!--   Fragment to create a pop up for the Change request description in the Detail page Header -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:sap.ui.core="sap.ui.core" xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form">
+	<ResponsivePopover title="{i18n>CRDetails}" placement="Bottom">
+		<content>
+			<form:SimpleForm id="simpleForm" maxContainerCols="1" minWidth="1024" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4"
+				emptySpanL="1" emptySpanM="1" columnsL="1" columnsM="1">
+				<form:content>
+					<Label text="{i18n>RequestDate}"></Label>
+					<Text text="{path:'crDetail>/CreatedOn', formatter:'.formatter.dateFormat'}"
+						visible="{path:'crDetail>/CreatedOn',formatter:'.formatter.visibility'}"></Text>
+					<Label text="{i18n>RequestReason}"></Label>
+					<Text text="{crDetail>/ReasonDesc}" visible="{path:'crDetail>/ReasonDesc',formatter:'.formatter.visibility'}"></Text>
+					<Label text="{i18n>LastApprBy}"></Label>
+					<Text text="{ parts : [{path : 'crDetail>/LastProcessedBy'}, {path :'crDetail>/LastProcessedByDesc'}]}"
+						visible="{path:'crDetail>/LastProcessedByDesc',formatter:'.formatter.visibility'}"/>
+					<Label text="{i18n>DueDate}"></Label>
+					<Text text="{path:'crDetail>/Duedate',formatter:'.formatter.Date'}" visible="{path:'crDetail>/Duedate',formatter:'.formatter.visibility'}"></Text>
+					<Label text="{i18n>Priority}"></Label>
+					<Text text="{crDetail>/PriorityDesc}" visible="{path:'crDetail>/PriorityDesc',formatter:'.formatter.visibility'}"></Text>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

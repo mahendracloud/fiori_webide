@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table width="auto" updateFinished="onListUpdateFinished" busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+		class="sapUiResponsiveMargin" items="{ path : 'AIWMPMI>/cycleModel', sorter : { path : 'Bomitmpos', descending : false } }">
+		<columns>
+			<Column>
+				<Text text="{i18n>detailMPMICycleTableColumn9}" wrapping="true" textAlign="Center" visible="true"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMICycleTableColumn1}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMICycleTableColumn2}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMICycleTableColumn3}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMICycleTableColumn4}" wrapping="true" textAlign="Center"></Text>
+			</Column>
+			<Column>
+				<Text text="{i18n>detailMPMICycleTableColumn7}" wrapping="true" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMICycleTableColumn8}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMICycleTableColumn5}" wrapping="true" textAlign="Center"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem >
+				<cells>
+					<Text text="{AIWMPMI>Cycleseqi}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Mpcycleno}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Zykl1}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Zeieh}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>PakText}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Point}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Psort}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Offset}" wrapping="true"></Text>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns:m="sap.m" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<m:Dialog afterClose="onMHDialogClose" title="{i18n>manageHierarchy}">
+		<m:beginButton>
+			<m:Button text="{i18n>ok}" press="onMHOkPress"></m:Button>
+		</m:beginButton>
+		<m:endButton>
+			<!---->
+			<m:Button text="{i18n>cancel}" press="onMHCancelPress"></m:Button>
+		</m:endButton>
+		<m:content>
+			<m:Table>
+				<m:headerToolbar>
+					<m:Toolbar>
+						<m:Button id="removeMH" text="{i18n>remove}" icon="sap-icon://delete" press="handleCostRowAdd"/>
+						<m:ToolbarSpacer/>
+					</m:Toolbar>
+				</m:headerToolbar>
+				<m:columns>
+					<m:Column>
+						<m:header>
+							<m:Text text="{i18n>functionalLocation}"></m:Text>
+						</m:header>
+					</m:Column>
+					<m:Column>
+						<m:Text text="{i18n>displayInHier}"></m:Text>
+					</m:Column>
+				</m:columns>
+				<m:items>
+					<m:ColumnListItem>
+						<m:cells>
+							<m:Text></m:Text>
+							<m:CheckBox></m:CheckBox>
+						</m:cells>
+					</m:ColumnListItem>
+				</m:items>
+			</m:Table>
+		</m:content>
+	</m:Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,64 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc">
+	<Dialog title="Transfer" stretch="true">
+		<beginButton>
+			<Button text="OK" press="onTransferOKPress"></Button>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="onTransferCancelPress"></Button>
+		</endButton>
+		<content>
+			<VBox>
+				<f:SimpleForm id="rangeLimitForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+					labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<core:Title text="Measuring Range Limits"></core:Title>
+						<Label text="Lower Range Limit"></Label>
+						<Text id="lowerRange"></Text>
+						<Label text="Upper Range Limit"></Label>
+						<Text id="upperRange"></Text>
+						<Label text="Measurement Range Limit"></Label>
+						<Text id="measRangeLimit"></Text>
+						<core:Title text="Transmission of Measuremnet and Counter Readings"></core:Title>
+						<Label text="Transfer Supplied"></Label>
+						<CheckBox id="transSuppl"></CheckBox>
+					</f:content>
+				</f:SimpleForm>
+				<List >
+					<InputListItem label="Data Origin">
+						<SegmentedButton id="idSegBtnRT" selectionChange="onTransferChange">
+							<items>
+								<SegmentedButtonItem text="Structure" key="structure"/>
+								<SegmentedButtonItem text="History" key="History"/>
+								<SegmentedButtonItem text="Propose Assignment" key="propAssign"/>
+								<SegmentedButtonItem text="Assign Manually" key="AssignManual"/>
+								<SegmentedButtonItem text="Cancel" key="cancel"/>
+							</items>
+						</SegmentedButton>
+					</InputListItem>
+				</List>
+				<f:SimpleForm id="readingForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+					labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+					<f:content>
+						<Label text="Reading Transfer"></Label>
+						<Text id="readingTrans"></Text>
+						<Label text="Valid From"></Label>
+						<Text id="validFrom"></Text>
+						<Label text="Time"></Label>
+						<Text id="timeMain" text="00:00:00"></Text>
+						<Label text="Measuring Position"></Label>
+						<Text id="measPosition"></Text>
+						<Label text="Functional Location"></Label>
+						<Text id="RTfloc"></Text>
+						<Label text="Description"></Label>
+						<Text id="RTflocdesc"></Text>
+						<Label text="Equipment"></Label>
+						<Text id="RTequi"></Text>
+						<Label text="Description"></Label>
+						<Text id="RTequidesc"></Text>
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

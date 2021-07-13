@@ -1,0 +1,37 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table width="auto" updateFinished="onListUpdateFinished" busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+		class="sapUiResponsiveMargin" items="{ path : 'AIWMPMI>/itemModel', sorter : { path : 'Bomitmpos', descending : false } }">
+		<columns>
+			<Column>
+				<Text text="{i18n>detailMPMIItemsTableColumn1}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMIItemsTableColumn2}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMICycleTableColumn9}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMIItemsTableColumn4}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMIItemsTableColumn5}" wrapping="true"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>detailMPMIItemsTableColumn6}" wrapping="true"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Navigation" press="onItemPress">
+				<cells>
+					<Text text="{AIWMPMI>Mitemnumb}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Pstxt}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Cycleseq}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Tplnr}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>Equnr}" wrapping="true"></Text>
+					<Text text="{AIWMPMI>AsmblyOb}" wrapping="true"></Text>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

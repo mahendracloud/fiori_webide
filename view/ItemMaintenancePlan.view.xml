@@ -1,0 +1,397 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.ItemMaintenancePlan" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<Page id="itemDetailPage" navButtonPress="onNavBack" showNavButton="false" title="Maintenance Item Details" busyIndicatorDelay="0">
+		<content>
+			<Panel expandable="false" expanded="true" headerText="{i18n>IT_DET}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="itemDetailsForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<core:Title text="{i18n>MAINT_IT_DET}"></core:Title>
+							<Label text="{i18n>MAINT_ITEM_TXT}"></Label>
+							<Input id="maintIt" enabled="false" value="{itemDetailView>/Mitemnumb}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="maintItDesc" enabled="{mainView>/enabled}" value="{itemDetailView>/Pstxt}" maxLength="40"></Input>
+							<Label id="cycleSetSeqItLbl" visible="{itemDetailView>/CycleseqLBL}" text="{i18n>CYCLE_SET_SEQ}"></Label>
+							<Input id="cycleSetSeqIt" enabled="{mainView>/enabled}" visible="{itemDetailView>/CycleseqVis}" value="{itemDetailView>/Cycleseq}"
+								valueState="{itemDetailView>/CycleseqVS}" valueStateText="{itemDetailView>/CycleseqVST}" maxLength="2" valueHelpOnly="true"
+								showValueHelp="true" valueHelpRequest="valueHelpFunSelect"></Input>
+							<core:Title text="{i18n>REF_OBJ}"></core:Title>
+							<Label text="{i18n>FLOC}"></Label>
+							<Input id="flocIt" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" maxLength="40" value="{itemDetailView>/Tplnr}"
+								valueState="{itemDetailView>/TplnrVS}" valueStateText="{itemDetailView>/TplnrVST}" liveChange="flocChange" change="onFlocChange"
+								enabled="{mainView>/enabled}" visible="{configModel>/visFloc}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="flocItDesc" enabled="false" value="{itemDetailView>/Pltxt}" visible="{configModel>/visFloc}"></Input>
+							<Label text="{i18n>EQUI}"></Label>
+							<Input id="equiIt" showValueHelp="true" maxLength="18" valueHelpRequest="valueHelpFunSelect" value="{itemDetailView>/Equnr}"
+								valueState="{itemDetailView>/EqunrVS}" valueStateText="{itemDetailView>/EqunrVST}" liveChange="equipmentChange" change="onEquipmentChange"
+								enabled="{mainView>/enabled}" visible="{configModel>/visEqui}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="equiItDesc" enabled="false" value="{itemDetailView>/Eqktx}" visible="{configModel>/visEqui}"></Input>
+							<Label text="{i18n>ASSEMBLY}"></Label>
+							<Input id="assemblyIt" enabled="{mainView>/enabled}" showValueHelp="true" maxLength="{itemDetailView>/AsmblyObMaxLength}"
+								valueHelpRequest="valueHelpFunSelect" value="{itemDetailView>/AsmblyOb}" valueState="{itemDetailView>/AsmblyObVS}"
+								valueStateText="{itemDetailView>/AsmblyObVST}" liveChange="setValueStateNone" change="onAssemblyChange" submit="onAssemblyChange"
+								visible="{configModel>/visAsbly}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="assemblyItDesc" enabled="false" value="{itemDetailView>/Assemblydesc}" visible="{configModel>/visAsbly}"></Input>
+							<Label text="Serial Number"></Label>
+							<Input enabled="{mainView>/enabled}" visible="{configModel>/visSerNum}" value="{itemDetailView>/Serialnr}" showValueHelp="true"
+								valueState="{itemDetailView>/SerialnrVS}" valueHelpRequest="onSerialNumVH" change="onSerialNumChange" liveChange="onLiveChange">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<!--<Input enabled="false" visible="{configModel>/visSerNum}"></Input>-->
+							<Label text="Material"></Label>
+							<Input enabled="{mainView>/enabled}" showValueHelp="true" visible="{configModel>/visMat}" value="{itemDetailView>/Sermat}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" visible="{configModel>/visMat}"></Input>
+							<Label text="UII"></Label>
+							<Input enabled="{mainView>/enabled}" visible="{configModel>/visUII}" value="{itemDetailView>/UiiMitem}" showValueHelp="true"
+								valueState="{itemDetailView>/UiiMitemVS}" valueHelpRequest="onUIIVH" change="onUIIChange" liveChange="onLiveChange">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<!--<Input enabled="false" visible="{configModel>/visUII}"></Input>-->
+							<Label text="Device Data"></Label>
+							<Input enabled="{mainView>/enabled}" visible="{configModel>/visDevData}" value="{itemDetailView>/Deviceid}" showValueHelp="true">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<!--<Input enabled="false" visible="{configModel>/visDevData}"></Input>-->
+							<core:Title text="{i18n>PLAN_DATA}"></core:Title>
+							<Label text="{i18n>PLAN_PLANT}"></Label>
+							<!-- added submit method in below control. -->
+							<Input id="planPlantIt" enabled="{mainView>/enabled}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="plPlantChange"
+								maxLength="4" change="onPlPlantChange" submit="onPlPlantChange" value="{itemDetailView>/Werks}" valueState="{itemDetailView>/WerksVS}"
+								valueStateText="{itemDetailView>/WerksVST}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="planPlantItDesc" enabled="false" value="{itemDetailView>/Planningplantdes}"></Input>
+							<Label id="orderTypeLbl" visible="{itemDetailView>/AuartLBL}" text="{i18n>ORDER_TYPE}"></Label>
+							<Input id="orderTypeIt" enabled="{mainView>/enabled}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"
+								liveChange="orderTypeChange" change="onOrderTypeChange" value="{itemDetailView>/Auart}" visible="{itemDetailView>/AuartVis}"
+								valueState="{itemDetailView>/AuartVS}" valueStateText="{itemDetailView>/AuartVST}" maxLength="4" submit="onOrderTypeChange">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="orderTypeItDesc" visible="{itemDetailView>/oTypeTxtVis}" enabled="false" value="{itemDetailView>/oTypeTxt}"></Input>
+							<Label id="notifTypeItLbl" visible="{itemDetailView>/QmartLBL}" text="{i18n>NOTIF_TYPE}"></Label>
+							<Input id="notifTypeIt" enabled="{mainView>/enabled}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"
+								liveChange="notifTypeChange" change="onNotifTypeChange" submit="onNotifTypeChange" value="{itemDetailView>/Qmart}"
+								visible="{itemDetailView>/QmartVis}" valueState="{itemDetailView>/QmartVS}" valueStateText="{itemDetailView>/QmartVST}" maxLength="2">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="notifTypeItDesc" visible="{itemDetailView>/nTypetxtVis}" enabled="false" value="{itemDetailView>/nTypeTxt}"></Input>
+							<Label text="{i18n>MAIN_WC}"></Label>
+							<Input id="mainWcIt" showValueHelp="true" enabled="{mainView>/enabled}" valueHelpRequest="valueHelpFunSelect" liveChange="mainWcChange"
+								change="onMainWcChange" value="{itemDetailView>/ArbpMi}" valueState="{itemDetailView>/ArbpMiVS}"
+								valueStateText="{itemDetailView>/ArbpMiVST}" maxLength="8" submit="onMainWcChange">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="mainWcIPlant" enabled="{mainView>/enabled}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"
+								liveChange="setValueStateNone" change="onMainWcPlntChange" value="{itemDetailView>/WergwMi}" valueStateText="{itemDetailView>/WergwMiVST}"
+								valueState="{itemDetailView>/WergwMiVS}" maxLength="4"></Input>
+							<Label text="{i18n>PRIORITY}" visible="{ApproveModel>/approveVisible}"></Label>
+							<Input enabled="false" visible="{ApproveModel>/approveVisible}" value="{itemDetailView>/Priok}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/ItmPriotxt}" visible="{ApproveModel>/approveVisible}"></Input>
+							<Label text="{i18n>PLANNER_GRP}"></Label>
+							<Input enabled="{mainView>/enabled}" showValueHelp="true" maxLength="3" value="{itemDetailView>/Ingrp}"
+								valueState="{itemDetailView>/IngrpVS}" valueStateText="{itemDetailView>/IngrpVST}" valueHelpRequest="valueHelpFunSelect"
+								liveChange="plGrpChange" change="onPlGrpdChange" submit="onPlGrpdChange">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="plGrpItDesc" enabled="false" value="{itemDetailView>/Innam}"></Input>
+							<Label text="{i18n>BUS_AREA}" visible="{ApproveModel>/approveVisible}"></Label>
+							<Input enabled="false" value="{itemDetailView>/GsberMi}" visible="{ApproveModel>/approveVisible}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/Gtext}" visible="{ApproveModel>/approveVisible}"></Input>
+							<Label text="{i18n>TASK_DET}" visible="{ApproveModel>/approveVisible}"></Label>
+							<CheckBox enabled="false" selected="{path:'itemDetailView>/TaskDet', formatter:'.formatter.typeCheck'}"
+								visible="{ApproveModel>/approveVisible}"></CheckBox>
+							<Label text="{i18n>MAINT_ACT_TYP}" visible="{ApproveModel>/approveVisible}"></Label>
+							<Input enabled="false" value="{itemDetailView>/Ilart}" visible="{ApproveModel>/approveVisible}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/Ilatx}" visible="{ApproveModel>/approveVisible}"></Input>
+							<Label text=""></Label>
+							<Text visible="{ApproveModel>/approveVisible}"></Text>
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>TL}" visible="{ApproveModel>/tlGroupVisible}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<Label text="{i18n>TL_TYPE}" visible="{ApproveModel>/tlGroupVisible}"></Label>
+							<Input maxLength="1" showValueHelp="true" enabled="{ApproveModel>/tlGroupEnabled}" value="{itemDetailView>/PlntyMi}" change="onTLTypeChange"
+								valueState="{itemDetailView>/PlntyMiState}" visible="{ApproveModel>/tlGroupVisible}" valueHelpRequest="valueHelpFunSelect"></Input>
+							<Label text="{i18n>TL_FACT}" visible="{ApproveModel>/approveVisible}"></Label>
+							<Input enabled="false" value="{itemDetailView>/ApfktMi}" visible="{ApproveModel>/approveVisible}"></Input>
+							<Label text="{i18n>GRP}" visible="{ApproveModel>/tlGroupVisible}"></Label>
+							<Input showValueHelp="true" enabled="{ApproveModel>/tlGroupEnabled}" value="{itemDetailView>/PlnnrMi}" change="onTLGroupChange"
+								valueState="{itemDetailView>/PlnnrMiState}" visible="{ApproveModel>/tlGroupVisible}" valueHelpRequest="valueHelpFunSelect"></Input>
+							<Label text="{i18n>COUNTER}" visible="{ApproveModel>/tlGroupVisible}"></Label>
+							<Input showValueHelp="true" enabled="{ApproveModel>/tlGroupEnabled}" value="{itemDetailView>/PlnalMi}" change="onTLCounterChange"
+								valueState="{itemDetailView>/PlnalMiState}" visible="{ApproveModel>/tlGroupVisible}" valueHelpRequest="valueHelpFunSelect">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/Gpcounterdesc}" visible="{ApproveModel>/tlGroupVisible}"></Input>
+							<Label text="{i18n>SYS_COND}" visible="{ApproveModel>/approveVisible}"></Label>
+							<Input enabled="false" value="{itemDetailView>/AnlzuMi}" visible="{ApproveModel>/approveVisible}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/Anlzux}" visible="{ApproveModel>/approveVisible}"></Input>
+							<Label text=""></Label>
+							<Text></Text>
+							<!-- visible="{ApproveModel>/approveVisible}" -->
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>LOC_DATA}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<Label text="{i18n>MAINT_PLANT}"></Label>
+							<Input maxLength="4" enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/SwerkMil}" valueState="{AIWEQUI>/SwerkMilVS}"
+								showValueHelp="true" liveChange="onLiveChange" change="onMaintPlantChange" valueHelpRequest="onMaintPlantVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input value="{itemDetailView>/Name1}" enabled="false"></Input>
+							<Label text="{i18n>LOC}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/StortMil}" valueState="{AIWEQUI>/StortMillVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onLocationChange" valueHelpRequest="onLocationVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input value="{itemDetailView>/Locationdesc}" enabled="false"></Input>
+							<Label text="{i18n>ROOM}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/MsgrpIl}" valueState="{itemDetailView>/MsgrpIlVS}"
+								liveChange="onLiveChange"></Input>
+							<Label text="{i18n>PLANT_SEC}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/BeberMil}" valueState="{AIWEQUI>/BeberMilVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onPlntSecChange" valueHelpRequest="onPlntSecVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input value="{itemDetailView>/Fing}" enabled="false">
+								<layoutData>
+									<l:GridData span="L3 M3 S4"/>
+								</layoutData>
+							</Input>
+							<!--<Input value="{itemDetailView>/Tele}" enabled="false" >-->
+							<!--	<layoutData>-->
+							<!--		<l:GridData span="L2 M2 S4"/>-->
+							<!--	</layoutData>-->
+							<!--</Input>-->
+							<Label text="{i18n>IT_WC}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/ArbplIl}" valueState="{AIWEQUI>/ArbplIlVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onWrkCtrChange" valueHelpRequest="onWrkCtrVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/Workcenterdesc}"></Input>
+							<Label text="{i18n>ABC_IND}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/AbckzIl}" valueState="{AIWEQUI>/AbckzIlVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onAbcIndChange" valueHelpRequest="onAbcIndVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input value="{itemDetailView>/Abctx}" enabled="false"></Input>
+							<Label text="{i18n>SORT_FLD}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/EqfnrIl}" valueState="{itemDetailView>/EqfnrIlVS}"
+								liveChange="onLiveChange"></Input>
+							<Label text=""></Label>
+							<Text></Text>
+							<!-- visible="{ApproveModel>/approveVisible}" -->
+							<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>ACC_ASSIGN}">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Title>
+							<Label text="{i18n>COMP_CODE}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/BukrsMil}" valueState="{AIWEQUI>/BukrsMilVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onCompCodeChange" valueHelpRequest="onCompCodeVH">
+								<layoutData>
+									<l:GridData span="L1 M1 S4"/>
+								</layoutData>
+							</Input>
+							<Input value="{itemDetailView>/Butxt}" enabled="false">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input value="{itemDetailView>/City}" enabled="false">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Label text="{i18n>ASSET}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/Anln1Mil}" valueState="{AIWEQUI>/Anln1MilVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onAssetChange" valueHelpRequest="onAssetVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/Txt50}"></Input>
+							<Label text="Sub."></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/Anln2Mil}" valueState="{AIWEQUI>/Anln2MilVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onSubChange" valueHelpRequest="onSubVH"></Input>
+							<Label text="{i18n>IT_BA}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/GsberIl}" valueState="{AIWEQUI>/GsberIlVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onITBusinessChange" valueHelpRequest="onITBusinessVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/Gtext}"></Input>
+							<Label text="{i18n>COST_CENTER}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/KostlMil}" valueState="{AIWEQUI>/KostlMilVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onCostCenterChange" valueHelpRequest="onCostCenterVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/Contareaname}"></Input>
+							<Label text="{i18n>detailWCostingTableColumn2}"></Label>
+							<Input enabled="false" value="{itemDetailView>/KokrsMil}"></Input>
+							<Label text="{i18n>WBS_ELE}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/Posid}" valueState="{AIWEQUI>/PosidVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onWBSEleChange" valueHelpRequest="onWBSEleVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/Post1}"></Input>
+							<Label text="{i18n>SETTLE_ORD}"></Label>
+							<Input enabled="{itemDetailView>/enableLoc}" value="{itemDetailView>/AufnrIl}" valueState="{AIWEQUI>/AufnrIlVS}" showValueHelp="true"
+								liveChange="onLiveChange" change="onSetlOrdChange" valueHelpRequest="onSetlOrdVH">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input enabled="false" value="{itemDetailView>/SettleOrdDesc}"></Input>
+						</f:content>
+					</f:SimpleForm>
+					<core:Fragment id="lamFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.lam.LinearData" type="XML"/>
+					<core:Fragment id="lamAprvFrag" fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.LinearDataAprv" type="XML"/>
+					<Table id="idObjectListItem" mode="{ApproveModel>/objLstItmTableMode}" items="{ObjListItemModel>/}" selectionChange="onObjListItmRowSelect">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>OBJLISTITM}" level="H2"></Title>
+								<ToolbarSpacer/>
+								<Button id="idNewObjListItm" press="addObjListItmRow" enabled="{ApproveModel>/tlGroupEnabled}" icon="sap-icon://add" tooltip="Add"/>
+								<Button id="idObjListItmDelete" press="deleteObjListItmRow" enabled="false" icon="sap-icon://delete" tooltip="Delete"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="{i18n>UII}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>SER_NUM}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>MATERIAL}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>MATERIALDESC}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>EQUI}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>EQUIDESC}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>FLOC_TXT}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>FUNLOC_DESC}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>ASSEMBLY}"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet">
+								<Text text="{i18n>ASSEMBLYDESC}"></Text>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Active">
+								<cells>
+									<Input enabled="{ObjListItemModel>Enable}" showValueHelp="true" valueHelpRequest="onOLIUIIVH" value="{ObjListItemModel>UiiObj}"
+										valueState="{ObjListItemModel>UiiObjState}" change="onObjListItmChange"></Input>
+									<Input enabled="{ObjListItemModel>Enable}" showValueHelp="true" valueHelpRequest="onOLISerNumVH" value="{ObjListItemModel>SernrObj}"
+										valueState="{ObjListItemModel>SernrObjState}" change="onObjListItmChange"></Input>
+									<Input enabled="{ObjListItemModel>Enable}" showValueHelp="true" valueHelpRequest="onOLIMaterialVH" value="{ObjListItemModel>MatnrObj}"
+										valueState="{ObjListItemModel>MatnrObjState}" change="onObjListItmChange"></Input>
+									<Input enabled="false" value="{ObjListItemModel>Matnrtxt}"></Input>
+									<Input enabled="{ObjListItemModel>Enable}" showValueHelp="true" valueHelpRequest="onOLIEquipmentVH" value="{ObjListItemModel>EquiObj}"
+										valueState="{ObjListItemModel>EquiObjState}" change="onObjListItmChange"></Input>
+									<Input enabled="false" value="{ObjListItemModel>Equnrtxt}"></Input>
+									<Input enabled="{ObjListItemModel>Enable}" showValueHelp="true" valueHelpRequest="onOLIFlocVH" value="{ObjListItemModel>FlocObj}"
+										valueState="{ObjListItemModel>FlocObjState}" change="onObjListItmChange"></Input>
+									<Input enabled="false" value="{ObjListItemModel>Tplnrtxt}"></Input>
+									<Input enabled="{ObjListItemModel>Enable}" showValueHelp="true" valueHelpRequest="onOLIMaterialVH" value="{ObjListItemModel>AsmblyOb}"
+										valueState="{ObjListItemModel>AsmblyObState}" change="onObjListItmChange"></Input>
+									<Input enabled="false" value="{ObjListItemModel>Bautltxt}"></Input>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar id="tabletoolbar">
+				<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+				<ToolbarSpacer/>
+				<Button id="idBtnCheck" text="Check" press="onDonePress"/>
+				<Button text="Done" type="Accept" press="onDonePress"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

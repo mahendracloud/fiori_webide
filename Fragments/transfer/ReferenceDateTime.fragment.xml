@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc">
+	<Dialog title="Reference Time for Change in Measurement Reading Transfer" stretch="true">
+		<beginButton>
+			<Button text="OK" press="onRefDateTimeOKPress"></Button>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="onRefDateTimeCancelPress"></Button>
+		</endButton>
+		<content>
+			<f:SimpleForm id="ReferenceForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<Label text="Date"></Label>
+					<DatePicker id="refDate" displayFormat="dd-MM-yyyy"></DatePicker>
+					<Label text="Time"></Label>
+					<Input id="refTime"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

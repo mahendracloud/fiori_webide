@@ -1,0 +1,62 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="FLBOMTab" text="FLBOM" icon="sap-icon://multiselect-all" tooltip="{i18n>fBomTl}" count="{CountModel>/FLBomCount}"
+		iconColor="Contrast">
+		<content>
+			<Table mode="{EnableModel>/tableType}" growing="true" growingScrollToLoad="true" items="{AIWListFLModel>/}"
+				noDataText="{i18n>tableNoDataText}" busy="{BusyModel>/AiwTblBusy}" selectionChange="onFLRowSelect">
+				<headerToolbar>
+					<Toolbar visible="{EnableModel>/actionEnable}">
+						<MenuButton text="{i18n>selectAction}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+							<menu>
+								<Menu itemSelected="onMenuAction">
+									<items>
+										<MenuItem key="createFlbom" text="{i18n>createFlbom}" icon="sap-icon://create"/>
+										<MenuItem key="copyFlbom" text="{i18n>copyFlbom}" icon="sap-icon://copy"/>
+										<MenuItem key="copyMtoFlbom" text="{i18n>copyMtoFlbom}" icon="sap-icon://copy"/>
+										<MenuItem key="changeFlbom" text="{i18n>changeFlbom}" icon="sap-icon://write-new"/>
+									</items>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" type="Reject" press="onRemoveFLPress" enabled="{EnableModel>/deleteFL}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>functionalLocation}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>plant}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>bomUsage}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>description}" textAlign="Left"></Text>
+					</Column>
+					<!--<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>BASE_QTY}" textAlign="Left"></Text>
+						</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem press="onFlocNavigation" type="Navigation">
+						<cells>
+							<Input type="Text" maxLength="{maxLengthModel>/maxlengthMat}" value="{AIWListFLModel>Tplnrbom}" enabled="{AIWListFLModel>FLEnable}"
+								valueState="{AIWListFLModel>FLValueState}" editable="true" showValueHelp="true" liveChange="onLiveChange" change="flocChangeBOM"
+								valueHelpRequest="onFLocBomVH" submit="flocChangeBOM" showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListFLModel>Werks}" enabled="{AIWListFLModel>plantEnable}" valueState="{AIWListFLModel>plantValueState}"
+								editable="true" showValueHelp="true" valueHelpRequest="onPlantInBomVH" liveChange="onLiveChange" change="plantChange" submit="plantChange"
+								showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListFLModel>Stlan}" enabled="{AIWListFLModel>usageEnable}" valueState="{AIWListFLModel>usageValueState}"
+								editable="true" showValueHelp="true" liveChange="onLiveChange" change="bomUsageChange" valueHelpRequest="omBomUsageVH"
+								submit="bomUsageChange" showValueStateMessage="false"></Input>
+							<Input type="Text" value="{AIWListFLModel>Lngtxt}" editable="true" enabled="{AIWListFLModel>LngtxtEnable}"></Input>
+							<!--<Input type="Number" value="{AIWListFLModel>BaseQty}" enabled="true" valueState="{AIWListFLModel>BaseQtyValueState}" editable="true" liveChange="onLiveChange" ></Input>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

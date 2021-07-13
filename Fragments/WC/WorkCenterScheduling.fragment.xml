@@ -1,0 +1,91 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<!-- Approve -->
+	<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+		emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+		<f:content>
+			<core:Title id="idSchBasis" text="{i18n>SCH_BASIS}" visible="{aVisModel>/visible}"></core:Title>
+			<Label text="{i18n>CAP_CAT}" visible="{aVisModel>/visible}"></Label>
+			<Input id="capacityCat" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Kapar}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="capacityCatDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Kaparttext}"></Input>
+			<Label text="{i18n>CAPACITY}" visible="{aVisModel>/visible}"></Label>
+			<Input id="capacity" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Name}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="capacityDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Kaptext}"></Input>
+			<core:Title id="idExeTime" text="{i18n>EXE_TIME}" visible="{aVisModel>/visible}"></core:Title>
+			<Label text="{i18n>SETUP_FOR}" visible="{aVisModel>/visible}"></Label>
+			<Input id="setUpFormula" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Fort1}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="setUpFormulaDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Fort1txt}"></Input>
+			<Label text="{i18n>PROCESS_FOR}" visible="{aVisModel>/visible}"></Label>
+			<Input id="procFormula" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Fort2}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="procFormulaDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Fort2txt}"></Input>
+			<Label text="{i18n>TEAR_FORMULA}" visible="{aVisModel>/visible}"></Label>
+			<Input id="tearFormula" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Fort3}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="tearFormulaDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Fort3txt}"></Input>
+			<Label text="{i18n>OTHR_FOR}" visible="{aVisModel>/visible}"></Label>
+			<Input id="otherFormula" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Fortn}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="otherFormulaDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Fortntxt}"></Input>
+			<core:Title id="idIntTimes" text="{i18n>INT_TIMES}" visible="{aVisModel>/visible}"></core:Title>
+			<Label text="{i18n>LOC_GRP}" visible="{aVisModel>/visible}"></Label>
+			<Input id="locGroup" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Crortgr}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="locGroupDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Crortgrtxt}"></Input>
+			<Label text="{i18n>STD_QUEUE}" visible="{aVisModel>/visible}"></Label>
+			<Input id="stdQueTime" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zwnor}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="stdQueTime1" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zeiwn}"></Input>
+			<Label text="{i18n>MIN_QUEUE}" visible="{aVisModel>/visible}"></Label>
+			<Input id="minQueTime" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zwmin}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="minQueTime1" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Zeiwm}"></Input>
+			<core:Title id="idDimUom" text="{i18n>DIM_UOM}" visible="{aVisModel>/visible}"></core:Title>
+			<Label text="{i18n>WORK_DIM}" visible="{aVisModel>/visible}"></Label>
+			<Input id="workDim" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgdim}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="workDimDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgdimtxt}"></Input>
+			<Label text="{i18n>WORK_UNIT}"></Label>
+			<Input id="workUnit" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgarb}">
+				<layoutData>
+					<l:GridData span="L2 M2 S4"/>
+				</layoutData>
+			</Input>
+			<Input id="workUnitDesc" enabled="false" visible="{aVisModel>/visible}" value="{wcDetailModel>/Vgarbtxt}"></Input>
+			<Label text="{i18n>SCH_TAB_DEL}" visible="{aVisModel>/visible}"></Label>
+			<CheckBox id="schTabDel" enabled="false" visible="{aVisModel>/visible}" selected="{wcDetailModel>/Schdelflg}"></CheckBox>
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

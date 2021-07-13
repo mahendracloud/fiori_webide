@@ -1,0 +1,101 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto">
+		<l:content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+				emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="{i18n>BASIC}"></core:Title>
+					<Label text="{i18n>TL_USG}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/PlanvPrt}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input value="{AIWEQUI>/PRTInfo/PlanvPrttxt}" enabled="false"></Input>
+					<Label text="{i18n>GRP_KEY_1}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/Fgru1}"></Input>
+					<Label text="{i18n>GRP_KEY_2}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/Fgru2}"></Input>
+					<core:Title text="{i18n>DEF_VAL_TL}"></core:Title>
+					<Label text="{i18n>LOAD_REC}"></Label>
+					<CheckBox enabled="false" selected="{path:'AIWEQUI>/PRTInfo/Kzkbl', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<Label text="{i18n>CTRL_KEY}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/SteufPrt}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input value="{AIWEQUI>/PRTInfo/SteufPrttxt}" enabled="false">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<CheckBox enabled="false" selected="{path:'AIWEQUI>/PRTInfo/SteufRef', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<Label text="{i18n>STD_TXT_KEY}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/KtschPrt}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input value="{AIWEQUI>/PRTInfo/KtschPrttxt}" enabled="false">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<CheckBox enabled="false" selected="{path:'AIWEQUI>/PRTInfo/Ktschref', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<Label text="{i18n>USG_VAL_FORM}"></Label>
+					<!--<Input id="usgValFormula" enabled="false" value="{AIWEQUI>/PRTInfo/Mgformprt}"></Input>-->
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/Ewformprt}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input value="{AIWEQUI>/PRTInfo/Usagevalfrmtxt}" enabled="false">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<!-- changed binding as per the value -->
+					<CheckBox enabled="false" selected="{path:'AIWEQUI>/PRTInfo/Ewformref', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<Label text="{i18n>REF_DATE}"></Label>
+					<Input enabled="false" value="{path:'AIWEQUI>/PRTInfo/Bzoffbprt', formatter:'.formatter.dateFormat'}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input value="{AIWEQUI>/PRTInfo/Bzoffbprttxt}" enabled="false">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<CheckBox enabled="false" selected="{path:'AIWEQUI>/PRTInfo/Bzoffbref', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<Label text="{i18n>OFF_STRT}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/Offstb}"></Input>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/Ehoffbprt}"></Input>
+					<CheckBox enabled="false" selected="{path:'AIWEQUI>/PRTInfo/Offstbref', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<Label text="{i18n>REF_DATE_FIN}"></Label>
+					<Input enabled="false" value="{path:'AIWEQUI>/PRTInfo/Bzoffeprt', formatter:'.formatter.dateFormat'}">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Input value="{AIWEQUI>/PRTInfo/Bzoffeprttxt}" enabled="false">
+						<layoutData>
+							<l:GridData span="L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<CheckBox enabled="false" selected="{path:'AIWEQUI>/PRTInfo/Offsteref', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<Label text="{i18n>OFF_FIN}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/Offste}"></Input>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/Ehoffeprt}"></Input>
+					<CheckBox enabled="false" selected="{path:'AIWEQUI>/PRTInfo/Offsteref', formatter:'.formatter.typeCheck'}"></CheckBox>
+					<core:Title text="{i18n>DEF_VAL_TL}"></core:Title>
+					<Label text="{i18n>MAINT_PLAN}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/Warpl}"></Input>
+					<Label text="{i18n>MEASPOINT_TXT}"></Label>
+					<Input enabled="false" value="{AIWEQUI>/PRTInfo/PointEq}"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

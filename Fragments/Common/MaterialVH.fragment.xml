@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog noDataText="No Results Found" title="{i18n>xtxt.CONSTRUCTION_TYPE}" search="handleSearch" confirm="handleClose"
+		cancel="handleClose" items="{ path: '/MaterialSHSet' }">
+		<StandardListItem title="{Matnr}" description="{Maktx}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>

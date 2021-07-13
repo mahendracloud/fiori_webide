@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table growing="true" growingScrollToLoad="true" id="olLamDetails" mode="None" items="{olDetailModel>/LAM}" width="auto" fixedLayout="false">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>OL_LINK_LAM}" level="H2"></Title>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>OBJ_TYP_DESC}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>LRP}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>ST_PT_SI}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>EP_SI}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>LEN_SI}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>UOM}" textAlign="Center"></Text>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem id="on_olLamItems" type="Navigation" press="onLinkLamPress">
+				<cells>
+					<Text text="{olDetailModel>Obarttxt}"></Text>
+					<Text text="{olDetailModel>LrpidO}"></Text>
+					<Text text="{olDetailModel>Strtptato}"></Text>
+					<Text text="{olDetailModel>EndptatO}"></Text>
+					<Text text="{olDetailModel>LengthO}"></Text>
+					<Text text="{olDetailModel>LinUnito}"></Text>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

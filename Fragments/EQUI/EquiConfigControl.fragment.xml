@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto">
+		<l:content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+				emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="{i18n>IPPE_ACCESS}"></core:Title>
+					<Label text="{i18n>ACCESS_NODE}" visible="{ApproveModel>/approveVisible}"></Label>
+					<Input value="" enabled="false" visible="{ApproveModel>/approveVisible}" showValueHelp="true"></Input>
+					<Label text="{i18n>DESC_TXT}" visible="{ApproveModel>/approveVisible}"></Label>
+					<Input value="" enabled="false" visible="{ApproveModel>/approveVisible}" showValueHelp="true"></Input>
+					<Label text="{i18n>VARIENT}" visible="{ApproveModel>/approveVisible}"></Label>
+					<Input value="" enabled="false" visible="{ApproveModel>/approveVisible}" showValueHelp="true"></Input>
+					<Label text="{i18n>ALTERNATIVE}" visible="{ApproveModel>/approveVisible}"></Label>
+					<Input value="" enabled="false" visible="{ApproveModel>/approveVisible}" showValueHelp="true"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

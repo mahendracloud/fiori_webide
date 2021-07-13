@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table width="auto" mode="None" fixedLayout="false"
+		items="{ path : 'AIWFLOC>/Partners', sorter : { path : 'Partnerfn', descending : false } }">
+		<headerToolbar>
+			<Toolbar >
+				<Title text="{i18n>PARTNERS}"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>PF}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>PATNR}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>NAME_DISP}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>ADD_EXT}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>ADDRESS}" wrapping="true" textAlign="Center"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>NAME}" wrapping="true" textAlign="Center"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Active">
+				<cells>
+					<Text text="{AIWFLOC>Partnerfn}" wrapping="true"></Text>
+					<Text text="{AIWFLOC>Partner}" wrapping="true"></Text>
+					<Text text="{AIWFLOC>Namedisp}" wrapping="true"></Text>
+					<Text text="{AIWFLOC>Addressfl}" wrapping="true"></Text>
+					<!--<Text text="{partnersFl>Addressd}" wrapping="true"></Text>-->
+					<Text text="{AIWFLOC>Address}" wrapping="true"></Text>
+					<Text text="{AIWFLOC>Partnrfuntxt}" wrapping="true"></Text>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

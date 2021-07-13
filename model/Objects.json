@@ -1,0 +1,23 @@
+{
+	"objects": [
+		{
+		"name": "Measuring Point",
+		"nameUrl": "sap-icon://measuring-point"
+	}, {
+		"name": "Work Center",
+		"nameUrl": "sap-icon://offsite-work"
+	}, {
+		"name": "Task List",
+		"nameUrl": "sap-icon://master-task-triangle-2"
+	}, {
+		"name": "Maintenance Plan",
+		"nameUrl": "sap-icon://legend"
+	}, {
+		"name": "Object Link",
+		"nameUrl": "sap-icon://business-objects-mobile"
+	}, {
+		"name": "Object Network",
+		"nameUrl": "sap-icon://business-objects-experience"
+	}]
+
+}

@@ -1,0 +1,226 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.WCCapacityDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<semantic:FullscreenPage id="wcCapacityrDetailPage" navButtonPress="onNavBack" showNavButton="true" title="Capacity Details">
+		<semantic:content>
+			<Panel expandable="true" expanded="true" headerText="Capacity Overview" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="wcCapacityForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="2" columnsM="2" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>CAP_CAT}"></Label>
+							<Input id="capacityCat" enabled="false" value="{wcCapacity>/Cakapar}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="capacityCatDesc" enabled="false" value="{wcCapacity>/Kaparttext}"></Input>
+							<Label text="{i18n>POOL_CAP}"></Label>
+							<Input id="pooledCapacity" enabled="false" value="{wcCapacity>/Kapnamep}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="pooledCapacityDesc" enabled="false" value="{wcCapacity>/Kaptext}"></Input>
+							<!--<Label text="{i18n>CTRL_CAP_RED}"></Label>-->
+							<!--<Label text="{i18n>SETUP_FOR}"></Label>-->
+							<!--<Input id="setupFormula" enabled="false" value="{wcCapacity>/Cafort1}">-->
+							<!--	<layoutData>-->
+							<!--		<l:GridData span="L2 M2 S4"/>-->
+							<!--	</layoutData>-->
+							<!--</Input>-->
+							<!--<Input id="setupFormulaDesc" enabled="false" value="{wcCapacity>/setupfrmltxt}"></Input>-->
+							<Label text="{i18n>DUR_SETUP}"></Label>
+							<Input id="durationSetup" enabled="false" value="{wcCapacity>/Cafort1}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="durationSetupDesc" enabled="false" value="{wcCapacity>/Setupfrmltxt}"></Input>
+							<!--<Input id="formula1" enabled="false" value="{wcCapacity>/Capbacksut}"></Input>-->
+							<Label text="{i18n>PROCESS_FOR}"></Label>
+							<Input id="procFormula1" enabled="false" value="{wcCapacity>/Cafort2}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="procFormula2" enabled="false" value="{wcCapacity>/Procfrmltxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<!--<Input id="formula2" enabled="false" value="{wcCapacity>/Capbackprt}"></Input>-->
+							<Label text="{i18n>TEAR_FORMULA}"></Label>
+							<Input id="tearDownFormula" enabled="false" value="{wcCapacity>/Cafort3}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="tearDownFormulaDesc" enabled="false" value="{wcCapacity>/Teardwnfrmltxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<!--<Input id="formula3" enabled="false" value="{wcCapacity>/Capbacktdt}"></Input>-->
+							<Label text="{i18n>OTHR_FOR}"></Label>
+							<Input id="otherFormula" enabled="false" value="{wcCapacity>/Cafortn}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="otherFormulaDesc" enabled="false" value="{wcCapacity>/Otherfrmltxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<!--<Input id="formula4" enabled="false" value="{wcCapacity>/Capbacktdt}"></Input>-->
+							<Label text="{i18n>DIST_KEY}"></Label>
+							<Input id="distributionKey" enabled="false" value="{wcCapacity>/Cavert1}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="distributionKeyDesc" enabled="false" value="{wcCapacity>/Vertx1}"></Input>
+							<Label text="{i18n>INT_DIST}"></Label>
+							<Input id="internalDis" enabled="false" value="{wcCapacity>/Cavert2}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="internalDistDesc" enabled="false" value="{wcCapacity>/Vertx2}"></Input>
+							<Label text="{i18n>CTRL_CAP_RED}"></Label>
+							<Input value="{wcCapacity>/Capbacksut}" enabled="false">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input value="{wcCapacity>/Capbackprt}" enabled="false">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input value="{wcCapacity>/Capbacktdt}" enabled="false">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>CAP_HEAD}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="wcCapHeaderForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>CAP_CAT}"></Label>
+							<Input id="capCat" enabled="false" value="{wcCapacity>/Cakapar}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="capCatDesc" enabled="false" value="{wcCapacity>/Kaparttext}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>GEN_DATA}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="wcCapGenForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>CAP_PLAN_GRP}"></Label>
+							<Input id="capPlanGrp" enabled="false" value="{wcCapacity>/Planr}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="capPlanGrpDesc" enabled="false" value="{wcCapacity>/Capplnrgrptxt}"></Input>
+							<Label text="{i18n>IND_POOL}"></Label>
+							<CheckBox id="indPoolCap" enabled="false" selected="{path:'wcCapacity>/Poolk', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>SHFT_GRP}"></Label>
+							<Input id="shiftGrouping" enabled="false" value="{wcCapacity>/Mosid}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>AVAIL_CAP}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="wcAvailCapForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>FACT_CAL_ID}"></Label>
+							<Input id="factCalId" enabled="false" value="{wcCapacity>/Kalid}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="factCalIdDesc" enabled="false" value="{wcCapacity>/Fktext}"></Input>
+							<Label text="{i18n>ACT_VERSION}"></Label>
+							<Input id="activeVersion" enabled="false" value="{wcCapacity>/Versa}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="activeVersionDesc" enabled="false" value="{wcCapacity>/Versntxt}"></Input>
+							<Label text="{i18n>BASE_UOM}"></Label>
+							<Input id="baseUOM" enabled="false" value="{wcCapacity>/Meins}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="baseUOMDesc" enabled="false" value="{wcCapacity>/BaseuomTxt}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>STD_AVAIL_CAP}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="wcStdAvailCapForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>STRT}"></Label>
+							<!--<Input id="start" enabled="false" value="{path: 'wcCapacity>/Begzt', formatter:'.formatter.getTime'}"></Input>-->
+							<Input id="start" enabled="false" value="{path: 'wcCapacity>/Begzt', formatter:'.formatTime'}"></Input>
+							<Label text="{i18n>FINISH}"></Label>
+							<!--<Input id="finish" enabled="false" value="{path: 'wcCapacity>/Endzt', formatter:'.formatter.getTime'}"></Input>-->
+							<Input id="finish" enabled="false" value="{path: 'wcCapacity>/Endzt', formatter:'.formatTime'}"></Input>
+							<Label text="{i18n>BRK_LEN}"></Label>
+							<!--<Input id="lengthOfBreaks" enabled="false" value="{path:'wcCapacity>/Pause', formatter:'.formatter.getTime'}"></Input>-->
+							<Input id="lengthOfBreaks" enabled="false" value="{path:'wcCapacity>/Pause', formatter:'.formatTime'}"></Input>
+							<Label text="{i18n>OP_TIME}"></Label>
+							<Input id="operatingTime" enabled="false" value="{wcCapacity>/Einzh}"></Input>
+							<Label text="{i18n>CAP_UTIL}"></Label>
+							<Input id="capUtil" enabled="false" value="{wcCapacity>/Ngrad}"></Input>
+							<Label text="{i18n>NO_IND}"></Label>
+							<Input id="noOfIndCaps" enabled="false" value="{wcCapacity>/Aznor}"></Input>
+							<Label text="{i18n>CAPACITY}"></Label>
+							<Input id="capacity" enabled="false" value="{wcCapacity>/Kapaz}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="capacityDesc" enabled="false" value="{wcCapacity>/Kapeh}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>PLAN_DET}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="wcPlanningDetailsForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>REL_FINTE}"></Label>
+							<CheckBox id="relFinSch" enabled="false" selected="{path:'wcCapacity>/Kapter', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>SEV_OP}"></Label>
+							<CheckBox id="sevOperations" enabled="false" selected="{path:'wcCapacity>/Kapavo', formatter:'.typeCheck'}"></CheckBox>
+							<Label text="{i18n>OVERLOAD_PERC}"></Label>
+							<Input id="overLoadPerc" enabled="false" value="{wcCapacity>/Ueberlast}"></Input>
+							<Label text="{i18n>LT_PLAN}"></Label>
+							<CheckBox id="longTermPlan" enabled="false" selected="{path:'wcCapacity>/Kaplpl', formatter:'.typeCheck'}"></CheckBox>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</core:FragmentDefinition>

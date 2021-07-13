@@ -1,0 +1,885 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.DetailEquipment"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page id="equipmentPage" title="{mainView>/titleName}" busy="{mainView>/viewBusy}" enableScrolling="true" showFooter="true"
+				backgroundDesign="Standard" busyIndicatorDelay="0">
+				<content>
+					<!--<ObjectHeader title="{i18n>newEquipmentTitle}" titleActive="false" condensed="false"></ObjectHeader>-->
+					<IconTabBar selectedKey="__filter0" expanded="{device>/isNoPhone}">
+						<items>
+							<IconTabFilter icon="sap-icon://form" text="Form" design="Horizontal">
+								<content>
+									<l:Grid defaultSpan="L12 M12 S12" width="auto">
+										<l:content>
+											<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4"
+												emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+												<f:content>
+													<!--<core:Title text="{i18n>BASIC}"></core:Title>-->
+													<!--<VBox>-->
+													<!--	<layoutData >-->
+													<!--		<l:GridData span="L12 M12 S12"/>-->
+													<!--	</layoutData>-->
+													<!--</VBox>-->
+													<Toolbar height="3rem">
+														<Title text="{i18n>BASIC}"/>
+														<Button icon="sap-icon://checklist-2" text="{i18n>DATA_ORGIN}" tooltip="{i18n>DATA_ORGIN}" press="onDOIDisplayPress"
+															enabled="{mainView>/enabled}"/>
+														<ToolbarSpacer/>
+													</Toolbar>
+													<Label text="{i18n>EQUIP_TXT}"/>
+													<Input type="Text" value="{AIWEQUI>/Equnr}" valueState="{AIWEQUI>/EqunrVS}" valueStateText="{AIWEQUI>/EqunrVST}"
+														enabled="{AIWEQUI>/EqunrEnabled}" editable="true" showValueHelp="true" liveChange="equipmentChange" change="onEquipmentChange"
+														valueHelpRequest="valueHelpFunSelect" submit="onEquipmentChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Eqktx}" valueState="{AIWEQUI>/EqktxVS}" valueStateText="{AIWEQUI>/EqktxVST}" enabled="{mainView>/enabled}"
+														change="onLiveChange" maxLength="40"></Input>
+													<Label text="{i18n>xtxt.EQUIP_CAT}" required="true"/>
+													<Input value="{AIWEQUI>/EquipmentCatogory}" valueState="{AIWEQUI>/EquipmentCatogoryVS}" valueStateText="{AIWEQUI>/EquipmentCatogoryVST}"
+														enabled="{AIWEQUI>/EquipCatEnabled}" editable="true" showValueHelp="true" liveChange="equipCatChange" change="onEquipCatChange"
+														valueHelpRequest="valueHelpFunSelect" maxLength="1" submit="onEquipCatChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/EquipCatgDescription}" enabled="false"></Input>
+													<Label text="{i18n>VALID_FRM}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" editable="true" visible="{ApproveModel>/approveVisible}"
+														value="{path:'AIWEQUI>/ValidFrom',formatter:'.formatter.dateFormat'}"/>
+													<Label text="{i18n>VALID_TO}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" editable="true" visible="{ApproveModel>/approveVisible}"
+														value="{path:'AIWEQUI>/DatbEeqz',formatter:'.formatter.dateFormat'}"/>
+													<Label text="Deletion Indicator" visible="{ApproveModel>/approveVisible}"></Label>
+													<CheckBox enabled="false" selected="{path:'AIWEQUI>/LvormEqi', formatter:'.formatter.typeCheck'}" visible="{ApproveModel>/approveVisible}"></CheckBox>
+													<Label text="{i18n>INACT}"></Label>
+													<CheckBox enabled="{AIWEQUI>/DeactEnable}" select="onInactiveSelect" selected="{path:'AIWEQUI>/Deact', formatter:'.formatter.typeCheck'}"></CheckBox>
+													<core:Title text="{i18n>xtxt.SYS_USER_STS}"></core:Title>
+													<Label text="{i18n>xtxt.SYS_STS}"/>
+													<Input value="{AIWEQUI>/Stattext}" enabled="false"></Input>
+													<Label text="{i18n>xtxt.USER_STS}"></Label>
+													<Input value="{AIWEQUI>/UstaEqui}" enabled="false"></Input>
+													<Label text="{i18n>xtxt.STS_PROF}" visible="{mainView>/visible}"/>
+													<Input value="{AIWEQUI>/StsmEqui}" maxLength="30" type="Text" enabled="false" visible="{mainView>/visible}" showValueHelp="true"
+														valueHelpRequest="valueHelpFunSelect" valueState="{AIWEQUI>/StsmEquiVS}" valueStateText="{AIWEQUI>/StsmEquiVST}" liveChange="statProfChange"
+														change="onStatProfChange" submit="onStatProfChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/StsmEquiDesc}" enabled="false" visible="{mainView>/visible}"></Input>
+													<Label visible="{mainView>/visible}" text="{i18n>xtxt.STS_OBJ}"></Label>
+													<Input value="{AIWEQUI>/UstwEqui}" valueState="{AIWEQUI>/UstwEquiVS}" valueStateText="{AIWEQUI>/UstwEquiVST}" maxLength="30"
+														showValueHelp="true" visible="{mainView>/visible}" valueHelpRequest="valueHelpFunSelect" change="onStatObjChange"
+														enabled="{mainView>/enabled}" liveChange="onLiveChange" submit="onStatObjChange"></Input>
+													<Label visible="{mainView>/visible}" text="{i18n>xtxt.STS_WO_NO}"></Label>
+													<Input value="{AIWEQUI>/UswoEqui}" valueState="{AIWEQUI>/UswoEquiVS}" valueStateText="{AIWEQUI>/UswoEquiVST}" maxLength="30"
+														visible="{mainView>/visible}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="onLiveChange"
+														enabled="{mainView>/enabled}" change="onStatWOChange" submit="onStatWOChange"></Input>
+													<core:Title text="{i18n>GEN_DATA}"></core:Title>
+													<VBox>
+														<layoutData>
+															<l:GridData span="L12 M12 S12"/>
+														</layoutData>
+													</VBox>
+													<Label text="{i18n>OBJ_TYPE}"/>
+													<Input value="{AIWEQUI>/TechnicalObjectTyp}" valueState="{AIWEQUI>/TechnicalObjectTypVS}" valueStateText="{AIWEQUI>/TechnicalObjectTypVST}"
+														type="Text" enabled="{mainView>/enabled}" editable="true" showValueHelp="true" liveChange="techObjTypeChange" change="onTechObjTypeChange"
+														valueHelpRequest="valueHelpFunSelect" maxLength="10" submit="onTechObjTypeChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Description}" enabled="false"></Input>
+													<Label text="{i18n>AUTH_GRP}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/AuthorizGroup}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{AIWEQUI>/Begtx}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>GRS_WT}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" value="{AIWEQUI>/GrossWt}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/Gewei}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>INV_NUM}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" value="{AIWEQUI>/Invnr}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>SIZE_DIM}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" value="{AIWEQUI>/GroesEqu}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>STRT_DATE}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" change="onValidFrmChange" value="{path:'AIWEQUI>/Inbdt',formatter:'.formatter.dateFormat'}"
+														visible="{ApproveModel>/approveVisible}"/>
+													<core:Title text="{i18n>GEN_REF_DATA}"></core:Title>
+													<Label text="{i18n>xtxt.ACQUISITION_VAL}"/>
+													<Input type="Text" value="{AIWEQUI>/Answt}" change="onAcquisitionChange" maxLength="18" enabled="{mainView>/enabled}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Waers}" valueState="{AIWEQUI>/WaersVS}" valueStateText="{AIWEQUI>/WaersVST}" showValueHelp="true"
+														liveChange="onLiveChange" maxLength="3" change="onCurrencyChange" valueHelpRequest="valueHelpFunSelect" enabled="{mainView>/enabled}"
+														submit="onCurrencyChange"></Input>
+													<Label text="{i18n>xtxt.ACQUISITION_DATE}"/>
+													<DatePicker value="{path:'AIWEQUI>/Ansdt',formatter:'.formatter.dateFormat'}" valueFormat="MM/dd/yyyy" displayFormat="MM/dd/yyyy"
+														change="oAcqnDateChange" enabled="{mainView>/enabled}"></DatePicker>
+													<core:Title text="{i18n>GEN_MFD_DATA}"></core:Title>
+													<Label text="{i18n>xtxt.MANUFACTURER}"/>
+													<Input value="{AIWEQUI>/Herst}" type="Text" enabled="{mainView>/enabled}" editable="true" maxLength="30"/>
+													<Label text="{i18n>xtxt.MODELNUM}"/>
+													<Input value="{AIWEQUI>/Typbz}" type="Text" enabled="{mainView>/enabled}" editable="true" maxLength="20"/>
+													<Label text="{i18n>PARTNUM}"></Label>
+													<Input value="{AIWEQUI>/MapaEeqz}" enabled="{mainView>/enabled}" maxLength="30"></Input>
+													<Label text="{i18n>SER_NO}"></Label>
+													<Input value="{AIWEQUI>/Serge}" enabled="{mainView>/enabled}" maxLength="30"></Input>
+													<Label text="{i18n>MANUF_COUNTRY}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/Herld}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{AIWEQUI>/CountryName}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>CON_MANUF}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" value="{AIWEQUI>/ConstructYear}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/ConstructMth}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Input enabled="false" value="{AIWEQUI>/MonthName}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<core:Title text="{i18n>LOC_DATA}"></core:Title>
+													<VBox>
+														<layoutData>
+															<l:GridData span="L12 M12 S12"/>
+														</layoutData>
+													</VBox>
+													<Label text="{i18n>MAINT_PLANT}"/>
+													<Input id="idMaintenancePlant" value="{AIWEQUI>/Maintplant}" valueState="{AIWEQUI>/MaintplantVS}" valueStateText="{AIWEQUI>/MaintplantVST}"
+														type="Text" enabled="{AIWEQUI>/MaintplantEnabled}" editable="true" showValueHelp="true" liveChange="maintPlantChange"
+														change="onMaintPlantChange" valueHelpRequest="valueHelpFunSelect" maxLength="4" name="Maintplant">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/MaintplantDesc}" enabled="false">
+														<layoutData>
+															<l:GridData span="L3 M3 S4"/>
+														</layoutData>
+													</Input>
+													<Button id="MaintenancePlantBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost"
+														press="onDataOriginPress" enabled="{mainView>/enabled}"></Button>
+													<Label text="{i18n>LOC}"></Label>
+													<Input id="idLocation" value="{AIWEQUI>/Location}" valueState="{AIWEQUI>/LocationVS}" valueStateText="{AIWEQUI>/LocationVST}"
+														showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="locationChange" change="onLocationChange" maxLength="10"
+														enabled="{mainView>/enabled}" submit="onLocationChange" name="Location">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Locationdesc}" enabled="false">
+														<layoutData>
+															<l:GridData span="L3 M3 S4"/>
+														</layoutData>
+													</Input>
+													<Button id="LocationBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+														enabled="{mainView>/enabled}"></Button>
+													<Label text="{i18n>ROOM}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" value="{AIWEQUI>/MsgrEilo}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>ABC_IND}"></Label>
+													<Input id="idAbcInd" value="{AIWEQUI>/Abckz}" valueState="{AIWEQUI>/AbckzVS}" valueStateText="{AIWEQUI>/AbckzVST}" showValueHelp="true"
+														valueHelpRequest="valueHelpFunSelect" liveChange="abcIndChange" change="onAbcIndChange" maxLength="1" enabled="{mainView>/enabled}"
+														submit="onAbcIndChange" name="AbckEilo">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Abctx}" enabled="false">
+														<layoutData>
+															<l:GridData span="L3 M3 S4"/>
+														</layoutData>
+													</Input>
+													<Button id="abcIndicatorBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+														enabled="{mainView>/enabled}"></Button>
+													<Label text="{i18n>PL_SEC}"></Label>
+													<Input id="idPlntSec" value="{AIWEQUI>/BeberFl}" maxLength="3" valueState="{AIWEQUI>/BeberFlVS}" valueStateText="{AIWEQUI>/BeberFlVST}"
+														showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="plantSecChange" change="onPlantSecChange" submit="onPlantSecChange"
+														enabled="{mainView>/enabled}" name="BebeEilo">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{AIWEQUI>/Fing}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{AIWEQUI>/Tele}">
+														<layoutData>
+															<l:GridData span="L1 M1 S4"/>
+														</layoutData>
+													</Input>
+													<Button id="PlantSecBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+														enabled="{mainView>/enabled}"></Button>
+													<Label text="{i18n>WC}"></Label>
+													<Input id="idWorkCen" value="{AIWEQUI>/Arbpl}" valueState="{AIWEQUI>/ArbplVS}" valueStateText="{AIWEQUI>/ArbplVST}" showValueHelp="true"
+														maxLength="8" valueHelpRequest="valueHelpFunSelect" liveChange="wcChange" change="onWcChange" enabled="{mainView>/enabled}"
+														submit="onWcChange" name="WorkCenter">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Ktext}" enabled="false">
+														<layoutData>
+															<l:GridData span="L3 M3 S4"/>
+														</layoutData>
+													</Input>
+													<Button id="WorkCenterBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+														enabled="{mainView>/enabled}"></Button>
+													<!--<Input value="{AIWEQUI>/WcWerks}" enabled="false">-->
+													<!--	<layoutData>-->
+													<!--		<l:GridData span="L1 M1 S4"/>-->
+													<!--	</layoutData>-->
+													<!--</Input>-->
+													<Label text="{i18n>SORT_FLD}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" value="{AIWEQUI>/EqfnEilo}" visible="{ApproveModel>/approveVisible}"></Input>
+													<core:Title text="{i18n>ORG_ACC}"></core:Title>
+													<VBox>
+														<layoutData >
+															<l:GridData span="L12 M12 S12"/>
+														</layoutData>
+													</VBox>
+													<Label text="{i18n>COMPCODE}"/>
+													<Input value="{AIWEQUI>/Bukrs}" valueState="{AIWEQUI>/BukrsVS}" valueStateText="{AIWEQUI>/BukrsVST}" type="Text"
+														enabled="{AIWEQUI>/BukrsEnabled}" editable="true" showValueHelp="true" liveChange="companyCodeChange" change="onCompanyCodeChange"
+														valueHelpRequest="valueHelpFunSelect" maxLength="4" submit="onCompanyCodeChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Butxt}" type="Text" enabled="false"></Input>
+													<Label text="{i18n>BUS_AREA}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/GsbeEilo}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{AIWEQUI>/Gtext}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>ASSET}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/Anl1Eilo}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/Anl2Eilo}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Input enabled="false" value="{AIWEQUI>/AssesmentDesc}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>CC}"></Label>
+													<Input id="idCostCtr" value="{AIWEQUI>/Kostl}" valueState="{AIWEQUI>/KostlVS}" valueStateText="{AIWEQUI>/KostlVST}" showValueHelp="true"
+														valueHelpRequest="valueHelpFunSelect" liveChange="costCenterChange" change="onCostCenterdChange" maxLength="10" submit="onCostCenterdChange"
+														enabled="{mainView>/enabled}" name="KostEilo">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Kokrs}" enabled="false">
+														<layoutData>
+															<l:GridData span="L1 M1 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Mctxt}" enabled="false">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Button id="CostCenterBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+														enabled="{mainView>/enabled}"></Button>
+													<Label text="{i18n>WBS_ELE}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/Posid}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{AIWEQUI>/Post1}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>STD_ORD}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/DaufEilo}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{AIWEQUI>/Standorderdesc}" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>SETTLE_ORD}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/Settlement}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{AIWEQUI>/SettleOrdDesc}" visible="{ApproveModel>/approveVisible}"></Input>
+													<core:Title text="{i18n>ORG_RESP}"></core:Title>
+													<VBox>
+														<layoutData>
+															<l:GridData span="L12 M12 S12"/>
+														</layoutData>
+													</VBox>
+													<Label text="{i18n>PL_PLANT}"></Label>
+													<Input id="idPlnPlnt" value="{AIWEQUI>/Werks}" valueState="{AIWEQUI>/WerksVS}" valueStateText="{AIWEQUI>/WerksVST}" showValueHelp="true"
+														valueHelpRequest="valueHelpFunSelect" liveChange="plPlantChange" change="onPlPlantChange" maxLength="4" enabled="{mainView>/enabled}"
+														submit="onPlPlantChange" name="PplaEeqz">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Planningplantdes}" enabled="false">
+														<layoutData>
+															<l:GridData span="L3 M3 S4"/>
+														</layoutData>
+													</Input>
+													<Button id="PlanPlantBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+														enabled="{mainView>/enabled}"></Button>
+													<Label text="{i18n>PL_GRP}"></Label>
+													<Input id="idPlnGrp" value="{AIWEQUI>/Ingrp}" valueState="{AIWEQUI>/IngrpVS}" valueStateText="{AIWEQUI>/IngrpVST}" showValueHelp="true"
+														valueHelpRequest="valueHelpFunSelect" liveChange="plGrpChange" change="onPlGrpdChange" maxLength="3" enabled="{mainView>/enabled}"
+														submit="onPlGrpdChange" name="IngrEeqz">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Innam}" enabled="false">
+														<layoutData>
+															<l:GridData span="L3 M3 S4"/>
+														</layoutData>
+													</Input>
+													<Button id="PlanGrpBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+														enabled="{mainView>/enabled}"></Button>
+													<Label text="{i18n>MAIN_WORKCC}"></Label>
+													<Input id="idMainWC" value="{AIWEQUI>/MainArbpl}" valueState="{AIWEQUI>/MainArbplVS}" valueStateText="{AIWEQUI>/MainArbplVST}"
+														showValueHelp="true" valueHelpRequest="valueHelpFunSelect" liveChange="mainWcChange" change="onMainWcChange" maxLength="8"
+														enabled="{mainView>/enabled}" submit="onMainWcChange" name="MainWorkCenter">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/MainKtext}" enabled="false">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/MainWerks}" enabled="false" name="WorkCenterPlant">
+														<layoutData>
+															<l:GridData span="L1 M1 S4"/>
+														</layoutData>
+													</Input>
+													<Button id="MainWCBtn" icon="sap-icon://checklist-2" width="30px" tooltip="{i18n>DATA_ORGIN}" type="Ghost" press="onDataOriginPress"
+														enabled="{mainView>/enabled}"></Button>
+													<Label text="{i18n>CAT_PROFILE}" visible="{ApproveModel>/approveVisible}"></Label>
+													<Input enabled="false" showValueHelp="true" value="{AIWEQUI>/RbnrEeqz}" visible="{ApproveModel>/approveVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{AIWEQUI>/CatalogProfDesc}" visible="{ApproveModel>/approveVisible}"></Input>
+													<core:Title text="{i18n>STR}"></core:Title>
+													<Label text="{i18n>FLOC_TXT}"/>
+													<Input id="FunctionalLocation" value="{AIWEQUI>/Tplnr}" valueState="{AIWEQUI>/TplnrVS}" valueStateText="{AIWEQUI>/TplnrVST}" type="Text"
+														enabled="{AIWEQUI>/TplnrEnabled}" editable="true" showValueHelp="true" change="onFlocChange" valueHelpRequest="valueHelpFunSelect"
+														maxLength="40">
+														<!-- liveChange="flocChange" -->
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/Pltxt}" enabled="false"></Input>
+													<Label text="{i18n>xtxt.SUPERORD.EQUIP}"></Label>
+													<Input id="superOrdEq" value="{AIWEQUI>/SuperordinateEquip}" valueState="{AIWEQUI>/SuperordinateEquipVS}"
+														valueStateText="{AIWEQUI>/SuperordinateEquipVST}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect" change="onSuperOrdEqChange"
+														maxLength="18" enabled="{AIWEQUI>/SuperordinateEquipEnabled}">
+														<!-- liveChange="superOrdEqChange" -->
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/SuperordinateEquipDesc}" enabled="false"></Input>
+													<Label text="{i18n>xtxt.POSITION}"/>
+													<Input value="{AIWEQUI>/EquipPosition}" maxLength="4" enabled="{mainView>/enabled}"></Input>
+													<Label text="{i18n>EQUIP_DATE}" visible="{ApproveModel>/approveVisible}"/>
+													<Input value="{AIWEQUI>/Insdate}" enabled="false" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>EQMT_DATE}" visible="{ApproveModel>/approveVisible}"/>
+													<Input value="{AIWEQUI>/Instime}" enabled="false" visible="{ApproveModel>/approveVisible}"></Input>
+													<Label text="{i18n>TECH_IND}"></Label>
+													<Input value="{AIWEQUI>/TechIdNum}" maxLength="25" enabled="{mainView>/enabled}"></Input>
+													<Label text="{i18n>xtxt.CONSTRUCTION_TYPE}"/>
+													<Input value="{AIWEQUI>/ConstrType}" valueState="{AIWEQUI>/ConstrTypeVS}" valueStateText="{AIWEQUI>/ConstrTypeVST}" type="Text"
+														maxLength="{AIWEQUI>/ConstrTypeMaxL}" enabled="{mainView>/enabled}" editable="true" showValueHelp="true" liveChange="constTypeChange"
+														change="onConstTypeChange" valueHelpRequest="valueHelpFunSelect" submit="onConstTypeChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{AIWEQUI>/ConstructionDesc}" enabled="false"></Input>
+													<Label text=""></Label>
+													<Text ></Text>
+													<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.EQUI.EquiBasic" type="XML"/>
+													<!-- EAM 9.3 changes -->
+													<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>CONFIG_MAINT_OBJ}">
+														<layoutData>
+															<l:GridData span="L12 M12 S12"/>
+														</layoutData>
+													</Title>
+													<Label text="{i18n>FUNCTION_IND}"></Label>
+													<Input maxLength="40" enabled="{mainView>/enabled}" value="{AIWEQUI>/Funcid}" liveChange="onLiveChange"></Input>
+													<Label text="{i18n>FORCE_INST}"></Label>
+													<CheckBox enabled="{mainView>/enabled}" selected="{path:'AIWEQUI>/Frcfit',formatter:'.formatter.formatForceInstall'}"
+														select="onForceInstDismantSelect"></CheckBox>
+													<Label text="{i18n>FORCE_DISMNT}"></Label>
+													<CheckBox enabled="{mainView>/enabled}" selected="{path:'AIWEQUI>/Frcrmv',formatter:'.formatter.formatForceInstall'}"
+														select="onForceInstDismantSelect"></CheckBox>
+													<Label text=""></Label>
+													<Text></Text>
+													<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>CONFIG_CONT_OBH}">
+														<layoutData>
+															<l:GridData span="L12 M12 S12"/>
+														</layoutData>
+													</Title>
+													<Label text="{i18n>CONSTTYPE}"></Label>
+													<Text text="{AIWEQUI>/ConstrType}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Text>
+													<Text text="{AIWEQUI>/ConstructionDesc}"></Text>
+													<Label text=""></Label>
+													<Text ></Text>
+													<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>PRTINFO}" visible="{PRTVisibleEnableModel>/PRTVisible}">
+														<layoutData>
+															<l:GridData span="L12 M12 S12"/>
+														</layoutData>
+													</Title>
+													<Label text="{i18n>TLUSG}" visible="{PRTVisibleEnableModel>/PRTVisible}" required="true"></Label>
+													<Input enabled="{PRTVisibleEnableModel>/PRTEnable}" value="{AIWEQUI>/PlanvPrt}" change="onTLUSGChange"
+														visible="{PRTVisibleEnableModel>/PRTVisible}" type="Text" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"
+														valueState="{AIWEQUI>/PlanvPrtVS}" valueStateText="{AIWEQUI>/PlanvPrtVST}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input visible="{PRTVisibleEnableModel>/PRTVisible}" value="{AIWEQUI>/PlanvPrtText}" enabled="false"></Input>
+													<!--<Text visible="{PRTVisibleEnableModel>/PRTVisible}"></Text>-->
+													<Label text="{i18n>CTRLKEY}" visible="{PRTVisibleEnableModel>/PRTVisible}"></Label>
+													<Input enabled="{PRTVisibleEnableModel>/PRTEnable}" value="{AIWEQUI>/SteufPrt}" change="onControlKeyChange"
+														visible="{PRTVisibleEnableModel>/PRTVisible}" type="Text" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"
+														valueState="{AIWEQUI>/SteufPrtVS}" valueStateText="{AIWEQUI>/SteufPrtVST}">
+														<layoutData>
+															<l:GridData span="L1 M1 S4"/>
+														</layoutData>
+													</Input>
+													<Input visible="{PRTVisibleEnableModel>/PRTVisible}" value="{AIWEQUI>/SteufPrtText}" enabled="false">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<CheckBox text="{i18n>CANBECHANGED}" selected="{AIWEQUI>/SteufRef}" visible="{PRTVisibleEnableModel>/PRTVisible}"
+														enabled="{PRTVisibleEnableModel>/PRTEnable}"></CheckBox>
+													<Label text="{i18n>STDTXTKEY}" visible="{PRTVisibleEnableModel>/PRTVisible}"></Label>
+													<Input enabled="{PRTVisibleEnableModel>/PRTEnable}" value="{AIWEQUI>/KtschPrt}" change="onStdTxtKeyChange"
+														visible="{PRTVisibleEnableModel>/PRTVisible}" type="Text" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"
+														valueState="{AIWEQUI>/KtschPrtVS}" valueStateText="{AIWEQUI>/KtschPrtVST}">
+														<layoutData>
+															<l:GridData span="L1 M1 S4"/>
+														</layoutData>
+													</Input>
+													<Input visible="{PRTVisibleEnableModel>/PRTVisible}" value="{AIWEQUI>/KtschPrtText}" enabled="false">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<CheckBox text="{i18n>CANBECHANGED}" selected="{AIWEQUI>/KtschRef}" visible="{PRTVisibleEnableModel>/PRTVisible}"
+														enabled="{PRTVisibleEnableModel>/PRTEnable}"></CheckBox>
+													<Label text="{i18n>USGVALFORMULA}" visible="{PRTVisibleEnableModel>/PRTVisible}"></Label>
+													<Input enabled="{PRTVisibleEnableModel>/PRTEnable}" value="{AIWEQUI>/Ewformprt}" change="onUsgValFormulaChange"
+														visible="{PRTVisibleEnableModel>/PRTVisible}" type="Text" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"
+														valueState="{AIWEQUI>/EwformprtVS}" valueStateText="{AIWEQUI>/EwformprtVST}">
+														<layoutData>
+															<l:GridData span="L1 M1 S4"/>
+														</layoutData>
+													</Input>
+													<Input visible="{PRTVisibleEnableModel>/PRTVisible}" value="{AIWEQUI>/EwformprtText}" enabled="false">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<CheckBox text="{i18n>CANBECHANGED}" selected="{AIWEQUI>/EwformRef}" visible="{PRTVisibleEnableModel>/PRTVisible}"
+														enabled="{PRTVisibleEnableModel>/PRTEnable}"></CheckBox>
+													<Label text=""></Label>
+													<Text visible="{PRTVisibleEnableModel>/PRTVisible}"></Text>
+												</f:content>
+											</f:SimpleForm>
+											<core:Fragment id="ainSection" type="XML" fragmentName="ugieamui.mdg.eam.lib.ain.AINSection"></core:Fragment>
+											<core:Fragment id="lamFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.lam.LinearData" type="XML"/>
+											<Panel id="idPanelDFPS">
+												<headerToolbar>
+													<OverflowToolbar height="3rem">
+														<Title text="{i18n>DFPS_TITLE}"/>
+														<Button id="createDFPS" text="{i18n>CREATE}" press="onDFPScreate" enabled="{AIWEQUI>/dfps/dfpsCrtEnabled}"/>
+														<Button id="deleteDFPS" text="{i18n>DELETE}" press="onDFPSdelete" enabled="{AIWEQUI>/dfps/dfpsDltEnabled}"/>
+													</OverflowToolbar>
+												</headerToolbar>
+												<content>
+													<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4"
+														emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+														<f:content>
+															<core:Title text="{i18n>IDENT_LOCL}"></core:Title>
+															<Label text="{i18n>TAIL_NO}" required="{AIWEQUI>/dfps/TailnoReq}"></Label>
+															<Input value="{AIWEQUI>/dfps/Tailno}" valueState="{AIWEQUI>/dfps/TailnoVS}" showValueHelp="true" liveChange="onLiveChange"
+																change="onTailNoChange" valueHelpRequest="onTailNoVH" enabled="{AIWEQUI>/dfps/dfpsEnabled}"></Input>
+															<!--enabled="{mainView>/enabled}"-->
+															<Label text="{i18n>AREA}"></Label>
+															<Input enabled="false" value="{AIWEQUI>/dfps/Area}">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input enabled="false" value="{AIWEQUI>/dfps/AreaDesc}"></Input>
+															<Label text="{i18n>SITE}"></Label>
+															<Input value="{AIWEQUI>/dfps/Site}" valueState="{AIWEQUI>/dfps/SiteVS}" showValueHelp="true" liveChange="onLiveChange"
+																change="onDFPSSiteChange" valueHelpRequest="onDFPSSiteVH" enabled="false">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input enabled="false" value="{AIWEQUI>/dfps/SiteDesc}">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Button id="siteBtn" icon="sap-icon://addresses" tooltip="{i18n>SITE_AREA}" press="onCreateAssignSiteAreaPress"
+																enabled="{AIWEQUI>/dfps/dfpsEnabled}"></Button>
+															<core:Title text="{i18n>CLSTN}"></core:Title>
+															<Label text="{i18n>MPO}"></Label>
+															<Input enabled="false" value="{AIWEQUI>/dfps/MPO}">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input enabled="false" value="{AIWEQUI>/dfps/MPODesc}"></Input>
+															<Label text="{i18n>RIC}"></Label>
+															<Input enabled="false" value="{AIWEQUI>/dfps/RIC}">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input enabled="false" value="{AIWEQUI>/dfps/RICDesc}"></Input>
+															<Label text="{i18n>MODELID_WS}"></Label>
+															<Input value="{AIWEQUI>/dfps/ModelId}" valueState="{AIWEQUI>/dfps/ModelIdVS}" showValueHelp="true" liveChange="onLiveChange"
+																change="onModelIdWsChange" valueHelpRequest="onModelIdWsVH" enabled="{AIWEQUI>/dfps/dfpsEnabled}">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input enabled="false" value="{AIWEQUI>/dfps/ModelIdDesc}"></Input>
+															<Label text="{i18n>FOREIGN_EQUIP}"></Label>
+															<CheckBox selected="{AIWEQUI>/dfps/ForeignEq}" enabled="{AIWEQUI>/dfps/dfpsEnabled}"></CheckBox>
+															<core:Title text="{i18n>STATUS}"></core:Title>
+															<Label text="{i18n>TECH_STS}"></Label>
+															<Input enabled="false" value="{AIWEQUI>/dfps/TechSts}"></Input>
+															<Label text="{i18n>OPER_STS}"></Label>
+															<Input enabled="false" value="{AIWEQUI>/dfps/OperSts}">
+																<layoutData>
+																	<l:GridData span="L4 M4 S9"/>
+																</layoutData>
+															</Input>
+															<Button icon="sap-icon://edit" press="onOperStatusEditpress" enabled="{AIWEQUI>/dfps/dfpsEnabled}"></Button>
+															<Label text="{i18n>REMARK}"></Label>
+															<Input value="{AIWEQUI>/dfps/Remark}" liveChange="onLiveChange" enabled="{AIWEQUI>/dfps/dfpsEnabled}"></Input>
+														</f:content>
+													</f:SimpleForm>
+												</content>
+											</Panel>
+											<Panel>
+												<headerToolbar>
+													<OverflowToolbar height="3rem">
+														<Title text="{i18n>IPPE_TITLE}"/>
+													</OverflowToolbar>
+												</headerToolbar>
+												<content>
+													<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4"
+														emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+														<f:content>
+															<Toolbar height="2rem">
+																<Title text="{i18n>IPPE_ACSINFO}"/>
+																<Button icon="sap-icon://add-coursebook" text="{i18n>IPPE_ACSRECRD}" press="onIppeAccessRecPress" enabled="{mainView>/enabled}"/>
+																<Button icon="sap-icon://delete" text="{i18n>IPPE_DEL}" press="onIppeDeletePress" enabled="{mainView>/enabled}"/>
+																<ToolbarSpacer/>
+															</Toolbar>
+															<Label text="{i18n>ACS_NODE}"></Label>
+															<Input enabled="false" value="{AIWEQUI>/AcsnodeIppe}"></Input>
+															<Label text="{i18n>DESC}"></Label>
+															<Input enabled="false" value="{AIWEQUI>/DescIppe}"></Input>
+															<Label text="{i18n>VARIANT}"></Label>
+															<Input enabled="false" value="{AIWEQUI>/VariantIppe}"></Input>
+															<Label text="{i18n>ALTRNTVE}"></Label>
+															<Input enabled="false" value="{AIWEQUI>/AltIppe}"></Input>
+														</f:content>
+													</f:SimpleForm>
+												</content>
+											</Panel>
+											<Panel visible="{ApproveModel>/createVisible}">
+												<headerToolbar>
+													<OverflowToolbar height="3rem">
+														<Title text="{i18n>ADDR}"/>
+													</OverflowToolbar>
+												</headerToolbar>
+												<content>
+													<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4"
+														emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+														<f:content>
+															<!--<Title textAlign="Left" level="H2" wrapping="false" text="{i18n>ADDR}" visible="{ApproveModel>/createVisible}">-->
+															<!--	<layoutData>-->
+															<!--		<l:GridData span="L12 M12 S12"/>-->
+															<!--	</layoutData>-->
+															<!--</Title>-->
+															<Label text="{i18n>ADDTITLE}" visible="{ApproveModel>/createVisible}"></Label>
+															<Select visible="{ApproveModel>/createVisible}" selectedKey="{AIWEQUI>/TitleCode}" enabled="{equiAddressView>/enabled}"
+																valueState="{AIWEQUI>/TitleVS}" items="{ path: 'AddressTitleModel>/', sorter: { path: 'Title' } }" change="onAddressTitleChange">
+																<core:Item key="{AddressTitleModel>TitleCode}" text="{AddressTitleModel>Title}"/>
+															</Select>
+															<Label text="{i18n>ADDNAME}" visible="{ApproveModel>/createVisible}"></Label>
+															<Input value="{AIWEQUI>/Name1}" tooltip="{i18n>Name1}" change="onAddressFieldChange" enabled="{equiAddressView>/enabled}"
+																visible="{ApproveModel>/createVisible}"></Input>
+															<Label visible="{ApproveModel>/createVisible}"></Label>
+															<Input value="{AIWEQUI>/Name2}" tooltip="{i18n>Name2}" change="onAddressFieldChange" enabled="{equiAddressView>/enabled}"
+																visible="{ApproveModel>/createVisible}"></Input>
+															<Label visible="{ApproveModel>/createVisible}"></Label>
+															<Input value="{AIWEQUI>/Name3}" tooltip="{i18n>Name3}" change="onAddressFieldChange" enabled="{equiAddressView>/enabled}"
+																visible="{ApproveModel>/createVisible}"></Input>
+															<Label visible="{ApproveModel>/createVisible}"></Label>
+															<Input value="{AIWEQUI>/Name4}" tooltip="{i18n>Name4}" change="onAddressFieldChange" enabled="{equiAddressView>/enabled}"
+																visible="{ApproveModel>/createVisible}"></Input>
+															<Label text="{i18n>SearchTerm}" visible="{ApproveModel>/createVisible}"/>
+															<Input value="{AIWEQUI>/Sort1}" visible="{ApproveModel>/createVisible}" type="Text" change="onAddressFieldChange"
+																enabled="{equiAddressView>/enabled}" editable="true" showValueHelp="false">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input value="{AIWEQUI>/Sort2}" visible="{ApproveModel>/createVisible}" change="onAddressFieldChange" enabled="{equiAddressView>/enabled}"></Input>
+															<Label text="{i18n>C_O}" visible="{ApproveModel>/createVisible}"></Label>
+															<Input enabled="{equiAddressView>/enabled}" value="{AIWEQUI>/NameCo}" change="onAddressFieldChange" visible="{ApproveModel>/createVisible}"
+																type="Text" showValueHelp="false"></Input>
+															<Label text="{i18n>PIN_Cty}" visible="{ApproveModel>/createVisible}"></Label>
+															<Input enabled="{equiAddressView>/enabled}" maxLength="10" value="{AIWEQUI>/PostCod1}" valueState="{AIWEQUI>/PostCod1VS}"
+																change="onPostalCodeChange" visible="{ApproveModel>/createVisible}">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input enabled="{equiAddressView>/enabled}" value="{AIWEQUI>/City1}" valueState="{AIWEQUI>/City1VS}" visible="{ApproveModel>/createVisible}"
+																showValueHelp="true" valueHelpRequest="onCityAddrVH" change="onCityAddrChange" liveChange="onLiveChange"></Input>
+															<Label text="{i18n>BUILD_FLR}" visible="{ApproveModel>/createVisible}"/>
+															<Input value="{AIWEQUI>/Building}" visible="{ApproveModel>/createVisible}" change="onAddressFieldChange" type="Text"
+																enabled="{equiAddressView>/enabled}" editable="true">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input value="{AIWEQUI>/Floor}" visible="{ApproveModel>/createVisible}" change="onAddressFieldChange" enabled="{equiAddressView>/enabled}">
+																<layoutData>
+																	<l:GridData span="L1 M1 S2"/>
+																</layoutData>
+															</Input>
+															<Label text="{i18n>ROOM}" visible="{ApproveModel>/createVisible}">
+																<layoutData>
+																	<l:GridData span="L1 M1 S2"/>
+																</layoutData>
+															</Label>
+															<Input value="{AIWEQUI>/Roomnum}" visible="{ApproveModel>/createVisible}" change="onAddressFieldChange" type="Text"
+																enabled="{equiAddressView>/enabled}" editable="true">
+																<layoutData>
+																	<l:GridData span="L1 M1 S2"/>
+																</layoutData>
+															</Input>
+															<Label text="{i18n>STR2}" visible="{ApproveModel>/createVisible}"></Label>
+															<Input enabled="{equiAddressView>/enabled}" value="{AIWEQUI>/Strsuppl1}" change="onAddressFieldChange"
+																visible="{ApproveModel>/createVisible}" type="Text" showValueHelp="false"></Input>
+															<Label text="{i18n>STR3}" visible="{ApproveModel>/createVisible}"></Label>
+															<Input enabled="{equiAddressView>/enabled}" value="{AIWEQUI>/Strsuppl2}" change="onAddressFieldChange"
+																visible="{ApproveModel>/createVisible}" type="Text" showValueHelp="false"></Input>
+															<Label text="{i18n>STR4}" visible="{ApproveModel>/createVisible}"></Label>
+															<Input enabled="{equiAddressView>/enabled}" value="{AIWEQUI>/Strsuppl3}" change="onAddressFieldChange"
+																visible="{ApproveModel>/createVisible}" type="Text" showValueHelp="false"></Input>
+															<Label text="{i18n>STR5}" visible="{ApproveModel>/createVisible}"></Label>
+															<Input enabled="{equiAddressView>/enabled}" value="{AIWEQUI>/AddrLocation}" change="onAddressFieldChange"
+																visible="{ApproveModel>/createVisible}" type="Text" showValueHelp="false"></Input>
+															<Label text="{i18n>COUNTRY}" visible="{ApproveModel>/createVisible}" required="{AIWEQUI>/RefPostaLblReq}"/>
+															<Input enabled="{equiAddressView>/enabled}" value="{AIWEQUI>/RefPosta}" visible="{ApproveModel>/createVisible}"
+																valueState="{AIWEQUI>/RefPostaVS}" valueStateText="{AIWEQUI>/RefPostaVST}" type="Text" editable="true" showValueHelp="true"
+																liveChange="cntryChange" change="onCntryChange" valueHelpRequest="valueHelpFunSelect" submit="onCntryChange">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input value="{AIWEQUI>/Landx}" visible="{ApproveModel>/createVisible}" enabled="false"></Input>
+															<Label text="{i18n>RGIN}" visible="{ApproveModel>/createVisible}"></Label>
+															<Input enabled="{equiAddressView>/enabled}" value="{AIWEQUI>/Region}" visible="{ApproveModel>/createVisible}"
+																valueState="{AIWEQUI>/RegionVS}" valueStateText="{AIWEQUI>/RegionVST}" type="Text" editable="true" showValueHelp="true"
+																liveChange="regionChange" change="onRegionChange" valueHelpRequest="valueHelpFunSelect" submit="onRegionChange">
+																<layoutData>
+																	<l:GridData span="L2 M2 S4"/>
+																</layoutData>
+															</Input>
+															<Input value="{AIWEQUI>/RegionDesc}" visible="{ApproveModel>/createVisible}" enabled="false"></Input>
+															<Label text="{i18n>TIME_ZONE}" visible="{ApproveModel>/createVisible}"></Label>
+															<Input enabled="{equiAddressView>/enabled}" liveChange="onLiveChange" change="onTimeZoneChange" submit="onTimeZoneChange"
+																value="{AIWEQUI>/TimeZone}" visible="{ApproveModel>/createVisible}" valueState="{AIWEQUI>/TimeZoneVS}"
+																valueStateText="{AIWEQUI>/TimeZoneVST}" showValueHelp="true" valueHelpRequest="valueHelpFunSelect"/>
+														</f:content>
+													</f:SimpleForm>
+													<Table id="idTBLIntlAddr" mode="Delete" items="{AIWEQUI>/intlAddr}" delete="handleIntlAddrDelete" visible="{ApproveModel>/createVisible}">
+														<headerToolbar>
+															<Toolbar>
+																<Title id="idTTLIntlVersion" text="{i18n>INTLVERSION}"/>
+																<ToolbarSpacer/>
+																<Button id="idBTNnewIntlAddr" icon="sap-icon://add" tooltip="New" press="handleIntlAddrAdd" enabled="{equiAddressView>/enabled}"/>
+																<!--enabled="{AIWEQUI>/addIntlBtn}"  enabled="{mainView>/enabled}"-->
+															</Toolbar>
+														</headerToolbar>
+														<columns>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>ADDR_VERSION}"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>Name1}"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>Name2}"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>STREET}"></Text>
+															</Column>
+															<Column demandPopin="true" minScreenWidth="Tablet">
+																<Text text="{i18n>CITY}"></Text>
+															</Column>
+														</columns>
+														<items>
+															<ColumnListItem press="handleIntlAddrPress" type="Navigation">
+																<cells>
+																	<Select forceSelection="false" items="{path: 'AddressVersionModel>/'}" selectedKey="{AIWEQUI>AdNation}" enabled="{AIWEQUI>AdNationEnable}"
+																		width="100%" change="onAddrVersionChange">
+																		<core:Item key="{AddressVersionModel>Nation}" text="{AddressVersionModel>NationTex}"/>
+																	</Select>
+																	<!--enabled="{AIWEQUI>enable}"-->
+																	<!-- enabled="{mainView>/enabled}" -->
+																	<Input maxLength="40" value="{AIWEQUI>Name1i}" enabled="{equiAddressView>/enabled}"></Input>
+																	<Input maxLength="40" value="{AIWEQUI>Name2i}" enabled="{equiAddressView>/enabled}"></Input>
+																	<Input showValueHelp="true" value="{AIWEQUI>Streeti}" valueHelpRequest="onStreetVH" change="onStreetIChange" liveChange="onLiveChange"
+																		enabled="{equiAddressView>/enabled}" valueState="{AIWEQUI>StreetiVS}" showValueStateMessage="false"></Input>
+																	<Input showValueHelp="true" value="{AIWEQUI>City1i}" valueHelpRequest="onCityVH" change="onCityIChange" liveChange="onLiveChange"
+																		enabled="{equiAddressView>/enabled}" valueState="{AIWEQUI>City1iVS}" showValueStateMessage="false"></Input>
+																</cells>
+															</ColumnListItem>
+														</items>
+													</Table>
+												</content>
+											</Panel>
+											<core:Fragment id="clsFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.ClassAssignment" type="XML"/>
+											<core:Fragment id="charFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.CC.Characteristics" type="XML"/>
+											<core:Fragment id="linearcharFrag" fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.LinearCharacteristics" type="XML"/>
+										</l:content>
+									</l:Grid>
+								</content>
+							</IconTabFilter>
+							<!--<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>CONFIG_CONT_IPPE}"-->
+							<!--	tooltip="{i18n>CONFIG_CONT_IPPE}">-->
+							<!--	<content>-->
+							<!--		<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.EQUI.EquiConfigControl" type="XML"/>-->
+							<!--	</content>-->
+							<!--</IconTabFilter>-->
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>AIN_DATA}"
+								tooltip="{i18n>AIN_DATA}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.EQUI.EquiAIN" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>PARTNERS}"
+								tooltip="{i18n>PARTNERS}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.EQUI.EquiPartners" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>PERMITS_}"
+								tooltip="{i18n>PERMITS_}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.EQUI.EquiPermits" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>PRT_INFO}"
+								tooltip="{i18n>PRT_INFO}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.EQUI.PRTInformation" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>fleetManagement}"
+								tooltip="{i18n>fleetManagement}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.EQUI.EquiFleet" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisibleLin}" text="{i18n>LINEAR_DATA}"
+								tooltip="{i18n>LINEAR_DATA}">
+								<content>
+									<core:Fragment id="lamAprvFrag" fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.LinearDataAprv" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>ADD_MNTNC}"
+								tooltip="{i18n>ADD_MNTNC}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Address" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>DEFENSE_PUBLIC}"
+								tooltip="{i18n>DEFENSE_PUBLIC}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.EQUI.EquiDefense" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>assignment}"
+								tooltip="{i18n>assignment}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.ClassAssignments" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisible}" text="{i18n>characteristics}"
+								tooltip="{i18n>characteristics}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.Characteristics" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://form" design="Horizontal" visible="{ApproveModel>/approveVisibleLin}" text="{i18n>LIN_CHAR_TITLE}"
+								tooltip="{i18n>LIN_CHAR_TITLE}">
+								<content>
+									<core:Fragment fragmentName="ugiaiwui.mdg.aiw.request.Fragments.Common.ApprLinearChar" type="XML"/>
+								</content>
+							</IconTabFilter>
+							<!--<IconTabFilter key="onAttach" count="{AIWEQUI>/attachmentCount}" icon="sap-icon://attachment" text="{i18n>ATTACHMENT_TITLE}"-->
+							<!--	tooltip="{i18n>ATTACHMENT_TITLE}" design="Horizontal">-->
+							<!--	<content>-->
+							<!--		<core:Fragment id="attach" fragmentName="ugiaiwui.mdg.aiw.library.fragments.Attachments.Attachments" type="XML"/>-->
+							<!--	</content>-->
+							<!--</IconTabFilter>-->
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Toolbar id="tabletoolbar">
+						<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+						<ToolbarSpacer/>
+						<Button id="idBtnCheck" text="Check" press="onDonePress" enabled="{mainView>/enabled}"/>
+						<Button text="Done" type="Accept" press="onDonePress"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

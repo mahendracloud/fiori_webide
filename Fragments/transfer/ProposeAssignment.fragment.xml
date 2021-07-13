@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc">
+	<Dialog title="Transfer of Meaurement and Counter Readings" stretch="true">
+		<beginButton>
+			<Button text="OK" press="onProposeOKPress"></Button>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="onProposeCancelPress"></Button>
+		</endButton>
+		<content>
+			<Table id="propTab" mode="SingleSelectLeft" items="{/}">
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Measuring Point"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Description"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Measurement Position"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="MeasPoint is Counter"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Equipment"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Functional Location"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="Characteristic Name"></Text>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{Point}"></Text>
+							<Text text="{Pttxt}"></Text>
+							<Text text="{Psort}"></Text>
+							<Text text="{path:'Indct', formatter:'.formatter.indicatorCheck'}"></Text>
+							<Text text="{Equnr}"></Text>
+							<Text text="{Tplnr}"></Text>
+							<Text text="{Atnam}"></Text>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

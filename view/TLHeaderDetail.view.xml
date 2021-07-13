@@ -1,0 +1,109 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.TLHeaderDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<Page id="tlHeaderDetailPage" navButtonPress="onNavBack" showNavButton="false" title="">
+		<content>
+			<Panel expandable="true" expanded="true" headerText="{i18n>HDR_DET}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="hdrDetailsForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>GROUP_TXT}"></Label>
+							<Input id="groupDt" enabled="false" value="{tlHeaderDetailModel>/Plnnr}"></Input>
+							<Label text="{i18n>GRP_COUNT}"></Label>
+							<Input id="grpCounterDt" enabled="false" value="{tlHeaderDetailModel>/Plnal}" maxLength="2"
+								valueState="{tlHeaderDetailModel>/grpCntrValueState}" valueStateText="{tlHeaderDetailModel>/grpCntrValueStateTxt}">
+								<layoutData>
+									<l:GridData span="L1 M1 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="descDt" value="{tlHeaderDetailModel>/Ktext}" change="onChange" valueState="{tlHeaderDetailModel>/descDtValueState}"
+								maxLength="40"></Input>
+							<Label text="{i18n>PLAN_PLANT_TXT}"></Label>
+							<Input id="planPlantDt" liveChange="onLiveChange" change="onChange" value="{tlHeaderDetailModel>/Iwerk}" maxLength="4"
+								enabled="{tlHeaderDetailModel>/pPlantDtEnb}" showValueHelp="true" valueHelpRequest="onPplantDtVH" submit="onChange"
+								valueState="{tlHeaderDetailModel>/pPlantValueState}" valueStateText="{tlHeaderDetailModel>/pPlantValueStateTxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="planPlantDescDt" enabled="false" value="{tlHeaderDetailModel>/pPlantDesc}" maxLength="40"></Input>
+							<core:Title text="{i18n>ASSIGN_HDR}"></core:Title>
+							<Label text="{i18n>WC}"></Label>
+							<Input id="wcDt" showValueHelp="true" valueHelpRequest="onWCDtVH" maxLength="8" value="{tlHeaderDetailModel>/KapArbpl}"
+								liveChange="onLiveChange" change="onChange" submit="onChange" valueState="{tlHeaderDetailModel>/wcDtValueState}"
+								valueStateText="{tlHeaderDetailModel>/wcDtValueStateTxt}">
+								<!--<layoutData>-->
+								<!--	<l:GridData span="L2 M2 S4"/>-->
+								<!--</layoutData>-->
+							</Input>
+							<Input id="wcPlantDt" showValueHelp="true" valueHelpRequest="onPlantWcVH" liveChange="onLiveChange" change="onChange"
+								value="{tlHeaderDetailModel>/Werks}" maxLength="4" submit="onChange" valueState="{tlHeaderDetailModel>/wcPlantValueState}"
+								valueStateText="{tlHeaderDetailModel>/wcPlantValueStateTxt}"></Input>
+							<Label text="{i18n>USAGE}"></Label>
+							<Input id="usageDt" showValueHelp="true" maxLength="3" valueHelpRequest="onUsageDtVH" value="{tlHeaderDetailModel>/Verwe}"
+								liveChange="onLiveChange" change="onChange" submit="onChange" valueState="{tlHeaderDetailModel>/usgValueState}"
+								valueStateText="{tlHeaderDetailModel>/usgValueStateTxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="usageDescDt" enabled="false" value="{tlHeaderDetailModel>/usageDesc}" maxLength="40"></Input>
+							<Label text="{i18n>PL_GRP}"></Label>
+							<Input id="plGrpDt" showValueHelp="true" valueHelpRequest="onPlannerGrpVH" value="{tlHeaderDetailModel>/Vagrp}" liveChange="onLiveChange"
+								change="onChange" maxLength="3" submit="onChange" valueState="{tlHeaderDetailModel>/plGrpValueState}"
+								valueStateText="{tlHeaderDetailModel>/plGrpValueStateTxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="plGrpDescDt" enabled="false" value="{tlHeaderDetailModel>/plGrpDesc}" maxLength="40"></Input>
+							<Label text="{i18n>STATUS}"></Label>
+							<Input id="statusDt" showValueHelp="true" valueHelpRequest="onStatusDtVH" liveChange="onLiveChange" maxLength="3" change="onChange"
+								value="{tlHeaderDetailModel>/Statu}" submit="onChange" valueState="{tlHeaderDetailModel>/statusValueState}"
+								valueStateText="{tlHeaderDetailModel>/statusValueStateTxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="statusDescDt" enabled="false" value="{tlHeaderDetailModel>/statusDesc}" maxLength="40"></Input>
+							<Label text="{i18n>SYS_CONDITION}"></Label>
+							<Input id="sysCondDt" showValueHelp="true" valueHelpRequest="onSysCondDtVH" liveChange="onLiveChange" change="onChange"
+								value="{tlHeaderDetailModel>/Anlzu}" maxLength="1" submit="onChange" valueState="{tlHeaderDetailModel>/sysCondValueState}"
+								valueStateText="{tlHeaderDetailModel>/sysCondValueStateTxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="sysCondDescDt" enabled="false" value="{tlHeaderDetailModel>/sysCondDesc}" maxLength="40"></Input>
+							<Label text="{i18n>STRAT}"></Label>
+							<Input id="maintStrDt" showValueHelp="true" valueHelpRequest="onStrategyVH" liveChange="onLiveChange" change="onChange"
+								value="{tlHeaderDetailModel>/Strat}" maxLength="6" submit="onChange" valueState="{tlHeaderDetailModel>/maintStrValueState}"
+								valueStateText="{tlHeaderDetailModel>/maintStrValueStateTxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="maintStrDescDt" enabled="false" value="{tlHeaderDetailModel>/stratDesc}" maxLength="40"></Input>
+							<Label text="{i18n>Assembly}"></Label>
+							<Input id="assmblyDt" showValueHelp="true" valueHelpRequest="onAssemblyVH" liveChange="onLiveChange" change="onChange"
+								value="{tlHeaderDetailModel>/assmbly}" maxLength="6" submit="onChange" valueState="{tlHeaderDetailModel>/assemblyValueState}"
+								valueStateText="{tlHeaderDetailModel>/assemblyValueStateTxt}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input id="assmblyDescDt" enabled="false" value="{tlHeaderDetailModel>/assmblyDesc}" maxLength="40"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar id="tabletoolbar">
+				<ToolbarSpacer/>
+				<Button text="Done" type="Accept" press="onHdrDonePress"/>
+				<!--<Button text="Cancel" type="Reject" press="onCancelPress"/>-->
+			</Toolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

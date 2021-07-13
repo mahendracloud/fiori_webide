@@ -1,0 +1,585 @@
+{
+    "resources": [
+        {
+            "name": "../../Fragments/EQUI/DFPSAreaSite.fragment.xml"
+        },
+        {
+            "name": "../../controller/DetailObjectLink.controller.js"
+        },
+        {
+            "name": "../../manifest.json"
+        },
+        {
+            "name": "../../util/ValueHelpRequest.js"
+        },
+        {
+            "name": "../../util/CRPersoService2.js"
+        },
+        {
+            "name": "../../util/CRPersoService.js"
+        },
+        {
+            "name": "../../model/models.js"
+        },
+        {
+            "name": "../../model/formatter.js"
+        },
+        {
+            "name": "../../localService/mockserver.js"
+        },
+        {
+            "name": "../../controller/WCCostingDetail.controller.js"
+        },
+        {
+            "name": "../../controller/WCCapacityDetail.controller.js"
+        },
+        {
+            "name": "../../controller/TLSrvPckgeDetail.controller.js"
+        },
+        {
+            "name": "../../controller/TLPRTDetail.controller.js"
+        },
+        {
+            "name": "../../controller/TLOperationDetail.controller.js"
+        },
+        {
+            "name": "../../controller/TLMaintPckgDetail.controller.js"
+        },
+        {
+            "name": "../../controller/TLInspCharDetail.controller.js"
+        },
+        {
+            "name": "../../controller/TLHeaderDetail.controller.js"
+        },
+        {
+            "name": "../../controller/TLComponentDetail.controller.js"
+        },
+        {
+            "name": "../../controller/Search.controller.js"
+        },
+        {
+            "name": "../../controller/OLLamDetail.controller.js"
+        },
+        {
+            "name": "../../controller/NotFound.controller.js"
+        },
+        {
+            "name": "../../controller/MyChangeRequest.controller.js"
+        },
+        {
+            "name": "../../controller/Main.controller.js"
+        },
+        {
+            "name": "../../controller/ItemMaintenancePlan.controller.js"
+        },
+        {
+            "name": "../../controller/ItemBOM.controller.js"
+        },
+        {
+            "name": "../../controller/InternationalAddress.controller.js"
+        },
+        {
+            "name": "../../controller/ErrorHandler.js"
+        },
+        {
+            "name": "../../controller/DetailWorkCenter.controller.js"
+        },
+        {
+            "name": "../../controller/DetailTaskList.controller.js"
+        },
+        {
+            "name": "../../controller/DetailObjectNetwork.controller.js"
+        },
+        {
+            "name": "../../model/Objects.json"
+        },
+        {
+            "name": "../../controller/DetailMeasuringPoint.controller.js"
+        },
+        {
+            "name": "../../controller/DetailMaintenancePlan.controller.js"
+        },
+        {
+            "name": "../../controller/DetailFunctionalLocation.controller.js"
+        },
+        {
+            "name": "../../controller/DetailEquipment.controller.js"
+        },
+        {
+            "name": "../../controller/DetailBOM.controller.js"
+        },
+        {
+            "name": "../../controller/BaseController.js"
+        },
+        {
+            "name": "../../controller/App.controller.js"
+        },
+        {
+            "name": "../../Component.js"
+        },
+        {
+            "name": "../../manifest-bundle.zip"
+        },
+        {
+            "name": "../../Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "../../controller/OLLamDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../util/ValueHelpRequest-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../util/CRPersoService2-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../util/CRPersoService-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../model/formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../localService/mockserver-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/WCCostingDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/WCCapacityDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/TLSrvPckgeDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/TLPRTDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/TLOperationDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/TLMaintPckgDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/TLInspCharDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/TLHeaderDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/TLComponentDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/Search-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/NotFound-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/MyChangeRequest-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/Main-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/ItemMaintenancePlan-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/ItemBOM-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/InternationalAddress-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/ErrorHandler-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/DetailWorkCenter-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/DetailTaskList-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/DetailObjectNetwork-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/DetailObjectLink-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/DetailMeasuringPoint-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/DetailMaintenancePlan-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/DetailFunctionalLocation-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/DetailEquipment-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/DetailBOM-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/BaseController-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../../../../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "../../Fragments/transfer/Structure.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/transfer/ReferenceDateTime.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/transfer/ProposeAssignment.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/transfer/MeasPointTransfer.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/transfer/History.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/transfer/Cancel.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/WC/WorkCenterTechnology.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/WC/WorkCenterScheduling.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/WC/WorkCenterCosting.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/WC/WorkCenterCapacity.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/WC/CopyWorkCenter.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/TL/TLOpOverView.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/TL/TLComponents.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/TL/CopyTaskList.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/TL/CompSelection.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/ON/CopyObjectNetwork.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/OL/ObjectLinkLam.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/OL/CopyObjectLink.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/MPMI/MaintenanceItems.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/MPMI/MaintenanceCycles.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Hierarchy/ManageHierarchies.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Hierarchy/Hierarchy.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Hierarchy/FilterObjects.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/FLOC/FlocPermits.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/FLOC/FlocPartners.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/EQUI/PRTInformation.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/EQUI/OperStatus.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/EQUI/EquiPermits.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/EQUI/EquiPartners.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/EQUI/EquiFleet.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/EQUI/EquiDefense.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/EQUI/EquiConfigControl.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/EQUI/EquiBasic.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/EQUI/EquiAIN.fragment.xml"
+        },
+        {
+            "name": "../../i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "../../Fragments/Common/RejectionNote.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/NotesAdd.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/Notes.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/MaterialVH.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/LinearDataAprv.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/LinearCharacteristics.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/FlocVH.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/EquipmentVH.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/CopyFragment.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/ClassAssignments.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/Characteristics.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/CharValueVH.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/CRdetails.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/Attachments.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/ApprLinearChar.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/Address.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/Common/AIWModel.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/BOM/CopyBomGeneral.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/BOM/BomItemOverview.fragment.xml"
+        },
+        {
+            "name": "../../Fragments/BOM/ApprItmDetail.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/WC/WorkCenter.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/TL/TaskListMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/TL/GeneralTaskList.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/TL/FLOCTaskList.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/TL/EquipmentTaskList.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/ON/ONMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/OL/ObjectLink.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/MSPT/MeasuringPointMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/MPMI/MaintenancePlanMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/FLOC/FunctionalLocationMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/EQUI/EquipmentMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/BOM/WbsBomMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/BOM/MaterialBomMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/BOM/FunctionalLocationBomMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/BOM/EquipmentBomMain.fragment.xml"
+        },
+        {
+            "name": "../../DomainParts/BOM/BomMain.fragment.xml"
+        },
+        {
+            "name": "../../view/WCCostingDetail.view.xml"
+        },
+        {
+            "name": "../../view/WCCapacityDetail.view.xml"
+        },
+        {
+            "name": "../../view/TLSrvPckgeDetail.view.xml"
+        },
+        {
+            "name": "../../view/TLPRTDetail.view.xml"
+        },
+        {
+            "name": "../../view/TLOperationDetail.view.xml"
+        },
+        {
+            "name": "../../view/TLMaintPckgDetail.view.xml"
+        },
+        {
+            "name": "../../view/TLInspCharDetail.view.xml"
+        },
+        {
+            "name": "../../view/TLHeaderDetail.view.xml"
+        },
+        {
+            "name": "../../view/TLComponents.view.xml"
+        },
+        {
+            "name": "../../view/TLComponentDetail.view.xml"
+        },
+        {
+            "name": "../../view/Search.view.xml"
+        },
+        {
+            "name": "../../view/ObjectNotFound.view.xml"
+        },
+        {
+            "name": "../../view/OLLamDetail.view.xml"
+        },
+        {
+            "name": "../../view/NotFound.view.xml"
+        },
+        {
+            "name": "../../view/MyChangeRequest.view.xml"
+        },
+        {
+            "name": "../../view/Main.view.xml"
+        },
+        {
+            "name": "../../view/ItemMaintenancePlan.view.xml"
+        },
+        {
+            "name": "../../view/ItemBOM.view.xml"
+        },
+        {
+            "name": "../../view/InternationalAddress.view.xml"
+        },
+        {
+            "name": "../../view/DetailWorkCenter.view.xml"
+        },
+        {
+            "name": "../../view/DetailTaskList.view.xml"
+        },
+        {
+            "name": "../../view/DetailObjectNetwork.view.xml"
+        },
+        {
+            "name": "../../view/DetailObjectLink.view.xml"
+        },
+        {
+            "name": "../../view/DetailMeasuringPoint.view.xml"
+        },
+        {
+            "name": "../../view/DetailMaintenancePlan.view.xml"
+        },
+        {
+            "name": "../../view/DetailFunctionalLocation.view.xml"
+        },
+        {
+            "name": "../../view/DetailEquipment.view.xml"
+        },
+        {
+            "name": "../../view/DetailBOM.view.xml"
+        },
+        {
+            "name": "../../view/App.view.xml"
+        },
+        {
+            "name": "../../localService/metadata.xml"
+        }
+    ]
+}

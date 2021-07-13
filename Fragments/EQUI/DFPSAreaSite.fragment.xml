@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Dialog>
+		<Panel>
+			<headerToolbar>
+				<Toolbar height="3rem">
+					<ToolbarSpacer/>
+					<Title text="{i18n>DFPS_AREA_SITE_FRAG_TITLE}"/>
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://decline" press="onCloseSiteArea"/>
+				</Toolbar>
+			</headerToolbar>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+				emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="{i18n>SITE_DET}"></core:Title>
+					<Label text="{i18n>SITE}"></Label>
+					<Input id="siteId" value="{AIWEQUI>/dfps/Site}" enabled="true" change="DFPSSiteChange" showValueHelp="true" valueHelpRequest="onDFPSSiteVH"></Input>
+					<Label text="{i18n>SITE_DESC}"></Label>
+					<Input id="siteTxt" enabled="true" value="{AIWEQUI>/dfps/SiteDesc}" ></Input>
+					<Label text="{i18n>SITE_PROF}"></Label>
+					<Input id="sitePro" value="{AIWEQUI>/dfps/SitePrfl}" enabled="true" change="onDFPSSiteProChange" showValueHelp="true" valueHelpRequest="onDFPSSiteProVH"></Input>
+					<Label text="{i18n>ONE_ASSGMT}"></Label>
+					<CheckBox enabled="true" selected="{AIWEQUI>/dfps/ForeignEq}" />
+					<core:Title text="{i18n>AREA_DET}"></core:Title>
+					<Label text="{i18n>AREA}"></Label>
+					<Input enabled="true" value="{AIWEQUI>/dfps/Area}" change="onDFPSAreaChange" showValueHelp="true" valueHelpRequest="onDFPSAreaVH"></Input>
+					<Label text="{i18n>AREA_DESC}"></Label>
+					<Input enabled="true" value="{AIWEQUI>/dfps/AreaDesc}"></Input>
+					<Label text="{i18n>AREA_PROF}"></Label>
+					<Input enabled="true" value="{AIWEQUI>/dfps/AreaPrfl}" change="onDFPSAreaProChange" showValueHelp="true" valueHelpRequest="onDFPSAreaProVH"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</Panel>
+		<beginButton>
+			<Button text="{i18n>CLEAR}"	press="onClearSiteArea"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>BTN_OK}" press="onCloseSiteArea"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

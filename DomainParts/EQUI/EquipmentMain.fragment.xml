@@ -1,0 +1,73 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter text="EQUI" key="EQUITab" icon="sap-icon://add-equipment" tooltip="{i18n>equiTl}" count="{mainView>/equipmentMain}"
+		iconColor="Contrast">
+		<content>
+			<VBox>
+				<Table busyIndicatorDelay="0" busy="{mainView>/tableBusy}" visible="{device>/isNoPhone}" mode="{ApproveModel>/mainTableMode}"
+					items="{AIWEQUI>/}" growingScrollToLoad="true" growing="true" noDataText="{i18n>tableNoDataText}" selectionChange="onMainTableRowSelect">
+					<headerToolbar>
+						<Toolbar visible="{ApproveModel>/headerToolbarVis}">
+							<MenuButton text="{i18n>SELECTACTION}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+								<menu>
+									<Menu itemSelected="onMenuAction">
+										<items>
+											<MenuItem key="createEqui" text="{i18n>createEqui}" icon="sap-icon://create"/>
+											<MenuItem key="copyEqui" text="{i18n>copyEqui}" icon="sap-icon://copy"/>
+											<MenuItem key="changeEqui" text="{i18n>changeEqui}" icon="sap-icon://write-new"/>
+										</items>
+									</Menu>
+								</menu>
+							</MenuButton>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://delete" type="Reject" press="onRemoveMainTablePress" enabled="{mainView>/deleteEQUI}"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>EQUIP_TXT}" textAlign="Center"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>DESC_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>xtxt.EQUIP_CAT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>MAINT_PLANT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>FLOC_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>xtxt.SUPERORD.EQUIP}" textAlign="Left"></Text>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onPress" type="Navigation">
+							<cells>
+								<Input type="Text" value="{AIWEQUI>Equnr}" valueState="{AIWEQUI>EqunrVS}" valueStateText="{AIWEQUI>EqunrVST}"
+									enabled="{AIWEQUI>EqunrEnabled}" editable="true" liveChange="equipmentChange" change="onEquipmentChange"></Input>
+								<!-- showValueHelp="true" valueHelpRequest="onEquiVH" submit="onEquipmentChange" -->
+								<Input value="{AIWEQUI>Eqktx}" valueState="{AIWEQUI>EqktxVS}" enabled="{ApproveModel>/mainFieldEnabled}" change="onLiveChange"
+									maxLength="40"></Input>
+								<Input enabled="{AIWEQUI>EquipCatEnabled}" value="{AIWEQUI>EquipmentCatogory}" valueState="{AIWEQUI>EquipmentCatogoryVS}"
+									valueStateText="{AIWEQUI>EquipmentCatogoryVST}" editable="true" showValueHelp="true" liveChange="equipCatChange" change="onEquipCatChange"
+									valueHelpRequest="onEquipCatVH" maxLength="1" submit="onEquipCatChange"></Input>
+								<Input type="Text" value="{AIWEQUI>Maintplant}" enabled="{AIWEQUI>MaintplantEnabled}" editable="true" showValueHelp="true"
+									liveChange="maintPlantChange" valueHelpRequest="onMaintPlantVH" change="onMaintPlantChange" maxLength="4"
+									name="Maintplant"></Input>
+									<!--submit="onMaintPlantChange"-->
+								<Input type="Text" value="{AIWEQUI>Tplnr}" valueState="{AIWEQUI>TplnrVS}" valueStateText="{AIWEQUI>TplnrVST}"
+									enabled="{AIWEQUI>TplnrEnabled}" editable="true" showValueHelp="true" liveChange="flocChange" change="onFlocChange"
+									valueHelpRequest="onFlocVH" maxLength="40"></Input>
+								<Input value="{AIWEQUI>SuperordinateEquip}" valueState="{AIWEQUI>SuperordinateEquipVS}" valueStateText="{AIWEQUI>SuperordinateEquipVST}"
+									showValueHelp="true" valueHelpRequest="onSuperOrdEqVH" liveChange="superOrdEqChange" enabled="{AIWEQUI>SuperordinateEquipEnabled}"
+									change="onSuperOrdEqChange" maxLength="18"></Input>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

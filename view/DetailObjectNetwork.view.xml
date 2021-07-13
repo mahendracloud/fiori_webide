@@ -1,0 +1,111 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.DetailObjectNetwork"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<pages>
+			<Page id="detailPage" title="{applicationModel>/titleName}" enableScrolling="true" showFooter="true" backgroundDesign="Standard"
+				busyIndicatorDelay="0">
+				<content>
+					<l:Grid defaultSpan="L12 M12 S12" width="auto">
+						<l:content>
+							<f:SimpleForm id="simpleform" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+								labelSpanM="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+								<f:content>
+									<core:Title text="{i18n>BASIC}" emphasized="true"></core:Title>
+									<VBox>
+										<layoutData >
+											<l:GridData span="L12 M12 S12"/>
+										</layoutData>
+									</VBox>
+									<!--<Label text="{i18n>OBJ_TYP}" required="true"></Label>
+							<ComboBox id="objType" items="{objTypModel>/}" change="onObjectChange" enabled="{mainView>/enable}" selectedKey="{ONDetailModel>/Ntobjtyp}" valueState="{ONDetailModel>ObjTypValueState}">
+								<core:Item key="{objTypModel>Net_to_type}" text="{objTypModel>nwtyp_txt}"/>
+							</ComboBox>-->
+									<Label text="{i18n>NET_ID}" required="true"/>
+									<Input id="netId" maxLength="8" value="{ONDetailModel>/Objnetwrk}" valueState="{ONDetailModel>/NetIDValueState}"
+										valueStateText="{ONDetailModel>/NetIDValueStateText}" enabled="{ONDetailModel>/NetIDEnable}" change="aiwNetIdChange"
+										liveChange="onLiveChange" showValueStateMessage="true"></Input>
+									<Label text="{i18n>NET_GRP}"></Label>
+									<Input id="networkGrp" showValueHelp="true" maxLength="10" value="{ONDetailModel>/Netgrp}" enabled="{mainView>/enable}"
+										valueHelpRequest="onNetWorkGrpVH" liveChange="netGrpChange" change="onNetGrpChange" valueState="{ONDetailModel>/NetgrpValueState}">
+										<layoutData >
+											<l:GridData span="L2 M2 S4"/>
+										</layoutData>
+									</Input>
+									<Input id="networkGrpDesc" value="{ONDetailModel>/NetgrpDesc}" enabled="false"></Input>
+									<Label text="{i18n>NET_TYP}"></Label>
+									<Input id="networkTyp" showValueHelp="true" maxLength="4" value="{ONDetailModel>/Netwtyp}" enabled="{mainView>/enable}"
+										valueHelpRequest="onNetWorkTypeVH" liveChange="netTypeChange" change="onNetTypeChange" valueState="{ONDetailModel>/NetwtypValueState}">
+										<layoutData >
+											<l:GridData span="L2 M2 S4"/>
+										</layoutData>
+									</Input>
+									<Input id="networkTypDesc" value="{ONDetailModel>/NetwtypDesc}" enabled="false"></Input>
+									<Label text="{i18n>NET_SHTXT}" required="true"></Label>
+									<Input id="shortTxt" change="onTextChange" maxLength="40" value="{ONDetailModel>/Netxt}" enabled="{mainView>/enable}"
+										liveChange="onLiveChange" valueState="{ONDetailModel>/ShrtTxtValueState}"></Input>
+									<Label text="{i18n>DEL_FLG}"></Label>
+									<CheckBox enabled="false" visible="{FieldsVisibleModel>/delflgVisible}"
+										selected="{path:'ONDetailModel>/Delflg', formatter:'.formatter.typeCheck2'}"></CheckBox>
+									<!--<core:Title id="lamTitle"></core:Title>-->
+									<!--<VBox>-->
+									<!--	<layoutData>-->
+									<!--		<l:GridData span="L12 M12 S12"/>-->
+									<!--	</layoutData>-->
+									<!--</VBox>-->
+									<!--<Label text="{i18n>LRP}" visible="{lamView>/lamEnable}"></Label>-->
+									<!--<Input id="lrp" value="{ONDetailModel>/Lrpid}" enabled="{mainView>/enableLRP}" showValueHelp="true" maxLength="10"-->
+									<!--	valueHelpRequest="onNetworkLrpVH" liveChange="netLrpChange" change="onNetLrpChange" visible="{lamView>/lamEnable}">-->
+									<!--	<layoutData >-->
+									<!--		<l:GridData span="L2 M2 S4"/>-->
+									<!--	</layoutData>-->
+									<!--</Input>-->
+									<!--<Input id="lrpDesc" enabled="false" value="{ONDetailModel>/LrpidDesc}" visible="{lamView>/lamEnable}"></Input>-->
+									<!--<Label text="{i18n>STRT_POINT}"></Label>-->
+									<!--<Input id="startPoint" value="{ONDetailModel>/Strtptatr}" enabled="{mainView>/enableLRP}" showValueHelp="true"-->
+									<!--	valueHelpRequest="onStartPointVH" liveChange="startPointChange" change="onStartPointChange" visible="{lamView>/lamEnable}"></Input>-->
+									<!--<Label text="{i18n>END_POINT}" visible="{lamView>/lamEnable}"></Label>-->
+									<!--<Input id="endPoint" value="{ONDetailModel>/Endptatr}" enabled="{mainView>/enableLRP}" showValueHelp="true" valueHelpRequest="onEndPointVH"-->
+									<!--	liveChange="endPointChange" change="onEndPointChange" visible="{lamView>/lamEnable}"></Input>-->
+									<!--<Label text="{i18n>LENGTH}" visible="{lamView>/lamEnable}"></Label>-->
+									<!--<Input id="length" value="{ONDetailModel>/Length}" type="text" enabled="false" visible="{lamView>/lamEnable}"></Input>-->
+									<!--<Label text="{i18n>UOM}" visible="{lamView>/lamEnable}"></Label>-->
+									<!--<Input id="uom" value="{ONDetailModel>/LinUnit}" maxLength="3" visible="{lamView>/lamEnable}" enabled="{mainView>/enableLRP}"-->
+									<!--	showValueHelp="true" valueHelpRequest="onLamUOMVH" liveChange="uomChange" change="onUomChange">-->
+									<!--	<layoutData>-->
+									<!--		<l:GridData span="L2 M2 S4"/>-->
+									<!--	</layoutData>-->
+									<!--</Input>-->
+									<!--<Input id="uomDesc" value="{ONDetailModel>/LinUnitDesc}" enabled="false" visible="{lamView>/lamEnable}"></Input>-->
+									<!--<Label text="{i18n>STRT_MARKR}"></Label>-->
+									<!--<Input id="startMarker" value="{ONDetailModel>/Startmrkr}" maxLength="18" showValueHelp="true" enabled="false"-->
+									<!--	valueHelpRequest="onStartMarkerVH" liveChange="startMarkerChange" change="onStartMarkerChange" visible="{lamView>/lamEnable}"></Input>-->
+									<!--<Label text="{i18n>END_MARKR}" visible="{lamView>/lamEnable}"></Label>-->
+									<!--<Input id="endMarker" value="{ONDetailModel>/Endmrkr}" maxLength="18" showValueHelp="true" enabled="false" valueHelpRequest="onEndMarkerVH"-->
+									<!--	liveChange="endMarkerChange" change="onEndMarkerChange" visible="{lamView>/lamEnable}"></Input>-->
+									<!--<Label text="{i18n>DIST_START}" visible="{lamView>/lamEnable}"></Label>-->
+									<!--<Input id="distStartMrkr" value="{ONDetailModel>/Mrkdisst}" enabled="false" change="onDistStartChange" visible="{lamView>/lamEnable}"></Input>-->
+									<!--<Label text="{i18n>DIST_END}" visible="{lamView>/lamEnable}"></Label>-->
+									<!--<Input id="distEndMrkr" value="{ONDetailModel>/Mrkdisend}" enabled="false" change="onDistEndChange" visible="{lamView>/lamEnable}"></Input>-->
+									<!--<Label text="{i18n>MRKR_DIST_UOM}" visible="{lamView>/lamEnable}"></Label>-->
+									<!--<Input id="mrkrDistUnit" value="{ONDetailModel>/MrkrUnit}" maxLength="4" showValueHelp="true" enabled="false"-->
+									<!--	valueHelpRequest="onMarkerDistUnit" liveChange="markerUnitChange" change="onMarkerUnitChange" visible="{lamView>/lamEnable}"></Input>-->
+								</f:content>
+							</f:SimpleForm>
+							<core:Fragment id="lamFrag" fragmentName="ugiaiwui.mdg.aiw.library.fragments.lam.LinearData" type="XML"/>
+							<!-- fragmentName="ugiaiwui.mdg.aiw.request.fragments.Common.LinearData" -->
+						</l:content>
+					</l:Grid>
+				</content>
+				<footer>
+					<Toolbar id="tabletoolbar">
+						<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+						<ToolbarSpacer/>
+						<Button id="idBtnCheck" text="Check" press="onDonePress"/>
+						<Button text="Done" type="Accept" press="onDonePress"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

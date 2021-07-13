@@ -1,0 +1,22 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.Search"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<pages>
+			<Page id="searchPage" title="{applicationModel>/titleName}" enableScrolling="true" showFooter="true" backgroundDesign="Standard"
+				busyIndicatorDelay="0">
+				<content>
+					<core:Fragment fragmentName="ugieamui.mdg.eam.lib.search.Search" type="XML"></core:Fragment>
+				</content>
+				<footer>
+					<Toolbar id="tabletoolbar">
+						<Button id="idBtnMsgPopOver" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+						<ToolbarSpacer/>
+						<Button id="idImportMocr" type="Accept" press="onImportToMocrPress"></Button>
+						<Button text="Done" type="Accept" press="onDonePress"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

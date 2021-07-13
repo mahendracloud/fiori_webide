@@ -1,0 +1,114 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="GTLTab" text="GTL" icon="sap-icon://activity-assigned-to-goal" tooltip="{i18n>gntsklTl}" count="{CountModel>/GTLCount}"
+		iconColor="Contrast">
+		<content>
+			<VBox>
+				<Title text="Basic Data" level="H1"></Title>
+				<Table id="gtlBasicTable" visible="{device>/isNoPhone}" growing="true" growingScrollToLoad="true" mode="MultiSelect"
+					items="{AIWListGTLModel>/}" noDataText="{i18n>tableNoDataText}" selectionChange="onTLBasicSelect">
+					<headerToolbar>
+						<Toolbar visible="{EnableModel>/actionEnable}">
+							<MenuButton text="{i18n>selectAction}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+								<menu>
+									<Menu itemSelected="onMenuAction">
+										<items>
+											<MenuItem key="createGTL" text="{i18n>createGTL}" icon="sap-icon://create"/>
+											<MenuItem key="copyGTL" text="{i18n>copyGTL}" icon="sap-icon://copy"/>
+											<MenuItem key="changeGTL" text="{i18n>changeGTL}" icon="sap-icon://write-new"/>
+											<MenuItem key="copyETL" text="{i18n>copyETL}" icon="sap-icon://copy"/>
+											<MenuItem key="copyFTL" text="{i18n>copyFTL}" icon="sap-icon://copy"/>
+										</items>
+									</Menu>
+								</menu>
+							</MenuButton>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://delete" type="Reject" press="onMulDltTab" enabled="{EnableDELModel>/deleteGTL}"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>GROUP_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>VALID_FRM}" textAlign="Left"></Text>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem type="None">
+							<cells>
+								<Input value="{AIWListGTLModel>grp}" enabled="{AIWListGTLModel>enable}" editable="true" liveChange="onLiveChange" maxLength="8"/>
+								<DatePicker value="{AIWListGTLModel>validFrm}" enabled="{AIWListGTLModel>KDenable}" editable="true" valueFormat="MM/dd/yyyy"
+									displayFormat="MM/dd/yyyy" change="onValidFrmChange"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+			<Label></Label>
+			<Text visible="false"></Text>
+			<VBox>
+				<Title text="Header Overview" level="H1"></Title>
+				<Table visible="{device>/isNoPhone}" mode="None" items="{GTLHeaderModel>/0/}" noDataText="{i18n>tableNoDataText}" growingScrollToLoad="true"
+					growing="true">
+					<headerToolbar>
+						<Toolbar>
+							<Button id="addGTLCntr" icon="sap-icon://add" text="New Counter" tooltip="New Counter" press="onAddCounter"
+								enabled="{aCounterModel>/addGTLCounter}" visible="{EnableModel>/actionEnable}"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>GRP_COUNTER_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>TL_DESC}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>PLAN_PLANT_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>WC}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>PLANT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>USAGE}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>STATUS}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet" visible="{EnableModel>/actionEnable}">
+							<Text text="{i18n>delete}" wrapping="true"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onItemPress" type="Navigation">
+							<cells>
+								<Input value="{GTLHeaderModel>Plnal}" enabled="{GTLHeaderModel>Grpenable}" editable="true" liveChange="onLiveChange" maxLength="2"/>
+								<Input value="{GTLHeaderModel>Ktext}" enabled="{GTLHeaderModel>enable}" editable="true" liveChange="onLiveChange" maxLength="40"/>
+								<Input value="{GTLHeaderModel>Iwerk}" enabled="{GTLHeaderModel>PPenable}" showValueHelp="true" valueHelpRequest="onPplantVH"
+									valueState="{GTLHeaderModel>planningPlantValueState}" change="onChange" maxLength="4" submit="onChange" liveChange="onLiveChange"
+									valueStateText="{GTLHeaderModel>planningPlantValueStateTxt}"></Input>
+								<Input value="{GTLHeaderModel>wc}" enabled="{GTLHeaderModel>enable}" valueHelpRequest="onTLWcVH" showValueHelp="true" change="onChange"
+									liveChange="onLiveChange" valueState="{GTLHeaderModel>wcValueState}" valueStateText="{GTLHeaderModel>wcValueStateTxt}" maxLength="8"
+									submit="onChange"></Input>
+								<Input value="{GTLHeaderModel>plant}" maxLength="4" showValueHelp="true" valueHelpRequest="onTLPlantVH"
+									valueState="{GTLHeaderModel>plantValueState}" valueStateText="{GTLHeaderModel>plantValueStateTxt}" liveChange="onLiveChange"
+									enabled="{GTLHeaderModel>enable}" change="onChange" submit="onChange"></Input>
+								<Input showValueHelp="true" valueHelpRequest="onTLUsageVH" value="{GTLHeaderModel>tlusg}" liveChange="onLiveChange" change="onChange"
+									maxLength="3" submit="onChange" valueState="{GTLHeaderModel>usgValueState}" enabled="{GTLHeaderModel>enable}"
+									valueStateText="{GTLHeaderModel>usgValueStateTxt}"></Input>
+								<Input showValueHelp="true" valueHelpRequest="onStatusVH" liveChange="onLiveChange" value="{GTLHeaderModel>Statu}"
+									valueState="{GTLHeaderModel>statusVS}" valueStateText="{GTLHeaderModel>statusVST}" change="onChange" maxLength="3" submit="onChange"
+									enabled="{GTLHeaderModel>enable}"></Input>
+								<core:Icon src="sap-icon://sys-cancel" size="20px" press="onHeaderDlt" tooltip="{i18n>delete}" enabled="{GTLHeaderModel>enable}"></core:Icon>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

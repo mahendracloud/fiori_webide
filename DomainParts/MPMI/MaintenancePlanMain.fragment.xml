@@ -1,0 +1,69 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter text="MPMI" key="MPMITab" icon="sap-icon://legend" tooltip="{i18n>mpmiTl}" visible="{EnableModel>/Maintenance Plan}"
+		count="{mainView>/maintenancePlanMain}" iconColor="Contrast">
+		<content>
+			<VBox>
+				<Table busyIndicatorDelay="0" busy="{mainView>/tableBusy}" visible="{device>/isNoPhone}" mode="{ApproveModel>/mainTableMode}"
+					items="{AIWMPMI>/}" growingScrollToLoad="true" growing="true" noDataText="{i18n>tableNoDataText}" selectionChange="onMainTableRowSelect">
+					<headerToolbar>
+						<Toolbar visible="{ApproveModel>/headerToolbarVis}">
+							<MenuButton text="{i18n>SELECTACTION}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+								<menu>
+									<Menu itemSelected="onMenuAction">
+										<items>
+											<MenuItem key="createMpmi" text="{i18n>createMpmi}" icon="sap-icon://create"/>
+											<MenuItem key="copyMpmi" text="{i18n>copyMpmi}" icon="sap-icon://copy"/>
+											<MenuItem key="changeMpmi" text="{i18n>changeMpmi}" icon="sap-icon://write-new"/>
+										</items>
+									</Menu>
+								</menu>
+							</MenuButton>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://delete" type="Reject" press="onRemoveMainTablePress" enabled="{mainView>/deleteMPMI}"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>MAINTPLAN_TXT}" textAlign="Center"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>MAINTPLAN_DESC_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>MAINTPLAN_CAT_TXT}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>STRATEGY}" textAlign="Left"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>MULTI_CNTR}" textAlign="Center"></Text>
+						</Column>
+						<Column demandPopin="true" minScreenWidth="Tablet">
+							<Text text="{i18n>CYC_SET}" textAlign="Left"></Text>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onPress" type="Navigation">
+							<cells>
+								<Input type="Text" value="{AIWMPMI>Warpl}" valueState="{AIWMPMI>WarplVS}" enabled="{AIWMPMI>WarplEnabled}" editable="true"
+									showValueHelp="true" liveChange="setValueStateNone" change="onMaintPlanChange" valueHelpRequest="onMaintPlanVH" submit="onMaintPlanChange"></Input>
+								<Input value="{AIWMPMI>Wptxt}" valueState="{AIWMPMI>WptxtVS}" enabled="{ApproveModel>/mainFieldEnabled}" change="onMaintPlanDescChange"
+									maxLength="40"></Input>
+								<Select showSecondaryValues="true" forceSelection="false" selectedKey="{AIWMPMI>Mptyp}" valueState="{AIWMPMI>MptypVS}"
+									items="{ path: 'MainPlanCatModel>/', sorter: { path: 'Mptyp' } }" change="onMaintPlanCatChange" enabled="{AIWMPMI>MptypEnabled}">
+									<core:Item key="{MainPlanCatModel>Mptyp}" text="{MainPlanCatModel>Txt}"/>
+								</Select>
+								<Input type="Text" value="{AIWMPMI>Strat}" valueState="{AIWMPMI>StratVS}" valueStateText="{AIWMPMI>StratVST}"
+									enabled="{AIWMPMI>StratEnabled}" editable="true" showValueHelp="true" liveChange="strategyChange" valueHelpRequest="onStrategyVH"
+									change="onStrategyChange" submit="onStrategyChange"></Input>
+								<CheckBox selected="{AIWMPMI>Mehrfach}" select="onMultiCounterSelect" enabled="{AIWMPMI>MehrfachEnabled}"></CheckBox>
+								<Input value="{AIWMPMI>Wset}" showValueHelp="true" valueHelpRequest="onCycleSetVH" liveChange="cycleSetChange" change="onCycleSetChange"
+									valueState="{AIWMPMI>WsetVS}" valueStateText="{AIWMPMI>WsetVST}" maxLength="6" submit="onCycleSetChange" enabled="{AIWMPMI>WsetEnabled}"></Input>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

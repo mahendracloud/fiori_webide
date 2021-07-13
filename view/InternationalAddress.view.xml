@@ -1,0 +1,69 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.InternationalAddress" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<Page id="idPageIntlAddr" navButtonPress="onNavBack" showNavButton="false" title="{i18n>INTLADDRVERSION}">
+		<content>
+			<l:Grid defaultSpan="L12 M12 S12" width="auto">
+				<l:content>
+					<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+						emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<core:Title text="{i18n>INTLVERSOFADDR}"></core:Title>
+							<Label text="{i18n>ADDR_VERSION}"></Label>
+							<Select id="idSELAddrVrsnIA" forceSelection="false" items="{path: 'AddressVersionModel>/'}" selectedkey="{intlAddrModel>/AdNation}"
+								enabled="{intlAddrModel>/AdNationEnable}" change="onAddrVersionChange">
+								<core:Item key="{AddressVersionModel>Nation}" text="{AddressVersionModel>NationTex}"/>
+							</Select>
+							<core:Title text="{i18n>ADDNAME}"></core:Title>
+							<Label text="{i18n>ADDTITLE}"></Label>
+							<Select selectedKey="{intlAddrModel>/Titlei}" enabled="{mainView>/enabled}"
+								items="{ path: 'AddressTitleModel>/', sorter: { path: 'Title' } }">
+								<core:Item key="{AddressTitleModel>TitleCode}" text="{AddressTitleModel>Title}"/>
+							</Select>
+							<Label text="{i18n>ADDNAME}"></Label>
+							<Input maxLength="40" value="{intlAddrModel>/Name1i}" tooltip="{i18n>Name1}" enabled="{mainView>/enabled}"></Input>
+							<Label></Label>
+							<Input maxLength="40" value="{intlAddrModel>/Name2i}" tooltip="{i18n>Name2}" enabled="{mainView>/enabled}"></Input>
+							<Label></Label>
+							<Input maxLength="40" value="{intlAddrModel>/Name3i}" tooltip="{i18n>Name3}" enabled="{mainView>/enabled}"></Input>
+							<Label></Label>
+							<Input maxLength="40" value="{intlAddrModel>/Name4i}" tooltip="{i18n>Name4}" enabled="{mainView>/enabled}"></Input>
+							<Label text="{i18n>SearchTerm}"/>
+							<Input maxLength="20" value="{intlAddrModel>/Sort1i}" showValueHelp="false" enabled="{mainView>/enabled}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input maxLength="20" value="{intlAddrModel>/Sort2i}" enabled="{mainView>/enabled}"></Input>
+							<core:Title text="{i18n>STRADD}"></core:Title>
+							<Label text="{i18n>CITY}"></Label>
+							<Input maxLength="40" value="{intlAddrModel>/City1i}" showValueHelp="true" valueHelpRequest="cityVH" change="_changeCityI"
+								liveChange="onLiveChange" enabled="{mainView>/enabled}" valueState="{intlAddrModel>/City1iVS}" showValueStateMessage="false"></Input>
+							<Label text="{i18n>HNOSTREET}"></Label>
+							<Input maxLength="10" value="{intlAddrModel>/Housenr1i}" enabled="{mainView>/enabled}">
+								<layoutData>
+									<l:GridData span="L2 M2 S4"/>
+								</layoutData>
+							</Input>
+							<Input maxLength="60" value="{intlAddrModel>/Streeti}" showValueHelp="true" valueHelpRequest="streetVH" change="_changeStreetI"
+								liveChange="onLiveChange" enabled="{mainView>/enabled}" valueState="{intlAddrModel>/StreetiVS}" showValueStateMessage="false"></Input>
+							<Label text="{i18n>STR4}"></Label>
+							<Input maxLength="40" value="{intlAddrModel>/Stsuppl3i}" enabled="{mainView>/enabled}"></Input>
+							<core:Title text="{i18n>CMNT}"></core:Title>
+							<Label text="{i18n>CMNT}"></Label>
+							<Input maxLength="50" value="{intlAddrModel>/Remarki}" enabled="{mainView>/enabled}"></Input>
+						</f:content>
+					</f:SimpleForm>
+					<!--</Panel>-->
+				</l:content>
+			</l:Grid>
+		</content>
+		<footer>
+			<Toolbar id="tabletoolbar">
+				<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+				<ToolbarSpacer/>
+				<!--<Button id="idBtnCheck" text="{i18n>CHECK}" press="onItmDonePress" enabled="{mainView>/enabled}"/>-->
+				<Button text="{i18n>BTN_DONE}" type="Accept" press="onItmDonePress"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

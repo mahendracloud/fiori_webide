@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:fb="sap.ui.comp.filterbar">
+	
+	<Dialog title="{i18n>NEW_NOTE}">
+		<content>
+				<TextArea value="" id="notesTA" width="85%" rows="5" class="sapUiSmallMargin"/>
+		</content>
+		<beginButton>
+			<Button text="{i18n>OK}" press="onNotesOKPress"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="onNotesCancelPress"/>
+		</endButton>		
+	</Dialog>
+</core:FragmentDefinition>

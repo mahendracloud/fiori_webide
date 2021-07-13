@@ -1,0 +1,125 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="{copyModel>/header}">
+		<content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+				emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+				<f:content>
+					<core:Title text="{copyModel>/sourceHeader}"></core:Title>
+					<Label text="{i18n>MATERIAL_TXT}" required="true"/>
+					<Input visible="{copyModel>/srcMatVisible}" value="{copyModel>/copyMaterialSource}" valueState="{copyModel>/srcMatValueState}" type="Text"
+						enabled="true" editable="true" liveChange="onLiveChange" change="materialChange" showValueHelp="true" valueHelpRequest="onMaterialVH"
+						maxLength="40" submit="materialChange">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>EQUI_TXT}" required="true"/>
+					<Input visible="{copyModel>/srcEquiVisible}" value="{copyModel>/copyEquipmentSource}" valueState="{copyModel>/srcEquiValueState}"
+						type="Text" enabled="true" editable="true" liveChange="onLiveChange" change="equipmentChangeBom" showValueHelp="true"
+						valueHelpRequest="onEquipmentVH" maxLength="40" submit="equipmentChangeBom">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>FUNLOC_TXT}" required="true"/>
+					<Input visible="{copyModel>/srcFlocVisible}" value="{copyModel>/copyFlocSource}" valueState="{copyModel>/srcFlocValueState}" type="Text"
+						enabled="true" editable="true" liveChange="onLiveChange" change="flocChangeBOM" showValueHelp="true" valueHelpRequest="onFLocBomVH"
+						maxLength="40" submit="flocChangeBOM">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>WBS_TXT}" required="true"/>
+					<Input visible="{copyModel>/srcWBSVisible}" value="{copyModel>/copyWBSSource}" valueState="{copyModel>/srcWBSValueState}" type="Text"
+						enabled="true" editable="true" liveChange="onLiveChange" change="wbsChange" showValueHelp="true" valueHelpRequest="onWbsVH" maxLength="40"
+						submit="wbsChange">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>PLANT_TXT}" required="true"></Label>
+					<Input type="Text" value="{copyModel>/copyPlantSource}" valueState="{copyModel>/srcPlantValueState}" enabled="true" editable="true"
+						showValueHelp="true" change="plantChange" liveChange="onLiveChange" valueHelpRequest="onPlantInBomVH" maxLength="4" submit="plantChange">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>BOM_USAGE_TXT}" required="true"/>
+					<Input type="Text" value="{copyModel>/copyUsageSource}" valueState="{copyModel>/srcUsageValueState}" enabled="true" editable="true"
+						change="bomUsageChange" showValueHelp="true" liveChange="onLiveChange" valueHelpRequest="omBomUsageVH" maxLength="1" submit="bomUsageChange">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>ALT_BOM_TXT}" required="true"/>
+					<Input maxLength="2" value="{copyModel>/copyAltBomSource}" valueState="{copyModel>/srcAltBomValueState}"
+						visible="{copyModel>/srcAltBomVisible}">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<core:Title text="{copyModel>/targetHeader}"></core:Title>
+					<Label text="{i18n>MATERIAL_TXT}" required="true"/>
+					<Input visible="{copyModel>/tarMatVisible}" value="{copyModel>/copyMaterialTarget}" valueState="{copyModel>/tarMatValueState}" type="Text"
+						enabled="true" editable="true" liveChange="onLiveChange" change="materialChange" showValueHelp="true" valueHelpRequest="onMaterialVH"
+						maxLength="40" submit="materialChange">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>EQUI_TXT}" required="true"/>
+					<Input visible="{copyModel>/tarEquiVisible}" value="{copyModel>/copyEquipmentTarget}" valueState="{copyModel>/tarEquiValueState}"
+						type="Text" enabled="true" editable="true" liveChange="onLiveChange" change="equipmentChangeBom" showValueHelp="true"
+						valueHelpRequest="onEquipmentVH" maxLength="40" submit="equipmentChangeBom">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>FUNLOC_TXT}" required="true"/>
+					<Input visible="{copyModel>/tarFlocVisible}" value="{copyModel>/copyFlocTarget}" valueState="{copyModel>/tarFlocValueState}" type="Text"
+						enabled="true" editable="true" liveChange="onLiveChange" change="flocChangeBOM" showValueHelp="true" valueHelpRequest="onFLocBomVH"
+						maxLength="40" submit="flocChangeBOM">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>WBS_TXT}" required="true"/>
+					<Input visible="{copyModel>/tarWBSVisible}" value="{copyModel>/copyWBSTarget}" valueState="{copyModel>/tarWBSValueState}" type="Text"
+						enabled="true" editable="true" liveChange="onLiveChange" change="wbsChange" showValueHelp="true" valueHelpRequest="onWbsVH" maxLength="40"
+						submit="wbsChange">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>PLANT_TXT}" required="true"></Label>
+					<Input type="Text" value="{copyModel>/copyPlantTarget}" valueState="{copyModel>/tarPlantValueState}" enabled="true" editable="true"
+						showValueHelp="true" change="plantChange" liveChange="onLiveChange" valueHelpRequest="onPlantInBomVH" maxLength="4" submit="plantChange">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>BOM_USAGE_TXT}" required="true"/>
+					<Input type="Text" value="{copyModel>/copyUsageTarget}" valueState="{copyModel>/tarUsageValueState}" enabled="true" editable="true"
+						change="bomUsageChange" showValueHelp="true" liveChange="onLiveChange" valueHelpRequest="omBomUsageVH" maxLength="1" submit="bomUsageChange">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>ALT_BOM_TXT}" required="true"/>
+					<Input maxLength="2" value="{copyModel>/copyAltBomTarget}" valueState="{copyModel>/tarAltBomValueState}"
+						visible="{copyModel>/tarAltBomVisible}">
+						<layoutData>
+							<l:GridData span="L2 M3 S4"/>
+						</layoutData>
+					</Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton >
+			<Button text="Copy" press="onCopyBOMpress"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="onCopyBOMclose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

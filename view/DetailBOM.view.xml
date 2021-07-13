@@ -1,0 +1,255 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table" controllerName="ugiaiwui.mdg.aiw.request.controller.DetailBOM"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc">
+	<App>
+		<pages>
+			<Page id="detailPage" title="{applicationModel>/titleName}" enableScrolling="true" showFooter="true" backgroundDesign="Standard"
+				busyIndicatorDelay="0">
+				<content>
+					<IconTabBar selectedKey="__filter0" expanded="{device>/isNoPhone}">
+						<items>
+							<IconTabFilter icon="sap-icon://form" text="Form" design="Vertical">
+								<content>
+									<l:Grid defaultSpan="L12 M12 S12" width="auto">
+										<l:content>
+											<f:SimpleForm id="idSFBomHeader" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+												labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+												<f:content>
+													<core:Title text="{i18n>HEADER_DATA}"></core:Title>
+													<Label text="{i18n>WBS_TXT}" required="true"/>
+													<Input type="Text" value="{BOMDetailModel>/WbsExt}" enabled="{BOMDetailModel>/wbsEnable}" valueState="{BOMDetailModel>/wbsValueState}"
+														editable="true" liveChange="onLiveChange" change="wbsChange" showValueHelp="true" valueHelpRequest="onWbsVH" maxLength="40"
+														submit="wbsChange" visible="{FieldsVisibleModel>/WBSVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{BOMDetailModel>/WbsDesc}" visible="{FieldsVisibleModel>/WBSVisible}"></Input>
+													<Label text="{i18n>MATERIAL_TXT}" required="true"/>
+													<Input type="Text" maxLength="{maxLengthModel>/maxlengthMat}" value="{BOMDetailModel>/Matnr}" valueState="{BOMDetailModel>/matValueState}"
+														editable="true" liveChange="onLiveChange" change="materialChange" showValueHelp="true" valueHelpRequest="onMaterialVH"
+														submit="materialChange" visible="{FieldsVisibleModel>/MATVisible}" enabled="{BOMDetailModel>/matEnable}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<!--<Input enabled="false" value="{BOMDetailModel>/MatDesc}" visible="{FieldsVisibleModel>/MATVisible}"></Input>-->
+													<Link text="{BOMDetailModel>/MatDesc}" visible="{FieldsVisibleModel>/MATVisible}" press="handleMaterialLinkPress"
+														enabled="{BOMDetailModel>/crtMatHdrEnable}">
+														<layoutData>
+															<l:GridData span="L3 M3 S4"/>
+														</layoutData>
+													</Link>
+													<Button icon="sap-icon://create" width="30px" tooltip="{i18n>createMat}" press="handleHdrMatCrtPress"
+														visible="{FieldsVisibleModel>/MATCrtVisible}" enabled="{BOMDetailModel>/crtMatHdrBtnEnable}"></Button>
+													<Label text="{i18n>EQUI_TXT}" required="true"/>
+													<Input type="Text" maxLength="{maxLengthModel>/maxlengthMat}" value="{BOMDetailModel>/Eqnrbom}" enabled="{BOMDetailModel>/equipEnable}"
+														valueState="{BOMDetailModel>/equipValueState}" editable="true" liveChange="onLiveChange" change="equipmentChange" showValueHelp="true"
+														valueHelpRequest="onEquipmentVH" submit="equipmentChange" visible="{FieldsVisibleModel>/EQVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{BOMDetailModel>/EquiDesc}" visible="{FieldsVisibleModel>/EQVisible}"></Input>
+													<Label text="{i18n>FUNLOC_TXT}" required="true"/>
+													<Input type="Text" maxLength="{maxLengthModel>/maxlengthMat}" value="{BOMDetailModel>/Tplnrbom}" enabled="{BOMDetailModel>/FLEnable}"
+														valueState="{BOMDetailModel>/FLValueState}" editable="true" liveChange="onLiveChange" change="flocChange" showValueHelp="true"
+														valueHelpRequest="onFLocVH" submit="flocChange" visible="{FieldsVisibleModel>/FLVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{BOMDetailModel>/FLDesc}" visible="{FieldsVisibleModel>/FLVisible}"></Input>
+													<Label text="{i18n>PLANT_TXT}" required="true"></Label>
+													<Input type="Text" value="{BOMDetailModel>/Werks}" enabled="{BOMDetailModel>/plantEnable}" valueState="{BOMDetailModel>/plantValueState}"
+														editable="true" showValueHelp="true" change="plantChange" liveChange="onLiveChange" valueHelpRequest="onPlantVH" maxLength="4"
+														submit="plantChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{BOMDetailModel>/WerksDesc}"></Input>
+													<Label text="{i18n>BOM_USAGE_TXT}" required="true"/>
+													<Input type="Text" value="{BOMDetailModel>/Stlan}" enabled="{BOMDetailModel>/usageEnable}" valueState="{BOMDetailModel>/usageValueState}"
+														editable="true" change="bomUsageChange" showValueHelp="true" liveChange="onLiveChange" valueHelpRequest="omBomUsageVH" maxLength="1"
+														submit="bomUsageChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{BOMDetailModel>/StlanDesc}"></Input>
+													<Label text="{i18n>ALT_BOM}" required="true"></Label>
+													<Input maxLength="2" value="{BOMDetailModel>/Stalt}" visible="{FieldsVisibleModel>/altbomVisible}" enabled="{BOMDetailModel>/altbomEnable}"
+														showValueStateMessage="false" valueState="{BOMDetailModel>/altbomValueState}" change="onAltBomChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Label text="{i18n>TECH_TYPE}"></Label>
+													<Input value="{BOMDetailModel>/Pmbomtech}" visible="{FieldsVisibleModel>/techtypeVisible}" enabled="false">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{BOMDetailModel>/PmbomtechTxt}" visible="{FieldsVisibleModel>/techtypeVisible}"></Input>
+													<Label text="{i18n>DEL_FLG}"></Label>
+													<CheckBox enabled="false" visible="{FieldsVisibleModel>/delflgVisible}"
+														selected="{path:'BOMDetailModel>/Delflg', formatter:'.formatter.typeCheck2'}"></CheckBox>
+													<core:Title text="{i18n>QTY_DATA}"></core:Title>
+													<Label text="{i18n>BASE_QTY}" required="true"></Label>
+													<Input type="Number" value="{BOMDetailModel>/BaseQty}" enabled="{BOMDetailModel>/BaseQtyEnable}"
+														valueState="{BOMDetailModel>/BaseQtyValueState}" change="onBaseQtyChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{BOMDetailModel>/BaseUom}"></Input>
+													<core:Title text="{i18n>VALID}"></core:Title>
+													<Label text="{i18n>VALID_FRM_TXT}"/>
+													<DatePicker enabled="{BOMDetailModel>/fromDateEnable}" editable="true" value="{BOMDetailModel>/Validfrom}" valueFormat="MM/dd/yyyy"
+														displayFormat="MM/dd/yyyy" change="onValidFrmChange"/>
+													<Label text="{i18n>VALID_TO}"></Label>
+													<DatePicker enabled="false" value="{BOMDetailModel>/Validtoda}" valueFormat="MM/dd/yyyy" displayFormat="MM/dd/yyyy"></DatePicker>
+													<Label text="{i18n>BOM_STATUS_TXT}"/>
+													<Input value="{BOMDetailModel>/Bomstatus}" valueState="{BOMDetailModel>/statusValueState}" enabled="{BOMDetailModel>/BomstatusEnable}"
+														change="onBOMStsChange" showValueHelp="true" liveChange="onLiveChange" valueHelpRequest="onBomStsVH" maxLength="2" submit="onBOMStsChange">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{BOMDetailModel>/BomstatusText}"></Input>
+													<Label text="{i18n>AUTH_GRP}"></Label>
+													<Input enabled="false" value="{BOMDetailModel>/Authgroup}" visible="{FieldsVisibleModel>/authgrpVisible}"></Input>
+													<Label text=""></Label>
+													<Text visible="{FieldsVisibleModel>/TitleDataVisible}"></Text>
+													<!--<core:Title text="{FieldsVisibleModel>/TitleDataText}" visible="{FieldsVisibleModel>/TitleDataVisible}"></core:Title>-->
+													<Title textAlign="Left" level="H2" text="{FieldsVisibleModel>/TitleDataText}" visible="{FieldsVisibleModel>/TitleDataVisible}">
+														<layoutData>
+															<l:GridData span="L12 M12 S12"/>
+														</layoutData>
+													</Title>
+													<!--<Label text=""></Label>
+													<Text></Text>-->
+													<Label text="{i18n>PLNR_GRP}"></Label>
+													<Input enabled="false" value="{BOMDetailModel>/Sizdim}" visible="{FieldsVisibleModel>/plnrgrpVisible}"></Input>
+													<Label text="{i18n>CONST_TYPE}"></Label>
+													<Input enabled="false" value="{BOMDetailModel>/Flbomsub}" visible="{FieldsVisibleModel>/constTypVisible}"></Input>
+													<Label text="{i18n>LAB_OFF}"></Label>
+													<Input enabled="false" value="{BOMDetailModel>/Labofc}" visible="{FieldsVisibleModel>/laboffVisible}">
+														<layoutData>
+															<l:GridData span="L2 M2 S4"/>
+														</layoutData>
+													</Input>
+													<Input enabled="false" value="{BOMDetailModel>/Labortxt}" visible="{FieldsVisibleModel>/laboffVisible}"></Input>
+													<Label text="{i18n>SIZE_DIM}"></Label>
+													<Input enabled="false" value="{BOMDetailModel>/Sizdim}" visible="{FieldsVisibleModel>/sizeDimVisible}"></Input>
+													<Label text="{i18n>INV_NUM}"></Label>
+													<Input enabled="false" value="{BOMDetailModel>/Invnr}" visible="{FieldsVisibleModel>/invNumVisible}"></Input>
+													<Label text="{i18n>MANUF}"></Label>
+													<Input enabled="false" value="{BOMDetailModel>/Herst}" visible="{FieldsVisibleModel>/manufVisible}"></Input>
+													<Label text="{i18n>MOD_NO}"></Label>
+													<Input enabled="false" value="{BOMDetailModel>/Htypb}" visible="{FieldsVisibleModel>/modNoVisible}"></Input>
+													<Label text="{i18n>MANUF_SER}"></Label>
+													<Input enabled="false" value="{BOMDetailModel>/Serge}" visible="{FieldsVisibleModel>/manufSerVisible}"></Input>
+													<core:Title id="idBOMAltTextTitle" text="{i18n>BOM_ALT_TEXT}"></core:Title>
+													<!--text="{applicationModel>/headerText}"-->
+													<Label text="{i18n>BOM_HDR_TXT}"/>
+													<Input type="Text" value="{BOMDetailModel>/Lngtxt}" visible="{FieldsVisibleModel>/bomHdrTxtVisible}" enabled="false"/>
+													<Label text="{i18n>BOM_ALT_TXT}"></Label>
+													<Input maxLength="40" value="{BOMDetailModel>/Stktx}" enabled="{BOMDetailModel>/LngtxtEnable}" visible="{FieldsVisibleModel>/bomAltTxtVisible}"></Input>
+													<!--visible="{FieldsVisibleModel>/bomAltTxtVisible}" enabled="false"-->
+												</f:content>
+											</f:SimpleForm>
+											<!--<core:Fragment id="table" fragmentName="ugiaiwui.mdg.aiw.ZAIW_UI_02.Fragments.BOM.BomItemOverview" type="XML"/>-->
+											<Table id="idTBLItems" mode="{BOMDetailModel>/modeFlag}" items="{itemDetailModel>/}" delete="handleItemDelete"
+												noDataText="{i18n>ITEM_NODATA_TEXT}" visible="{FieldsVisibleModel>/sopTableVisible}">
+												<headerToolbar>
+													<Toolbar>
+														<Title text="{applicationModel>/tableHeader}" level="H2"></Title>
+														<ToolbarSpacer/>
+														<MenuButton icon="sap-icon://create" tooltip="{i18n>createMat}" visible="{FieldsVisibleModel>/MATCrtVisible}"
+															enabled="{BOMDetailModel>/crtMatEnable}">
+															<menu>
+																<Menu>
+																	<MenuItem id="create" icon="sap-icon://create" tooltip="{i18n>createMat}" press="handleMaterialPress" enabled="true"/>
+																	<MenuItem id="addMaterial" icon="sap-icon://sys-add" tooltip="{i18n>addMaterial}" press="handleMaterialPress" enabled="true"/><!--press="readItemNumber"--></Menu>
+															</menu>
+														</MenuButton>
+														<Button id="display" icon="sap-icon://display" tooltip="{i18n>displayCr}" visible="{FieldsVisibleModel>/MATCrtVisible}"
+															enabled="{BOMDetailModel>/crtMatEnable}" press="handleDisplay"></Button>
+														<Button press="readItemNumber" enabled="{BOMDetailModel>/addItemEnable}" icon="sap-icon://add" tooltip="New Item"/>
+													</Toolbar>
+												</headerToolbar>
+												<columns>
+													<Column>
+														<Text text="{i18n>IT_NO}" textAlign="Center"></Text>
+													</Column>
+													<Column demandPopin="true" minScreenWidth="Tablet">
+														<Text text="{i18n>IT_CAT}" textAlign="Center"></Text>
+													</Column>
+													<Column demandPopin="true" minScreenWidth="Tablet">
+														<Text text="{i18n>COMP}" textAlign="Center"></Text>
+													</Column>
+													<Column demandPopin="true" minScreenWidth="Tablet">
+														<Text text="{i18n>IT_DESC}" textAlign="Center"></Text>
+													</Column>
+													<Column demandPopin="true" minScreenWidth="Tablet">
+														<Text text="{i18n>QTY}" textAlign="Center"></Text>
+													</Column>
+													<Column demandPopin="true" minScreenWidth="Tablet">
+														<Text text="{i18n>UOM_QTY}" textAlign="Center"></Text>
+													</Column>
+													<Column demandPopin="true" minScreenWidth="Tablet">
+														<Text text="{i18n>ASSEMBLY}" textAlign="Center"></Text>
+													</Column>
+													<Column demandPopin="true" minScreenWidth="Tablet" visible="{FieldsVisibleModel>/RECALLOVisible}">
+														<Text text="{i18n>REC_ALL}" textAlign="Center"></Text>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem type="Navigation" press="onItemPress">
+														<cells>
+															<Input maxLength="4" value="{itemDetailModel>Bomitmpos}" enabled="{itemDetailModel>itmUomEnable}"></Input>
+															<Input maxLength="1" enabled="{itemDetailModel>itmCatEnable}" value="{itemDetailModel>Itemcat}" showValueHelp="true"
+																liveChange="onLiveChange" change="onItemChange" valueState="{itemDetailModel>itmCatState}" valueHelpRequest="onItemCatVH"></Input>
+															<Input maxLength="{maxLengthModel>/maxlengthComp}" showValueHelp="true" liveChange="onCompLiveChange" change="onItemChange"
+																value="{itemDetailModel>Itemcomp}" valueState="{itemDetailModel>itmCompState}" enabled="{itemDetailModel>itmCompEnable}"
+																valueHelpRequest="onMaterialVH"></Input>
+															<Link text="{itemDetailModel>Itmcmpdesc}" press="handleMaterialLinkPress" enabled="{itemDetailModel>ItmcmpdescEnabled}"/>
+															<!--<Input value="{itemDetailModel>Itmcmpdesc}" enabled="false" maxLength="40"></Input>-->
+															<Input type="Number" value="{itemDetailModel>Itmqty}" valueState="{itemDetailModel>itmQtyState}" liveChange="onQtyLiveChange"
+																change="onItemChange" maxLength="13" enabled="{itemDetailModel>itmQtyEnable}"></Input>
+															<Input showValueHelp="true" value="{itemDetailModel>Itmuom}" valueState="{itemDetailModel>itmUOMState}"
+																enabled="{itemDetailModel>itmUomEnable}" maxLength="3" liveChange="onLiveChange" change="onItemChange" valueHelpRequest="onUOMQtyVH"></Input>
+															<Link textAlign="Center" text="{= ${itemDetailModel>Itmassind} ? 'X' : '' }" press="handleAssemblyIndPress"
+																enabled="{itemDetailModel>IsNavPossible}"></Link>
+															<CheckBox selected="{itemDetailModel>Recurallo}" enabled="{itemDetailModel>reccrAllowEnable}"></CheckBox>
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+										</l:content>
+									</l:Grid>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter key="onAttach" icon="sap-icon://activity-items" text="BOM Item Overview" tooltip="BOM Item Overview" design="Vertical"
+								visible="{FieldsVisibleModel>/tabTableVisible}">
+								<content>
+									<core:Fragment id="table2" fragmentName="ugiaiwui.mdg.aiw.request.Fragments.BOM.BomItemOverview" type="XML"/>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Toolbar id="tabletoolbar">
+						<Button id="idMessagePopover" icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+						<ToolbarSpacer/>
+						<Button id="idBtnCheck" text="Check" press="onDonePress" enabled="{BOMDetailModel>/BaseQtyEnable}"/>
+						<Button text="Done" type="Accept" press="onDonePress"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

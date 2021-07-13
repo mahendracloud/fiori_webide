@@ -1,0 +1,101 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="OLTab" text="OL" icon="sap-icon://business-objects-mobile" tooltip="{i18n>objlTl}" visible="{EnableModel>/Object Link}"
+		count="{CountModel>/OLCount}" iconColor="Contrast">
+		<content>
+			<Table mode="{EnableModel>/tableType}" width="auto" growing="true" growingScrollToLoad="true" items="{AIWListOLModel>/}"
+				selectionChange="onOLRowSelect">
+				<headerToolbar>
+					<Toolbar visible="{EnableModel>/actionEnable}">
+						<MenuButton text="{i18n>selectAction}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+							<menu>
+								<Menu itemSelected="onMenuAction">
+									<items>
+										<MenuItem key="createOL" text="{i18n>createOL}" icon="sap-icon://create"/>
+										<MenuItem key="copyOL" text="{i18n>copyOL}" icon="sap-icon://copy"/>
+										<MenuItem key="changeOL" text="{i18n>changeOL}" icon="sap-icon://write-new"/>
+										<!--<MenuItem key="approveOL" text="{i18n>approveOL}" icon="sap-icon://write-new"/>-->
+									</items>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" type="Reject" press="onMulDltTab" enabled="{EnableDELModel>/deleteOL}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>olItemTableColumn1}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>olItemTableColumn2}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>olItemTableColumn3}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>olItemTableColumn4}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>olItemTableColumn5}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>olItemTableColumn6}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>olItemTableColumn7}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>olItemTableColumn8}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>olItemTableColumn9}" wrapping="true"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>olItemTableColumn10}" wrapping="true"/>
+					</Column>
+					<!--<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>delete}" wrapping="true"/>
+					</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onItemPress">
+						<cells>
+							<Input id="link" value="{AIWListOLModel>link}" type="Text" maxLength="18" enabled="{AIWListOLModel>lenable}" editable="true"
+								liveChange="onLiveChange" valueState="{AIWListOLModel>linkValueState}" valueStateText="{AIWListOLModel>linkValueStateTxt}"
+								showValueHelp="false"></Input>
+							<Select selectedKey="{AIWListOLModel>linkCat}" showSecondaryValues="true" change="onLinkCatChange" forceSelection="false"
+								items="{linkCatModel>/}" enabled="{AIWListOLModel>linkCatEn}">
+								<core:ListItem key="{linkCatModel>NETYP}" text="{linkCatModel>TYPTX}" additionalText="{linkCatModel>TYPTX}"></core:ListItem>
+							</Select>
+							<Select selectedKey="{AIWListOLModel>objCat}" showSecondaryValues="true" forceSelection="false" change="onObjCatChange"
+								items="{objCatModel>/}" enabled="{AIWListOLModel>objCatEn}">
+								<core:ListItem key="{objCatModel>Kantyp}" text="{objCatModel>Kantyp_txt}" additionalText="{objCatModel>Kantyp_txt}"></core:ListItem>
+							</Select>
+							<Input id="linkDesc" enabled="{AIWListOLModel>enable}" value="{AIWListOLModel>linkDesc}" valueState="{AIWListOLModel>linkDescVS}"
+								liveChange="onLiveChange" maxLength="40"></Input>
+							<Input id="linkFromEQ" value="{AIWListOLModel>linkFrmEq}" maxLength="18" showValueHelp="true" valueHelpRequest="onEquipVH"
+								valueState="{AIWListOLModel>linkFrmEqVS}" valueStateText="{AIWListOLModel>linkFrmEqVST}" liveChange="onLiveChange" change="onChange"
+								enabled="{AIWListOLModel>linkFromEQEn}"></Input>
+							<Input id="linkToEQ" value="{AIWListOLModel>linkToEq}" maxLength="18" showValueHelp="true" valueHelpRequest="onEquipVH"
+								valueState="{AIWListOLModel>linkToEqVS}" valueStateText="{AIWListOLModel>linkToEqVST}" liveChange="onLiveChange" change="onChange"
+								enabled="{AIWListOLModel>linkToEQEn}"></Input>
+							<Input id="linkEquipment" value="{AIWListOLModel>linkObjEq}" maxLength="18" showValueHelp="true" valueHelpRequest="onEquipVH"
+								valueState="{AIWListOLModel>linkObjEqVS}" valueStateText="{AIWListOLModel>linkObjEqVST}" liveChange="onLiveChange" change="onChange"
+								enabled="{AIWListOLModel>linkObjEqEn}"></Input>
+							<Input id="linkfrmFl" value="{AIWListOLModel>linkFrmFl}" maxLength="40" showValueHelp="true" valueHelpRequest="onFlocInOLVH"
+								valueState="{AIWListOLModel>linkFrmFlVS}" valueStateText="{AIWListOLModel>linkFrmFlVST}" liveChange="onLiveChange" change="onChange"
+								enabled="{AIWListOLModel>linkFrmFlEn}"></Input>
+							<Input id="linkToFl" value="{AIWListOLModel>linkToFl}" maxLength="40" showValueHelp="true" valueHelpRequest="onFlocInOLVH"
+								valueState="{AIWListOLModel>linkToFlVS}" valueStateText="{AIWListOLModel>linkToFlVST}" liveChange="onLiveChange" change="onChange"
+								enabled="{AIWListOLModel>linkToFlEn}"></Input>
+							<Input id="linkObj1" value="{AIWListOLModel>linkObjFl}" maxLength="40" showValueHelp="true" valueHelpRequest="onFlocInOLVH"
+								valueState="{AIWListOLModel>linkObjFlVS}" valueStateText="{AIWListOLModel>linkObjFlVST}" liveChange="onLiveChange" change="onChange"
+								enabled="{AIWListOLModel>linkObjFlEn}"></Input>
+							<!--<core:Icon src="sap-icon://sys-cancel" size="20px" visible="{AIWListOLModel>enable}" press="handleDelete" tooltip="{i18n>delete}"></core:Icon>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

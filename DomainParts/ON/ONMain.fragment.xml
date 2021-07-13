@@ -1,0 +1,61 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<IconTabFilter key="ON" text="ON" icon="sap-icon://world" visible="{EnableModel>/Object Network}" tooltip="{i18n>objnTl}"
+		count="{CountModel>/ONCount}" iconColor="Contrast">
+		<content>
+			<Table mode="{EnableModel>/tableType}" growing="true" growingScrollToLoad="true" items="{AIWListONModel>/}"
+				noDataText="{i18n>tableNoDataText}" busy="{BusyModel>/AiwTblBusy}" selectionChange="onONRowSelect">
+				<headerToolbar>
+					<Toolbar visible="{EnableModel>/actionEnable}">
+						<MenuButton text="{i18n>selectAction}" buttonMode="Split" defaultAction="onDefaultAction" width="auto">
+							<menu>
+								<Menu itemSelected="onMenuAction">
+									<items>
+										<MenuItem key="createOn" text="{i18n>createOn}" icon="sap-icon://create"/>
+										<MenuItem key="copyOn" text="{i18n>copyOn}" icon="sap-icon://copy"/>
+										<MenuItem key="changeOn" text="{i18n>changeOn}" icon="sap-icon://write-new"/>
+									</items>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://delete" type="Reject" press="onRemoveONPress" enabled="{EnableModel>/deleteON}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>netId}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>netShrtTxt}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet" visible="{mLamVis>/LamEnbl}">
+						<Text text="{i18n>netGrp}" textAlign="Left"></Text>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet" visible="{mLamVis>/LamEnbl}">
+						<Text text="{i18n>netType}" textAlign="Left"></Text>
+					</Column>
+					<!--<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>objType}" textAlign="Left"></Text>
+					</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem press="onObjNetNavigation" type="Navigation">
+						<cells>
+							<Input type="Text" maxLength="8" value="{AIWListONModel>Objnetwrk}" valueState="{AIWListONModel>NetIDValueState}"
+								valueStateText="{AIWListONModel>NetIDValueStateText}" change="aiwNetIdChange" liveChange="onLiveChange"
+								enabled="{AIWListONModel>NetIDEnable}" showValueStateMessage="true"></Input>
+							<Input type="Text" value="{AIWListONModel>Netxt}" enabled="{mainView>/enableON}" valueState="{AIWListONModel>ShrtTxtValueState}"></Input>
+							<Input type="Text" value="{AIWListONModel>Netgrp}" valueState="{AIWListONModel>NetgrpValueState}" showValueHelp="true"
+								liveChange="onLiveChange" change="netGrpChange" valueHelpRequest="onNetGrpVH" submit="netGrpChange" enabled="{mainView>/enableON}"></Input>
+							<Input type="Text" value="{AIWListONModel>Netwtyp}" valueState="{AIWListONModel>NetwtypValueState}" showValueHelp="true"
+								valueHelpRequest="onNetTypeVH" liveChange="onLiveChange" change="netTypeChange" submit="netTypeChange" enabled="{mainView>/enableON}"></Input>
+							<!--<Select items="{objTypModel>/}" selectedKey="{AIWListONModel>Ntobjtyp}" enabled="{mainView>/enableON}">
+								<core:Item key="{objTypModel>Net_to_type}" text="{objTypModel>nwtyp_txt}"/>
+							</Select>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</IconTabFilter>
+</core:FragmentDefinition>

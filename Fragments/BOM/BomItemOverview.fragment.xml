@@ -1,0 +1,63 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table growing="true" growingScrollToLoad="true" mode="{applicationModel>/modeFlag}" items="{itemDetailModel>/}" delete="handleItemDelete"
+		selectionMode="SingleSelectLeft" noDataText="{i18n>ITEM_NODATA_TEXT}" visible="{FieldsVisibleModel>/tabTableVisible}">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{applicationModel>/tableHeader}" level="H2"></Title>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>IT_NO}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>IT_CAT}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>COMP}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>IT_DESC}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>QTY}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>UOM_ONLY}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>VLD_FRM}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>VLD_TO}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>SRT_STR}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>ITM_ID}" textAlign="Center"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>LNG_TCXT}" textAlign="Center"></Text>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Navigation" press="onItemPress">
+				<cells>
+					<Text text="{itemDetailModel>Bomitmpos}"></Text>
+					<Text text="{itemDetailModel>Itemcat}"></Text>
+					<Text text="{itemDetailModel>Itemcomp}"></Text>
+					<Text text="{itemDetailModel>Itmcmpdesc}"></Text>
+					<Text text="{itemDetailModel>Itmqty}"></Text>
+					<Text text="{itemDetailModel>Itmuom}"></Text>
+					<Text text="{path:'itemDetailModel>Validfrm',formatter:'.formatter.dateFormat'}" wrapping="true"></Text>
+					<Text text="{path:'itemDetailModel>Validto',formatter:'.formatter.dateFormat'}" wrapping="true"></Text>
+					<Text text="{itemDetailModel>Sortstrin}" wrapping="true"></Text>
+					<Text text="{itemDetailModel>Itemid}" wrapping="true"></Text>
+					<Text text="{itemDetailModel>Lgtxtind}" wrapping="true"></Text>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

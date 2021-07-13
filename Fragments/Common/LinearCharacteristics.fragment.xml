@@ -1,0 +1,46 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table id="idTblLinearChar" mode="Delete" delete="handleLinearCharRowDelete" items="{/}">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>LIN_CHAR_TITLE}"/>
+				<ToolbarSpacer/>
+				<Button id="idBtnAddLinChar" icon="sap-icon://add" tooltip="Add" press="handleLinearCharRowAdd"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>xtxt.CHAR_DESC}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>xtxt.CHAR_VALUE}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>STRT_POINT}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>END_POINT}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>LENGTH}"></Text>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<Text text="{i18n>UOM}"></Text>
+			</Column>
+			<!--<Column demandPopin="true" minScreenWidth="Tablet"></Column>-->
+		</columns>
+		<items>
+			<ColumnListItem press="handleClassItemPress" type="Active">
+				<cells>
+					<Input value="{Charid}" enabled="false"></Input>
+					<Input value="{Atwrt}" enabled="false"></Input>
+					<Input type="Number" value="{StartPtDisp}" enabled="{linCharEnable}" change="onLCHStPtChange"></Input>
+					<Input type="Number" value="{EndPtDisp}" enabled="{linCharEnable}" change="onLCHEdPtChange"></Input>
+					<Input type="Number" value="{LamLengtDisp}" enabled="false"></Input>
+					<Input showValueHelp="true" value="{LamUnit}" valueHelpRequest="onLCHuomVH" valueState="None" change="onLCHuomChange" submit="onChange"
+						enabled="{linCharEnable}"></Input>
+					<!--<core:Icon src="sap-icon://sys-cancel" press="handleClassRowDelete" tooltip="Delete Class" visible="{main>/enable}"></core:Icon>-->
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

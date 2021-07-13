@@ -1,0 +1,66 @@
+<core:FragmentDefinition controllerName="ugiaiwui.mdg.aiw.request.controller.TLSrvPckgeDetail" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<Page showNavButton="false" title="Service Package Overview">
+		<content>
+			<Panel expandable="false" expanded="true" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm id="tlComponentForm" minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4"
+						labelSpanL="4" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>GRP}"></Label>
+							<Input id="grpComp" enabled="false" value="{tlSrvPckge>/group}"></Input>
+							<Label text="{i18n>GRP_C}"></Label>
+							<Input id="grpCounterComp" enabled="false" value="{tlSrvPckge>/Plnal}"></Input>
+							<Label text="{i18n>ACT}"></Label>
+							<Input id="activity" enabled="false" value="{tlSrvPckge>/Vornr}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>SRV_PCKG_HEADER}" width="auto" class="sapUiSmallMargin">
+				<content>
+					<f:SimpleForm minWidth="1024" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanM="4" labelSpanL="4"
+						emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1" class="SFChildPaddingFix">
+						<f:content>
+							<Label text="{i18n>LINE_NUM}"></Label>
+							<Input value="{tlSrvPckge>/LineNum}" enabled="false"></Input>
+							<Label text="{i18n>DEL_IND}"></Label>
+							<CheckBox selected="{tlSrvPckge>/DelIndSP}" enabled="{tlSrvPckge>/DelIndSPEnabled}"></CheckBox>
+							<Label text="{i18n>SRV_NUM}"></Label>
+							<Input showValueHelp="true" value="{tlSrvPckge>/ActNum}" valueHelpRequest="onActNumVH" valueState="{tlSrvPckge>/ActNumVS}"
+								change="onActNumChange" liveChange="onLiveChange" enabled="{tlSrvPckge>/SPEnabled}"></Input>
+							<Label text="{i18n>SHRT_TXT}"></Label>
+							<Input value="{tlSrvPckge>/ShrtTxt}" valueState="{tlSrvPckge>/ShrtTxtVS}" change="onShrtTxtchange" liveChange="onLiveChange"
+								enabled="{tlSrvPckge>/SPEnabled}"></Input>
+							<Label text="{i18n>QTY}"></Label>
+							<Input type="Number" value="{tlSrvPckge>/Qty}" valueState="{tlSrvPckge>/QtyVS}" change="onQtySPOchange" liveChange="onLiveChange"
+								enabled="{tlSrvPckge>/SPEnabled}"></Input>
+							<Label text="{i18n>BASE_UOM}"></Label>
+							<Input showValueHelp="true" value="{tlSrvPckge>/BUomSP}" valueHelpRequest="onBUomSPVH" valueState="{tlSrvPckge>/BUomSPVS}"
+								change="onBUomSPChange" liveChange="onLiveChange" enabled="{tlSrvPckge>/SPEnabled}"></Input>
+							<Label text="{i18n>GROSS_PRC}"></Label>
+							<Input type="Number" value="{tlSrvPckge>/GrossPrc}" valueState="{tlSrvPckge>/GrossPrcVS}" liveChange="onLiveChange"
+								enabled="{tlSrvPckge>/SPEnabled}"></Input>
+							<Label text="{i18n>CURR_KEY}"></Label>
+							<Input showValueHelp="true" value="{tlSrvPckge>/CurKey}" valueHelpRequest="onCurKeyVH" valueState="{tlSrvPckge>/CurKeyVS}"
+								change="onCurKeyChange" liveChange="onLiveChange" enabled="{tlSrvPckge>/SPEnabled}"></Input>
+							<Label text="{i18n>WORK}"></Label>
+							<Input type="Number" value="{tlSrvPckge>/Work}" valueState="{tlSrvPckge>/WorkVS}" change="onWorkChange" liveChange="onLiveChange"
+								enabled="{tlSrvPckge>/SPEnabled}"></Input>
+							<Label text="{i18n>UNIT_WORK}"></Label>
+							<Input showValueHelp="true" value="{tlSrvPckge>/UnitOfWork}" valueHelpRequest="onUnitOfWorkVH" valueState="{tlSrvPckge>/UnitOfWorkVS}"
+								change="onUnitOfWorkChange" liveChange="onLiveChange" enabled="{tlSrvPckge>/SPEnabled}"></Input>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar id="tabletoolbar">
+				<ToolbarSpacer/>
+				<Button text="Done" type="Accept" press="onNavBack"/>
+				<!--<Button text="Cancel" type="Reject" press="onCancelPress"/>-->
+			</Toolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>
